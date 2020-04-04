@@ -26,22 +26,23 @@ In this mode, both players have their decks replaced by decks created with cards
 * If both players agree to apply Manga Rules: Monster Cards cannot be Set or flipped face-down. All Traps can be activated the turn they are Set. Each player can have up to 7 cards in their hands. The total number of cards that each player can have on the field is 5. Each player can only activate 1 Spell from their hand, set 1 Spell and 1 Trap per turn.
 
 #  7. Duelist Kingdom
-If both players agree, applies the following rules to the current duel
-● Players cannot attack directly.
-● Players can Normal Summon in face-up Defense Position.
-● Players can Normal Summon or Set Level 5 or higher monsters without Tributing.
-● If a monster(s) on the field is destroyed by a card effect, each player takes damage equal to half the ATK on the field of the destroyed monster(s) they controlled.
-● Only one monster is allowed to declare an attack per turn.
-● If a player fails to summon any monsters during their turn when they didn't control one, they will automatically lose the duel at the end of their turn.
+* If both players agree, applies the following rules to the current duel
+* Players cannot attack directly.
+* Players can Normal Summon in face-up Defense Position.
+* Players can Normal Summon or Set Level 5 or higher monsters without Tributing.
+* If a monster(s) on the field is destroyed by a card effect, each player takes damage equal to half the ATK on the field of the destroyed monster(s) they controlled.
+* Only one monster is allowed to declare an attack per turn.
+* If a player fails to summon any monsters during their turn when they didn't control one, they will automatically lose the duel at the end of their turn.
 
 # 8. Dimension Duel
-If both players agree, applies the following rules to the current duel
-● Both players can Normal Summon any monsters without tributing.
-● If a monster(s) is Summoned, the original ATK and DEF of that monster(s) becomes 0, also, after that, the Summoning player chooses the original ATK and DEF of that monster(s) on the field by choosing a value from 0 up to the ATK/DEF written on that monster(s).
-● Neither player takes any Battle Damage from battles between monsters.
-● If a monster(s) is destroyed, the controller takes damage equal to either the ATK or DEF (ATK if it was in Attack Position, DEF if it was in Defense Position) of that monster(s) had on the field.
+* If both players agree, applies the following rules to the current duel
+* Both players can Normal Summon any monsters without tributing.
+* If a monster(s) is Summoned, the original ATK and DEF of that monster(s) becomes 0, also, after that, the Summoning player chooses the original ATK and DEF of that monster(s) on the field by choosing a value from 0 up to the ATK/DEF written on that monster(s).
+* Neither player takes any Battle Damage from battles between monsters.
+* If a monster(s) is destroyed, the controller takes damage equal to either the ATK or DEF (ATK if it was in Attack Position, DEF if it was in Defense Position) of that monster(s) had on the field.
+
 # Turbo Duel
-The duel starts with the Field Spell Card Spell World 2 activated. Regular Spell cards cannot be used here, only Speed Spells cards.
+The duel starts with the Field Spell Card [Speed World 2](https://yugipedia.com/wiki/Speed_World_2) activated in both players Field Spell Zone. Regular Spell cards cannot be used here, only Speed Spells cards.
 
 # 9. Double Deck Duel
 # 10. Command Duel
