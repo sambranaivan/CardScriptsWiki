@@ -6,12 +6,44 @@ In this mode, both players have their decks replaced by decks created with cards
 
 
 # 2. Booster Draft Duel
+At the start of the duel, the following are applied
+* All monsters are treated as all Types in all locations.
+* More than 3 copies of cards with the same name in a Deck is allowed.
+* Remove all cards from the Duel. Then, the turn player opens 3 random "Battle Pack 3: Monster League" packs and adds 1 card from them to their Deck. Then, the next player adds 1 card from the remaining cards to their Deck. Repeat this until each player has at least 45 cards in their Deck. (If the card pool is empty, the player who would add 1 card to their Deck opens 3 new packs.) Then, each player shuffles their Deck and draws cards equal to the number of cards in their starting hand.
+
 
 # 3. Destiny Draw
+At the start of the Duel, you can choose up to 5 cards in your hand/Deck. (You can only choose 1 card per original card name.) Once per Duel, If your opponent's LP is twice or more than your LP and you control no monsters while your opponent controls at least 1 monster, before you conduct your normal draw, randomly pick 1 of the cards you chose, that is in your Deck, and place it on top of your Deck.
+
 
 # 4. Concentration Duel
+At the start of the duel these are applied:
+
+* Return all cards in each Player's hand to the Deck.
+* Neither Player has a Draw Phase.
+* Once per turn, during either Player's turn: A Player can choose 1 card face-down in their Deck and call the type of the card (Monster, Spell, or Trap)'; reveal that card and if they call it right, activate one of the following effects.
+* * If that card is a Monster Card and it can be Normal/Special Summoned or Set: Summon/Set that Monster to your side of the field, otherwise return it to Deck in the same position.
+* * If the revealed card is a Spell Card: Activate that Spell Card. If the cost cannot be paid, return it to the Deck in the same position.
+* * If the revealed card is a Trap Card and its activation timing is correct: Activate the effect of that Trap Card, otherwise return it to the Deck in the same position.
+
 
 # 5. Boss Duel
+At the start of the duel, the following are applied:
+
+* Remove all non-Boss Cards you own at the start of the Duel.
+* At start of the Duel, return all cards in your hand to the Deck and draw the same number of cards, marked as Start.
+* Your Deck is always arranged in the following order of marked cards:
+* Start=> 1=> 2=> 3
+* During Standy Phase, add all cards from the Graveyard to your hand.
+* You can Normal Summon any number of times.
+* You cannot lose the duel due to being unable to draw
+* Your cards cannot be banished, if they would be banished, destroy them instead.
+* Before your opponent starts their turn, they can apply 1 of the following effects, each effect can be used once per Duel:
+* * 1. During the Battle Phase of this turn, double the ATK of all monsters you control
+* * 2. Instead of conducting your normal draw this turn, you can add 1 card from your Deck to your hand.
+* * 3. Choose 1 player, that player gains 4000 LP.
+* If your opponent would win the Duel by an Alternate Win Condition, you take 8000 damage instead.
+
 
 # 6. Battle City
 * If both players agree, applies the following rules to the current duel
