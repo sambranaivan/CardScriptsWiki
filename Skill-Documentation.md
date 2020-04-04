@@ -92,6 +92,26 @@ the Race is used as a placeholder for the "Character"
 ex: the second cover of Mako would be 302000128
 since Mako character is "Pyro" so with the value 0x80=128
 
+The Character Values (placed in Race) are the following:
+- Yami Yugi = warrior = 0x1
+- Ishizu = spellcaster = 0x2
+- Pegasus = fairy = 0x4
+- Kaiba = fiend = 0x8
+- Joey = zombie = 0x10
+- Mai = machine = 0x20
+- Bonz = aqua = 0x40
+- Mako = pyro =0x80
+- Rex = rock = 0x100
+- Weevil = winged beast = 0x200
+- Keith = plant = 0x400
+- Christine = insect = 0x800
+- Emma = thunder= 0x1000
+- Andrew = dragon = 0x2000
+- David = beast = 0x4000
+
+not yet implemented since there is no skill released for them yet:
+- Yami Marik
+- Yami Bakura
 
 # Proxy/Cover handling
 There is three pics needed for a Skill:
