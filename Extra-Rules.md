@@ -14,13 +14,16 @@ In this mode, both players have their decks replaced by decks created with cards
 # 5. Boss Duel
 
 # 6. Battle City
-If both players agree, applies the following rules to the current duel
-● Level 10 or higher monsters require 3 Tributes to Normal Summon/Set.
-● Monsters Special Summoned from the Extra Deck can be treated as tributes for a Tribute Summon up to the number of Material(s) used for their Summon.
-● Monsters cannot attack the turn they were Special Summoned from the Extra Deck. Divine Monsters cannot attack on the turn they are Special Summoned from the Graveyard.
-● All Spells can be used as Quick-Play Spells during the Battle Phase. All Set Spells can be used as Quick-Play Spells during your opponent's turn.
-● When a Spell or Trap Card is destroyed by a card effect, the effect of the Spell or Trap Card destroyed is also negated.
-● Card(s) sent from the field to the Graveyard are sent to its controller's Graveyard.
+* If both players agree, applies the following rules to the current duel
+* Level 10 or higher monsters require 3 Tributes to Normal Summon/Set.
+* Monsters Special Summoned from the Extra Deck can be treated as tributes for a Tribute Summon up to the number of Material(s) used for their Summon.
+* Monsters cannot attack the turn they were Special Summoned from the Extra Deck. Divine Monsters cannot attack on the turn they are Special Summoned from the Graveyard.
+* All Spells can be used as Quick-Play Spells during the Battle Phase. All Set Spells can be used as Quick-Play Spells during your opponent's turn.
+* When a Spell or Trap Card is destroyed by a card effect, the effect of the Spell or Trap Card destroyed is also negated.
+* Card(s) sent from the field to the Graveyard are sent to its controller's Graveyard.
+* If a monster declares an attack and loses its attack target, then that attack is negated. If a monster(s) is Summoned to the attacked player's field when an attack is declared, the Summoning player can change the attack target to 1 of the Summoned monsters.
+* If a monster(s) is Summoned just before the resolution of an effect that targets exactly 1 monster on the same side of the field, the Summoning player can change the effect target to 1 of the Summoned monsters.
+* If both players agree to apply Manga Rules: Monster Cards cannot be Set or flipped face-down. All Traps can be activated the turn they are Set. Each player can have up to 7 cards in their hands. The total number of cards that each player can have on the field is 5. Each player can only activate 1 Spell from their hand, set 1 Spell and 1 Trap per turn.
 
 #  7. Duelist Kingdom
 If both players agree, applies the following rules to the current duel
