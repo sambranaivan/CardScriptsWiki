@@ -46,7 +46,7 @@ At the start of the duel, the following are applied:
 
 
 # 6. Battle City
-* If both players agree, applies the following rules to the current duel
+If both players agree, applies the following rules to the current duel
 * Level 10 or higher monsters require 3 Tributes to Normal Summon/Set.
 * Monsters Special Summoned from the Extra Deck can be treated as tributes for a Tribute Summon up to the number of Material(s) used for their Summon.
 * Monsters cannot attack the turn they were Special Summoned from the Extra Deck. Divine Monsters cannot attack on the turn they are Special Summoned from the Graveyard.
@@ -58,7 +58,7 @@ At the start of the duel, the following are applied:
 * If both players agree to apply Manga Rules: Monster Cards cannot be Set or flipped face-down. All Traps can be activated the turn they are Set. Each player can have up to 7 cards in their hands. The total number of cards that each player can have on the field is 5. Each player can only activate 1 Spell from their hand, set 1 Spell and 1 Trap per turn.
 
 #  7. Duelist Kingdom
-* If both players agree, applies the following rules to the current duel
+If both players agree, applies the following rules to the current duel
 * Players cannot attack directly.
 * Players can Normal Summon in face-up Defense Position.
 * Players can Normal Summon or Set Level 5 or higher monsters without Tributing.
@@ -67,7 +67,7 @@ At the start of the duel, the following are applied:
 * If a player fails to summon any monsters during their turn when they didn't control one, they will automatically lose the duel at the end of their turn.
 
 # 8. Dimension Duel
-* If both players agree, applies the following rules to the current duel
+If both players agree, applies the following rules to the current duel
 * Both players can Normal Summon any monsters without tributing.
 * If a monster(s) is Summoned, the original ATK and DEF of that monster(s) becomes 0, also, after that, the Summoning player chooses the original ATK and DEF of that monster(s) on the field by choosing a value from 0 up to the ATK/DEF written on that monster(s).
 * Neither player takes any Battle Damage from battles between monsters.
@@ -87,7 +87,7 @@ If both players agree, at the start of each player's turn 1 random Command Card 
 At the beginning of the duel, both players are asked to select a Deck Master monster to play and get theirs effects during the duel.
 
 # 12. Action Duel
-* If both players agree, apply the following rules.
+If both players agree, applies the following rules.
 * At the start of the Duel, both players decide which Action Field they want to use for the rest of this Duel. If both players choose an Action Field, a coin will be tossed to decide whose Action Field to be used. Then activate the chosen Action Field on both player's side of the field
 * Action Field cannot leave the field, except by activating a Field Spell. If it would leave the field, remove it from the Duel instead.
 * If there is no Field Spell in the Field Zone, place the Action Field in the Field Zone from outside the Duel.
