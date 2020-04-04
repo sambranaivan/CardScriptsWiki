@@ -1,8 +1,11 @@
 Extra Rules are additional Duel Modes available when hosting a room. 14 duels modes are supported.
 
 
-1. Sealed Duel
-1. Booster Draft Duel
+# 1. Sealed Duel
+## In this mode, both players have their decks replaced by decks created with cards selected randomly from 4 Booster Packs. Each player can choose which Pack the cards come from and can remove additional cards if the Deck created has more than 40 cards. 
+
+
+# 1. Booster Draft Duel
 1. Destiny Draw
 1. Concentration Duel
 1. Boss Duel
