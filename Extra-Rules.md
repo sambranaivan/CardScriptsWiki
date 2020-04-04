@@ -77,9 +77,22 @@ At the start of the duel, the following are applied:
 The duel starts with the Field Spell Card [Speed World 2](https://yugipedia.com/wiki/Speed_World_2) activated in both players Field Spell Zone. Regular Spell cards cannot be used here, only Speed Spells cards.
 
 # 9. Double Deck Duel
+
+
 # 10. Command Duel
+If both players agree, at the start of each player's turn 1 random Command Card is activated
+
+
 # 11. Deck Masters Duel
 At the beginning of the duel, both players are asked to select a Deck Master monster to play and get theirs effects during the duel.
 
 # 12. Action Duel
+* If both players agree, apply the following rules.
+* At the start of the Duel, both players decide which Action Field they want to use for the rest of this Duel. If both players choose an Action Field, a coin will be tossed to decide whose Action Field to be used. Then activate the chosen Action Field on both player's side of the field
+* Action Field cannot leave the field, except by activating a Field Spell. If it would leave the field, remove it from the Duel instead.
+* If there is no Field Spell in the Field Zone, place the Action Field in the Field Zone from outside the Duel.
+* Action Cards can be activated from the hands during during either player's turn.
+* For the rest of this Duel, a Field Spell(s) in the Field Zone gains this effect.
+* * If you have no Action Cards in your hand, you can apply this effect. If your opponent also has no Action Cards in their hand, they can play rock-paper-scissors with you. Add 1 random Action Card from outside the Duel to winning player's hand. If your opponent did not play rock-paper-scissors with you, there is a 50% chance to add 1 random Action Card from outside the Duel to your hand. Any players who was involved in this effect have a 50% chance to become unable to apply this effect for the rest of this turn.
+
 # 13. Deck size limit 20-30
