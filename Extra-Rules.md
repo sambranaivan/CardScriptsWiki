@@ -5,16 +5,20 @@ Extra Rules are additional Duel Modes available when hosting a room. 14 duels mo
 In this mode, both players have their decks replaced by decks created with cards selected randomly from 4 Booster Packs. Each player can choose which Pack the cards come from and can remove additional cards if the Deck created has more than 40 cards. 
 
 
-# 1. Booster Draft Duel
+# 2. Booster Draft Duel
 1. Destiny Draw
 1. Concentration Duel
 1. Boss Duel
 1. Battle City
 1. Duelist Kingdom
 1. Dimension Duel
-1. Turbo Duel
+# Turbo Duel
+The duel starts with the Field Spell Card Spell World 2 activated. Regular Spell cards cannot be used here, only Speed Spells cards.
+
 1. Double Deck Duel
 1. Command Duel
-1. Deck Masters Duel
+# Deck Masters Duel
+At the beginning of the duel, both players are asked to select a Deck Master monster to play and get theirs effects during the duel.
+
 1. Action Duel
 1. Deck size limit 20-30
