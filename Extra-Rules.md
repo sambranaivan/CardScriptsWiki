@@ -80,10 +80,37 @@ The duel starts with the Field Spell Card [Speed World 2](https://yugipedia.com/
 
 
 # 10. Command Duel
-If both players agree to apply this mode, at the start of each player's turn 1 random Command Card is activated.
+If both players agree to apply this mode, at the start of each player's turn 1 random Command Card is activated. There are 27 Command cards available with the following effects:
 
 1. Both players choose 1 card from their Decks, reveal it to their opponent and then add it to their hand.
 1. Both players choose 1 card from their Decks, and send it to the Graveyard.
+1. Both players reveal the top card of their Decks. If it's a monster, that card is added to the hand, otherwise, place it on top of the Deck.
+1. Both players randomly discards 1 card from their opponent's hand, then, draws 1 card.
+1. Both players adds the top card of their Graveyard to their hand.
+1. Both players chooses 1 card from their hand and places it at the bottom of the Deck, then, draw 2 cards.
+1. Both players can directly Set 1 Trap Card from their Deck onto the field.
+1. If both players have a Set card on the field, both players can destroy 1 Set card their opponent controls.
+1. Both players discard 1 card from their hand, and add 1 card from the Graveyard to their hand.
+1. Both players shuffle all cards in their hands into the Deck, then they draw an equal amount of cards.
+1. Both players play Rock-Paper-Scissors. The player who wins gains 2000 LP.
+1. Both players play Rock-Paper-Scissors. The player who wins Special Summons 1 monster from their Graveyard.
+1. Both players play Rock-Paper-Scissors. The player who wins draws 1 card.
+1. All monsters on the field are changed to face-down Defense Position. During this turn, monsters cannot change their battle positions.
+1. The player who has less LP than their opponent gains 2000 LP.
+1. Until the end of the turn, face-up FIRE and WATER monsters on the field have their original ATK doubled.
+1. Until the end of the turn, WATER and EARTH monsters on the field have their ATK/DEF switched.
+1. Until the end of the turn, face-up FIRE and WIND monsters on the field can attack twice during each Battle Phase.
+1. Until the end of the turn, face-up EARTH and WIND monsters on the field cannot be destroyed.
+1. Until the end of the turn, face-up LIGHT and DARK monsters cannot activate their effects.
+1. All currently face-up monsters have 0 ATK until the end of this turn.
+1. Detach all Xyz Materials from Xyz Monsters currently on the field.
+1. Return all Level 4 monsters face-up on the field to the hand.
+1. Players can choose to wear their belt. Toss a coin, if Heads, players wearing a belt can apply this effect. If Tails, players not wearing a belt can apply this effect.
+● You can change the Levels of all monsters you currently control, from 1 to 12.
+1. Players can choose to wear glasses. Toss a coin, if Heads, players wearing glasses gain 800 LP. If Tails, players not wearing glasses gain 800 LP.
+1. Both players can Special Summon 1 monster from their Deck or Extra Deck that has "This card cannot be used in a Duel." written on it, ignoring their Summoning conditions.
+1. Both players can Special Summon 1 monster from their Extra Deck that has "This card cannot be used in a Duel." written on it, ignoring their Summoning conditions, and if it does, that player(s) can draw 1 card.
+
 # 11. Deck Masters Duel
 At the beginning of the duel, both players are asked to select a Deck Master monster to play and get theirs effects during the duel.
 
