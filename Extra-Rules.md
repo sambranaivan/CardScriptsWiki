@@ -116,7 +116,7 @@ If both players agree to apply this mode, at the start of each player's turn 1 r
 1. Both players can Special Summon 1 monster from their Extra Deck that has "This card cannot be used in a Duel." written on it, ignoring their Summoning conditions, and if it does, that player(s) can draw 1 card.
 
 # 12. Deck Masters Duel
-An implementation of the [Deck master abilities](https://yugipedia.com/wiki/Deck_Master). At the beginning of the duel, both players are asked to select a Deck Master monster to play and get theirs effects during the duel. The following deck masters are available
+An implementation of the [Deck masters](https://yugipedia.com/wiki/Deck_Master) and [their abilities](https://yugipedia.com/wiki/Deck_Master_ability). At the beginning of the duel, both players are asked to select a Deck Master monster to play and get theirs effects during the duel. The following Deck masters are available:
 
 1. Blue-Eyes White Dragon
 1. Dark Magicia
