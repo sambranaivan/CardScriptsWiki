@@ -4,7 +4,10 @@ Extra Rules are additional Duel Modes available when hosting a room. 14 duels mo
 # 1. Sealed Duel
 In this mode, both players have their decks replaced by decks created with cards selected randomly from 4 Booster Packs. Each player can choose which Pack the cards come from and can remove additional cards if the Deck created has more than 40 cards.
 
+***
 
+#
+## 
 # 2. Booster Draft Duel
 At the start of the duel, the following are applied
 * All monsters are treated as all Types in all locations.
@@ -158,4 +161,4 @@ List of Action Spells available:
 ● Destroy this card.
 1. Mirror Barrier: Target 1 monster on the field; it cannot be destroyed by card effects this turn.
 
-# 14. Deck size limit 20-30
+# 14. Deck size limit 20-30# 
