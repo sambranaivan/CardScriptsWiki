@@ -6,19 +6,19 @@ In this mode, both players have their decks replaced by decks created with cards
 
 ***
 
-#
-## 
 # 2. Booster Draft Duel
 At the start of the duel, the following are applied
 * All monsters are treated as all Types in all locations.
 * More than 3 copies of cards with the same name in a Deck is allowed.
 * Remove all cards from the Duel. Then, the turn player opens 3 random "[Battle Pack 3: Monster League](https://yugipedia.com/wiki/Battle_Pack_3:_Monster_League#Lists)" packs and adds 1 card from them to their Deck. Then, the next player adds 1 card from the remaining cards to their Deck. Repeat this until each player has at least 45 cards in their Deck. (If the card pool is empty, the player who would add 1 card to their Deck opens 3 new packs.) Then, each player shuffles their Deck and draws cards equal to the number of cards in their starting hand.
 
+***
 
 # 3. Destiny Draw
 Based on a [feature available in some Yu-Gi-Oh games](https://yugipedia.com/wiki/Destiny_Draw_(rule))
 At the start of the Duel, you can choose up to 5 cards in your hand/Deck. (You can only choose 1 card per original card name.) Once per Duel, If your opponent's LP is twice or more than your LP and you control no monsters while your opponent controls at least 1 monster, before you conduct your normal draw, randomly pick 1 of the cards you chose, that is in your Deck, and place it on top of your Deck.
 
+***
 
 # 4. Concentration Duel
 At the start of the duel these are applied:
@@ -30,6 +30,7 @@ At the start of the duel these are applied:
 * * If the revealed card is a Spell Card: Activate that Spell Card. If the cost cannot be paid, return it to the Deck in the same position.
 * * If the revealed card is a Trap Card and its activation timing is correct: Activate the effect of that Trap Card, otherwise return it to the Deck in the same position.
 
+***
 
 # 5. Boss Duel
 Based on [special type of Duel from a Yu-Gi-Oh! Day event](https://yugipedia.com/wiki/Boss_Duel). At the start of the duel, the following are applied:
@@ -48,6 +49,7 @@ Based on [special type of Duel from a Yu-Gi-Oh! Day event](https://yugipedia.com
 * * 3. Choose 1 player, that player gains 4000 LP.
 * If your opponent would win the Duel by an Alternate Win Condition, you take 8000 damage instead.
 
+***
 
 # 6. Battle City
 If both players agree, applies the following rules to the current duel
@@ -61,6 +63,8 @@ If both players agree, applies the following rules to the current duel
 * If a monster(s) is Summoned just before the resolution of an effect that targets exactly 1 monster on the same side of the field, the Summoning player can change the effect target to 1 of the Summoned monsters.
 * If both players agree to apply Manga Rules: Monster Cards cannot be Set or flipped face-down. All Traps can be activated the turn they are Set. Each player can have up to 7 cards in their hands. The total number of cards that each player can have on the field is 5. Each player can only activate 1 Spell from their hand, set 1 Spell and 1 Trap per turn.
 
+***
+
 #  7. Duelist Kingdom
 Based on the [tournament organized by Maximillion Pegasus](https://yugipedia.com/wiki/Duelist_Kingdom) in the Yu-Gi-Oh! anime. If both players agree, applies the following rules to the current duel:
 
@@ -71,6 +75,8 @@ Based on the [tournament organized by Maximillion Pegasus](https://yugipedia.com
 * Only one monster is allowed to declare an attack per turn.
 * If a player fails to summon any monsters during their turn when they didn't control one, they will automatically lose the duel at the end of their turn.
 
+***
+
 # 8. Dimension Duel
 If both players agree, applies the following rules to the current duel
 * Both players can Normal Summon any monsters without tributing.
@@ -78,12 +84,18 @@ If both players agree, applies the following rules to the current duel
 * Neither player takes any Battle Damage from battles between monsters.
 * If a monster(s) is destroyed, the controller takes damage equal to either the ATK or DEF (ATK if it was in Attack Position, DEF if it was in Defense Position) of that monster(s) had on the field.
 
+***
+
 # 9. Turbo Duel
 Based on [Turbo Duels, from Yu-Gi-Oh! 5D's series](https://yugipedia.com/wiki/Turbo_Duel).
 The duel starts with the Field Spell Card [Speed World 2](https://yugipedia.com/wiki/Speed_World_2) activated in both players Field Spell Zone. Regular Spell cards cannot be used here, only Speed Spells cards.
 
+***
+
 # 10. Double Deck Duel
 Based on [Double Deck Format](https://yugipedia.com/wiki/Double_Deck_Format). You will be asked to select 2 decks when hosting a duel with this mode and the total of cards must equal exactly 100.
+
+***
 
 # 11. Command Duel
 Based on a [Duel mode from Yu-Gi-Oh Day](https://yugipedia.com/wiki/Command_Duel).
@@ -118,6 +130,8 @@ If both players agree to apply this mode, at the start of each player's turn 1 r
 1. Both players can Special Summon 1 monster from their Deck or Extra Deck that has "This card cannot be used in a Duel." written on it, ignoring their Summoning conditions.
 1. Both players can Special Summon 1 monster from their Extra Deck that has "This card cannot be used in a Duel." written on it, ignoring their Summoning conditions, and if it does, that player(s) can draw 1 card.
 
+***
+
 # 12. Deck Masters Duel
 An implementation of the [Deck masters](https://yugipedia.com/wiki/Deck_Master) and [their abilities](https://yugipedia.com/wiki/Deck_Master_ability). At the beginning of the duel, both players are asked to select a Deck Master monster to play and get theirs effects during the duel. The following Deck masters are available:
 
@@ -139,6 +153,7 @@ An implementation of the [Deck masters](https://yugipedia.com/wiki/Deck_Master) 
 1. Shinato's Ark
 1. Shinato, King of a Higher Plane
 
+***
 
 # 13. Action Duel
 If both players agree, applies the following rules.
@@ -161,4 +176,8 @@ List of Action Spells available:
 ● Destroy this card.
 1. Mirror Barrier: Target 1 monster on the field; it cannot be destroyed by card effects this turn.
 
-# 14. Deck size limit 20-30# 
+***
+
+# 14. Deck size limit 20-30
+
+***
