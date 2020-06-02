@@ -80,9 +80,10 @@ The duel starts with the Field Spell Card [Speed World 2](https://yugipedia.com/
 
 
 # 10. Command Duel
-If both players agree, at the start of each player's turn 1 random Command Card is activated
+If both players agree to apply this mode, at the start of each player's turn 1 random Command Card is activated.
 
-
+1. Both players choose 1 card from their Decks, reveal it to their opponent and then add it to their hand.
+1. Both players choose 1 card from their Decks, and send it to the Graveyard.
 # 11. Deck Masters Duel
 At the beginning of the duel, both players are asked to select a Deck Master monster to play and get theirs effects during the duel.
 
