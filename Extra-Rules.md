@@ -80,7 +80,7 @@ Based on [Turbo Duels, from Yu-Gi-Oh! 5D's series](https://yugipedia.com/wiki/Tu
 The duel starts with the Field Spell Card [Speed World 2](https://yugipedia.com/wiki/Speed_World_2) activated in both players Field Spell Zone. Regular Spell cards cannot be used here, only Speed Spells cards.
 
 # 10. Double Deck Duel
-Based on [Double Deck Format](https://yugipedia.com/wiki/Double_Deck_Format).
+Based on [Double Deck Format](https://yugipedia.com/wiki/Double_Deck_Format). You will be asked to select 2 decks when hosting a duel with this mode and the total of cards must equal exactly 100.
 
 # 11. Command Duel
 Based on a [Duel mode from Yu-Gi-Oh Day](https://yugipedia.com/wiki/Command_Duel).
@@ -119,7 +119,7 @@ If both players agree to apply this mode, at the start of each player's turn 1 r
 An implementation of the [Deck masters](https://yugipedia.com/wiki/Deck_Master) and [their abilities](https://yugipedia.com/wiki/Deck_Master_ability). At the beginning of the duel, both players are asked to select a Deck Master monster to play and get theirs effects during the duel. The following Deck masters are available:
 
 1. Blue-Eyes White Dragon
-1. Dark Magicia
+1. Dark Magician
 1. Judge Man
 1. Flame Swordsman
 1. Robotic Knight
