@@ -80,7 +80,7 @@ Based on [Turbo Duels, from Yu-Gi-Oh! 5D's series](https://yugipedia.com/wiki/Tu
 The duel starts with the Field Spell Card [Speed World 2](https://yugipedia.com/wiki/Speed_World_2) activated in both players Field Spell Zone. Regular Spell cards cannot be used here, only Speed Spells cards.
 
 # 10. Double Deck Duel
-
+Based on [Double Deck Format](https://yugipedia.com/wiki/Double_Deck_Format).
 
 # 11. Command Duel
 Based on a [Duel mode from Yu-Gi-Oh Day](https://yugipedia.com/wiki/Command_Duel).
