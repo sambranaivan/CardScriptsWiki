@@ -123,4 +123,16 @@ If both players agree, applies the following rules.
 * For the rest of this Duel, a Field Spell(s) in the Field Zone gains this effect.
 * * If you have no Action Cards in your hand, you can apply this effect. If your opponent also has no Action Cards in their hand, they can play rock-paper-scissors with you. Add 1 random Action Card from outside the Duel to winning player's hand. If your opponent did not play rock-paper-scissors with you, there is a 50% chance to add 1 random Action Card from outside the Duel to your hand. Any players who was involved in this effect have a 50% chance to become unable to apply this effect for the rest of this turn.
 
+List of Action Spells available:
+1. Evasion: When a monster declares an attack: Target that monster; negate the attack.
+1. High Dive: Target 1 face-up monster on the field; that target gains 1000 ATK until the end of this turn.
+1. Big Escape: End the Battle Phase.
+1. Miracle: If a monster on the field battles: Target that monster; it cannot be destroyed by that battle, also any battle damage is halved.
+1. No Action: When your opponent activates an Action Spell Card: Negate the activation, and if you do, destroy it.
+1. Damage Banish: If you would take battle damage: Reduce it to 0.
+1. Encore: Activate 1 of these effects.
+● Target 1 Action Spell Card in your Graveyard; activate that target's effects.
+● Destroy this card.
+1. Mirror Barrier: Target 1 monster on the field; it cannot be destroyed by card effects this turn.
+
 # 13. Deck size limit 20-30
