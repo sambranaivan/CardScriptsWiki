@@ -73,13 +73,14 @@ If both players agree, applies the following rules to the current duel
 * Neither player takes any Battle Damage from battles between monsters.
 * If a monster(s) is destroyed, the controller takes damage equal to either the ATK or DEF (ATK if it was in Attack Position, DEF if it was in Defense Position) of that monster(s) had on the field.
 
-# Turbo Duel
+# 9. Turbo Duel
+Based on [Turbo Duels, from Yu-Gi-Oh! 5D's series](https://yugipedia.com/wiki/Turbo_Duel).
 The duel starts with the Field Spell Card [Speed World 2](https://yugipedia.com/wiki/Speed_World_2) activated in both players Field Spell Zone. Regular Spell cards cannot be used here, only Speed Spells cards.
 
-# 9. Double Deck Duel
+# 10. Double Deck Duel
 
 
-# 10. Command Duel
+# 11. Command Duel
 If both players agree to apply this mode, at the start of each player's turn 1 random Command Card is activated. There are 27 Command cards available with the following effects:
 
 1. Both players choose 1 card from their Decks, reveal it to their opponent and then add it to their hand.
@@ -111,10 +112,10 @@ If both players agree to apply this mode, at the start of each player's turn 1 r
 1. Both players can Special Summon 1 monster from their Deck or Extra Deck that has "This card cannot be used in a Duel." written on it, ignoring their Summoning conditions.
 1. Both players can Special Summon 1 monster from their Extra Deck that has "This card cannot be used in a Duel." written on it, ignoring their Summoning conditions, and if it does, that player(s) can draw 1 card.
 
-# 11. Deck Masters Duel
+# 12. Deck Masters Duel
 At the beginning of the duel, both players are asked to select a Deck Master monster to play and get theirs effects during the duel.
 
-# 12. Action Duel
+# 13. Action Duel
 If both players agree, applies the following rules.
 * At the start of the Duel, both players decide which Action Field they want to use for the rest of this Duel. If both players choose an Action Field, a coin will be tossed to decide whose Action Field to be used. Then activate the chosen Action Field on both player's side of the field
 * Action Field cannot leave the field, except by activating a Field Spell. If it would leave the field, remove it from the Duel instead.
@@ -135,4 +136,4 @@ List of Action Spells available:
 ● Destroy this card.
 1. Mirror Barrier: Target 1 monster on the field; it cannot be destroyed by card effects this turn.
 
-# 13. Deck size limit 20-30
+# 14. Deck size limit 20-30
