@@ -81,6 +81,7 @@ The duel starts with the Field Spell Card [Speed World 2](https://yugipedia.com/
 
 
 # 11. Command Duel
+Based on a [Duel mode from Yu-Gi-Oh Day](https://yugipedia.com/wiki/Command_Duel).
 If both players agree to apply this mode, at the start of each player's turn 1 random Command Card is activated. There are 27 Command cards available with the following effects:
 
 1. Both players choose 1 card from their Decks, reveal it to their opponent and then add it to their hand.
