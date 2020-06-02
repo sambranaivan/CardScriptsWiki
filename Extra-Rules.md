@@ -2,17 +2,18 @@ Extra Rules are additional Duel Modes available when hosting a room. 14 duels mo
 
 
 # 1. Sealed Duel
-In this mode, both players have their decks replaced by decks created with cards selected randomly from 4 Booster Packs. Each player can choose which Pack the cards come from and can remove additional cards if the Deck created has more than 40 cards. 
+In this mode, both players have their decks replaced by decks created with cards selected randomly from 4 Booster Packs. Each player can choose which Pack the cards come from and can remove additional cards if the Deck created has more than 40 cards.
 
 
 # 2. Booster Draft Duel
 At the start of the duel, the following are applied
 * All monsters are treated as all Types in all locations.
 * More than 3 copies of cards with the same name in a Deck is allowed.
-* Remove all cards from the Duel. Then, the turn player opens 3 random "Battle Pack 3: Monster League" packs and adds 1 card from them to their Deck. Then, the next player adds 1 card from the remaining cards to their Deck. Repeat this until each player has at least 45 cards in their Deck. (If the card pool is empty, the player who would add 1 card to their Deck opens 3 new packs.) Then, each player shuffles their Deck and draws cards equal to the number of cards in their starting hand.
+* Remove all cards from the Duel. Then, the turn player opens 3 random "[Battle Pack 3: Monster League](https://yugipedia.com/wiki/Battle_Pack_3:_Monster_League#Lists)" packs and adds 1 card from them to their Deck. Then, the next player adds 1 card from the remaining cards to their Deck. Repeat this until each player has at least 45 cards in their Deck. (If the card pool is empty, the player who would add 1 card to their Deck opens 3 new packs.) Then, each player shuffles their Deck and draws cards equal to the number of cards in their starting hand.
 
 
 # 3. Destiny Draw
+Based on a [feature available in some Yu-Gi-Oh games](https://yugipedia.com/wiki/Destiny_Draw_(rule))
 At the start of the Duel, you can choose up to 5 cards in your hand/Deck. (You can only choose 1 card per original card name.) Once per Duel, If your opponent's LP is twice or more than your LP and you control no monsters while your opponent controls at least 1 monster, before you conduct your normal draw, randomly pick 1 of the cards you chose, that is in your Deck, and place it on top of your Deck.
 
 
@@ -28,7 +29,7 @@ At the start of the duel these are applied:
 
 
 # 5. Boss Duel
-At the start of the duel, the following are applied:
+Based on [special type of Duel from a Yu-Gi-Oh! Day event](https://yugipedia.com/wiki/Boss_Duel). At the start of the duel, the following are applied:
 
 * Remove all non-Boss Cards you own at the start of the Duel.
 * At start of the Duel, return all cards in your hand to the Deck and draw the same number of cards, marked as Start.
@@ -58,7 +59,8 @@ If both players agree, applies the following rules to the current duel
 * If both players agree to apply Manga Rules: Monster Cards cannot be Set or flipped face-down. All Traps can be activated the turn they are Set. Each player can have up to 7 cards in their hands. The total number of cards that each player can have on the field is 5. Each player can only activate 1 Spell from their hand, set 1 Spell and 1 Trap per turn.
 
 #  7. Duelist Kingdom
-If both players agree, applies the following rules to the current duel
+Based on the [tournament organized by Maximillion Pegasus](https://yugipedia.com/wiki/Duelist_Kingdom) in the Yu-Gi-Oh! anime. If both players agree, applies the following rules to the current duel:
+
 * Players cannot attack directly.
 * Players can Normal Summon in face-up Defense Position.
 * Players can Normal Summon or Set Level 5 or higher monsters without Tributing.
