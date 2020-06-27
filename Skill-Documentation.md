@@ -92,26 +92,27 @@ the Race is used as a placeholder for the "Character"
 ex: the second cover of Mako would be 302000128
 since Mako character is "Pyro" so with the value 0x80=128
 
-The Character Values (placed in Race) are the following:
-- Yami Yugi = warrior = 0x1
-- Ishizu = spellcaster = 0x2
-- Pegasus = fairy = 0x4
-- Kaiba = fiend = 0x8
-- Joey = zombie = 0x10
-- Mai = machine = 0x20
-- Bonz = aqua = 0x40
-- Mako = pyro =0x80
-- Rex = rock = 0x100
-- Weevil = winged beast = 0x200
-- Keith = plant = 0x400
-- Christine = insect = 0x800
-- Emma = thunder= 0x1000
-- Andrew = dragon = 0x2000
-- David = beast = 0x4000
-
-not yet implemented since there is no skill released for them yet:
-- Yami Marik
-- Yami Bakura
+The character is a bitset placed in the `race` column for now. The client string displayed is the corresponding index in the 2100 range.
+Character | Bit | Sysstring | Regular race
+--- | --- | ---
+Yami Yugi | 0x1 | 2100 | warrior
+Ishizu | 0x2 | 2101 | spellcaster
+Pegasus | 0x4 | 2102 | fairy
+Kaiba | 0x8 | 2103 | fiend
+Joey | 0x10 | 2104 | zombie
+Mai | 0x20 | 2105 | machine
+Bonz | 0x40 | 2106 | aqua
+Mako |0x80 | 2107 | pyro
+Rex | 0x100 | 2108 | rock
+Weevil | 0x200 | 2109 | winged beast
+Keith | 0x400 | 2110 | plant
+Christine | 0x800 | 2111 | insect
+Emma | 0x1000 | 2112 | thunder
+Andrew | 0x2000 | 2113 | dragon
+David | 0x4000 | 2114 | beast
+Yami Bakura | 0x8000 | 2115 | beast warrior
+Yami Marik | 0x10000 | 2116 | dinosaur
+All VRAINS characters | 0x1000000 | 2124 | cyberse
 
 # Proxy/Cover handling
 There is three pics needed for a Skill:
