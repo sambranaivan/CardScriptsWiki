@@ -93,8 +93,9 @@ ex: the second cover of Mako would be 302000128
 since Mako character is "Pyro" so with the value 0x80=128
 
 The character is a bitset placed in the `race` column for now. The client string displayed is the corresponding index in the 2100 range.
+
 Character | Bit | Sysstring | Regular race
---- | --- | ---
+--- | --- | --- | ---
 Yami Yugi | 0x1 | 2100 | warrior
 Ishizu | 0x2 | 2101 | spellcaster
 Pegasus | 0x4 | 2102 | fairy
