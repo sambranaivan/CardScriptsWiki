@@ -18,19 +18,59 @@ Additionally, costs (passed via Effect.SetCost) receive `chk` and targets (via E
 - chkc: needed in effects that target for effects that can redirect the targeting to another card (e.g. `Cairngorgon, Antiluminescent Knight`).
 
 ### Functions
+#### initial_effect:
+```c++
+void initial_effect(Card c)
+```
+function that will be called for each card's initialization.
+#### bit.replace:
+```c++
+int bit.replace(int a, int b, int c[, int width=1])
+```
+Returns a copy of (int a) with the field with a width changed to value (int b)
+#### bit.extract:
+```c++
+int bit.extract(int a, int b[, int width=1])
+```
+Returns the field of (int a) with a width
+#### Card.GetLuaRef:
+```c++
+int Card.GetLuaRef(Card c)
+```
+ Returns an integer representing the internal value used by lua to access the Card c.
+#### Card.FromLuaRef:
+```c++
+Card Card.FromLuaRef(int ref)
+```
+Returns a Card object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Card object.
+#### Card.IsDeleted:
+```c++
+bool Card.IsDeleted(Card c)
+```
+Returns if the Card object got internally deleted and remained as dangling reference inside the lua state.
+#### Function.Name:
+```c++
 
-|<div style="width:1">Return</div> | <div style="width:10">Function</div> | Description|
--- | -- | --
-void | initial_effect(Card c) | The function that will be called for each card's initialization.
-int | bit.band(int a, int b) | Does a bitwise AND operation between 2 integers. (Deprecated, advised to use (int a)&(int b) instead.)
-int | bit.lshift(int a, int b) | Shifts all bits of an integer to the left by an amount (Deprecated, advised to use (int a)<<(int b) instead.)
-int | bit.bor(int a, int b) | Does a bitwise OR operation between 2 integers. (Deprecated, advised to use (int a)\|(int b) instead.)
-int | bit.rshift(int a, int b) | Shift all bits of an integer to the right by an amount (Deprecated, advised to use (int a)>>(int b) instead.)
-int | bit.bxor(int a, int b) | Does a bitwise XOR operation between 2 integers. (Deprecated, advised to use (int a)~(int b) instead.)
-int | bit.bnot(int a) | Swaps the bits of an integer, 0 to 1 and 1 to 0. (Deprecated, advised to use ~(int a) instead.)
-int | bit.replace(int a, int b, int c[, int width=1]) | Returns a copy of (int a) with the field with a width changed to value (int b)
-int | bit.extract(int a, int b[, int width=1]) | Returns the field of (int a) with a width
-int | Card.GetLuaRef(Card c) | Returns an integer representing the internal value used by lua to access the Card c.
+```
+#### Function.Name:
+```c++
+
+```
+#### Function.Name:
+```c++
+
+```
+#### Function.Name:
+```c++
+
+```
+#### Function.Name:
+```c++
+
+```
+| return| function| description|
+|------ | --------| -----------|
+
 Card | Card.FromLuaRef(int ref) | Returns a Card object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Card object.
 bool | Card.IsDeleted(Card c) | Returns if the Card object got internally deleted and remained as dangling reference inside the lua state.
 int | Group.GetLuaRef(Group g) | Returns an integer representing the internal value used by lua to access the Group g.
@@ -45,7 +85,7 @@ int | Card.GetOriginalCode(Card c) | Returns the original printed code (ID/name)
 int, int | Card.GetOriginalCodeRule(Card c) | Returns the original code (ID/name) of the card "c" while taking into account name clauses/alias (used for the "original name" wording).
 int, int ... | Card.GetFusionCode(Card c) | Returns the code/ID that "c" has as a Fusion Material (see "Fusion Tag").
 int, int ... | Card.GetLinkCode(Card c) | Returns the code/ID that "c" has as a Link Material (see "Formud Skipper").
-bool | Card.IsSummonCode(Card c, Card sc\|nil, int sumtype, int playerid, int ...) | Checks if "c" has a specific code from the "..." list if it is to be used as material for the Summon type "sumtype" of "sc" performed by the player "playerid".
+bool | Card.IsSummonCode(Card c, Card sc\|nil,<br /> int sumtype, int playerid, int ...) | Checks if "c" has a specific code from the "..." list if it is to be used as material for the Summon type "sumtype" of "sc" performed by the player "playerid".
 bool | Card.IsFusionCode(Card c, int ...) | Checks if "c" has a specific code from the "..." list as a Fusion Material.
 bool | Card.IsLinkCode(Card c, int ...) | Checks if "c" has a specific code from the "..." list as a Link Material.
 bool | Card.IsSetCard(Card c, int setname[, Card scard\|nil, int sumtype = 0, int playerid = PLAYER_NONE]) | Checks if "c" is part of the archetype "setname" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
