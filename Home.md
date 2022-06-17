@@ -20,65 +20,120 @@ Additionally, costs (passed via Effect.SetCost) receive `chk` and targets (via E
 ### Functions
 #### initial_effect:
 ```c++
-void initial_effect(Card c)```
+void initial_effect(Card c)
+```
 function that will be called for each card's initialization.
 #### bit.replace:
 ```c++
-int bit.replace(int a, int b, int c[, int width=1])```
+int bit.replace(int a, int b, int c[, int width=1])
+```
 Returns a copy of (int a) with the field with a width changed to value (int b)
 #### bit.extract:
 ```c++
-int bit.extract(int a, int b[, int width=1])```
+int bit.extract(int a, int b[, int width=1])
+```
 Returns the field of (int a) with a width
 #### Card.GetLuaRef:
 ```c++
-int Card.GetLuaRef(Card c)```
- Returns an integer representing the internal value used by lua to access the Card c.
+int Card.GetLuaRef(Card c)
+```
+Returns an integer representing the internal value used by lua to access the Card c.
 #### Card.FromLuaRef:
 ```c++
-Card Card.FromLuaRef(int ref)```
+Card Card.FromLuaRef(int ref)
+```
 Returns a Card object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Card object.
 #### Group.GetLuaRef:
 ```c++
-int Group.GetLuaRef(Group g)```
+int Group.GetLuaRef(Group g)
+```
 Returns an integer representing the internal value used by lua to access the Group g.
 #### Card.IsDeleted:
 ```c++
-bool Card.IsDeleted(Card c)```
-Returns if the Card object got internally deleted and remained as dangling reference inside the lua state.
+bool Card.IsDeleted(Card c)
 ```
+Returns if the Card object got internally deleted and remained as dangling reference inside the lua state.
+
 #### Group.GetLuaRef:
 ```c++
-int Group.GetLuaRef(Group g)```
+int Group.GetLuaRef(Group g)
+```
 Returns an integer representing the internal value used by lua to access the Group g.
 #### Group.FromLuaRef:
 ```c++
-Group Group.FromLuaRef(int ref)```
+Group Group.FromLuaRef(int ref)
+```
 Returns a Group object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Group object.
 #### Group.IsDeleted:
 ```c++
-bool Group.IsDeleted(Group g)```
+bool Group.IsDeleted(Group g)
+```
 Returns if the Group object got internally deleted and remained as dangling reference inside the lua state.
 #### Effect.GetLuaRef:
 ```c++
-int Effect.GetLuaRef(Effect e)```
+int Effect.GetLuaRef(Effect e)
+```
 Returns an integer representing the internal value used by lua to access the Effect e.
+#### Effect.FromLuaRef:
+```c++
+Effect Effect.FromLuaRef(int ref)
+```
+Returns a Effect object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Effect object.
+#### Effect.IsDeleted:
+```c++
+bool Effect.IsDeleted(Effect e)
+```
+Returns if the Effect object got internally deleted and remained as dangling reference inside the lua state.
+#### GetID():
+```c++
+table,int GetID()
+```
+Returns two values, a card object and its ID, used before the initial effect.
+#### Card.GetCode:
+```c++
+int[,int] Card.GetCode(Card c)
+```
+Returns the current code (ID/name) of the card "c".
+#### Card.GetOriginalCode:
+```c++
+int Card.GetOriginalCode(Card c)
+```
+Returns the original printed code (ID/name) of the card "c".
+#### Card.GetOriginalCode:
+```c++
+int,int | Card.GetOriginalCodeRule(Card c)
+```
+Returns the original code (ID/name) of the card "c" while taking into account name clauses/alias (used for the "original name" wording).
+#### Card.GetFusionCode:
+```c++
+int,int... Card.GetFusionCode(Card c)
+```
+Returns the code/ID that "c" has as a Fusion Material (see "Fusion Tag").
+#### Card.GetLinkCode:
+```c++
+int,int... Card.GetLinkCode(Card c)
+```
+Returns the code/ID that "c" has as a Link Material (see "Formud Skipper").
+#### Card.IsSummonCode:
+```c++
+bool Card.IsSummonCode(Card c, Card sc\|nil,<br /> int sumtype, int playerid, int ...)
+```
+Checks if "c" has a specific code from the "..." list if it is to be used as material for the Summon type "sumtype" of "sc" performed by the player "playerid".
+#### Card.IsFusionCode:
+```c++
+bool Card.IsFusionCode(Card c, int ...)
+```
+Checks if "c" has a specific code from the "..." list as a Fusion Material.
+#### Card.IsLinkCode:
+```c++
+bool Card.IsLinkCode(Card c, int ...)
+```Checks if "c" has a specific code from the "..." list as a Link Material.
+
+
 
 | return| function| description|
 |------ | --------| -----------|
 
-
-Effect | Effect.FromLuaRef(int ref) | Returns a Effect object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Effect object.
-bool | Effect.IsDeleted(Effect e) | Returns if the Effect object got internally deleted and remained as dangling reference inside the lua state.
-table, int | GetID() | Returns two values, a card object and its ID, used before the initial effect.
-int[,int] | Card.GetCode(Card c) | Returns the current code (ID/name) of the card "c".
-int | Card.GetOriginalCode(Card c) | Returns the original printed code (ID/name) of the card "c".
-int, int | Card.GetOriginalCodeRule(Card c) | Returns the original code (ID/name) of the card "c" while taking into account name clauses/alias (used for the "original name" wording).
-int, int ... | Card.GetFusionCode(Card c) | Returns the code/ID that "c" has as a Fusion Material (see "Fusion Tag").
-int, int ... | Card.GetLinkCode(Card c) | Returns the code/ID that "c" has as a Link Material (see "Formud Skipper").
-bool | Card.IsSummonCode(Card c, Card sc\|nil,<br /> int sumtype, int playerid, int ...) | Checks if "c" has a specific code from the "..." list if it is to be used as material for the Summon type "sumtype" of "sc" performed by the player "playerid".
-bool | Card.IsFusionCode(Card c, int ...) | Checks if "c" has a specific code from the "..." list as a Fusion Material.
-bool | Card.IsLinkCode(Card c, int ...) | Checks if "c" has a specific code from the "..." list as a Link Material.
 bool | Card.IsSetCard(Card c, int setname[, Card scard\|nil, int sumtype = 0, int playerid = PLAYER_NONE]) | Checks if "c" is part of the archetype "setname" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
 bool | Card.IsOriginalSetCard(Card c, int setname) | Checks if "c" is originally part of the archetype "setname".
 bool | Card.IsPreviousSetCard(Card c, int setname) | Checks if "c" was previously part of the archetype "setname".
