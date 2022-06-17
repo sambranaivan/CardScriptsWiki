@@ -197,13 +197,13 @@ int... Card.GetFusionSetCard(Card c)
 ```
 Returns the archetype(s) that "c" is a part of if it is to be used as a Fusion Material.
 
-### IsLinkSummonable:
+### Card.IsLinkSummonable:
 ```c++
 bool Card.IsLinkSummonable(Card c[, Group|Card|nil must_use, Group|Card|nil  mg, int min=0, int max=0])
 ```
 Checks if "c" can be Link Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Link Summon.
 
-### IsLinkSetCard:
+### GetLeftScale.IsLinkSetCard:
 ```c++
 bool Card.IsLinkSetCard(Card c, int setname)
 ```
@@ -220,59 +220,73 @@ Gets the current type of a Card (Card c) where (Card scard) if provided checks t
 int Card.GetOriginalType(Card c)
 ```
 Returns the original card type (Monster/Spell/Trap) of "c".
+
 ### Card.GetLevel:
 ```c++
 int Card.GetLevel(Card c)
 ```
 Returns the current Level of "c". Returns 0 if it has no Level, e.g. Xyz/Link.
+
 ### Card.GetRank:
 ```c++
 int Card.GetRank(Card c)
 ```
 Returns the current Rank of "c". Returns 0 if it has no Rank.
+
 ### Card.GetLink:
 ```c++
 int Card.GetLink(Card c)
 ```
 Returns the current Link Rating of "c". Returns 0 if it has no Link Rating.
+
 ### Card.GetSynchroLevel:
 ```c++
 int Card.GetSynchroLevel(Card c, Card sc)
 ```
 Returns the Level of "c" if it would be used as a Synchro Material for "sc".
+
 ### Card.GetRitualLevel:
 ```c++
 int Card.GetRitualLevel(Card c, Card rc)
 ```
 Returns the Level of "c" if it would be Tributed for the Ritual Summon of "rc".
+
 ### Card.GetOriginalLevel:
 ```c++
 int Card.GetOriginalLevel(Card c)
 ```
 Returns the original Level of "c". Returns 0 if it has no Level, e.g. Xyz/Link.
+
 ### Card.GetOriginalRank:
 ```c++
 int Card.GetOriginalRank(Card c)
 ```
 Returns the original Rank of "c". Returns 0 if it has no Rank.
+
 ### Card.IsXyzLevel:
 ```c++
 bool Card.IsXyzLevel(Card c, Card xyzc, int lv)
 ```
 Checks if "c" would be Level "lv" if it was to be used as Xyz Material for "xyzc".
+
 ### Card.GetLeftScale:
 ```c++
-int Card.GetLeftScale(Card c) | Returns the current left Pendulum Scale of "c". (Returns 0 if it has no Pendulum Scale.)
+int Card.GetLeftScale(Card c)
+```
+Returns the current left Pendulum Scale of "c". Returns 0 if it has no Pendulum Scale.
+
 ### Card.GetOriginalLeftScale:
 ```c++
 int Card.GetOriginalLeftScale(Card c)
 ```
 Returns the original left Pendulum Scale of "c". Returns 0 if it has no Pendulum Scale.
+
 ### Card.GetRightScale:
 ```c++
 int Card.GetRightScale(Card c)
 ```
 Returns the current right Pendulum Scale of "c". Returns 0 if it has no Pendulum Scale.
+
 ### Card.GetOriginalRightScale:
 ```c++
 int Card.GetOriginalRightScale(Card c)
@@ -282,8 +296,6 @@ Returns the original right Pendulum Scale of "c". Returns 0 if it has no Pendulu
 
 | return| function| description|
 |------ | --------| -----------|
-
-
 bool | Card.IsLinkMarker(Card c, int markers) | Checks if (Card c) has the Link markers represented by (int markers)
 Group | Card.GetLinkedGroup(Card c) | Returns a group with all the cards that "c" points to. (Returns an empty group if it does not point to any cards.)
 int | Card.GetLinkedGroupCount(Card c) | Returns the number of cards that "c" points to.
@@ -316,6 +328,10 @@ int | Card.GetPreviousAttributeOnField(Card c) | Returns the Attribute that "c" 
 int | Card.GetPreviousRaceOnField(Card c) | Returns the Monster Type that "c" had when it was on the field.
 int | Card.GetPreviousAttackOnField(Card c) | Returns the ATK that "c" had when it was on the field.
 int | Card.GetPreviousDefenseOnField(Card c) | Returns the DEF that "c" had when it was on the field.
+
+
+| return| function| description|
+|------ | --------| -----------|
 int | Card.GetOwner(Card c) | Returns the owner of "c".
 int | Card.GetControler(Card c) | Returns the controller of "c".
 int | Card.GetPreviousControler(Card c) | Returns the previous controller of "c".
@@ -356,6 +372,10 @@ int | Card.GetTurnID(Card c) | Returns the turn that "c" was sent/placed to its 
 int | Card.GetFieldID(Card c) | Returns the field ID of "c" when it was placed on the field.
 int | Card.GetRealFieldID(Card c) | Returns the unique field ID that "c" has.
 int | Card.GetCardID(Card c) | Returns the internal card ID that "c" has. This will be unique per card and won't change during the course of the duel.
+
+
+| return| function| description|
+|------ | --------| -----------|
 bool | Card.IsCode(Card c, int ...) | Checks if "c" has at least 1 code/ID among the "..." list.
 bool | Card.IsType(Card c, int type[, Card scard\|nil, int sumtype = 0, int playerid = PLAYER_NONE]) | Checks if the card type of "c" is "type" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
 bool | Card.IsLevel(Card c, int lv) | Checks if "c" has a Level equal to "lv".
@@ -393,6 +413,10 @@ Group | Card.GetBattledGroup(Card c) | Gets a Group of cards that are battled (a
 int | Card.GetBattledGroupCount(Card c) | Gets the count of cards that has battled (all the attacking and the attacked cards)
 int | Card.GetAttackAnnouncedCount(Card c) | Gets the number of attacks declared by Card c, set to 0 before drawing and when starting second Battle Phase
 bool | Card.IsDirectAttacked(Card c) | Checks if a Card (Card c) has successfully attacked directly
+
+
+| return| function| description|
+|------ | --------| -----------|
 void | Card.SetCardTarget(Card c1, Card c2) | Sets the second card (Card c2) as a target of the first card (Card c1)
 Group | Card.GetCardTarget(Card c) | Gets the group of cards that a card (Card c) is assigned targets to
 Card | Card.GetFirstCardTarget(Card c) | Get the first of a card (Card c)'s target cards. A bit faster than Card.GetCardTarget(Card c):GetFirst()
@@ -413,6 +437,10 @@ int | Card.GetFlagEffect(Card c, int code) | Returns the amount of flag effects 
 void | Card.ResetFlagEffect(Card c, int code) | Resets a flag with (int code) as the effect code from a card (Card c)
 bool | Card.SetFlagEffectLabel(Card c, int code, int label) | Assigns an integer (int label) number to the flag effect attached to a card (Card c) with (int code) as the effect code. Returns true if a flag effect with such code existed and the label was set.
 int,... | Card.GetFlagEffectLabel(Card c, int code) | Gets the integer labels to the flag effect attached to a card (Card c) with (int code) as the effect code, returns nil if there is no integer label.
+
+
+| return| function| description|
+|------ | --------| -----------|
 void | Card.CreateRelation(Card c1, Card c2, int reset_flag) | Creates a relation between the first card (Card c1) and the second card (Card c2), which will be reset when the first card hits the reset flag
 void | Card.ReleaseRelation(Card c1, Card c2) | Releases the relation between the first card (Card c1) and the second card (Card c2). Does not release relation from the second card that is resulting from _c2:CreateRelation(c1)_
 void | Card.CreateEffectRelation(Card c, Effect e) | Creates a relation between a card (Card c) and an effect (Effect e)
@@ -429,6 +457,11 @@ void | Card.EnableReviveLimit(Card c) | Makes a card (Card c) unsummonable excep
 void | Card.CompleteProcedure(Card c) | Makes a card (Card c) be considered that it's Summon procedure is complete
 bool | Card.IsDisabled(Card c) | Checks whether a card (Card c) is disabled, equivalent with c:IsStatus(STATUS_DISABLED)
 bool | Card.IsDestructable(Card c[, Effect e]) | Checks whether a card (Card c) can be destroyed; if an effect (effect e) is given, checks whether the card can be destroyed by that effect
+
+
+
+| return| function| description|
+|------ | --------| -----------|
 bool | Card.IsSummonableCard(Card c) | Checks if a card (Card c) is normally summonable, returns false when the card is subject of Card.EnableUnsummonable or Card.EnableReviveLimit
 bool | Card.IsSpecialSummonable(Card c) | Checks if a card (Card c) is summonable by it's summon procedure
 bool | Card.IsSynchroSummonable(Card c[, Group\|Card\|nil must_use, Group\|Card\|nil  mg, int min=0, int max=0]) | Checks if "c" can be Synchro Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Synchro Summon. How this works is that the script would check for all EFFECT_SPSUMMON_PROC that has SUMMON_TYPE_SYNCHRO as it's Value, then checks the effects' Condition with the provided arguments. Check out "aux.SynCondition" in "proc_synchro.lua" for how this is handled.
@@ -438,6 +471,10 @@ bool | Card.IsSummonable(Card c, bool ignore_count, Effect e\|nil[, int min=0]) 
 bool | Card.IsMSetable(Card, bool ignore_count, Effect e\|nil[, int min=0]) | Checks whether a card (Card c) can be Normal Set as a monster. Setting ignore_count to true makes it ignore the standard once per turn summon limit. If an effect (Effect e) is given, checks whether it can be Normal Summoned by that effect. The last value denotes the minimum tribute amount.
 bool | Card.IsSSetable(Card c[, bool ignore_field=false]) | Checks whether a card (Card c) can be Set in S/T zone. Setting ignore_field to true makes it not check for free space in the S/T Zone.
 bool | Card.IsCanBeSpecialSummoned(Card c, Effect e, int sumtype, int sumplayer, bool nocheck, bool nolimit[, int sumpos=POS_FACEUP, int target_player=sumplayer]) | Checks whether a card (Card c) can be Special Summoned by (Effect e), by a summon of type (int sumtype), by player (int sumplayer), in position (int sumpos), to (int target_player)'s side of the field. If (bool nocheck) is true, it will check for a summon ignoring conditions. If (bool nolimit) is true, it will check for a summon ignoring the revive limit.
+
+
+| return| function| description|
+|------ | --------| -----------|
 bool | Card.IsAbleToHand(Card c) | Return if the card c can be returned to the hand (return true or false)
 bool | Card.IsAbleToDeck(Card c) | Return if the card c can be returned to the Deck (return true or false)
 bool | Card.IsAbleToExtra(Card c) | Return if the card c can be returned to the Extra Deck (return true or false)
@@ -454,6 +491,10 @@ bool | Card.IsReleasableByEffect(Card c) | Checks if a card (Card c) is able to 
 bool | Card.IsDiscardable(Card[, int reason=REASON_COST]) | Checks if a card (Card c) can be discarded for (int reason).
 bool | Card.IsCanAttack(Card c) | Checks if a card (Card c) can attack
 bool | Card.CanChainAttack(Card c[, int ac = 2, bool monsteronly = false]) | Checks if a card (Card c) can make a follow-up attack. Specifying the integer ac checks whether it can attack that number of times. Setting monsteronly to true checks only the possibility of follow-up attack to monster
+
+
+| return| function| description|
+|------ | --------| -----------|
 bool | Card.IsFaceup(Card c) | Checks if a card (Card c) is face-up
 bool | Card.IsAttack(Card c, int value) | Returns if a card (Card c) has an ATK equal to int value
 bool | Card.IsAttackPos(Card c) | Checks if a card (Card c) is in Attack position
@@ -476,6 +517,10 @@ bool | Card.IsAttackBelow(Card c, int atk) | Checks if a card (Card c) has ATK e
 bool | Card.IsAttackAbove(Card c, int atk) | Checks if a card (Card c) has ATK equal or above the specified number (int attack), will return false if the card has ? ATK and is not face-up on the field.
 bool | Card.IsDefenseBelow(Card c, int def) | Checks if a card (Card c) has DEF equal or below the specified number (int defense), will return false if the card has ? DEF and is not face-up on the field.
 bool | Card.IsDefenseAbove(Card c, int def) | Checks if a card (Card c) has DEF equal or above the specified number (int defense), will return false if the card has ? DEF and is not face-up on the field.
+
+
+| return| function| description|
+|------ | --------| -----------|
 bool | Card.IsPublic(Card c) | Checks if a card's (Card c) information is known to both players. In practice, about the same as c:IsPosition(POS_FACEUP)
 bool | Card.IsForbidden(Card c) | Checks if a card (Card c) is forbidden to be used (equal to calling c:IsStatus(STATUS_FORBIDDEN))
 bool | Card.IsAbleToChangeControler(Card c) | Checks if a card (Card c) is capable of having it's control changed. Checks only whether the card is affected by EFFECT_CANNOT_CHANGE_CONTROL.
@@ -496,6 +541,10 @@ bool | Card.IsCanBeSynchroMaterial(Card c[, Card sc, Card tuner]) | Checks if a 
 bool | Card.IsCanBeRitualMaterial(Card c[, Card sc]) | Checks if a card (Card c) can be used as Tribute for Ritual Summon. If (Card sc) is provided, checks if it can be used as Tribute for that card's Ritual Summon.
 bool | Card.IsCanBeXyzMaterial(Card c, Card sc\|nil) | Checks if a card (Card c) can be used as an Xyz Material. If (Card sc) is provided, checks if it can be used for that card's Xyz Summon.
 bool | Card.IsCanBeLinkMaterial(Card c, [Card linkc, int player]) | Checks if (Card c) can be used as material for a (Card linkc). "player" is only an additional parameter, is used to send it to the functions as an additional parameter, such as target (function in SetTarget) or operation (function in SetOperation).
+
+
+| return| function| description|
+|------ | --------| -----------|
 bool | Card.CheckFusionMaterial(Card c[, Group g, Card gc\|nil, int chkf=PLAYER_NONE]) | Check if g contains a set of fusion material that c needs [must contain gc]## Check the Condition function for the effect of EFFECT_FUSION_MATERIAL according to the type of c
 bool | Card.CheckFusionSubstitute(Card c, Card fc) | Checks if a card (Card c) can be treated as a substitute for one of a Fusion Monster's (Card fc) Fusion Material.
 bool | Card.IsImmuneToEffect(Card c, Effect e) | Checks if a card (Card c) is not affected by an effect (Effect e)
@@ -514,6 +563,10 @@ bool | Card.CheckUniqueOnField(Card c,int check_player) | Checks if a card's (Ca
 void | Card.ResetNegateEffect(Card c[, int code1,...]) | Reset a card c affected by the effect of cards whose card number is code1, code2 ...
 void | Card.AssumeProperty(Card c,int assume_type, int assume_value) | Assume a property for a card (Card c), the card will be considered as having an assumed specific property (int assume_type) as the inputted value (int assume_value) (only as long as the function is still processing)
 void | Card.SetSPSummonOnce(Card c, int spsummon_code) | Make a card (Card c) can only be Special Summoned when the turn has not Special Summoned another card with the same code (int code) as its Card.SetSpecialSummonOnce. Basically, makes the "You can only Special Summon "Some Monster" once per turn" condition
+
+
+| return| function| description|
+|------ | --------| -----------|
 void\|int | Card.Code(Card c[, int code]) | Changes (Card c)'s original card name if (int code) is inputted, else returns the current original card name.
 void\|int | Card.Alias(Card c[, int code]) | Changes (Card c)'s alias if (int code) is inputted, else returns the current card's alias.
 void\|int | Card.Setcode(Card c[, int setcode]) | Changes (Card c)'s original archetype(s)/setcode(s) if (int setcode) is inputted, else returns the current card's original archetype(s)/setcode(s).
@@ -527,6 +580,10 @@ void\|int | Card.Rscale(Card c[, int scale]) | Changes (Card c)'s original left 
 void\|int | Card.Lscale(Card c[, int scale]) | Changes (Card c)'s original right scale if (int scale) is inputted, else returns the current card's original right scale.
 void\|int | Card.LinkMarker(Card c[, int linkmarker]) | Changes (Card c)'s original Link Markers if (int linkmarker) is inputted, else returns the current card's original Link Markers.
 void | Card.Recreate(Card c, int code[, int\|nil alias, int\|nil setcode, int\|nil type, int\|nil level, int\|nil attribute, int\|nil race, int\|nil atk, int\|nil def, int\|nil lscale, int\|nil rscale, bool\|nil replace_effect=false]) | Changes (Card c) into a card with (int code) as its original card number from the database. If any of the parameters are included, that stat is also changed. If (bool replace_effect) is set to true, its effect also changes to the effects of (int code).
+
+
+| return| function| description|
+|------ | --------| -----------|
 bool | Effect.CheckCountLimit(int tp) | Checks if the effect can still be used by tp or the player has finished its uses.
 Effect | Effect.CreateEffect(Card c) | Create a new effect object with a card (Card c) as it's owner
 void | Effect.UseCountLimit(Effect e, int p [,int count=1, bool oath_only=false]) | Decreases the remaning usages of the effect by the player "p" by "count", if "oath_only" is true, the function will do nothing unless the effect is an OATH effect.
@@ -546,6 +603,10 @@ void | Effect.SetReset(Effect e, int reset_flag[, int reset_count=1]) | Sets the
 void | Effect.SetLabel(Effect e, int label[, int ...]) | Sets an effect's (Effect e) internal labels to the integers passed as parameter. This would replace the previously stored labels.
 void | Effect.SetLabelObject(Effect e, Card\|Group\|Effect\|table labelobject) | Sets an effect's (Effect e) internal label object to label object. This would replace the previously stored label object.
 void | Effect.SetHintTiming(Effect e, int s_time[, int o_time=s_time]) | Sets an activated (Effect e)'s client usage hint timing
+
+
+| return| function| description|
+|------ | --------| -----------|
 void | Effect.SetCondition(Effect e, function con_func) | Sets (Effect e)'s condition function
 void | Effect.SetCost(Effect e, function cost_func) | Sets (Effect e)'s cost function
 void | Effect.SetTarget(Effect e, function targ_func) | Sets (Effect e)'s target function
@@ -580,6 +641,10 @@ bool | Effect.IsActivatable(Effect e, int player[, bool ignore_location=false, b
 bool | Effect.IsActivated(Effect e) | Checks if an effect (Effect e) is an activated effect (not continuous and is a triggering effect)
 int | Effect.GetActivateLocation(Effect e) | Get (Effect e)'s location when it was activated.
 int | Effect.GetActivateSequence(Effect e) | Get (Effect e)'s sequence when it was activated.
+
+
+| return| function| description|
+|------ | --------| -----------|
 Group | Group.CreateGroup() | Create a new Group object
 void | Group.KeepAlive(Group g) | Make a group (Group g) not be collected upon exiting the function
 void | Group.DeleteGroup(Group g) | Makes a group that was kept alive be collectable (Group g)
@@ -593,6 +658,9 @@ Card/nil | Group.GetNext(Group g) | Gets then next member of Group g (moves the 
 Card/nil | Group.TakeatPos(Group g, int pos) | Returns the card at the index specified (int pos) in the group. Returns nil if the index is greater than the size of the group.
 int | Group.GetCount(Group g) | Returns the number of cards in a group (Group g)
 void | Group.ForEach(Group g, function f, ...) | Executes a function for each card in a group (Group g), function f should accept one parameter (e.g. f(c, ...), with c as each member of the group and ... can be any number of parameters)
+
+| return| function| description|
+|------ | --------| -----------|
 Group | Group.Filter(Group g, function f, Group\|Card ex\|nil, ...) | Create a new group with members from another group (Group g) filtered according to a function (function f). Excludes a card/group (Group/Card ex) if not nil. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the card will be included if f(c,...) returns true.
 Group | Group.Match(Group g, function f, Group\|Card ex\|nil, ...) | It has the same behaviour as Group.Filter but the changes are done to the Group g and no new group is created.
 int | Group.FilterCount(Group g, function f, Group\|Card ex\|nil, ...) | Counts the amount of members of a group (Group g) which meets the function (function f). Excludes a card (Card ex) if not nil. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the card will be included if f(c,...) returns true.
@@ -600,6 +668,10 @@ Group | Group.FilterSelect(Group g, int player, function f, int min, int max[, b
 Group | Group.Select(Group g, int player, int min, int max[, bool cancelable=false] Group\|Card ex\|nil) | Make a player (int player) select members of a group (Group g), with a minimum and a maximum, then outputs the result as a new Group. Excludes a card (Card ex) if not nil. If cancelable is true and the selection is canceled nil will be returned.
 Card | Group.SelectUnselect(Group g1, Group g2, int player[, bool finishable, bool cancelable, int min, int max]) | Selects cards in a loop that allows unselection/cancellation. (Group g1) is the group of not selected cards, (Group g2) is the group of already selected cards, (int player) is the player who selects the card, (bool finishable) indicates that the current selection has met the requirements and thus can be finished with the right click, (bool cancelable) indicates that the selection can be canceled with the right click (in the procedures this is set when the selected group is empty and no chain is going on), (int max) and (int min) does nothing to the function, they are only the max and min values shown in the hint. Every card in both the groups can be selected. The function returns a single card
 Group | Group.RandomSelect(Group g, int player, int count) | Make a player (int player) randomly select (int amount) members of a group (Group g).
+
+
+| return| function| description|
+|------ | --------| -----------|
 bool | Group.IsExists(Group g, function f, int count, Group\|Card ex\|nil, ...) | Checks if at least a number (int count) of members of a group (Group g) meet the function (function f). Excludes a card (Card ex) if not nil. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the card will be included if f(c,...) returns true.
 bool, bool | Group.CheckWithSumEqual(Group g, function f, int sum, int min, int max, ...) | Checks if there is a combination of cards, with a minimum and maximum, that has the sum of f(c,...) result equal to (int sum) in a group (Group g). Function f accepts at least one parameter (f(c,...). with c as each member of the group), and the return value should be integer. The second returned value indicates wheter the check failed because of overtributing (in which case it will be true), or beause of undertributing.
 Group | Group.SelectWithSumEqual(Group g, int player, function f, int sum, int min, int max, ...) | Makes a player (int player) select members of a group (Group g) which results in a combination of cards, with a minimum and maximum, that has the sum of f(c,...) result equal to (int sum). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer.
@@ -615,12 +687,21 @@ Group | Group.Merge(Group g1, Card\|Group other) | Add a card or group (Card\|Gr
 Group | Group.Sub(Group g1, Card\|Group other) | Remove a card or group (Card\|Group other) from a group (Group g). Returns the group itself.
 bool | Group.Equal(Group g1, Group g2) | Checks if the first group (Group g1) has the same members with the second group (Group g2)
 bool | Group.IsContains(Group g, Card c) | Checks if a group (Group g) contains a specified card (Card c)
+
+
+| return| function| description|
+|------ | --------| -----------|
 Card | Group.SearchCard(Group g, function f, ...) | Gets the first card found in a group (Group g) which f(c,...) returns true. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and must return a boolean.
 Group, Group | Group.Split(Group g, function f, Group\|Card ex\|nil, ...) | Returns 2 groups, the first group will contain cards matched with the same behaviour as Gruop.Filter, the second group will contain the remaining cards from the Group g.
 bool | Group.Includes(Group g1, Group g2) | Checks if (Group g1) contains all cards in (Group g2)
 int | Group.GetLinkedZone(Group g, int cp) | Returns all the zones that all the cards in g point to (on the field of player "cp").
 Group | Group.AddMaximumCheck(Group g) | Returns a group containing all the maximum parts of cards that are in maximum mode in the group g,
 iterator | Group.Iter(Group g) | Iterates over the cards in (Group g) for use with for loops
+
+
+
+| return| function| description|
+|------ | --------| -----------|
 void | Duel.EnableGlobalFlag(int global_flag) | Enables the specified global flags (int global_flag) for the rest of the Duel (GLOBALFLAG_x).
 int | Duel.GetStartingHand(int player) | Gets a specified player's (int player) starting hand
 int | Duel.GetLP(int player) | Gets a specified player's (int player) current Life Point
@@ -638,6 +719,12 @@ void | Duel.RemoveCards(Card\|Group cards) | Removes the passed cards from the d
 int | Duel.SendtoGrave(Card\|Group targets, int reason[, int player=PLAYER_NONE]) | Sends a card or group (Card\|Group targets) to the Graveyard with (int reason) as reason, if (int player) is supplied, the destination would be that player's Graveyard. Returns the number of cards successfully sent.
 int | Duel.SendtoHand(Card\|Group targets, int player\|nil=PLAYER_NONE, int reason) | Sends a card or group (Card\|Group targets) to the Hand with (int reason) as reason, if (int player) is supplied, the destination would be that player's Hand. Returns the number of cards successfully sent.
 int | Duel.SendtoDeck(Card\|Group targets, int player\|nil=PLAYER_NONE, int seq, int reason) | Sends a card or group (Card\|Group targets) to the Deck with (int reason) as reason, if (int player) is supplied, the destination would be that player's Deck. Available seq values (SEQ_DECKTOP, SEQ_DECKBOTTOM and SEQ_DECKSHUFFLE). If SEQ_DECKSHUFFLE or other values are used for the sequence, the card is put on the top, and the Deck will be shuffled after the function resolution, except if Duel.DisableShuffleCheck() is set to true beforehand. Returns the number of cards successfully sent to the Deck.
+
+
+
+
+| return| function| description|
+|------ | --------| -----------|
 int | Duel.SendtoExtraP(Card\|Group targets, int player\|nil=PLAYER_NONE, int reason) | Sends a card or group (Card\|Group targets) to the Extra Deck face-up with (int reason) as reason, if (int player) is supplied, the destination would be that player's Extra Deck (for Pendulum monsters only). Returns the number of cards successfully sent.
 int | Duel.Sendto(Card\|Group, int location, int reason,[int pos=POS_FACEUP, int player=PLAYER_NONE, int sequence=0]) | Sends a card or group (Card\|Group targets) to the location (int location) with (int reason) as reason in (ins pos) position (only applies in Extra Deck and Banish). If (int player) is supplied, the destination would be that player's location. A seq value of 0 means it's put on the top, 1 means it's put on the bottom, other values means it's put on the top, and the if it is Deck, it will be shuffled after the function resolution except if Duel.DisableShuffleCheck() is set to true beforehand. Returns the number of cards successfully sent.
 Group | Duel.GetOperatedGroup() | Gets the last group of operated cards (from last call of some functions, ex. calling this after Duel.Draw would return a group of the drawn cards)
@@ -656,6 +743,10 @@ bool | Duel.CanPlayerSetSpellTrap(int player[, Card setcard]) | Returns if playe
 void | Duel.MSet(int player, Card c, bool ignore_count, Effect e\|nil[, int min=0, int zone=0x1f]) | A player Sets a card (Card c) to the provided zone, using Normal Summon proc that the card has. if ignore_count is true, the Set would not count towards the standard limit of Normal Summon/Set. If an effect (Effect e) is provided, the Normal Set is counted as a Set by that effect. if min>0 then the Set proc must need that amount or more tributes. If zone is provided, the card will be settable only to the specific zones.
 void\|int | Duel.SSet(int player, Card\|Group targets[, int target_player = player, bool confirm=true]) | A player Sets a cards(s) (Card\|Group target) to the Spell/Trap Card Zone on target_player's field, if confirm is true, the card(s) set are revealed - for confirmation - to the opponent.
 Card | Duel.CreateToken(int player, int code) | Creates a new instance of a card owned by player (int player) with card code (int code).
+
+
+| return| function| description|
+|------ | --------| -----------|
 int | Duel.SpecialSummon(Card\|Group targets, int sumtype, int sumplayer, int target_player, bool nocheck, bool nolimit, int pos[, int zone=0xff]) | A player (int sumplayer) Special Summons a card/group of cards (Card\|Group targets) with summon type described with SUMMON_TYPE_x (int sumtype) to a player's (int target_player) field in the specific zone (here zone 0xff, means the default zones). If (bool nocheck) is true, it will summon ignoring conditions. If (bool nolimit) is true, it will summon ignoring the revive limit. Returns the number of cards successfully summoned.
 bool | Duel.SpecialSummonStep(Card c, int sumtype, int sumplayer, int target_player, bool nocheck, bool nolimit, int pos[, int zone=0xff]) | A player (int sumplayer) Special Summons a card (Card c) with summon type described with SUMMON_TYPE_x (int sumtype) to a player's (int target_player) field in the specific zone (here zone 0xff, means the default zones). If (bool nocheck) is true, it will summon ignoring conditions. If (bool nolimit) is true, it will summon ignoring the revive limit. When a card is summoned this way, its summon is not considered complete until a call to Duel.SpecialSummonComplete is performed, this is useful when effects are to be applied to the card after it is "summoned" but before it "reaches the field".
 void\|int | Duel.SpecialSummonComplete() | Completes Special Summons conducted with Duel.SpecialSummonStep. This has to be called even if all the Duel.SpecialSummonStep fails.
@@ -689,6 +780,10 @@ int | Duel.Draw(int player, int count, int reason) | Player (int player) draws a
 int | Duel.Damage(int player, int value, int reason[, bool is_step=false]) | Damages/Decreases player's (int player) Life Points by an amount (int value) for a reason (REASON_x). Setting is_step to true made the damage considered dealt at the call of Duel.RDComplete()
 int | Duel.Recover(int player, int value, int reason[, bool is_step=false]) | Increases player's (int player) Life Points by an amount (int value) for a reason (REASON_x). Setting is_step to true made the recovery considered being done at the call of Duel.RDComplete()
 void | Duel.RDComplete() | Complete Damage/Recover step (for simultaneous damage/recovery)
+
+
+| return| function| description|
+|------ | --------| -----------|
 bool | Duel.Equip(int player, Card c1, Card c2[, bool up=true, bool is_step=false]) | A Player (int player) equips a Card (Card c1) to another Card (Card c2). When up==false, the equip card will not have its position changed face-up. Is_step is for using with Duel.EquipComplete. Returns true if the equip is successful.
 void | Duel.EquipComplete() | Concludes a series of Equips (Always used with 'is_step = true' in Duel.Equip())
 void | Duel.ForceAttack(Card c1, Card c2) | Last Turn's specific effect: after the chain resolves, switches to a standalone Battle Phase and makes card (card c1) attack (card c2). After that, returns to the previous phase.
@@ -714,6 +809,10 @@ void | Duel.ChangeBattleDamage(int player, int value[, bool check=true]) | Chang
 void | Duel.ChangeTargetCard(int chainc, Group g) | Change the target cards for the specific chain link (0 is the currently resolving one). This alters the value that that chain link set with Duel.SetTargetCards
 void | Duel.ChangeTargetPlayer(int chainc, int player) | Change the target player for the specific chain link (0 is the currently resolving one). This alters the value that that chain link set with Duel.SetTargetPlayer
 void | Duel.ChangeTargetParam(int chainc, int param) | Change the target parameter for the specific chain link (0 is the currently resolving one). This alters the value that that chain link set with Duel.SetTargetParam
+
+
+| return| function| description|
+|------ | --------| -----------|
 void | Duel.BreakEffect() | Separates an effect for the purposes of timing (Reflects the effects of the conjunctives "then" and "also after that")
 void | Duel.ChangeChainOperation(int chain_idx, function f) | Replaces the operation executed by the effect at the specific chain index with the passed function.
 bool | Duel.NegateActivation(int chainc) | Negates the activation of an effect in a chain corresponding to that specific chain link.
@@ -737,8 +836,16 @@ Card\|nil | Duel.GetAttackTarget() | Gets the attack target card (or nil if ther
 Card\|nil,Card\|nil | Duel.GetBattleMonster(int tp) | Returns as first value the monster that is currently battling from the perspective of tp (nil if tp has no currently battling monsters), as second value returns the battling monster from the perspective of 1-tp.
 bool | Duel.NegateAttack() | Negates the current attack. Has no effect if the game has confirmed battle (about to enter Damage Step)
 void | Duel.ChainAttack([Card c]) | Makes the currently attacking card attacks able to declare a consecutive attack after the current one. If a card is passed, the next attack will have to be against that specific card.
+
+
+| return| function| description|
+|------ | --------| -----------|
 void | Duel.Readjust() | Makes the game do the adjustments ( win, disable, control, self destroy, equip, position, trap monster). Calling this while adjusting (most likely, in EVENT_ADJUST) four times with the same card (calling this will raise EVENT_ADJUST at the end, so it is possible to loop) will make the card instantly destroyed.
 void | Duel.AdjustInstantly([Card c]) | Adjust the game state checking self destroy effects, continuous negation effects being applied, etc. If a card is passed, it also adjust immediately the properties of that card and cards related to it.
+
+
+| return| function| description|
+|------ | --------| -----------|
 Group | Duel.GetFieldGroup(int player, int s, int o) | Gets a group containing cards from a specified location of a player (int player), s denotes the player's side of the field, o denotes opposing player's side of the field
 int | Duel.GetFieldGroupCount(int player, int s, int o) | Counts the number of cards from a specified location of a player (int player), s denotes the player's side of the field, o denotes opposing player's side of the field
 int | Duel.GetFieldGroupCountRush(int player, int s, int o) | Same as Duel.GetFieldGroupCount but exclude the left and right pieces of a summoned maximum monster
@@ -750,6 +857,9 @@ int | Duel.GetMatchingGroupCountRush(function f, int player, int s, int o, Group
 Card | Duel.GetFirstMatchingCard(function f, int player, int s, int o, Group\|Card ex\|nil, ...) | Get the first card in locations (int s) (on (int player)'s side of the field) and (int o) (on their opponent's) for which (function f) returns true, except (Card ex)
 bool | Duel.IsExistingMatchingCard(function f, int player, int s, int o, int count, Group\|Card ex\|nil, ...) | Checks if (int count) cards exist in locations (int s) (on (int player)'s side of the field) and (int o) (on their opponent's) for which (function f) returns true, except (Card ex)
 Group | Duel.SelectMatchingCard(int sel_player, function f, int player, int s, int o, int min, int max[, cancelable=false], Group\|Card ex\|nil, ...) | Make (int sel_player) select between (int min) and (int max) cards in locations (int s) (on (int player)'s side of the field) and (int o) (on their opponent's) for which (function f) returns true, except (Card ex). If cancelable is true and the selection is canceled nil will be returned. If both cancelable and a minimum of 0 are passed, the result is unspecified.
+
+| return| function| description|
+|------ | --------| -----------|
 table[int,int],...\|int,... | Duel.SelectCardsFromCodes(int sel_player, int min, int max, bool cancelable, bool return_index, int code1, ...) | Make (int sel_player) select between (int min) and (int max) cards among the passed card codes. If cancelable is true and the selection is canceled nil will be returned. If return_index is true a number of tables equal to the number of selected cards will be returned, each table will have the selected code index (starting by 1) as the first element and the code itself as second element. Otherwise the selected codes will be returned as multiple return values.
 Group | Duel.GetReleaseGroup(int player[, bool use_hand=false, bool use_oppo=false]) | Returns the group of cards that can be used as tribute **NOT** for a Tribute Summon
 int | Duel.GetReleaseGroupCount(int player[, bool use_hand=false, bool use_oppo=false]) | Returns the number of cards that would be returned by Duel.GetReleaseGroup
@@ -781,6 +891,10 @@ void | Duel.ClearOperationInfo(int chainc) | Clear all the informations that wer
 bool,Card\|Group,int,int,int | Duel.GetOperationInfo(int chainc, int category) | Returns the corresponding values that were set by a previous call to Duel.SetOperationInfo for the corresponding category. If the first return value is true that means that operation info was set and then there will be 4 extra return values corresponding to the parameters of SetOperationInfo, otherwise only a single false value is returned.
 bool,Card\|Group,int,int,int | Duel.GetPossibleOperationInfo(int chainc, int category) | Behaviour similar to Duel.GetOperationInfo, but returns the value set by Duel.SetPossibleOperationInfo instead
 int | Duel.GetOperationCount(int chainc) | Get the amount of operation info set by previous calls to Duel.SetOperationInfo for the corresponding chain.
+
+
+| return| function| description|
+|------ | --------| -----------|
 void | Duel.Overlay(Card c, Card\|Group of_card, [bool send_to_grave=false]) | Attachs (Card\|Group of_card) to (Card c). By default, if any card in the 2nd parameter has materials attached to it as well, they'll also be attached to (Card c) automatically. If send_to_grave is true, they will instead be sent to the graveyard with REASON_RULE, if you want to do something else with those cards, you have to move them before calling this function.
 Group | Duel.GetOverlayGroup(int player, int s, int o) | Return the Group composed of cards that are currently Overlaid in the passed player's fields ("s" or "o" =1 means to include that side of the field, 0 means to ignore)
 int | Duel.GetOverlayCount(int player, int s, int o) | Return the number of cards that would be returned by Duel.GetOverlayGroup
@@ -794,6 +908,10 @@ int | Duel.SelectOption(int player[,bool confirm_dialog=true], int desc1, ...) |
 int | Duel.SelectPosition(int player, Card c, int pos) | Makes int player select a position int pos for card c
 int | Duel.SelectDisableField(int player, int count, int location_player, int location_oppo[, int filter=0xe0e0e0e0, bool all_field=false]) | Asks (int player) to select zones to be disabled, a number of zones up to (int count), in locations (location_player) for the player and (location_oppo) for their opponent, that are bitmasked by (int filter) <in another word, zones that are not filter>. If all_field is true the player can select any zones, including Pendulum and Extra Monster Zone which are normally not allowed.
 int | Duel.SelectFieldZone(int player, int count, int s, int o[, int filter=0xe0e0e0e0]) | Asks (int player) to choose a number of Zones up to (int count), in locations (int s) for the player and (int o) for their opponent, that are bitmasked by (int filter) <in another word, zones that are not filter>. This function allows the player to select ANY field zone, even those that are currently occupied by other cards.
+
+
+| return| function| description|
+|------ | --------| -----------|
 int | Duel.AnnounceRace(int player, int count, int available) | Asks (int player) to announce (int count) number of Races, amongst those specified in (int available).
 int | Duel.AnnounceAttribute(int player, int count, int available) | Asks (int player) to announce (int count) number of Attributes, amongst those specified in (int available).
 int\|nil,int\|nil | Duel.AnnounceLevel(int player[,int min = 1,int max=12, int exception=nil,...]) | Asks (int player) to announce a number between (int min) and (int max), except any (int exception)s. Returns the chosen number, and the index of that number amongst the choices.
@@ -808,6 +926,11 @@ int,int,int,int,int | Duel.GetCoinResult() | Returns 5 values corresponding to t
 int,int,int,int,int | Duel.GetDiceResult() | Returns 5 values corresponding to the results of the last dice rolls.
 void | Duel.SetCoinResult(int res, ... ) | Changes the results of the latest executed coin tosses to the provided values.
 void | Duel.SetDiceResult(int res, ...) | Changes the result of the latest executed dice rolls to the provided values.
+
+
+
+| return| function| description|
+|------ | --------| -----------|
 Effect\|nil | Duel.IsPlayerAffectedByEffect(int player, int code) | Return the first instance of an effect affecting the player corresponding to the passed code, nil if there's none. The return can be used as boolean check with an Effect being returned as true and nil being returned as fallse.
 bool | Duel.IsPlayerCanAdditionalSummon(int player) | Returns if the player can perform an additional normal summon via a EFFECT_EXTRA_SUMMON_COUNT (e.g. "Fire Formation - Tensu")
 bool | Duel.IsPlayerCanDraw(int player[, int count=0]) | Checks if (int player) can draw (int count) cards from their deck
@@ -834,14 +957,29 @@ bool | Duel.CheckPhaseActivity() | Checks if the an "activity" was not performed
 void | Duel.AddCustomActivityCounter(int counter_id, int activity_type, function f) | Register an activity with type int activity_type, with id int counter_id, that matches function f
 int | Duel.GetCustomActivityCount(int counter_id, int player, int activity_type) | Same behaviour as Duel.GetActivityCount with the difference that returns the count of the activities that were registered with the specific counter_id as Duel.AddCustomActivityCounter.
 int | Duel.GetBattledCount(int player) | Get the number of battles (int player) has been involved in this turn
+
+
+
+| return| function| description|
+|------ | --------| -----------|
 bool | Duel.IsAbleToEnterBP() | Checks if the player can enter BP this turn.
 void | Duel.SwapDeckAndGrave(int player) | Swaps the cards from (int player)'s GY with the cards from his deck. This is an ad hoc function for Exchange of the Spirit.
 void | Duel.MajesticCopy(Card c1, Card c2[, int reset_value, int reset_count=1) | Copies c1's effect to c2 allowing c2 to use c1's activated effects. If reset_value and reset_count are provided, use those parameter as reset parameters for the copied effects (reset_value default value is RESET_EVENT\|0x1fe0000\|RESET_PHASE\|PHASE_END \|RESET_SELF_TURN\|RESET_OPPO_TURN). This is an ad hoc function for Majestic Star Dragon.
 string | userdatatype(var o) --deprecated | Use "type(var o)" to check if a variable is a Card, Group or Effect
 string | type(var o) | Checks if a variable is a Card, Group or Effect
 Group | aux.GetMustBeMaterialGroup(int tp, nil\|Group eg, int sump, nil\|Card sc, nil\|Group g, int r) | Gets the group that must be used as material (Contacting "C"). (int tp) is the affected player, (nil\|Group eg) is all detected materials, (int sump) is the Summoning player, (nil\|Card sc) is the card to be Summoned, (nil\|Group) g is all the valid usable materials, (int r) is the reason e.g. REASON_SYNCHRO, REASON_XYZ
+
+
+
+| return| function| description|
+|------ | --------| -----------|
 bool | Card.IsExtraLinked(Card c) | Checks if a card is Extra Linked, uses aux.ExtraLinked which obtains 2 Extra Monster Zone monsters of each player and checks if (Card c) is included in the chain of co-linked cards.
 bool | Card.IsColumn(Card c, int seq, int tp, int loc) | Checks (Card c) its column using the data of another card which allows checking even if the other card has already left the field using its Sequence (int seq), controller (int tp) and location (int loc)
+
+
+| return| function| description|
+|------ | --------| -----------|
+
 int | aux.Stringid(int code, int n) | Returns the description code using the database entry's code (int code) and from the nth position (int position) which can be 0-15 corresponding to the str in the database which are from str1 to str16
 iterator | aux.Next(Group g) | Iterates over the cards in (Group g) for use with for loops
 nil | aux.NULL() | Function that returns nil
@@ -869,7 +1007,12 @@ bool | aux.FilterSummonCode(...) | used for Material Types Filter Bool (works fo
 bool | aux.FilterBoolFunctionEx(function f, int value) | Used filter for the Fusion, Xyz, Synchro and Link Procedures where (function f) can be Card.IsRace, Card.IsAttribute and Card.IsType and (int value) corresponds to the required Race, Attribute and Type.
 bool | aux.FilterBoolFunctionEx2(function f, ...) |  
 bool | aux.FilterBoolFunction(function f, ...) | Used in filters (with parameter (Card c)) to check a function and its (...) parameters
-table element | aux.ParamsFromTable(table t, key, ...) |  
+table element | aux.ParamsFromTable(table t, key, ...) | 
+
+
+
+| return| function| description|
+|------ | --------| -----------|
 bool | aux.ProcCancellable | Used with the Xyz Summon procedure and a fw Xyz monsters. Defined as false.
 bool | aux.IsMaterialListCode(Card c, int ...) | Checks if 1 of the codes in (int ...) is a listed Fusion Material in (Card c)
 bool | aux.IsMaterialListSetCard(Card c, int ...) | Checks if 1 of the setcodes in (int ...) is a listed archetype in a material of (Card c)
@@ -909,6 +1052,11 @@ bool | aux.NecroValleyFilter(function f)(Card target, ...) | Filter check "not a
 bool | aux.bfgcost(Effect e, int tp, Group\|nil eg, int ep, int ev, Effect re, int r, int rp, int chk) | Default SetCost for "You can banish this card from your Graveyard"
 bool | aux.gbspcon(Effect e, int tp, Group eg\|nil, int ep, int ev, Effect re, int r, int rp) | Default SetCondition for "Summoned by a "Gladiator Beast" monster"
 bool | aux.evospcon(Effect e, int tp, Group eg\|nil, int ep, int ev, Effect re, int r, int rp) | Default SetCondition for "Summoned by a "Evolsaur" monster"
+
+
+
+| return| function| description|
+|------ | --------| -----------|
 bool | aux.SpElimFilter(Card c, bool mustbefaceup, bool includemzone) | Spirit Elimination check to (Card c). It checks if controller is affected by Spirit Elimination. If so, it will only filter in the Monster Zone, otherwise in Graveyard. (bool mustbefaceup) means the filter is not generic (e.g. Banish 1 Dragon-Type monster) opposed to banish 1 monster. (bool includemzone) when set to true will check LOCATION_MZONE by default as opposed to filtering LOCATION_MZONE and LOCATION_GRAVE depending on affected by Spirit Elimination.
 void | aux.AddEREquipLimit(Card c, function\|nil con, function\|nil equipval, function equipop, Effect linkedeff, int\|nil prop, int\|nil resetflag, int\|nil resetcount) | Registers effects that need to be checked for the effect of "Millennium-Eyes Illusionist". (function con) is any conditions that need to be fulfilled in order to apply its "equipping" effect. (function equipval) is the filter of valid monsters you can equip to it. (function equipop) is the equipping by its effect. (Effect linkedeff) is the effect that equips. (int prop) is the list of additional properties for SetProperty to register effects. (int resetflag) and (int resetcount) is used if the effect would reset such as, until only the End Phase.
 bool | aux.EquipByEffectAndLimitRegister(Card c, Effect e) |  
@@ -923,7 +1071,12 @@ bool\|void | aux.RemainFieldCost(Effect e, int tp, Group\|nil eg, int ep, int ev
 void | aux.RemainFieldDisabled(Effect e, int tp, Group\|nil eg, int ep, int ev, Effect re, int r, int rp) |  
 bool, Group | aux.MainAndExtraSpSummonLoop(function\|nil func, int sumtype, int sump, int targetp, bool nocheck, bool nolimit, int pos, int mmz, int emz)(Effect e, int tp, Group eg, int ep,int ev, Effect re, int r, int rp, Group sg) | Loops Special Summoning (Group sg) to ensure they go in a valid zone (Extra Moster Zone and Main Monster Zones) where (function func) is a function called after each card in the Group is summoned with the parameters (Effect e, int tp, Group eg, int ep,int ev, Effect re, int r, int rp, Card sc) where (Card sc) is the card that's Summoned. (int sumtype) is the Summon Type. (int sump) is the Summoning player. (int targetp) is the target player. (bool nocheck) checks for "ignoring the Summoning conditions". And (bool nolimit) checks for "ignoring proper Summon". (int pos) is the position to be Summoned. (int mmz) is the zones where you can Special Summon monsters in (Group sg) to the Main Monster Zone, which defaults to all Main Monster Zones if there is no input or nil is inputed. (int emz) on the other is similar to (int mmz) excepts it checks for cards from the Extra Deck which Special Summons to the Extra Monster Zone.
 int | aux.MainAndExtraGetSummonZones(card c, int mmz, int emz, effect e, int sumtype, int sump, int targetp, bool nocheck, bool nolimit, int pos, nc, ...) |  
-bool | aux.MainAndExtraZoneCheckBool(card c, int mmz, int emz, effect e, int sumtype, int sump, int targetp, bool nocheck, bool nolimit, int pos, nc, ...) |  
+bool | aux.MainAndExtraZoneCheckBool(card c, int mmz, int emz, effect e, int sumtype, int sump, int targetp, bool nocheck, bool nolimit, int pos, nc, ...) | 
+
+
+
+| return| function| description|
+|------ | --------| -----------|
 void | Fusion.AddProcMix(Card c, bool sub, bool insf, int\|function ...) | Adds a Fusion Procedure where (bool sub) is a check if Fusion Substitutes are allowed. (bool insf) is a check if using no materials are allowed (e.g. Instant Fusion). (int\|function ...) is a list of any number of codes/conditions as Fusion Materials. Member function from the Fusion namespace. Definition available in proc_fusion.lua.
 nil\|int | Fusion.CheckExact | A variable used temporarily to limit the usable materials' number
 nil\|function | Fusion.CheckAdditional | A variable used temporarily to add further checks (e.g. only up to 2 materials from the Extra Deck: Odd-Eyes Fusion)
@@ -945,6 +1098,10 @@ void | Fusion.AddProcFunFun(c,f1,f2,cc,insf) | Fusion monster, condition1 + cond
 void | Fusion.AddProcCodeFunRep(c,code1,f,minc,maxc,sub,insf) | Fusion monster, name + condition * minc to maxc
 void | Fusion.AddProcCode2FunRep(c,code1,code2,f,minc,maxc,sub,insf) | Fusion monster, name + name + condition * minc to maxc
 void | Fusion.AddProcFunFunRep(c,f1,f2,minc,maxc,insf) | Fusion monster, condition1 + condition2 * minc to maxc
+
+
+| return| function| description|
+|------ | --------| -----------|
 effect | Ritual.AddProcGreater(Card c, function filter, int lv, string desc, function extrafil, function extraop, function matfilter, function stage2, int location, forcedselection, function customoperation, function specificmatfilter) | Adds a Ritual Summoning activation requring Tributes that meet (function filter), and with levels equal to or greater than the Ritual Monster's level
 void | Ritual.AddProcGreaterCode(Card c, int lv, string desc,...) | Adds a Ritual Summoning activation requring Tributes for a Ritual monster with any of the card names of code (int ...), and with levels equal to or greater than the Ritual Monster's level
 effect | Ritual.AddProcCode(card c, int _type, int lv, string desc, ...) |  
@@ -953,6 +1110,10 @@ void | Ritual.AddProcEqualCode(Card c, int lv, int desc, [...]) | Adds a Ritual 
 effect | Ritual.AddWholeLevelTribute(card c, function cond) | The current total level to match for the monster being summoned, to be used with monsters that can be used as whole tribute
 effect | Ritual.CreateProc(card c,int _type, function filter, int lv, string desc, function extrafil, function extraop, function matfilter, function stage2,int location,group forcedselection, function customoperation, function specificmatfilter) |  
 effect | Ritual.AddProc(card c,int _type, function filter, int lv, string desc, function extrafil, function extraop, function matfilter, function stage2, int location,group forcedselection, function customoperation,group specificmatfilter) |  
+
+
+| return| function| description|
+|------ | --------| -----------|
 bool | Synchro.NonTuner(function f, a, b, c) | A filter used in a Synchro procedure when a material is supposed to be non-Tuner. It also has to satisfy condition of (function f) if provided with (a, b, c) parameters.
 bool | Synchro.NonTunerEx(function f, int val) | A filter used in a Synchro procedure when a material is supposed to be non-Tuner. It also has to satisfy condition of (function f) which has to be Card.IsRace, Card.IsAttribute or Card.IsType, or a function that would use any of these 3. Also, (int val) is a parameter that is used in checking the (function f).
 bool | Synchro.NonTunerCode(table params) | Used in the Synchro Summon procedure.
@@ -961,18 +1122,38 @@ bool | aux.TatsunecroFilter(Card c) | Returns is Card c has "3096468" as flag ef
 int | Synchro.Send | a number representing how and where the Synchro Materials would be sent. 0 - (default) to grave, 1- to grave, returned from banished, 2 - banished face-up, 3 - banished face-down, 4 - sent to hand, 5, sent to Deck, 6 - destroyed.
 void | Synchro.AddMajesticProcedure(Card c, function f1, bool cbt1, function f2, bool cbt2, function f3, bool cbt3, function ...) | Adds a Synchro Procedure to (Card c) used by Majestic Star Dragon where (function f1, f2 and f3) are the required material and (bool cbt1, cbt2 and cbt3) are a check if the respective material can be used as the Tuner in the Summon since rulings for Majestic Star/Red Dragon state that either or both Majestic Dragon (f1) and/or Stardust Dragon/Red Dragon Archfiend (f2) can be used as the Tuner, but the non-Tuner, for the case of using Phantom King Hydride (f3) cannot be treated as the Tuner for the Summon. You require a minimum of 1 among these 3 to be the Tuner. (function ...) is the list of required materials during the Summon.
 void | Synchro.AddDarkSynchroProcedure(Card c, function f1, function f2, int plv, int nlv, function ...) | Adds a Synchro Procedure to (Card c) used by Dark Synchros where (function f1) is the first material, usually used by the non-Tuner and (function f2) as the Dark Tuner, whose Level to be subtracted from the first material. (int plv) is the target level when both materials are of positive value while (int nlv) is the target value if the first material is affected by Dark Wave. (int plv) defaults to the Synchro monster's level while (int nlv) defaults to the (int plv) if not supplied. (function ...) is the list of required materials during the Summon.
+
+
+| return| function| description|
+|------ | --------| -----------|
 void | aux.AddUnionProcedure(Card c, function f, bool oldrule, bool oldprotect) | Adds the Union Procedure to (Card c) where (function f) is the cards you can equip the Union monster to, and (bool oldrule) is a check to apply old rulings of the Union monster. if oldprotect is not nil, uses old rules for destroy replacement (If the equipped monster would be destroyed, destroy this card instead.)
 bool | aux.IsUnionState(Effect effect) | Used as a default condition to check if the handler of the effect is a Union monster equipped to another monster.
 bool | aux.CheckUnionEquip(Card uc, Card tc) | A check if you can equip a Union monster (Card uc) to (Card tc).
 void | aux.SetUnionState(card c) | See proc_union.lua.
 bool | aux.CheckUnionEquip(uc,tc) | See proc_union.lua.
+
+
+| return| function| description|
+|------ | --------| -----------|
 void | Xyz.AddProcedure(Card c, function\|nil f, int\|nil lv, int ct, f\|nil alterf, int desc, int maxct=ct, function op, bool mustbemat, function exchk) | Adds an Xyz Procedure where (function f) is the required Xyz Material, and (int lv) is the required level, but it can also be nil if there is no required Level. (int ct) is the required number of materials. (function alterf) is the alternate material, e.g. Number C39: Utopia Ray. (int desc) is the description shown when attempting to Xyz Summon using (function alterf). (int maxct) is the maximum number of materials, which defaults to (int ct). (function op) is used by some monsters do something else in addition to using an Xyz Material (e.g. Digital Bug Corebage (detach 2 materials) or Number 99: Utopic Dragon (discard 1 "Rank-Up-Magic")). (bool mustbemat) is used if you can only use the listed materials during the Xyz Summon, this disallows Anime effects such as Orichalcum Chain (minus 1 material) or Triangle Evolution (triple material). (function exchk) is an additional check at the end of selecting materials (e.g. Number F0: Utopic Future (checks if the materials have the same Rank)
+| return| function| description|
+|------ | --------| -----------|
+
 void | Pendulum.AddProcedure(Card c[, bool reg=true, int\|nil desc]) | Applies all the effects necessary for a Pendulum card to be used as one to (Card c). Setting (bool reg) to false, will not register the activation effect, which is used in cards that cannot be activated since you don't have them in your hand (e.g. Xyz/Pendulums). (int desc) is an optional parameter adding a description to your Pendulum Activation.
-void | Link.AddProcedure(Card c, function\|nil f, int min, int max = c:GetLink(), function\|nil specialchk, int desc) | Adds a Link Procedure where (function f) is the required material with a minimum (int min) and maximum (int max) where (function specialchk) is an additional check after obtaining all materials (e.g. Akashic Magician) and (int desc) is the description to its Link Summoning Procedure,
+
+| return| function| description|
+|------ | --------| -----------|
+void | Link.AddProcedure(Card c, function\|nil f, int min, int max = c:GetLink(), function\|nil specialchk, int desc) | Adds a Link Procedure where (function f) is the required material with a minimum (int min) and maximum (int max) where (function specialchk) is an additional check after obtaining all materials (e.g. Akashic Magician) and (int desc) is the description to its Link Summoning Procedure
+
+| return| function| description|
+|------ | --------| -----------|
 void | aux.AddEquipProcedure(Card c, int\|nil p, function\|nil f, function\|nil eqlimit, function\|nil cost, function\|nil tg, function\|nil op, function\|nil con) | Adds the Equip Card Activation where (int p) is the player, setting 0 will limit to monsters you control, setting to 1 will be your opponent and PLAYER_ALL/nil will be for either player. (function f) is the filters on which monsters you can equip it to. (function eqlimit) if provided will that limitation on which monsters you can only equip it (e.g. Those that can only be equipped by this activation, e.g. Train Connection). (function cost) would be the cost to activate it. (function tg) are effects that applied to it after targeting the monster to equip, and also checking requirements. (function op) is any operation that is applied after the Equip Proc equips. (function con) returns a bool which are conditions that need to be fulfilled for the Equip Card to be activated.
 void | aux.EquipEquip(Effect e, int tp, Group eg, int ep, int ev, Effect re, int r, int rp) | Used to equip the Equip Card to the targeted monster. This would be used if you cannot use the Equip Procedure for your Equip Card activation.
 void | aux.AddPersistentProcedure(Card c, int\|nil p, function\|nil f, int\|nil category, int\|nil property, int\|nil hint1, int\|nil hint2, function\|nil con, function\|nil cost, function\|nil tg, function\|nil op, bool\|nil anypos) | Adds the Persistent Trap Procedure where is the player, setting 0 will limit to monsters you control, setting to 1 will be your opponent and PLAYER_ALL/nil will be for either player. (function f) is the filters on which monsters you can target. (bool anypos) is a check if the target needs to be face-up. Setting this to true will allow it to be targeted even if it isn't face-up.
 bool | aux.PersistentTargetFilter(Effect e, Card c) | Default filter for checking if it's targeted by the Persistent Trap.
+
+| return| function| description|
+|------ | --------| -----------|
 function | aux.ReincarnationCheckValue(Effect e, Card c) | Auxiliary function for "Salamangreat" Reincarnation procedure. Registers CARD_SALAMANGREAT_SANCTUARY as flag  to (card c) if it is either a Link, Fusion or Ritual and has among its materials a card with the same ID as (card c).
 bool | aux.ReincarnationRitualFilter(Effect e, Card c) | Auxiliary filter for "Salamangreat" Reincarnation procedure to handle the rituals.
 bool | aux.ReincarnationCheckTarget(Effect e, Card c) | Auxiliary function for "Salamangreat" Reincarnation procedure. Returns if (card c) is either a Fusion, Ritual or a Link.
@@ -991,6 +1172,9 @@ bool | aux.zptcon(filter) | Used as condition for effects that check "if a [filt
 bool | aux.WitchcrafterDiscardFilter(c) | Auxiliary function for the discard cost of "Witchcrafter" monsters. Returns if (Card c) can be either sent to the GY as a cost or has EFFECT_WITCHCRAFT_REPLACE.
 bool | aux.WitchcrafterDiscardGroup(minc) | Auxiliary function for the discard cost of "Witchcrafter" monsters. Returns if there is a card with EFFECT_WITCHCRAFTER_REPLACE, that can be used as the whole cost, of if there is a (minc) number of cards to use as cost,  minc is the ammount the effect requires to discard.
 void | aux.WitchcrafterDiscardCost(f, int minc, int maxc) | Auxiliary function for the discard cost of "Witchcrafter" monsters. Performs the actual discard part, considering a minimum (minc) and maximum (maxc) amount of cards to discard. It also handles cards with EFFECT_WITCHCRAFTER_REPLACE, setting the reason for REASON_COST for those, or REASON_COST+REASON_DISCARD if a card is sent from hand instead.
+
+| return| function| description|
+|------ | --------| -----------|
 effect | aux.AddLavaProcedure(card c, int required, int position, funtion filter, int value, int description) | Adds Lava Golem-like procedure (monster that tribute to Special Summon on opponent's field), int required is the amount of monster to tribute, position is which position is it summoned and filter specify the monster it must tribute, value sets the type of Special summon and description adds a description for it. Calls the following auxiliary functions: LavaCondition, LavaCheck, LavaTarget and LavOperation, defined in cards_specific_functions.lua.
 bool | aux.LavaCheck(sg,e,tp,mg) | See cards_specific_functions.lua
 bool | aux.LavaCondition(required,filter) | See cards_specific_functions.lua
@@ -1000,6 +1184,9 @@ effect, effect | aux.AddKaijuProcedure(card c) | Adds Kaiju's stardand procedure
 bool | aux.KaijuCondition(e,c) | See cards_specific_functions.lua
 bool | aux.NumeronDetachCost(int min[, int max=min]) | Auxiliary function to handle evaluate and execute detach costs for "Numeron" Xyz monsters that ignore costs due to the effect of "Numeron Network". Checks if player is affected by CARD_NUMERON_NETWORK, in which case it applies its effect. Otherwise, checks if the card using the function can detach a "min" number of materials to detach and then detaches up to "max" materials.
 bool | aux.IsZone(card c, int zone, int tp) | Returns if (card c) is in the (int zone), (int tp) is the reference player.
+
+| return| function| description|
+|------ | --------| -----------|
 void | Debug.Message(any msg) | Sends (any msg) as a script error to the logs
 Card | Debug.AddCard(int code, int owner, int player, int location, int seq, int pos[, bool proc=false]) | Add a card of (int code), owned by (int owner) and under (int player)'s control, to (int seq) of (int location) in (int pos) position. If (bool proc) is true, it will be treated as properly summoned for the purposes of revive limits.
 void | Debug.SetPlayerInfo(int playerid, int lp, int startcount, int drawcount) | Set (int playerid) to have (int lp) LP, start with a (in startct) card hand, and draw (int drawcount) during the Draw Phase.
@@ -1011,6 +1198,10 @@ void | Debug.ReloadFieldBegin(int flag, int rule) | Begin loading the field for 
 void | Debug.ReloadFieldEnd() | Stop loading the field for a puzzle.
 void | Debug.SetAIName(string name) | Set the name of the AI to (string name)
 void | Debug.ShowHint(string msg) | Display a message on screen, saying (string msg)
+
+
+| return| function| description|
+|------ | --------| -----------|
 int | Duel.GetRandomNumber([int min = 0,]int max) | Gets a random number between min (default is 0) and max.
 int | Duel.GetLinkedZone(int player) | Gets all the zones that (int player) has that Link Monsters points to
 int | Duel.GetFreeLinkedZone(int player) | Gets all the unoccupied zones that (int player) has that Link Monsters points to
@@ -1023,6 +1214,10 @@ Effect, ... | Duel.GetPlayerEffect (int player[, int effect_type]) | Returns all
 int | Duel.GetPlayersCount(int team) | Get the amount of player for that specific team. (Can be used to deduce if the duel is an "n vs m" duel and also in conjunction with Duel.TagSwap to "iterate" all the players in the duel.)
 void | Duel.TagSwap(int team) | If the current team has more than 1 player, switches to the next player of that team.
 void | Duel.GetFlagEffectLabel(int player, int code) | Gets the integer labels to the flag effect registered to the player (int player) with (int code) as the effect code, returns nil if there is no integer label.
+
+
+| return| function| description|
+|------ | --------| -----------|
 int, int flag | Duel.GetLocationCountFromEx(int player, [int rplayer = reason_player, Group\|Card sg=nil, Card\|int lc=nil, int zone=0xff]) | Gets the number of available zones that (int player) has to perform a Special Summon from the Extra Deck. Optional Parameters: int rplayer is the player performing the summon , by default comes from the player that activates the effect itself; sg are material(s) or tribute(s) for the special summon, it's included when the effect requires the cost of one or more cards; lc is the card that will be special summoned, it's included when it's a specific card which will be special summon). If lc is group, it cannot be passed directly. Instead, pass the type of the monsters in that group (e.g. TYPE_FUSION, see "Construct Element"), which is limited to a single type and will not work properly if the group has different types. The zone parameter is used to limit the check to only some specific zones of the field. The second return is a flag with the available zones.
 void | Duel.AssumeReset() | Manually resets assume effects. Usually used in syncro summon. (eg: it resets the applied effect of "Influence Dragon (Anime)" on the other materials in the Synchro Summon.)
 int | Duel.GetLinkedGroupCount(int player, int location1, int location2) | Returns the number of cards that would be returned by Duel.GetLinkedGroup
@@ -1045,6 +1240,10 @@ bool | Card.IsOriginalRace(Card c, int val) | Checks if (Card c) is of original 
 bool | Card.IsSummonPlayer(Card c, int tp) | Checks if (Card c) is summoned by player (int tp)
 bool | Card.IsPreviousControler(Card c, int tp) | Checks if (Card c) is previous controlled by player (int tp)
 bool | Card.IsSummonLocation(Card c, int loc) | Checks if (Card c) is summoned from location (int loc)
+
+
+| return| function| description|
+|------ | --------| -----------|
 Group | Duel.GetTargetCards(Effect e) | Returns a group containing the targeted cards of (Effect e)'s activation and that are still related to that specific effect
 void | aux.ToHandOrElse(card c\|group tc, int player, [function check, function oper, str],...) | Makes (int player) either add (card c\|group tg) to hand or perform a secondary action. If the optional parameters are not provided, the default secondary action is to send the card or group to the GY. If  the provided (function check) is true (for all the cards in the group) , the secondary action, with string called from (str), will be the one defined in (function oper).
 void | aux.thoeSend(card c) | Sends (card c) to the grave. Function added to be used with aux.ToHandOrElse
@@ -1053,6 +1252,10 @@ bool | aux.PlayFieldSpell(Card c,e,tp,eg,ep,ev,re,r,rp,target_p) | Activates a f
 void | aux.GlobalCheck(s, function func) | Enables a global check to be used with function "func"
 table | Card.GetMetatable(card c, code current_code) | Similar to Duel.GetMetatable, but if current_code is true it behaves as if it were Duel.GetMetatable(c:GetCode()), otherwise it returns the __index field of the card's object (this difference only matters when a card's id is not its original one, like when copying names via effect or having an alias)
 table | Duel.GetMetatable(int code) | Equivalent of calling _G["c" .. code], returns the global metatable associated with that card's code (the "s" returned by GetID)
+
+
+| return| function| description|
+|------ | --------| -----------|
 int | aux.EvilHeroLimit(e,se,sp,st) | Default SetValue for "Evil HERO" monsters's effect EFFECT_SPSUMMON_CONDITION. Must be used due to the existance of "Supreme King Castle"
 bool | aux.ReleaseNonSumCheck(card c, int player, effect e) | Auxiliary function called by "Duel.CheckReleaseGroupSummon" and Duel.SelectReleaseGroupSummon".
 int | aux.ZoneCheckFunc(card c, int player, int zone) | Auxiliary function called by "Duel.CheckReleaseGroupSummon" and Duel.SelectReleaseGroupSummon".
@@ -1072,6 +1275,10 @@ table | aux.BitSplit(int number) | Auxiliary function to help printing hints for
 table | aux.GetAttributeStrings(int number) |  
 table | aux.GetRaceStrings(int number) |  
 effect | Fusion.CreateSummonEff(card c, function fusfilter, function matfilter, function extrafil ,extraop, gc, function stage2, int exactcount, int value, int location, chkf, string desc) | Function that generates a Fusion Summon effect, called from the Fusion Summon Procedure defined in "proc_fusion.lua" and "proc_fusion2.lua". By default it's usable for Spells/Traps; usage in monsters requires changing type and code afterwards. [Card c] is card that uses the effect, [fusfilter] is the filter for the monster to be Fusion Summoned, [matfilter] is a function with the restrictions on the default materials returned by GetFusionMaterial,  [extrafil] is a function that returns a group of extra cards that can be used as fusion materials, and as second optional parameter an additional filter function, [extraop] is function called right before sending the monsters to the graveyard as material, [gc] is mandatory card or function returning a group to be used (Soprano the Melodious Songtress, etc), [stage2] is a function called after the monster has been summoned (Necro Fusion, Shaddol Ruq, Instant Fusion, Flash Fusion, etc.), [exactcount] is the exact number of materials that must be used if the effect requires it (Ostinato, etc.), [int location] is the location where to summon Fusion monsters from (by default, LOCATION_EXTRA), [chkf] are FUSPROC flags for the fusion summon and [desc] calls a string for the summon effect description.
+
+
+| return| function| description|
+|------ | --------| -----------|
 void | Fusion.ShuffleMaterial(e,tc,tp,group sg) | Sends (group sg) to the Deck with REASON_EFFECT+REASON_MATERIAL+REASON_FUSION. Then clears the group sg. Used by the Fusion Summon procedure.
 void | Fusion.BanishMaterial(e,tc,tp,group sg) | Banishes (group sg), face-up, with REASON_EFFECT+REASON_MATERIAL+REASON_FUSION. Then clears the group sg. Used by the Fusion Summon procedure.
 bool | Fusion.OnFieldMat(filter,...) | Used by the Fusion Summon procedure.
@@ -1094,7 +1301,11 @@ bool | Duel.IsMainPhase() | Returns if the current phase is either Main Phase 1 
 bool | Duel.IsBattlePhase() | Returns if the current phase is the Battle Phase (between PHASE_BATTLE_START  and PHASE_BATTLE)
 bool | Duel.IsTurnPlayer(int player) | Checks if the current turn is (int player)'s turn.
 int | aux.GetCover(card c, coverNum) | Used by the Skill procedure.
-bool | aux.CanActivateSkill(int player) |  
+bool | aux.CanActivateSkill(int player) |
+
+
+| return| function| description|
+|------ | --------| -----------|
 effect | aux.AddFieldSkillProcedure(card c, coverNum, drawless) | Procedure for Field skills--c: the skill (card)--coverNum: the cover corresponding to the back (int)--drawless: if the skill make you draw 1 less card at the start of the duel (bool)
 effect | aux.AddContinuousSkillProcedure(c,coverNum,drawless,flip) | Procedure for continuous Spell/Trap Skill-- c: the card (card)-- coverNum: the Number of the cover (int)-- drawless: if the player draw 1 less card at the start of the duel (bool)-- flip: if the continuous card get flipped at the start of the duel (bool)
 effect | aux.AddSkillProcedure(c,coverNum,drawless,skillcon,skillop,countlimit) | Procedure for basic skill-- c: the card (card)-- coverNum: the Number of the cover (int)-- drawless: if the player draw 1 less card at the start of the duel (bool)-- flip con: condition to activate the skill (function)-- flipOp: operation related to the skill activation (function)
@@ -1136,6 +1347,11 @@ bool | Card.IsOddScale(Card c) | Returns if a pendulum card (Card c) is a card w
 bool | Card.IsEvenScale(Card c) | Returns if a pendulum card (Card c) is a card with an even value for the scale, using Card.GetScale to get the value.
 int/nil | aux.SelectEffect(int player, ..) | Makes player (int player) select 1 option among possible effects. The ellipsis (...) allows tables in the form {bool condition, int stringid}. The function then makes the player select an effect, displaying the strings whose conditons are true, returning the index of the choosen element or nil.
 bool | aux.CheckPendulumZones(int player) | Returns if (int player) has at least one Pendulum zone free, using Duel.CheckLocation.
+
+
+
+| return| function| description|
+|------ | --------| -----------|
 void | Duel.SummonOrSet(tp, ...) | Helper function that automatically handle both Duel.Summon and Duel.MSet. the parameters are the same as the 2 functions. The function first checks if the cards can be set or summoned, and in case makes the player choose the action to perform.
 bool | Card.CanSummonOrSet(...) | Returns if the card passed can be normal summoned or normal set.
 function | aux.dxmcostgen(int min, int max, [function op]) | "Detach Xyz Material Cost Generator". Generates a function to be used by Effect.SetCost in order to detach a number of Xyz Materials from the Effect's handler. (int min) is the minimum number of materials to check for detachment. (int max) is the maximum number of materials to detach or a function that gets called as if by doing max(e,tp) in order to get the value of max detachments. (function op) is an optional function that gets called by passing the effect and the operated group of just detached materials in order to do some additional handling with them.
