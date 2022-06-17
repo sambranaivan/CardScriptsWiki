@@ -17,172 +17,273 @@ Additionally, costs (passed via Effect.SetCost) receive `chk` and targets (via E
 - chk: check (as in, "activation check"). The core runs the function with chk being 0 when it performs the activation check and with chk being 1 when the effect is activated.
 - chkc: needed in effects that target for effects that can redirect the targeting to another card (e.g. `Cairngorgon, Antiluminescent Knight`).
 
-### Functions
-#### initial_effect:
+## Functions
+### initial_effect:
 ```c++
 void initial_effect(Card c)
 ```
 function that will be called for each card's initialization.
-#### bit.replace:
+### bit.replace:
 ```c++
 int bit.replace(int a, int b, int c[, int width=1])
 ```
 Returns a copy of (int a) with the field with a width changed to value (int b)
-#### bit.extract:
+
+### bit.extract:
 ```c++
 int bit.extract(int a, int b[, int width=1])
 ```
 Returns the field of (int a) with a width
-#### Card.GetLuaRef:
+
+### Card.GetLuaRef:
 ```c++
 int Card.GetLuaRef(Card c)
 ```
 Returns an integer representing the internal value used by lua to access the Card c.
-#### Card.FromLuaRef:
+
+### Card.FromLuaRef:
 ```c++
 Card Card.FromLuaRef(int ref)
 ```
 Returns a Card object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Card object.
-#### Group.GetLuaRef:
+
+### Group.GetLuaRef:
 ```c++
 int Group.GetLuaRef(Group g)
 ```
 Returns an integer representing the internal value used by lua to access the Group g.
-#### Card.IsDeleted:
+
+### Card.IsDeleted:
 ```c++
 bool Card.IsDeleted(Card c)
 ```
 Returns if the Card object got internally deleted and remained as dangling reference inside the lua state.
 
-#### Group.GetLuaRef:
+### Group.GetLuaRef:
 ```c++
 int Group.GetLuaRef(Group g)
 ```
 Returns an integer representing the internal value used by lua to access the Group g.
-#### Group.FromLuaRef:
+
+### Group.FromLuaRef:
 ```c++
 Group Group.FromLuaRef(int ref)
 ```
 Returns a Group object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Group object.
-#### Group.IsDeleted:
+
+### Group.IsDeleted:
 ```c++
 bool Group.IsDeleted(Group g)
 ```
 Returns if the Group object got internally deleted and remained as dangling reference inside the lua state.
-#### Effect.GetLuaRef:
+
+### Effect.GetLuaRef:
 ```c++
 int Effect.GetLuaRef(Effect e)
 ```
 Returns an integer representing the internal value used by lua to access the Effect e.
-#### Effect.FromLuaRef:
+
+### Effect.FromLuaRef:
 ```c++
 Effect Effect.FromLuaRef(int ref)
 ```
 Returns a Effect object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Effect object.
-#### Effect.IsDeleted:
+
+### Effect.IsDeleted:
 ```c++
 bool Effect.IsDeleted(Effect e)
 ```
 Returns if the Effect object got internally deleted and remained as dangling reference inside the lua state.
-#### GetID:
+
+### GetID:
 ```c++
 table,int GetID()
 ```
 Returns two values, a card object and its ID, used before the initial effect.
-#### Card.GetCode:
+
+### Card.GetCode:
 ```c++
 int[,int] Card.GetCode(Card c)
 ```
 Returns the current code (ID/name) of the card "c".
-#### Card.GetOriginalCode:
+
+### Card.GetOriginalCode:
 ```c++
 int Card.GetOriginalCode(Card c)
 ```
 Returns the original printed code (ID/name) of the card "c".
-#### Card.GetOriginalCode:
+
+### Card.GetOriginalCode:
 ```c++
 int,int | Card.GetOriginalCodeRule(Card c)
 ```
 Returns the original code (ID/name) of the card "c" while taking into account name clauses/alias (used for the "original name" wording).
-#### Card.GetFusionCode:
+
+### Card.GetFusionCode:
 ```c++
 int,int... Card.GetFusionCode(Card c)
 ```
 Returns the code/ID that "c" has as a Fusion Material (see "Fusion Tag").
-#### Card.GetLinkCode:
+
+### Card.GetLinkCode:
 ```c++
 int,int... Card.GetLinkCode(Card c)
 ```
 Returns the code/ID that "c" has as a Link Material (see "Formud Skipper").
-#### Card.IsSummonCode:
+
+### Card.IsSummonCode:
 ```c++
-bool Card.IsSummonCode(Card c, Card sc\|nil,<br /> int sumtype, int playerid, int ...)
+bool Card.IsSummonCode(Card c, Card sc|nil, int sumtype, int playerid, int ...)
 ```
 Checks if "c" has a specific code from the "..." list if it is to be used as material for the Summon type "sumtype" of "sc" performed by the player "playerid".
-#### Card.IsFusionCode:
+
+### Card.IsFusionCode:
 ```c++
 bool Card.IsFusionCode(Card c, int ...)
 ```
 Checks if "c" has a specific code from the "..." list as a Fusion Material.
-#### Card.IsLinkCode:
+
+### Card.IsLinkCode:
 ```c++
 bool Card.IsLinkCode(Card c, int ...)
-```Checks if "c" has a specific code from the "..." list as a Link Material.
-#### Card.IsLinkCode:
+```
+Checks if "c" has a specific code from the "..." list as a Link Material.
+
+### Card.IsSetCard:
 ```c++
-bool | Card.IsSetCard(Card c, int setname[, Card scard|nil, int sumtype = 0, int playerid = PLAYER_NONE])
+bool Card.IsSetCard(Card c, int setname[, Card scard|nil, int sumtype = 0, int playerid = PLAYER_NONE])
 ```
 Checks if "c" is part of the archetype "setname" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
-#### Card.IsOriginalSetCard:
+
+### Card.IsOriginalSetCard:
 ```c++
-bool | Card.IsOriginalSetCard(Card c, int setname)
+bool Card.IsOriginalSetCard(Card c, int setname)
 ```
 Checks if "c" is originally part of the archetype "setname".
-#### Card.IsPreviousSetCard:
+
+### Card.IsPreviousSetCard:
 ```c++
-bool | Card.IsPreviousSetCard(Card c, int setname)
+bool Card.IsPreviousSetCard(Card c, int setname)
 ```
 Checks if "c" was previously part of the archetype "setname".
-#### Card.IsFusionSetCard:
+
+### Card.IsFusionSetCard:
 ```c++
-bool | Card.IsFusionSetCard(Card c, int setname)
+bool Card.IsFusionSetCard(Card c, int setname)
 ```
 Checks if "c" is part of the archetype "setname" if it is to be used as a Fusion Material.
-#### Card.GetSetCard:
+
+### Card.GetSetCard:
 ```c++
-int ... | Card.GetSetCard(Card c[, Card|nil scard, int sumtype=0, int playerid=PLAYER_NONE])
+int... Card.GetSetCard(Card c[, Card|nil scard, int sumtype=0, int playerid=PLAYER_NONE])
 ```
 Returns the archetype(s) that "c" has (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
-#### Card.GetOriginalSetCard:
+
+### Card.GetOriginalSetCard:
 ```c++
-int ... | Card.GetOriginalSetCard(Card c) 
+int... Card.GetOriginalSetCard(Card c) 
 ```
 Returns the original archetype(s) that "c" is a part of.
-#### Card.GetPreviousSetCard:
+
+### Card.GetPreviousSetCard:
 ```c++
-int ... | Card.GetPreviousSetCard(Card c)
+int... Card.GetPreviousSetCard(Card c)
 ```
 Returns the archetype(s) that "c" was part of previously.
 
+### Card.GetFusionSetCard:
+```c++
+int... Card.GetFusionSetCard(Card c)
+```
+Returns the archetype(s) that "c" is a part of if it is to be used as a Fusion Material.
+
+### IsLinkSummonable:
+```c++
+bool Card.IsLinkSummonable(Card c[, Group|Card|nil must_use, Group|Card|nil  mg, int min=0, int max=0])
+```
+Checks if "c" can be Link Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Link Summon.
+
+### IsLinkSetCard:
+```c++
+bool Card.IsLinkSetCard(Card c, int setname)
+```
+Checks if "c" is part of the archetype "setname" as a Link Material.
+
+### Card.GetType:
+```c++
+int Card.GetType(Card c[, Card|nil scard, int sumtype = 0, int playerid = PLAYER_NONE])
+```
+Gets the current type of a Card (Card c) where (Card scard) if provided checks the monster that (Card c) would be used as material, (int sumtype) is for checking the summon type and (int playerid) is the player checking the type.
+
+### Card.GetOriginalType:
+```c++
+int Card.GetOriginalType(Card c)
+```
+Returns the original card type (Monster/Spell/Trap) of "c".
+### Card.GetLevel:
+```c++
+int Card.GetLevel(Card c)
+```
+Returns the current Level of "c". Returns 0 if it has no Level, e.g. Xyz/Link.
+### Card.GetRank:
+```c++
+int Card.GetRank(Card c)
+```
+Returns the current Rank of "c". Returns 0 if it has no Rank.
+### Card.GetLink:
+```c++
+int Card.GetLink(Card c)
+```
+Returns the current Link Rating of "c". Returns 0 if it has no Link Rating.
+### Card.GetSynchroLevel:
+```c++
+int Card.GetSynchroLevel(Card c, Card sc)
+```
+Returns the Level of "c" if it would be used as a Synchro Material for "sc".
+### Card.GetRitualLevel:
+```c++
+int Card.GetRitualLevel(Card c, Card rc)
+```
+Returns the Level of "c" if it would be Tributed for the Ritual Summon of "rc".
+### Card.GetOriginalLevel:
+```c++
+int Card.GetOriginalLevel(Card c)
+```
+Returns the original Level of "c". Returns 0 if it has no Level, e.g. Xyz/Link.
+### Card.GetOriginalRank:
+```c++
+int Card.GetOriginalRank(Card c)
+```
+Returns the original Rank of "c". Returns 0 if it has no Rank.
+### Card.IsXyzLevel:
+```c++
+bool Card.IsXyzLevel(Card c, Card xyzc, int lv)
+```
+Checks if "c" would be Level "lv" if it was to be used as Xyz Material for "xyzc".
+### Card.GetLeftScale:
+```c++
+int Card.GetLeftScale(Card c) | Returns the current left Pendulum Scale of "c". (Returns 0 if it has no Pendulum Scale.)
+### Card.GetOriginalLeftScale:
+```c++
+int Card.GetOriginalLeftScale(Card c)
+```
+Returns the original left Pendulum Scale of "c". Returns 0 if it has no Pendulum Scale.
+### Card.GetRightScale:
+```c++
+int Card.GetRightScale(Card c)
+```
+Returns the current right Pendulum Scale of "c". Returns 0 if it has no Pendulum Scale.
+### Card.GetOriginalRightScale:
+```c++
+int Card.GetOriginalRightScale(Card c)
+```
+Returns the original right Pendulum Scale of "c". Returns 0 if it has no Pendulum Scale.
+
+
 | return| function| description|
 |------ | --------| -----------|
-int ... | Card.GetFusionSetCard(Card c) | Returns the archetype(s) that "c" is a part of if it is to be used as a Fusion Material.
-bool | Card.IsLinkSummonable(Card c[, Group\|Card\|nil must_use, Group\|Card\|nil  mg, int min=0, int max=0]) | Checks if "c" can be Link Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Link Summon.
-bool | Card.IsLinkSetCard(Card c, int setname) | Checks if "c" is part of the archetype "setname" as a Link Material.
-int | Card.GetType(Card c[, Card\|nil scard, int sumtype = 0, int playerid = PLAYER_NONE]) | Gets the current type of a Card (Card c) where (Card scard) if provided checks the monster that (Card c) would be used as material, (int sumtype) is for checking the summon type and (int playerid) is the player checking the type.
-int | Card.GetOriginalType(Card c) | Returns the original card type (Monster/Spell/Trap) of "c".
-int | Card.GetLevel(Card c) | Returns the current Level of "c". (Returns 0 if it has no Level, e.g. Xyz/Link.)
-int | Card.GetRank(Card c) | Returns the current Rank of "c". (Returns 0 if it has no Rank.)
-int | Card.GetLink(Card c) | Returns the current Link Rating of "c". (Returns 0 if it has no Link Rating.)
-int | Card.GetSynchroLevel(Card c, Card sc) | Returns the Level of "c" if it would be used as a Synchro Material for "sc".
-int | Card.GetRitualLevel(Card c, Card rc) | Returns the Level of "c" if it would be Tributed for the Ritual Summon of "rc".
-int | Card.GetOriginalLevel(Card c) | Returns the original Level of "c". (Returns 0 if it has no Level, e.g. Xyz/Link.)
-int | Card.GetOriginalRank(Card c) | Returns the original Rank of "c". (Returns 0 if it has no Rank.)
-bool | Card.IsXyzLevel(Card c, Card xyzc, int lv) | Checks if "c" would be Level "lv" if it was to be used as Xyz Material for "xyzc".
-int | Card.GetLeftScale(Card c) | Returns the current left Pendulum Scale of "c". (Returns 0 if it has no Pendulum Scale.)
-int | Card.GetOriginalLeftScale(Card c) | Returns the original left Pendulum Scale of "c". (Returns 0 if it has no Pendulum Scale.)
-int | Card.GetRightScale(Card c) | Returns the current right Pendulum Scale of "c". (Returns 0 if it has no Pendulum Scale.)
-int | Card.GetOriginalRightScale(Card c) | Returns the original right Pendulum Scale of "c". (Returns 0 if it has no Pendulum Scale.)
+
+
 bool | Card.IsLinkMarker(Card c, int markers) | Checks if (Card c) has the Link markers represented by (int markers)
 Group | Card.GetLinkedGroup(Card c) | Returns a group with all the cards that "c" points to. (Returns an empty group if it does not point to any cards.)
 int | Card.GetLinkedGroupCount(Card c) | Returns the number of cards that "c" points to.
