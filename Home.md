@@ -19,7 +19,13 @@ Additionally, costs (passed via Effect.SetCost) receive `chk` and targets (via E
 
 ## `Duel` methods:
 
-### Duel.GetZoneWithLinkedCount
-- return: int
-- parameters: int count, int tp
-
+### GetZoneWithLinkedCount
+```c++
+int Duel.GetZoneWithLinkedCount(int count, int tp)
+```
+Returns a zone flag including the tp's zones that are pointed by at least "count" Link Monsters.
+### GoatConfirm
+```c++
+void Duel.GoatConfirm(int tp, int loc)
+```
+Used for goat versions of cards, handle the "fail to find" scenario. It confirms tp's LOCATION_DECK or LOCATION_HAND (passed in loc), the hand is revealed to the opposing player, the deck is revealed to tp.
