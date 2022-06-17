@@ -20,9 +20,9 @@ Additionally, costs (passed via Effect.SetCost) receive `chk` and targets (via E
 ### Functions
 <html>
 <body>
-<!--StartFragment--><google-sheets-html-origin><style type="text/css"><!--td {border: 1px solid #ccc;}br {mso-data-placement:same-cell;}--></style>
+<div style="width:290px">property</div> 
 
-sig | name | desc
+<div return="width:290px">property</div> | name | desc
 -- | -- | --
 void | initial_effect(Card c) | The function that will be called for each card's initialization.
 int | bit.band(int a, int b) | Does a bitwise AND operation between 2 integers. (Deprecated, advised to use (int a)&(int b) instead.)
