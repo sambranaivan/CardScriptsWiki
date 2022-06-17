@@ -18,11 +18,8 @@ Additionally, costs (passed via Effect.SetCost) receive `chk` and targets (via E
 - chkc: needed in effects that target for effects that can redirect the targeting to another card (e.g. `Cairngorgon, Antiluminescent Knight`).
 
 ### Functions
-<html>
-<body>
-<div style="width:290px">property</div> 
 
-<div return="width:290px">property</div> | name | desc
+|<div style="width:1">Return</div> | <div style="width:10">Function</div> | Description|
 -- | -- | --
 void | initial_effect(Card c) | The function that will be called for each card's initialization.
 int | bit.band(int a, int b) | Does a bitwise AND operation between 2 integers. (Deprecated, advised to use (int a)&(int b) instead.)
@@ -940,6 +937,4 @@ int | aux.AnnounceAnotherRace(group g, int player) | Makes (int player) announce
 bool | Card.IsDifferentAttribute(Card c, int race) | Returns if (Card c) does not have Race (int race)
 bool | Card.IsBattleDestroyed(Card c) | Returns if (Card c) has been confirmed to be destroyed by battle
 
-<!--EndFragment-->
-</body>
-</html>
+
