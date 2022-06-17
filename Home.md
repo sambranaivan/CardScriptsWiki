@@ -84,7 +84,7 @@ Returns a Effect object from a given lua reference. The function errors out if t
 bool Effect.IsDeleted(Effect e)
 ```
 Returns if the Effect object got internally deleted and remained as dangling reference inside the lua state.
-#### GetID():
+#### GetID:
 ```c++
 table,int GetID()
 ```
@@ -128,19 +128,44 @@ Checks if "c" has a specific code from the "..." list as a Fusion Material.
 ```c++
 bool Card.IsLinkCode(Card c, int ...)
 ```Checks if "c" has a specific code from the "..." list as a Link Material.
-
-
+#### Card.IsLinkCode:
+```c++
+bool | Card.IsSetCard(Card c, int setname[, Card scard|nil, int sumtype = 0, int playerid = PLAYER_NONE])
+```
+Checks if "c" is part of the archetype "setname" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
+#### Card.IsOriginalSetCard:
+```c++
+bool | Card.IsOriginalSetCard(Card c, int setname)
+```
+Checks if "c" is originally part of the archetype "setname".
+#### Card.IsPreviousSetCard:
+```c++
+bool | Card.IsPreviousSetCard(Card c, int setname)
+```
+Checks if "c" was previously part of the archetype "setname".
+#### Card.IsFusionSetCard:
+```c++
+bool | Card.IsFusionSetCard(Card c, int setname)
+```
+Checks if "c" is part of the archetype "setname" if it is to be used as a Fusion Material.
+#### Card.GetSetCard:
+```c++
+int ... | Card.GetSetCard(Card c[, Card|nil scard, int sumtype=0, int playerid=PLAYER_NONE])
+```
+Returns the archetype(s) that "c" has (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
+#### Card.GetOriginalSetCard:
+```c++
+int ... | Card.GetOriginalSetCard(Card c) 
+```
+Returns the original archetype(s) that "c" is a part of.
+#### Card.GetPreviousSetCard:
+```c++
+int ... | Card.GetPreviousSetCard(Card c)
+```
+Returns the archetype(s) that "c" was part of previously.
 
 | return| function| description|
 |------ | --------| -----------|
-
-bool | Card.IsSetCard(Card c, int setname[, Card scard\|nil, int sumtype = 0, int playerid = PLAYER_NONE]) | Checks if "c" is part of the archetype "setname" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
-bool | Card.IsOriginalSetCard(Card c, int setname) | Checks if "c" is originally part of the archetype "setname".
-bool | Card.IsPreviousSetCard(Card c, int setname) | Checks if "c" was previously part of the archetype "setname".
-bool | Card.IsFusionSetCard(Card c, int setname) | Checks if "c" is part of the archetype "setname" if it is to be used as a Fusion Material.
-int ... | Card.GetSetCard(Card c[, Card\|nil scard, int sumtype=0, int playerid=PLAYER_NONE]) | Returns the archetype(s) that "c" has (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
-int ... | Card.GetOriginalSetCard(Card c) | Returns the original archetype(s) that "c" is a part of.
-int ... | Card.GetPreviousSetCard(Card c) | Returns the archetype(s) that "c" was part of previously.
 int ... | Card.GetFusionSetCard(Card c) | Returns the archetype(s) that "c" is a part of if it is to be used as a Fusion Material.
 bool | Card.IsLinkSummonable(Card c[, Group\|Card\|nil must_use, Group\|Card\|nil  mg, int min=0, int max=0]) | Checks if "c" can be Link Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Link Summon.
 bool | Card.IsLinkSetCard(Card c, int setname) | Checks if "c" is part of the archetype "setname" as a Link Material.
