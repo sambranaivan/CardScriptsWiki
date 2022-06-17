@@ -20,63 +20,54 @@ Additionally, costs (passed via Effect.SetCost) receive `chk` and targets (via E
 ### Functions
 #### initial_effect:
 ```c++
-void initial_effect(Card c)
-```
+void initial_effect(Card c)```
 function that will be called for each card's initialization.
 #### bit.replace:
 ```c++
-int bit.replace(int a, int b, int c[, int width=1])
-```
+int bit.replace(int a, int b, int c[, int width=1])```
 Returns a copy of (int a) with the field with a width changed to value (int b)
 #### bit.extract:
 ```c++
-int bit.extract(int a, int b[, int width=1])
-```
+int bit.extract(int a, int b[, int width=1])```
 Returns the field of (int a) with a width
 #### Card.GetLuaRef:
 ```c++
-int Card.GetLuaRef(Card c)
-```
+int Card.GetLuaRef(Card c)```
  Returns an integer representing the internal value used by lua to access the Card c.
 #### Card.FromLuaRef:
 ```c++
-Card Card.FromLuaRef(int ref)
-```
+Card Card.FromLuaRef(int ref)```
 Returns a Card object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Card object.
+#### Group.GetLuaRef:
+```c++
+int Group.GetLuaRef(Group g)```
+Returns an integer representing the internal value used by lua to access the Group g.
 #### Card.IsDeleted:
 ```c++
-bool Card.IsDeleted(Card c)
-```
+bool Card.IsDeleted(Card c)```
 Returns if the Card object got internally deleted and remained as dangling reference inside the lua state.
-#### Function.Name:
-```c++
-
 ```
-#### Function.Name:
+#### Group.GetLuaRef:
 ```c++
-
-```
-#### Function.Name:
+int Group.GetLuaRef(Group g)```
+Returns an integer representing the internal value used by lua to access the Group g.
+#### Group.FromLuaRef:
 ```c++
-
-```
-#### Function.Name:
+Group Group.FromLuaRef(int ref)```
+Returns a Group object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Group object.
+#### Group.IsDeleted:
 ```c++
-
-```
-#### Function.Name:
+bool Group.IsDeleted(Group g)```
+Returns if the Group object got internally deleted and remained as dangling reference inside the lua state.
+#### Effect.GetLuaRef:
 ```c++
+int Effect.GetLuaRef(Effect e)```
+Returns an integer representing the internal value used by lua to access the Effect e.
 
-```
 | return| function| description|
 |------ | --------| -----------|
 
-Card | Card.FromLuaRef(int ref) | Returns a Card object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Card object.
-bool | Card.IsDeleted(Card c) | Returns if the Card object got internally deleted and remained as dangling reference inside the lua state.
-int | Group.GetLuaRef(Group g) | Returns an integer representing the internal value used by lua to access the Group g.
-Group | Group.FromLuaRef(int ref) | Returns a Group object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Group object.
-bool | Group.IsDeleted(Group g) | Returns if the Group object got internally deleted and remained as dangling reference inside the lua state.
-int | Effect.GetLuaRef(Effect e) | Returns an integer representing the internal value used by lua to access the Effect e.
+
 Effect | Effect.FromLuaRef(int ref) | Returns a Effect object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Effect object.
 bool | Effect.IsDeleted(Effect e) | Returns if the Effect object got internally deleted and remained as dangling reference inside the lua state.
 table, int | GetID() | Returns two values, a card object and its ID, used before the initial effect.
