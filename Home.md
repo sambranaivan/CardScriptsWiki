@@ -27,12 +27,12 @@ int | aux.AnnounceAnotherAttribute(group g, int player) | Makes (int player) ann
 int | aux.AnnounceAnotherRace(group g, int player) | Makes (int player) announce a monster type (Race) different from the one(s) already among the members of (group g)
 int | aux.AskAny(stringid) |  
 int | aux.AskEveryone(stringid) |  
-bool | aux.bdcon(Effect e, int tp, Group eg|nil, int ep, int ev, Effect re, int r, int rp) | Default condition of EVENT_BATTLE_DESTROYING. "When this card destroys a monster by battle" and checks if itself is still the same state after battle.
-bool | aux.bdgcon(Effect e, int tp, Group eg|nil, int ep, int ev, Effect re, int r, int rp) | Condition of EVENT_BATTLE_DESTROYING. "When this card destroys a monster by battle and sends it to the Graveyard" and checks if itself is still the same state after battle.
-bool | aux.bdocon(Effect e, int tp, Group eg|nil, int ep, int ev, Effect re, int r, int rp) | Condition of EVENT_BATTLE_DESTROYING. "When this card destroys an opponent's monster by battle" and checks if itself is still the same state after battle.
+bool | aux.bdcon(Effect e, int tp, Group eg\|nil, int ep, int ev, Effect re, int r, int rp) | Default condition of EVENT_BATTLE_DESTROYING. "When this card destroys a monster by battle" and checks if itself is still the same state after battle.
+bool | aux.bdgcon(Effect e, int tp, Group eg\|nil, int ep, int ev, Effect re, int r, int rp) | Condition of EVENT_BATTLE_DESTROYING. "When this card destroys a monster by battle and sends it to the Graveyard" and checks if itself is still the same state after battle.
+bool | aux.bdocon(Effect e, int tp, Group eg\|nil, int ep, int ev, Effect re, int r, int rp) | Condition of EVENT_BATTLE_DESTROYING. "When this card destroys an opponent's monster by battle" and checks if itself is still the same state after battle.
 bool | aux.bdogcon(Effect e, int tp, Group eg\|nil, int ep, int ev, Effect re, int r, int rp) | Condition of EVENT_BATTLE_DESTROYING. "When this card destroys an opponent's monster by battle and sends it to the Graveyard" and checks if itself is still the same state after battle.
 void | aux.BeginPuzzle() | Sets up the beginning of a puzzle, causing the player to lose during the End Phase
-bool | aux.bfgcost(Effect e, int tp, Group|nil eg, int ep, int ev, Effect re, int r, int rp, int chk) | Default SetCost for "You can banish this card from your Graveyard"
+bool | aux.bfgcost(Effect e, int tp, Group\|nil eg, int ep, int ev, Effect re, int r, int rp, int chk) | Default SetCost for "You can banish this card from your Graveyard"
 table | aux.BitSplit(int number) | Auxiliary function to help printing hints for attribute-related cards such as Cynet Codec
 void | aux.CallToken(int code) | Function is used mostly for Anime Cards calling 419/420 to enable more functions. Also used in Anime Numbers with alias to prevent errors made by alias.
 bool | aux.CanActivateSkill(int player) |  
@@ -75,7 +75,7 @@ bool | aux.EquipByEffectAndLimitRegister(Card c, Effect e) |  
 bool | aux.EquipByEffectLimit(Card c, Effect e, int tp, Card tc, int|nil code, bool mustbefaceup) | Equips (Card tc) to (Card c). Adding a (int code) will register that code as flag effect to the equipped card  (bool mustbefaceup) defines if the card to be equipped is required to be face-up.
 void | aux.EquipEquip(Effect e, int tp, Group eg, int ep, int ev, Effect re, int r, int rp) | Used to equip the Equip Card to the targeted monster. This would be used if you cannot use the Equip Procedure for your Equip Card activation.
 int | aux.EvilHeroLimit(e, se, sp, st) | Default SetValue for "Evil HERO" monsters's effect EFFECT_SPSUMMON_CONDITION. Must be used due to the existance of "Supreme King Castle"
-bool | aux.evospcon(Effect e, int tp, Group eg|nil, int ep, int ev, Effect re, int r, int rp) | Default SetCondition for "Summoned by a "Evolsaur" monster"
+bool | aux.evospcon(Effect e, int tp, Group eg\|nil, int ep, int ev, Effect re, int r, int rp) | Default SetCondition for "Summoned by a "Evolsaur" monster"
 bool | aux.exccon(Effect e) | SetCondition for "except the turn this card was sent to the Graveyard".
 bool | aux.FALSE() | Function that returns false
 bool | aux.FieldSummonProcTg(function f1, function f2) |  
@@ -87,13 +87,13 @@ function | aux.FilterFaceupFunction(function f, ...) | Filter to check face-up c
 bool | aux.FilterSummonCode(...) | used for Material Types Filter Bool (works for IsRace, IsAttribute, IsType)
 function | aux.FunctionWithNamedArgs(function f, ...) |  
 bool | aux.fuslimit(Effect e, Effect se, int sp, int st) | SPSUMMON condition "Must be Fusion Summoned"
-bool | aux.gbspcon(Effect e, int tp, Group eg|nil, int ep, int ev, Effect re, int r, int rp) | Default SetCondition for "Summoned by a "Gladiator Beast" monster"
+bool | aux.gbspcon(Effect e, int tp, Group eg\|nil, int ep, int ev, Effect re, int r, int rp) | Default SetCondition for "Summoned by a "Gladiator Beast" monster"
 bool | aux.GeminiNormalCondition(Effect e) | Checks if a monster is face-up and is not a Gemini monster or has not been Normal Summoned on the field.
 table | aux.GetAttributeStrings(int number) |  
 int | aux.GetCover(card c, coverNum) | Used by the Skill procedure.
 table,group | aux.GetExtraMaterials(int player, group mustg, group sc, int summon_type) |  
 group | aux.GetMustBeMaterialGroup(int player, group eg, group sump, sc, group g, int r) |  
-Group | aux.GetMustBeMaterialGroup(int tp, nil|Group eg, int sump, nil|Card sc, nil|Group g, int r) | Gets the group that must be used as material (Contacting "C"). (int tp) is the affected player, (nil|Group eg) is all detected materials, (int sump) is the Summoning player, (nil|Card sc) is the card to be Summoned, (nil|Group) g is all the valid usable materials, (int r) is the reason e.g. REASON_SYNCHRO, REASON_XYZ
+Group | aux.GetMustBeMaterialGroup(int tp, nil\|Group eg, int sump, nil\|Card sc, nil\|Group g, int r) | Gets the group that must be used as material (Contacting "C"). (int tp) is the affected player, (nil\|Group eg) is all detected materials, (int sump) is the Summoning player, (nil\|Card sc) is the card to be Summoned, (nil\|Group) g is all the valid usable materials, (int r) is the reason e.g. REASON_SYNCHRO, REASON_XYZ
 
 
 Return type | Function |Description
@@ -137,7 +137,7 @@ table | aux.GetRaceStrings(int number) |  
 void | aux.GlobalCheck(s, function func) | Enables a global check to be used with function "func"
 bool | aux.HarmonizingMagFilter(c,e,f) |  
 bool | aux.HasCounterListed(card c, int counter_type) | Checks whether card c has an effect that mentions int counter_type counter. This includes adding, removing, gaining ATK/DEF per counter, etc. Corresponding table: "s.counter_list" ("s.counter_place_list" is already handled)
-bool | aux.HasListedSetCode(Card c, int ...) | Retrurn if (Card c) lists any of the setcodes passed in (int ...), by iterating over Card c's listed_series.
+bool | aux.HasListedSetCode(Card c, int ...) | Returns if (Card c) lists any of the setcodes passed in (int ...), by iterating over Card c's listed_series.
 bool | aux.imval1(Effect e, Card c) | default filter for EFFECT_CANNOT_BE_BATTLE_TARGET where (Card c) is checked to ensure it's not immune to (Effect e)
 bool | aux.imval2(Effect e, Card c) | similar to aux.imval1, but also check if the monster is from opponent.
 bool | aux.indoval(Effect e, Effect re, int rp) | Returns if the reason player is equal to 1-effect e's handler player. Commonly used as filter for EFFECT_INDESTRUCTABLE_EFFECT + opponent
