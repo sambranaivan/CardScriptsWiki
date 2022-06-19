@@ -35,10 +35,10 @@ function s.condition(e,tp,eg,ep,ev,re,r,rp,chk)
 	return true
 end
 function s.cost(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsFaceup() end 
 	if chk==0 then return true end
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chkc then return chkc:IsFaceup() end
 	if chk==0 then return true end
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
