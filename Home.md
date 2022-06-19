@@ -1,60 +1,13 @@
 Welcome to the Project Ignis card scripts wiki! Hopefully one day there will be detailed documentation here.
 
 # Scripting Library
-- TODO
-
-## Parameter naming convention
-The functions passed to Effect.SetCondition, Effect.SetCost, Effect.SetTarget and Effect.SetOperation usually receive the following paramaters:
-- `e`: effect
-- `tp`: triggering player
-- `eg`: event group
-- `ep`: event player
-- `ev`: event value
-- `re`: reason effect
-- `r`: reason
-- `rp`: reason player
-
-Additionally, costs (passed via Effect.SetCost) receive `chk` and targets (via Effect.SetTarget) receive `chk` and `chkc`:
-- chk: check (as in, "activation check"). The core runs the function with chk being 0 when it performs the activation check and with chk being 1 when the effect is activated.
-- chkc: needed in effects that target for effects that can redirect the targeting to another card (e.g. `Cairngorgon, Antiluminescent Knight`).
-
-Example:
-```lua
-local s,id=GetID()
-function s.initial_effect(c)
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e1:SetCondition(s.condition)
-	e1:SetCost(s.cost)
-	e1:SetTarget(s.target)
-	e1:SetOperation(s.activate)
-	c:RegisterEffect(e1)
-end
-function s.condition(e,tp,eg,ep,ev,re,r,rp,chk)
-	return true
-end
-function s.cost(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chk==0 then return true end
-end
-function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chkc then return chkc:IsFaceup() end
-	if chk==0 then return true end
-end
-function s.activate(e,tp,eg,ep,ev,re,r,rp)
-
-end
-```
-
-
 
 ## Functions
 
 ### Auxiliary Functions
 Return type | Function |Description
 -- | -- | --
--effect | aux.AddContinuousSkillProcedure(c, coverNum, drawless, flip) | Procedure for continuous Spell/Trap Skill-- c: the card (card)-- coverNum: the Number of the cover (int)-- drawless: if the player draw 1 less card at the start of the duel (bool)-- flip: if the continuous card get flipped at the start of the duel (bool)
+effect | aux.AddContinuousSkillProcedure(c, coverNum, drawless, flip) | Procedure for continuous Spell/Trap Skill-- c: the card (card)-- coverNum: the Number of the cover (int)-- drawless: if the player draw 1 less card at the start of the duel (bool)-- flip: if the continuous card get flipped at the start of the duel (bool)
 -void | aux.AddEquipProcedure(Card c, int\|nil p, function\|nil f, function\|nil eqlimit, function\|nil cost, function\|nil tg, function\|nil op, function\|nil con) | Adds the Equip Card Activation where (int p) is the player, setting 0 will limit to monsters you control, setting to 1 will be your opponent and PLAYER_ALL/nil will be for either player. (function f) is the filters on which monsters you can equip it to. (function eqlimit) if provided will that limitation on which monsters you can only equip it (e.g. Those that can only be equipped by this activation, e.g. Train Connection). (function cost) would be the cost to activate it. (function tg) are effects that applied to it after targeting the monster to equip, and also checking requirements. (function op) is any operation that is applied after the Equip Proc equips. (function con) returns a bool which are conditions that need to be fulfilled for the Equip Card to be activated.
 void | aux.AddEREquipLimit(Card c, function\|nil con, function\|nil equipval, function equipop, Effect linkedeff, int\|nil prop, int\|nil resetflag, int\|nil resetcount) | Registers effects that need to be checked for the effect of "Millennium-Eyes Illusionist". (function con) is any conditions that need to be fulfilled in order to apply its "equipping" effect. (function equipval) is the filter of valid monsters you can equip to it. (function equipop) is the equipping by its effect. (Effect linkedeff) is the effect that equips. (int prop) is the list of additional properties for SetProperty to register effects. (int resetflag) and (int resetcount) is used if the effect would reset such as, until only the End Phase.
 effect | aux.AddFieldSkillProcedure(card c, coverNum, drawless) | Procedure for Field skills--c: the skill (card)--coverNum: the cover corresponding to the back (int)--drawless: if the skill make you draw 1 less card at the start of the duel (bool)
