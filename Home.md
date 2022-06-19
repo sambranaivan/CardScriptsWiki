@@ -19,7 +19,7 @@ Additionally, costs (passed via Effect.SetCost) receive `chk` and targets (via E
 
 ## Functions
 
-### 
+### Auxiliary Functions
 Return type | Function |Description
 -- | -- | --
 effect | aux.AddContinuousSkillProcedure(c,coverNum, drawless,flip) | Procedure for continuous Spell/Trap Skill-- c: the card (card)-- coverNum: the Number of the cover (int)-- drawless: if the player draw 1 less card at the start of the duel (bool)-- flip: if the continuous card get flipped at the start of the duel (bool)
@@ -73,7 +73,7 @@ bool | aux.disfilter1(Card c) | Checks if (Card c) can be negated (for monsters)
 bool | aux.disfilter2(Card c) | Checks if (Card c) can be negated (for Spell/Trap)
 bool | aux.disfilter3(Card c) | Checks if (Card c) can be negated (return aux.disfilter1 OR aux.disfilter2)
 function | aux.dncheck | Checks for cards with different names (usually be used with aux.SelectUnselectGroup)
-bool | aux.dogcon(Effect e, int tp, Group eg|nil, int ep, int ev, Effect re, int r, int rp) | SetCondition for "is destroyed by your opponent".
+bool | aux.dogcon(Effect e, int tp, Group eg\|nil, int ep, int ev, Effect re, int r, int rp) | SetCondition for "is destroyed by your opponent".
 void | aux.DoubleSnareValidity(card c, int range, int property) | Registers that card c has an effect that can negate/destroy trap cards, while it is in the location defined in int range. Used by Double Snare to identify which cards it can destroy. Int property are additional properties other than the default EFFECT_FLAG_CANNOT_DISABLE\|EFFECT_FLAG_SINGLE_RANGE.
 
 Return type | Function |Description
@@ -113,3 +113,114 @@ Group | aux.GetMustBeMaterialGroup(int tp, nil|Group eg, int sump, nil|Card sc, 
 
 Return type | Function |Description
 -- | -- | --
+bool | aux.dpcheck(function f) | Checks for cards with different properties (the property defined in function f, for example, Card.GetLevel, GetAttribute, GetRace, GetCode, etc). Usually used with aux.SelectUnselectGroup.
+function | aux.dxmcostgen(int min, int max, [function op]) | "Detach Xyz Material Cost Generator". Generates a function to be used by Effect.SetCost in order to detach a number of Xyz Materials from the Effect's handler. (int min) is the minimum number of materials to check for detachment. (int max) is the maximum number of materials to detach or a function that gets called as if by doing max(e,tp) in order to get the value of max detachments. (function op) is an optional function that gets called by passing the effect and the operated group of just detached materials in order to do some additional handling with them.
+void | aux.EnableCheckReincarnation(Card c) | Auxiliary function for "Salamangreat" Reincarnation procedure. Enables reincarnation links.
+void | aux.EnableExtraRules(c,card,init,...) | Functions to automate consistent start-of-duel activations for Duel Modes like Speed Duel, Sealed Duel, etc
+void | aux.EnableExtraRulesOperation(card,init,...) |  
+void | aux.EnableGeminiAttribute(Card c) | Applies all the effects necessary for a Gemini monster to be used as one to (Card c).
+void | aux.EnableNeosReturn(Card c[, int extracat, function extrainfo, function extraop]) | Adds the effect to shuffle the card into the Extra Deck at the End Phase (most commonly used by "Neos" Fusion Monsters). If provided, "extracat", "extrainfo" and "extraop" will add additional effect categories, operation info and operations respectively to the effect. The Condition, Target and Operation functions of this effect, named NeosReturnCondition1/2, NeosReturnTarget and NeosReturnOperation, are detailed in cards_specific_functions.lua.
+void | aux.EnableSpiritReturn(Card c, int event1, int ...) | Sets up EVENT triggers to (Card c) so it returns to the hand during that End Phase, requires a minimum of 1 (int event1)
+bool | aux.EquipByEffectAndLimitRegister(Card c, Effect e) |  
+bool | aux.EquipByEffectLimit(Card c, Effect e, int tp, Card tc, int\|nil code, bool mustbefaceup) | Equips (Card tc) to (Card c). Adding a (int code) will register that code as flag effect to the equipped card  (bool mustbefaceup) defines if the card to be equipped is required to be face-up.
+void | aux.EquipEquip(Effect e, int tp, Group eg, int ep, int ev, Effect re, int r, int rp) | Used to equip the Equip Card to the targeted monster. This would be used if you cannot use the Equip Procedure for your Equip Card activation.
+int | aux.EvilHeroLimit(e,se,sp,st) | Default SetValue for "Evil HERO" monsters's effect EFFECT_SPSUMMON_CONDITION. Must be used due to the existance of "Supreme King Castle"
+bool | aux.evospcon(Effect e, int tp, Group eg\|nil, int ep, int ev, Effect re, int r, int rp) | Default SetCondition for "Summoned by a "Evolsaur" monster"
+bool | aux.exccon(Effect e) | SetCondition for "except the turn this card was sent to the Graveyard".
+bool | aux.FALSE() | Function that returns false
+bool | aux.FieldSummonProcTg(function f1, function f2) |  
+bool | aux.FilterBoolFunction(function f, ...) | Used in filters (with parameter (Card c)) to check a function and its (...) parameters
+bool | aux.FilterBoolFunctionEx(function f, int value) | Used filter for the Fusion, Xyz, Synchro and Link Procedures where (function f) can be Card.IsRace, Card.IsAttribute and Card.IsType and (int value) corresponds to the required Race, Attribute and Type.
+bool | aux.FilterBoolFunctionEx2(function f, ...) | 
+
+
+Return type | Function |Description
+-- | -- | --
+bool | aux.FilterEqualFunction(function f, int value, ...) | Used in filters (with parameter (Card c)) to check a function and its (...) parameters is equal to the inputted (int value).
+function | aux.FilterFaceupFunction(function f, ...) | Filter to check face-up cards that match (function f) where (...) are extra parameters to f. Can be used as the function parameter in SelectMatchingCard/Target and IsExistingMatchingCard/Target.
+bool | aux.FilterSummonCode(...) | used for Material Types Filter Bool (works for IsRace, IsAttribute, IsType)
+function | aux.FunctionWithNamedArgs(function f, ...) |  
+bool | aux.fuslimit(Effect e, Effect se, int sp, int st) | SPSUMMON condition "Must be Fusion Summoned"
+bool | aux.gbspcon(Effect e, int tp, Group eg\|nil, int ep, int ev, Effect re, int r, int rp) | Default SetCondition for "Summoned by a "Gladiator Beast" monster"
+bool | aux.GeminiNormalCondition(Effect e) | Checks if a monster is face-up and is not a Gemini monster or has not been Normal Summoned on the field.
+table | aux.GetAttributeStrings(int number) |  
+int | aux.GetCover(card c, coverNum) | Used by the Skill procedure.
+table,group | aux.GetExtraMaterials(int player, group mustg, group sc, int summon_type) |  
+group | aux.GetMustBeMaterialGroup(int player, group eg, group sump, sc, group g, int r) |  
+Group | aux.GetMustBeMaterialGroup(int tp, nil\|Group eg, int sump, nil\|Card sc, nil\|Group g, int r) | Gets the group that must be used as material (Contacting "C"). (int tp) is the affected player, (nil\|Group eg) is all detected materials, (int sump) is the Summoning player, (nil\|Card sc) is the card to be Summoned, (nil\|Group) g is all the valid usable materials, (int r) is the reason e.g. REASON_SYNCHRO, REASON_XYZ
+table | aux.GetRaceStrings(int number) |  
+void | aux.GlobalCheck(s, function func) | Enables a global check to be used with function "func"
+bool | aux.HarmonizingMagFilter(c,e,f) |  
+bool | aux.HasCounterListed(card c, int counter_type) | Checks whether card c has an effect that mentions int counter_type counter. This includes adding, removing, gaining ATK/DEF per counter, etc. Corresponding table: "s.counter_list" ("s.counter_place_list" is already handled)
+bool | aux.HasListedSetCode(Card c, int ...) | Retrurn if (Card c) lists any of the setcodes passed in (int ...), by iterating over Card c's listed_series.
+bool | aux.imval1(Effect e, Card c) | default filter for EFFECT_CANNOT_BE_BATTLE_TARGET where (Card c) is checked to ensure it's not immune to (Effect e)
+bool | aux.imval2(Effect e, Card c) | similar to aux.imval1, but also check if the monster is from opponent.
+bool | aux.indoval(Effect e, Effect re, int rp) | Returns if the reason player is equal to 1-effect e's handler player. Commonly used as filter for EFFECT_INDESTRUCTABLE_EFFECT + opponent
+
+Return type | Function |Description
+-- | -- | --
+bool | aux.indsval(Effect e, Effect re, int rp) | Returns if the reason player is equal to effect e's handler player. Commonly used as filter for EFFECT_INDESTRUCTABLE_EFFECT + self
+bool | aux.IsArchetypeCodeListed(card c, int ...) | Returns if the (Card c) specifically lists the name of a card that is part of an archetype in "...", iterating over Card c's listed_names and checking if those cards belong to any of the archetypes passed.
+bool | aux.IsCardTypeListed(Card c, int ...) | Returns true if (Card c) specifically lists any of the card types passed in (int ..), (which means that it iterates over Card c's listed_card_types)
+bool | aux.IsCodeListed(Card c, int ...) | Checks if 1 of the codes in (int ...) is a listed card in (Card c)'s text
+bool | aux.IsGeminiState(Effect e) | Checks if an effect's handler (corresponding card) is a Gemini monster applying its effect.
+bool | aux.IsMaterialListCode(Card c, int ...) | Checks if 1 of the codes in (int ...) is a listed Fusion Material in (Card c)
+bool | aux.IsMaterialListSetCard(Card c, int ...) | Checks if 1 of the setcodes in (int ...) is a listed archetype in a material of (Card c)
+bool | aux.IsNotGeminiState(Effect e) | returns not aux.IsGeminiState(Effect e)
+bool | aux.IsUnionState(Effect effect) | Used as a default condition to check if the handler of the effect is a Union monster equipped to another monster.
+bool | aux.IsZone(card c, int zone, int tp) | Returns if (card c) is in the (int zone), (int tp) is the reference player.
+bool | aux.KaijuCondition(e,c) | See cards_specific_functions.lua
+bool | aux.LavaCheck(sg,e,tp,mg) | See cards_specific_functions.lua
+bool | aux.LavaCondition(required, filter) | See cards_specific_functions.lua
+void | aux.LavaOperation(required, filter) | See cards_specific_functions.lua
+bool | aux.LavaTarget(required, filter) | See cards_specific_functions.lua
+bool | aux.lnklimit(Effect e, Effect se, int sp, int st) | SPSUMMON condition "Must be Link Summoned"
+int | aux.MainAndExtraGetSummonZones(card c, int mmz, int emz, effect e, int sumtype, int sump, int targetp, bool nocheck, bool nolimit, int pos, nc, ...) |  
+bool, Group | aux.MainAndExtraSpSummonLoop(function\|nil func, int sumtype, int sump, int targetp, bool nocheck, bool nolimit, int pos, int mmz, int emz)(Effect e, int tp, Group eg, int ep,int ev, Effect re, int r, int rp, Group sg) | Loops Special Summoning (Group sg) to ensure they go in a valid zone (Extra Moster Zone and Main Monster Zones) where (function func) is a function called after each card in the Group is summoned with the parameters (Effect e, int tp, Group eg, int ep,int ev, Effect re, int r, int rp, Card sc) where (Card sc) is the card that's Summoned. (int sumtype) is the Summon Type. (int sump) is the Summoning player. (int targetp) is the target player. (bool nocheck) checks for "ignoring the Summoning conditions". And (bool nolimit) checks for "ignoring proper Summon". (int pos) is the position to be Summoned. (int mmz) is the zones where you can Special Summon monsters in (Group sg) to the Main Monster Zone, which defaults to all Main Monster Zones if there is no input or nil is inputed. (int emz) on the other is similar to (int mmz) excepts it checks for cards from the Extra Deck which Special Summons to the Extra Monster Zone.
+bool | aux.MainAndExtraZoneCheckBool(card c, int mmz, int emz, effect e, int sumtype, int sump, int targetp, bool nocheck, bool nolimit, int pos, nc, ...) |  
+
+
+Return type | Function |Description
+-- | -- | --
+function | aux.MaleficSummonCondition(cd, int loc, function excon) | Auxiliary function for the summoning procedure of "Malefic" monsters. Checks if the player has the zone to summon and the appropriate monster (cd) to banish.
+function | aux.MaleficSummonFilter(c,cd) | Filter used with AddMaleficSummonProcedure. Returns if card (Card c)'s ID is (cd) and if c can be banished as cost
+function | aux.MaleficSummonOperation(cd, int loc) | Auxiliary function to handle the summoning procedure of "Malefic" monsters. Performs the actual summon of the monster by removing the appropriate monster.
+function | aux.MaleficSummonSubstitute(card c, card cd, int tp) | Used with the Summoning Procedure of "Malefic" monsters. Checks for the effect of "Malefic Paradox Gear"
+function | aux.MaleficUniqueFilter(cc) | Used as filter for the uniqueness on field with the "Malefic" monsters
+bool | aux.MZFilter(Card c, int tp) | Filter to check monsters if it's on a Main Monster Zone
+bool | aux.NecroValleyFilter(function f)(Card target, ...) | Filter check "not affected by Necrovalley" in addition to its own filter, if used as function filter, (Card target, ...) is defined by default
+bool | aux.NeosReturnSubstituteFilter(Card c) | Auxiliary filter used by NeosReturnOperation. Returns if Card c can be removed as cost and is Neos Fusion
+iterator | aux.Next(Group g) | Iterates over the cards in (Group g) for use with for loops
+bool | aux.NOT(function f)(...) | This is equivalent to not f(...), if used as filter checking, (...) is automatically applied
+nil | aux.NULL() | Function that returns nil
+bool | aux.NumeronDetachCost(int min[, int max=min]) | Auxiliary function to handle evaluate and execute detach costs for "Numeron" Xyz monsters that ignore costs due to the effect of "Numeron Network". Checks if player is affected by CARD_NUMERON_NETWORK, in which case it applies its effect. Otherwise, checks if the card using the function can detach a "min" number of materials to detach and then detaches up to "max" materials.
+bool | aux.nvfilter(Card c) | Filter check "not affected by Necrovalley"
+bool | aux.nzatk(Card c) | Filter checking if (Card c) is face-up and has more than 0 ATK
+bool | aux.nzdef(Card c) | Filter checking if (Card c) is face-up and has more than 0 DEF
+bool | aux.OR(...)(...) | First (...) is a list of functions which will be used to check the parameters in the second set of (...), separated with "or". The second set of (...) is applied automatically when used as a filter.
+table element | aux.ParamsFromTable(table t, key, ...) |  
+bool | aux.penlimit(Effect e, Effect se, int sp, int st) | SPSUMMON condition "Must be Pendulum Summoned"
+bool | aux.PersistentTargetFilter(Effect e, Card c) | Default filter for checking if it's targeted by the Persistent Trap.
+bool | aux.PlayFieldSpell(Card c,e,tp,eg,ep,ev,re,r,rp,target_p) | Activates a field spell Card "c". Already handles interactions with Field Spells that are already face up, rules for only 1 Field Spell at time, checks for costs and activated effects of the field spell and als the interaction with Ancient Pixie Dragon.
+bool | aux.ProcCancellable | Used with the Xyz Summon procedure and a fw Xyz monsters. Defined as false.
+Return type | Function |Description
+-- | -- | --
+
+
+Return type | Function |Description
+-- | -- | --
+
+
+Return type | Function |Description
+-- | -- | --
+
+
+Return type | Function |Description
+-- | -- | --
+
+
+Return type | Function |Description
+-- | -- | --
+
+
+
