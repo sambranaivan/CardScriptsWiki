@@ -942,27 +942,210 @@ void | Duel.XyzSummon(int player, Card c[, Group\|Card\|nil must_use, Group\|Car
 ### Effect functions
 Return type | Function |Description
 -- | -- | --
+bool | Effect.CheckCountLimit(int tp) | Checks if the effect can still be used by tp or the player has finished its uses.
+Effect | Effect.Clone(Effect e) | Clone an effect object (Effect e), duplicating all except register status and assigned labels.
+Effect | Effect.CreateEffect(Card c) | Create a new effect object with a card (Card c) as it's owner
+Effect | Effect.FromLuaRef(int ref) | Returns a Effect object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Effect object.
+int | Effect.GetActivateLocation(Effect e) | Get (Effect e)'s location when it was activated.
+int | Effect.GetActivateSequence(Effect e) | Get (Effect e)'s sequence when it was activated.
+int | Effect.GetActiveType(Effect e) | Gets an effect's (Effect e) card type of activation effect. Activation type is often the effect handler's card type, or the owner's if not attached to a card. Exception for Pendulum scale activation (would return TYPE_SPELL+TYPE_PENDULUM).
+int | Effect.GetCategory(Effect e) | Gets an effect's (Effect e) category
+int | Effect.GetCode(Effect e) | Gets (Effect e)'s code
+function | Effect.GetCondition(Effect e) | Gets an effect's (Effect e) condition function, returns nil if no function was set
+function | Effect.GetCost(Effect e) | Gets an effect's (Effect e) cost function, returns nil if no function was set
+int, int, int, int, int, int | Effect.GetCountLimit(Effect e) | Get (Effect e)'s:remaining usagesmaximum count limitits hopt identifier (e.g. detect "The effect of "card name" can only be used once per turn, almost always you'd want to use the card's own id to be sure it's unique.)its count flags (e.g. EFFECT_COUNT_CODE_DUEL to indicate an effect that is n times per duel)its hopt index (that is used to handle cards that have multiple hopt effects where each can be used once, the first will have an index of 0, the second an index of 1, etc,)
+int | Effect.GetDescription(Effect e) | Gets (Effect e)'s assigned description string id
+int | Effect.GetFieldID(Effect e) | Gets a unique ID representing a certain instance of an effect.
+Card | Effect.GetHandler(Effect e) | Gets an effect's (Effect e) card handler (that being the card on which the effect is registered on), if the effect is not attached to a card (i.e. registered to player) it returns its owner.
+int | Effect.GetHandlerPlayer(Effect e) | Returns the controller of the handler of the effect (Effect e). If the effect is registered to a player, it returns the player it's registered to instead.
+int,... | Effect.GetLabel(Effect e) | Gets an effect's (Effect e) internal labels. If no labels are present, it will return 0.
+Card\|Group\|Effect\|table | Effect.GetLabelObject(Effect e) | Gets an effect's (Effect e) internal label object
+int | Effect.GetLuaRef(Effect e) | Returns an integer representing the internal value used by lua to access the Effect e.
+function | Effect.GetOperation(Effect e) | Gets an effect's (Effect e) operation function, returns nil if no function was set
+Card | Effect.GetOwner(Effect e) | Gets an effect's (Effect e) card owner. If the effect was created as GlobalEffect then it returns an internal card object that shouldn't be used by the scripts.
+int | Effect.GetOwnerPlayer(Effect e) | Returns the controller of the owner of the effect (Effect e). If the effect is registered to a player, it returns the player it's registered to instead. If the owner was changed by Effect.SetOwnerPlayer, then it will return the value set by that function.
+int,int | Effect.GetProperty(Effect e) | Gets an effect's (Effect e) property
+int, int | Effect.GetReset(Effect e) | Gets (Effect e)'s reset flag and reset count.
+function | Effect.GetTarget(Effect e) | Gets an effect's (Effect e) target function, returns nil if no function was set
+int | Effect.GetType(Effect e) | Gets an effect's (Effect e) type
+function\|int | Effect.GetValue(Effect e) | Gets an effect's (Effect e) value or value function, returns nil if no function was set
+Effect | Effect.GlobalEffect() | Create a new effect object not owned by a specific card.
+bool | Effect.IsActivatable(Effect e, int player[, bool ignore_location=false, bool ignore_target=false]) | Checks if an effect (Effect e) can be activated by a player (int player). If ignore location is true, the handler of the effect is not checked to be in a valid location for that effect to be activated. If ignore target is true, then the target function is not executed to check if the effect can be activated.
+bool | Effect.IsActivated(Effect e) | Checks if an effect (Effect e) is an activated effect (not continuous and is a triggering effect)
+bool | Effect.IsActiveType(Effect e, int type) | Compares (with OR) an effect's (Effect e) card type of activation effect with supplied type (int type). Activation type is often the handler's card type, or the owner's if not attached to a card. Exception for Pendulum scale activation (would return TYPE_SPELL+TYPE_PENDULUM).
 
 Return type | Function |Description
 -- | -- | --
+bool | Effect.IsDeleted(Effect e) | Returns if the Effect object got internally deleted and remained as dangling reference inside the lua state.
+bool | Effect.IsHasCategory(Effect e, int cate) | Returns true if the effect (Effect e) has any category listed in (int cate), otherwise returns false
+bool | Effect.IsHasProperty(Effect e, int prop1[, int prop2]) | Returns true if the effect (Effect e) has any property listed in (int prop1) or (int prop2), otherwise returns false
+bool | Effect.IsHasType(Effect e, int type) | Returns true if the effect (Effect e) has any type listed in (int type), otherwise returns false
+void | Effect.Reset(Effect e) | Reset an effect (Effect e) and makes it collectible by the garbage collector. Even if the effect seems to be usable it **SHOULD NOT** be used in other places after calling this function.
+void | Effect.SetAbsoluteRange(Effect e, int playerid, int s_range, int o_range) | Sets an effect's (Effect e) target range in perspective of the supplied player (int playerid), s_range denotes the supplied player's range and o_range denotes the opponent's.
+void | Effect.SetCategory(Effect e, int cate) | Sets an effect's (Effect e) category. Refer to constant.lua for valid categories.
+void | Effect.SetCode(Effect e, int code) | Sets an effect's (Effect e) code. Refer to constant.lua and card scripts that has been already there for valid codes (or ask someone).
+void | Effect.SetCondition(Effect e, function con_func) | Sets (Effect e)'s condition function
+void | Effect.SetCost(Effect e, function cost_func) | Sets (Effect e)'s cost function
+void | Effect.SetCountLimit(Effect e, int count[, int code=0\|{ int code, int hopt_index }, int flag = 0]) | Sets an effect's (Effect e) use limit per turn to (int count). If "code" is supplied, then it would count toward all effects with the same count limit code (i.e. Hard OPT). If a card has multiple HOPT effects on it, then instead of passing "code" as integer, a table can be used as parameter, the first element of this table will be still "code", the second element will instead be the HOPT index of that effect, this is done to prevent the passed code from clashing with other HOPT effects. (e.g. calling "e:SetCountLimit(1,1234)" is the same as calling "e:SetCountLimit(1,{1234,0})". The flag parameter consists of the "EFFECT_COUNT_CODE_XXX" constants.
+void | Effect.SetDescription(Effect e, int desc) | Sets an effect's (Effect e) description string id with (int desc), you can use aux.StringId() to reference strings in your database, use the "HINTMSG_XXX" constants, or directly put the string number you want (it's not always recomented, but it's needed if you need to use a system string that is defined in the strings.conf file but doesn't have an equivalent "HINTMSG_XXX" constant).
+void | Effect.SetHintTiming(Effect e, int s_time[, int o_time=s_time]) | Sets an activated (Effect e)'s client usage hint timing
+void | Effect.SetLabel(Effect e, int label[, int ...]) | Sets an effect's (Effect e) internal labels to the integers passed as parameter. This would replace the previously stored labels.
+void | Effect.SetLabelObject(Effect e, Card\|Group\|Effect\|table labelobject) | Sets an effect's (Effect e) internal label object to label object. This would replace the previously stored label object.
+void | Effect.SetOperation(Effect e, function op_func) | Sets (Effect e)'s operation function
+void | Effect.SetOwnerPlayer(Effect e, int player) | Sets player as teh effect's owner player.
+void | Effect.SetProperty(Effect e, int prop1[, int prop2]) | Sets an effect's (Effect e) property. Refer to constant.lua and card scripts that has been already there for valid properties (or ask someone).
+void | Effect.SetRange(Effect e, int range) | Sets an effect's (Effect e) effective range (int range) i.e. LOCATION_MZONE. The location is the effect handler's location.
+void | Effect.SetReset(Effect e, int reset_flag[, int reset_count=1]) | Sets the timing that the effect (Effect e) would be erased (with reset_flag)
+void | Effect.SetTarget(Effect e, function targ_func) | Sets (Effect e)'s target function
+void | Effect.SetTargetRange(Effect e, int s_range, int o_range) | Sets (Effect e)'s target range, s_range denotes the effect's handler player's range and o_range denotes the opponent's. If the effect has "EFFECT_FLAG_PLAYER_TARGET" as property, then here 1 as "s_range" would mean it affect the handler and 0 would mean it doesn't, and "o_range" would refer to the opponent of the handler.
+void | Effect.SetType(Effect e, int type) | Sets an effect's (Effect e) type. Refer to constant.lua and card scripts that has been already there for valid types (or ask someone).
+void | Effect.SetValue(Effect e, function\|int\|bool val) | Sets (Effect e)'s value, or value function
+void | Effect.UseCountLimit(Effect e, int p [,int count=1, bool oath_only=false]) | Decreases the remaning usages of the effect by the player "p" by "count", if "oath_only" is true, the function will do nothing unless the effect is an OATH effect.
+
+### Fusion-related functions
+Return type | Function |Description
+-- | -- | --
+void | Fusion.AddContactProc(Card c, function group, function op, function sumcon, function\|nil condition, int sumtype = 0, int\|nil desc) | Adds a Contact Fusion Procedure to a Fusion monster which is a Summoning Procedure without having to use "Polymerization". (function group) is a function with (int tp) parameter which returns a Group of usable materials. (function op) is the operation that will be applied to the selected materials. (function sumcon) adds a limitation on a Fusion monster which applies to EFFECT_SPSUMMON_CONDITION. (function condition) is an additional condition to check. (int sumtype) is the Summon Type of the Contact Fusion, which defaults to 0. (int desc) is the description of the Summoning Procedure when selecting it.
+void | Fusion.AddProcCode2(c,code1,code2,sub,insf) | Recipe for Fusion monsters that have code1 + code2 as materials. Exampe: Beast Machine King Barbaros Ür (Manga)
+void | Fusion.AddProcCode2FunRep(c,code1,code2,f,minc,maxc,sub,insf) | Fusion monster, name + name + condition * minc to maxc
+void | Fusion.AddProcCode3(c,code1,code2,code3,sub,insf) | Recipe for Fusion monsters that have code1+ code2 + code3 as materials. Not used by any cards.
+void | Fusion.AddProcCode4(c,code1,code2,code3,code4,sub,insf) | Recipe for Fusion monsters that have code1+ code2 + code3 + code4 as materials. Not used by any cards.
+void | Fusion.AddProcCodeFun(c,code1,f,cc,sub,insf) | Fusion monster, name + condition * n
+void | Fusion.AddProcCodeFunRep(c,code1,f,minc,maxc,sub,insf) | Fusion monster, name + condition * minc to maxc
+void | Fusion.AddProcCodeRep(c, code1, n, sub, insf) | Recipe for Fusion monsters that have n "code1" cards as material. Not directly called by any card.
+void | Fusion.AddProcCodeRep2(c,code1,minc,maxc,sub,insf) | Fusion monster, name * minc to maxc. nnot used by any card
+void | Fusion.AddProcFun2(c,f1,f2,insf) | Fusion monster, condition + condition
+void | Fusion.AddProcFunFun(c,f1,f2,cc,insf) | Fusion monster, condition1 + condition2 * n
+void | Fusion.AddProcFunFunRep(c,f1,f2,minc,maxc,insf) | Fusion monster, condition1 + condition2 * minc to maxc
+void | Fusion.AddProcFunRep(c,f,cc,insf) | Fusion monster, condition * n
+void | Fusion.AddProcFunRep2(c,f,minc,maxc,insf) | Fusion monster, condition * minc to maxc
+void | Fusion.AddProcMix(Card c, bool sub, bool insf, int\|function ...) | Adds a Fusion Procedure where (bool sub) is a check if Fusion Substitutes are allowed. (bool insf) is a check if using no materials are allowed (e.g. Instant Fusion). (int\|function ...) is a list of any number of codes/conditions as Fusion Materials. Member function from the Fusion namespace. Definition available in proc_fusion.lua.
+void | Fusion.AddProcMixN(Card c, bool sub, bool insf, int\|function, int ...) | Adds a Fusion Procedure where (bool sub) is a check if Fusion Substitutes are allowed. (bool insf) is a check if using no materials are allowed (e.g. Instant Fusion). (int\|function ...) is a list of any number of codes/conditions as Fusion Materials, by pairs wherein the first value is int/function which is the code or condition, and the second value is an int which corresponds to the number of fixed materials.
+void | Fusion.AddProcMixRep(Card c, bool sub, bool insf, function fun1, int minc, int maxc, int\|function ...) | Adds a Fusion Procedure where (bool sub) is a check if Fusion Substitutes are allowed. (bool insf) is a check if using no materials are allowed (e.g. Instant Fusion). (function fun1) is a condition for a Fusion Material with a minimum (int minc) and maximum (int maxc) and (int\|function ...) is a list of any number of codes/conditions as Fusion Materials.
+void | Fusion.AddProcMixRepUnfix(c,sub,insf,...) |  
+void | Fusion.AddShaddolProcMix(Card c, bool insf, function f, int att) | Adds a Fusion Procedure where (bool insf) is a check if using no materials are allowed (e.g. Instant Fusion) and accepts 1 condition (function f) and 1 Attribute (int att).
+
+Return type | Function |Description
+-- | -- | --
+void | Fusion.BanishMaterial(e,tc,tp,group sg) | Banishes (group sg), face-up, with REASON_EFFECT+REASON_MATERIAL+REASON_FUSION. Then clears the group sg. Used by the Fusion Summon procedure.
+nil\|function | Fusion.CheckAdditional | A variable used temporarily to add further checks (e.g. only up to 2 materials from the Extra Deck: Odd-Eyes Fusion)
+nil\|int | Fusion.CheckExact | A variable used temporarily to limit the usable materials' number
+bool | Fusion.CheckWithHandler(fun,...) | Used by the Fusion Summon procedure.
+effect | Fusion.CreateSummonEff(card c, function fusfilter, function matfilter, function extrafil ,extraop, gc, function stage2, int exactcount, int value, int location, chkf, string desc) | Function that generates a Fusion Summon effect, called from the Fusion Summon Procedure defined in "proc_fusion.lua" and "proc_fusion2.lua". By default it's usable for Spells/Traps; usage in monsters requires changing type and code afterwards. [Card c] is card that uses the effect, [fusfilter] is the filter for the monster to be Fusion Summoned, [matfilter] is a function with the restrictions on the default materials returned by GetFusionMaterial,  [extrafil] is a function that returns a group of extra cards that can be used as fusion materials, and as second optional parameter an additional filter function, [extraop] is function called right before sending the monsters to the graveyard as material, [gc] is mandatory card or function returning a group to be used (Soprano the Melodious Songtress, etc), [stage2] is a function called after the monster has been summoned (Necro Fusion, Shaddol Ruq, Instant Fusion, Flash Fusion, etc.), [exactcount] is the exact number of materials that must be used if the effect requires it (Ostinato, etc.), [int location] is the location where to summon Fusion monsters from (by default, LOCATION_EXTRA), [chkf] are FUSPROC flags for the fusion summon and [desc] calls a string for the summon effect description.
+bool | Fusion.ForcedHandler(effect e) | Used by the Fusion Summon procedure.
+bool | Fusion.InHandMat(filter,...) | Used by the Fusion Summon procedure.
+bool | Fusion.IsMonsterFilter(function f,...) | Used by the Fusion Summon procedure.
+bool | Fusion.OnFieldMat(filter,...) | Used by the Fusion Summon procedure.
+void | Fusion.ShuffleMaterial(e,tc,tp,group sg) | Sends (group sg) to the Deck with REASON_EFFECT+REASON_MATERIAL+REASON_FUSION. Then clears the group sg. Used by the Fusion Summon procedure.
+
+### GetID
+
+Return type | Function |Description
+-- | -- | --
+table, int | GetID() | Returns two values, a card object and its ID, used before the initial effect.
+
+### Group functions
+Return type | Function |Description
+-- | -- | --
+Group | Group.AddCard(Group g, Card\|Group other) | Add a card or group (Card\|Group other) to a group (Group g). Returns the group itself.
+Group | Group.AddMaximumCheck(Group g) | Returns a group containing all the maximum parts of cards that are in maximum mode in the group g,
+bool,void | Group.CheckDifferentProperty(Group g, function f, ...) | function to check if every card in a group has at least a different property from the others with a function that stores the properties in multiple returns form
+bool | Group.CheckDifferentPropertyBinary(Group g, function f, ...) | Function to check if every card in a group has at least a different property from the others with a function that stores the properties in binary form.
+bool | Group.CheckSameProperty(g, f, ...) | Returns if the members of (Group  g) share a same property, provided in (Function f)
+bool, bool | Group.CheckWithSumEqual(Group g, function f, int sum, int min, int max, ...) | Checks if there is a combination of cards, with a minimum and maximum, that has the sum of f(c,...) result equal to (int sum) in a group (Group g). Function f accepts at least one parameter (f(c,...). with c as each member of the group), and the return value should be integer. The second returned value indicates wheter the check failed because of overtributing (in which case it will be true), or beause of undertributing.
+bool, bool | Group.CheckWithSumGreater(Group g, function f, int sum, ...) | Checks if there is a combination of cards, with a minimum and maximum, that has the sum of f(c,...) result greater than or equal to (int sum) in a group (Group g). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer. The second returned value indicates wheter the check failed because of overtributing (in which case it will be true), or beause of undertributing.
+void | Group.Clear(Group g) | Removes all the elements from a group (Group g)
+Group | Group.Clone(Group g) | Create a copy of a group (Group g) with the same members
+Group | Group.CreateGroup() | Create a new Group object
+void | Group.DeleteGroup(Group g) | Makes a group that was kept alive be collectable (Group g)
+bool | Group.Equal(Group g1, Group g2) | Checks if the first group (Group g1) has the same members with the second group (Group g2)
+
+Return type | Function |Description
+-- | -- | --
+Group | Group.Filter(Group g, function f, Group\|Card ex\|nil, ...) | Create a new group with members from another group (Group g) filtered according to a function (function f). Excludes a card/group (Group/Card ex) if not nil. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the card will be included if f(c,...) returns true.
+int | Group.FilterCount(Group g, function f, Group\|Card ex\|nil, ...) | Counts the amount of members of a group (Group g) which meets the function (function f). Excludes a card (Card ex) if not nil. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the card will be included if f(c,...) returns true.
+Group | Group.FilterSelect(Group g, int player, function f, int min, int max[, bool cancelable=false], Group\|Card ex\|nil, ...) | Make a player (int player) select members of a group (Group g) which meets the function (function f), with a minimum and a maximum, then outputs the result as a new Group. Excludes a card (Card ex) if not nil. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the card will be included if f(c,...) returns true. If cancelable is true and the selection is canceled nil will be returned.
+void | Group.ForEach(Group g, function f, ...) | Executes a function for each card in a group (Group g), function f should accept one parameter (e.g. f(c, ...), with c as each member of the group and ... can be any number of parameters)
+Group | Group.FromCards(Card c[, ...]) | Create a new Group object and populate it with cards (Card c, ...)
+Group | Group.FromLuaRef(int ref) | Returns a Group object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Group object.
+{ int, int, ... } | Group.GetClass(Group g, function f, ...) | Returns a table containing all the different values returned by applying the function f to all the members of the Group g,
+int | Group.GetClassCount(Group g, function f, ...) | Gets the count of different f(c,...) results from all members of a group (Group g). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer.
+int | Group.GetCount(Group g) | Returns the number of cards in a group (Group g)
+Card/nil | Group.GetFirst(Group g) | Gets the first member of Group g (also resets the internal enumerator). Returns nil if the group is empty.
+int | Group.GetLinkedZone(Group g, int cp) | Returns all the zones that all the cards in g point to (on the field of player "cp").
+int | Group.GetLuaRef(Group g) | Returns an integer representing the internal value used by lua to access the Group g.
+Group,int/nil | Group.GetMaxGroup(Group g, function f, ...) | Create a new group with members from another group (Group g) which has the maximum result from f(c,...). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer, if the group g have no element, that function will return nil.
+Group,int/nil | Group.GetMinGroup(Group g, function f, ...) | Create a new group with members from another group (Group g) which has the minimum result from f(c,...). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer, if the group g have no element, that function will return nil.
+Card/nil | Group.GetNext(Group g) | Gets then next member of Group g (moves the internal enumerator by a step). Returns nil when the whole group was iterated.
+int | Group.GetSum(Group g, function f, ...) | Gets the sum of f(c,...) result from all members of a group (Group g). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer.
+int | Group.GetToBeLinkedZone(card tc, card c, int tp[, bool clink = false, bool emz = false]) | Returns the zone(s) of a player "tp" such that "c" would point to "tc" if "tc" would be summoned. If "clink" is set to true it will only return the zone(s) so that "c" and "tc" would be co-linked. Set "emz" to true if the summoned monster could be placed in the Extra Monster Zone so that the possibility of Extra Linking is accounted for (see "G Golem Crystal Heart" for an example use).
+bool | Group.Includes(Group g1, Group g2) | Checks if (Group g1) contains all cards in (Group g2)
+bool | Group.IsContains(Group g, Card c) | Checks if a group (Group g) contains a specified card (Card c)
 
 
 Return type | Function |Description
 -- | -- | --
+bool | Group.IsDeleted(Group g) | Returns if the Group object got internally deleted and remained as dangling reference inside the lua state.
+bool | Group.IsExists(Group g, function f, int count, Group\|Card ex\|nil, ...) | Checks if at least a number (int count) of members of a group (Group g) meet the function (function f). Excludes a card (Card ex) if not nil. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the card will be included if f(c,...) returns true.
+iterator | Group.Iter(Group g) | Iterates over the cards in (Group g) for use with for loops
+void | Group.KeepAlive(Group g) | Make a group (Group g) not be collected upon exiting the function
+Group | Group.Match(Group g, function f, Group\|Card ex\|nil, ...) | It has the same behaviour as Group.Filter but the changes are done to the Group g and no new group is created.
+Group | Group.Merge(Group g1, Card\|Group other) | Add a card or group (Card\|Group other) to a group (Group g). Returns the group itself.
+Group | Group.RandomSelect(Group g, int player, int count) | Make a player (int player) randomly select (int amount) members of a group (Group g).
+Group | Group.Remove(Group g, function f, Group\|Card ex\|nil, ...) | Removes members of a group (Group g) that meets the function (function f). Excludes a card (Card ex) from removal if not nil. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the card will be included if f(c,...) returns true. Returns the group g.
+Group | Group.RemoveCard(Group g, Card\|Group other) | Remove a card or group (Card\|Group other) from a group (Group g). Returns the group itself.
+Card | Group.SearchCard(Group g, function f, ...) | Gets the first card found in a group (Group g) which f(c,...) returns true. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and must return a boolean.
+Group | Group.Select(Group g, int player, int min, int max[, bool cancelable=false] Group\|Card ex\|nil) | Make a player (int player) select members of a group (Group g), with a minimum and a maximum, then outputs the result as a new Group. Excludes a card (Card ex) if not nil. If cancelable is true and the selection is canceled nil will be returned.
+Card | Group.SelectUnselect(Group g1, Group g2, int player[, bool finishable, bool cancelable, int min, int max]) | Selects cards in a loop that allows unselection/cancellation. (Group g1) is the group of not selected cards, (Group g2) is the group of already selected cards, (int player) is the player who selects the card, (bool finishable) indicates that the current selection has met the requirements and thus can be finished with the right click, (bool cancelable) indicates that the selection can be canceled with the right click (in the procedures this is set when the selected group is empty and no chain is going on), (int max) and (int min) does nothing to the function, they are only the max and min values shown in the hint. Every card in both the groups can be selected. The function returns a single card
+Group | Group.SelectWithSumEqual(Group g, int player, function f, int sum, int min, int max, ...) | Makes a player (int player) select members of a group (Group g) which results in a combination of cards, with a minimum and maximum, that has the sum of f(c,...) result equal to (int sum). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer.
+Group | Group.SelectWithSumGreater(Group g, int player, function f, int sum, ...) | Makes a player (int player) select members of a group (Group g) which results in a combination of cards, with a minimum and maximum, that has the sum of f(c,...) result greater than or equal to (int sum). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer.
+<html>
+<body>
+<!--StartFragment--><google-sheets-html-origin><style type="text/css"><!--td {border: 1px solid #ccc;}br {mso-data-placement:same-cell;}--></style>
+Group, Group | Group.Split(Group g, function f, Group\|Card ex\|nil, ...) | Returns 2 groups, the first group will contain cards matched with the same behaviour as Gruop.Filter, the second group will contain the remaining cards from the Group g.
+Group | Group.Sub(Group g1, Card\|Group other) | Remove a card or group (Card\|Group other) from a group (Group g). Returns the group itself.
+Card/nil | Group.TakeatPos(Group g, int pos) | Returns the card at the index specified (int pos) in the group. Returns nil if the index is greater than the size of the group.
 
+### initial effect
 Return type | Function |Description
 -- | -- | --
+void | initial_effect(Card c) | The function that will be called for each card's initialization.
 
+### Link-related functions
 Return type | Function |Description
 -- | -- | --
+void | Link.AddProcedure(Card c, function\|nil f, int min, int max = c:GetLink(), function\|nil specialchk, int desc) | Adds a Link Procedure where (function f) is the required material with a minimum (int min) and maximum (int max) where (function specialchk) is an additional check after obtaining all materials (e.g. Akashic Magician) and (int desc) is the description to its Link Summoning Procedure
 
+### Pendulum-related functions
 Return type | Function |Description
 -- | -- | --
+void | Pendulum.AddProcedure(Card c[, bool reg=true, int\|nil desc]) | Applies all the effects necessary for a Pendulum card to be used as one to (Card c). Setting (bool reg) to false, will not register the activation effect, which is used in cards that cannot be activated since you don't have them in your hand (e.g. Xyz/Pendulums). (int desc) is an optional parameter adding a description to your Pendulum Activation.
 
-
+### Ritual-related functions
 Return type | Function |Description
 -- | -- | --
+effect | Ritual.AddProc(card c,int _type, function filter, int lv, string desc, function extrafil, function extraop, function matfilter, function stage2, int location,group forcedselection, function customoperation,group specificmatfilter) |  
+effect | Ritual.AddProcCode(card c, int _type, int lv, string desc, ...) |  
+void | Ritual.AddProcEqual(Card c, function filter, int lv[, string desc, function extrafil, function extraop, matfilter, function stage2, int location, forcedselection, customoperation, function specificmatfilter]) | Adds a Ritual Summoning activation, requring Tributes that meet (function filter), and with levels exactly equal to the Ritual Monster's level or if (int lv) is provided, with level equal to that value. (int desc) is the description when activating the Ritual Spell.
+void | Ritual.AddProcEqualCode(Card c, int lv, int desc, [...]) | Adds a Ritual Summoning activation, requring Tributes with any of the card names of code (int ...), and with levels exactly equal to the Ritual Monster's level or if (int lv) is provided, with level equal to that value. (int desc) is the description when activating the Ritual Spell when provided.
+effect | Ritual.AddProcGreater(Card c, function filter, int lv, string desc, function extrafil, function extraop, function matfilter, function stage2, int location, forcedselection, function customoperation, function specificmatfilter) | Adds a Ritual Summoning activation requring Tributes that meet (function filter), and with levels equal to or greater than the Ritual Monster's level
+void | Ritual.AddProcGreaterCode(Card c, int lv, string desc,...) | Adds a Ritual Summoning activation requring Tributes for a Ritual monster with any of the card names of code (int ...), and with levels equal to or greater than the Ritual Monster's level
+effect | Ritual.AddWholeLevelTribute(card c, function cond) | The current total level to match for the monster being summoned, to be used with monsters that can be used as whole tribute
+effect | Ritual.CreateProc(card c,int _type, function filter, int lv, string desc, function extrafil, function extraop, function matfilter, function stage2,int location,group forcedselection, function customoperation, function specificmatfilter) |  
 
+### Synchro-related functions
 Return type | Function |Description
 -- | -- | --
+void | Synchro.AddDarkSynchroProcedure(Card c, function f1, function f2, int plv, int nlv, function ...) | Adds a Synchro Procedure to (Card c) used by Dark Synchros where (function f1) is the first material, usually used by the non-Tuner and (function f2) as the Dark Tuner, whose Level to be subtracted from the first material. (int plv) is the target level when both materials are of positive value while (int nlv) is the target value if the first material is affected by Dark Wave. (int plv) defaults to the Synchro monster's level while (int nlv) defaults to the (int plv) if not supplied. (function ...) is the list of required materials during the Summon.
+void | Synchro.AddMajesticProcedure(Card c, function f1, bool cbt1, function f2, bool cbt2, function f3, bool cbt3, function ...) | Adds a Synchro Procedure to (Card c) used by Majestic Star Dragon where (function f1, f2 and f3) are the required material and (bool cbt1, cbt2 and cbt3) are a check if the respective material can be used as the Tuner in the Summon since rulings for Majestic Star/Red Dragon state that either or both Majestic Dragon (f1) and/or Stardust Dragon/Red Dragon Archfiend (f2) can be used as the Tuner, but the non-Tuner, for the case of using Phantom King Hydride (f3) cannot be treated as the Tuner for the Summon. You require a minimum of 1 among these 3 to be the Tuner. (function ...) is the list of required materials during the Summon.
+void | Synchro.AddProcedure(Card c, function f1, int min1, int max1, function f2, int min2, int max2, function sub1, function sub2, function req1, int reqct1, function req2, int reqct2, function reqm) | Adds a Synchro Procedure to (Card c) where (function f1) is the required Tuner, with a minimum (int min1) and maximum (int max1). (function f2) is the second material (which usually is a non-Tuner, with a minimum (int min2) and maximum (int max2). (function sub1) is a Tuner substitute (e.g. Nirvana High Paladin) while (function sub2) is a substitute to the second material(s). (function req1) are required Tuners to be used in that Summon, with a fixed number (int reqct1) on how many are needed to be used. (function req2) follows the same pattern but for the secondary material (e.g. Crystal Wing Synchro Dragon (Anime)). (function reqm) is the required material needed to be used in that Summon regardless if it's a Tuner or the second material (e.g. function overwrite by Blackwing - Gofu the Vague Shadow (Anime)).
+bool | Synchro.NonTuner(function f, a, b, c) | A filter used in a Synchro procedure when a material is supposed to be non-Tuner. It also has to satisfy condition of (function f) if provided with (a, b, c) parameters.
+bool | Synchro.NonTunerCode(table params) | Used in the Synchro Summon procedure.
+bool | Synchro.NonTunerEx(function f, int val) | A filter used in a Synchro procedure when a material is supposed to be non-Tuner. It also has to satisfy condition of (function f) which has to be Card.IsRace, Card.IsAttribute or Card.IsType, or a function that would use any of these 3. Also, (int val) is a parameter that is used in checking the (function f).
+int | Synchro.Send | a number representing how and where the Synchro Materials would be sent. 0 - (default) to grave, 1- to grave, returned from banished, 2 - banished face-up, 3 - banished face-down, 4 - sent to hand, 5, sent to Deck, 6 - destroyed.
+
+### Xyz-related functions
+Return type | Function |Description
+-- | -- | --
+void | Xyz.AddProcedure(Card c, function\|nil f, int\|nil lv, int ct, f\|nil alterf, int desc, int maxct=ct, function op, bool mustbemat, function exchk) | Adds an Xyz Procedure where (function f) is the required Xyz Material, and (int lv) is the required level, but it can also be nil if there is no required Level. (int ct) is the required number of materials. (function alterf) is the alternate material, e.g. Number C39: Utopia Ray. (int desc) is the description shown when attempting to Xyz Summon using (function alterf). (int maxct) is the maximum number of materials, which defaults to (int ct). (function op) is used by some monsters do something else in addition to using an Xyz Material (e.g. Digital Bug Corebage (detach 2 materials) or Number 99: Utopic Dragon (discard 1 "Rank-Up-Magic")). (bool mustbemat) is used if you can only use the listed materials during the Xyz Summon, this disallows Anime effects such as Orichalcum Chain (minus 1 material) or Triangle Evolution (triple material). (function exchk) is an additional check at the end of selecting materials (e.g. Number F0: Utopic Future (checks if the materials have the same Rank)
 
