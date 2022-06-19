@@ -1,4 +1,4 @@
-The functions passed to Effect.SetCondition, Effect.SetCost, Effect.SetTarget and Effect.SetOperation usually receive the following paramaters:
+The functions passed to Effect.SetCondition, Effect.SetCost, Effect.SetTarget and Effect.SetOperation usually receive the following parameters:
 - `e`: effect
 - `tp`: triggering player
 - `eg`: event group
