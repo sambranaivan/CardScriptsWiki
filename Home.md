@@ -19,6 +19,7 @@ Additionally, costs (passed via Effect.SetCost) receive `chk` and targets (via E
 
 ## Functions
 
+### 
 Return type | Function |Description
 -- | -- | --
 effect | aux.AddContinuousSkillProcedure(c,coverNum, & drawless,flip) | Procedure for continuous Spell/Trap Skill-- c: the card (card)-- coverNum: the Number of the cover (int)-- drawless: if the player draw 1 less card at the start of the duel (bool)-- flip: if the continuous card get flipped at the start of the duel (bool)
@@ -34,7 +35,7 @@ effect | aux.AddNormalSummonProcedure(card c, bool ns, bool opt, int min, int ma
 
 Return type | Function |Description
 -- | -- | --
-void | aux.AddPersistentProcedure(Card c, int\|nil p, function\|nil f, int\|nil category, int\|nil property, int\|nil hint1, int\|nil hint2, function\|nil con, function\|nil cost, function\|nil tg, function\|nil op, bool\|nil anypos) | Adds the Persistent Trap Procedure where is the player, setting 0 will limit to monsters you control, setting to 1 will be your opponent and PLAYER_ALL/nil will be for either player. (function f) is the filters on which monsters you can target. (bool anypos) is a check if the target needs to be face-up. Setting this to true will allow it to be targeted even if it isn't face-up.
+void | aux.AddPersistentProcedure(Card c, int\|nil p, function\|nil f, int\|nil category, & int\|nil property, int\|nil hint1, int\|nil hint2, function\|nil con, function\|nil cost, function\|nil tg, function\|nil op, bool\|nil anypos) | Adds the Persistent Trap Procedure where is the player, setting 0 will limit to monsters you control, setting to 1 will be your opponent and PLAYER_ALL/nil will be for either player. (function f) is the filters on which monsters you can target. (bool anypos) is a check if the target needs to be face-up. Setting this to true will allow it to be targeted even if it isn't face-up.
 effect | aux.AddPreDrawSkillProcedure(c,coverNum,drawless,skillcon,skillop,countlimit) | Function for the skills that "trigger" at the start of the turn/Before the Draw-- c: the card (card)-- coverNum: the Number of the cover (int)-- drawless: if the player draw 1 less card at the start of the duel (bool)-- flip con: condition to activate the skill (function)-- flipOp: operation related to the skill activation (function)
 effect | aux.AddSkillProcedure(c,coverNum,drawless,skillcon,skillop,countlimit) | Procedure for basic skill-- c: the card (card)-- coverNum: the Number of the cover (int)-- drawless: if the player draw 1 less card at the start of the duel (bool)-- flip con: condition to activate the skill (function)-- flipOp: operation related to the skill activation (function)
 void | aux.AddUnionProcedure(Card c, function f, bool oldrule, bool oldprotect) | Adds the Union Procedure to (Card c) where (function f) is the cards you can equip the Union monster to, and (bool oldrule) is a check to apply old rulings of the Union monster. if oldprotect is not nil, uses old rules for destroy replacement (If the equipped monster would be destroyed, destroy this card instead.)
