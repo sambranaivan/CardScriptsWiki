@@ -264,7 +264,7 @@ int | bit.lshift(int a, int b) | Shifts all bits of an integer to the left by an
 int | bit.replace(int a, int b, int c[, int width=1]) | Returns a copy of (int a) with the field with a width changed to value (int b)
 int | bit.rshift(int a, int b) | Shift all bits of an integer to the right by an amount (Deprecated, advised to use (int a)>>(int b) instead.)
 
-### Card functions
+### Card methods
 
 Return type | Function |Description
 -- | -- | --
@@ -632,7 +632,7 @@ void | Debug.SetAIName(string name) | Set the name of the AI to (string name)
 void | Debug.SetPlayerInfo(int playerid, int lp, int startcount, int drawcount) | Set (int playerid) to have (int lp) LP, start with a (in startct) card hand, and draw (int drawcount) during the Draw Phase.
 void | Debug.ShowHint(string msg) | Display a message on screen, saying (string msg)
 
-### Duel functions
+### Duel methods
 Return type | Function |Description
 -- | -- | --
 void | Duel.Activate(Effect e) | Activates an effect in a new chain link. If the effect is the activate effect of a spell/trap, that card is also activated.
@@ -924,7 +924,7 @@ void | Duel.TagSwap(int team) | If the current team has more than 1 player, swit
 void | Duel.Win(int player, int win_reason) | Player (int player) wins the Duel for a reason (REASON_x). If the player is affected by EFFECT_CANNOT_LOSE_EFFECT the duel keeps going on.
 void | Duel.XyzSummon(int player, Card c[, Group\|Card\|nil must_use, Group\|Card\|nil mg, int minc=0, int maxc=0]) | A player (int player) Xyz Summons a card (Card c) using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Summon
 
-### Effect functions
+### Effect methods
 Return type | Function |Description
 -- | -- | --
 bool | Effect.CheckCountLimit(int tp) | Checks if the effect can still be used by tp or the player has finished its uses.
@@ -1029,7 +1029,7 @@ Return type | Function |Description
 -- | -- | --
 table, int | GetID() | Returns two values, a card object and its ID, used before the initial effect.
 
-### Group functions
+### Group methods
 Return type | Function |Description
 -- | -- | --
 Group | Group.AddCard(Group g, Card\|Group other) | Add a card or group (Card\|Group other) to a group (Group g). Returns the group itself.
