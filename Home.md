@@ -814,7 +814,7 @@ bool | Duel.IsMainPhase() | Returns if the current phase is either Main Phase 1 
 
 Return type | Function |Description
 -- | -- | --
-Effect\|nil | Duel.IsPlayerAffectedByEffect(int player, int code) | Return the first instance of an effect affecting the player corresponding to the passed code, nil if there's none. The return can be used as boolean check with an Effect being returned as true and nil being returned as fallse.
+Effect|nil | Duel.IsPlayerAffectedByEffect(int player, int code) | Return the first instance of an effect affecting the player corresponding to the passed code, nil if there's none. The return can be used as boolean check with an Effect being returned as true and nil being returned as fallse.
 bool | Duel.IsPlayerCanAdditionalSummon(int player) | Returns if the player can perform an additional normal summon via a EFFECT_EXTRA_SUMMON_COUNT (e.g. "Fire Formation - Tensu")
 bool | Duel.IsPlayerCanDiscardDeck(int player, int count) | Checks if a player (int player) can mill a number of cards (int count) from their Deck
 bool | Duel.IsPlayerCanDiscardDeckAsCost(int player, int count) | Checks if a player (int player) can mill a number of cards (int count) from their Deck as cost
