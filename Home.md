@@ -52,6 +52,3 @@ int ... | Card.GetFusionSetCard(Card c) | Returns the archetype(s) that "c" is a
 bool | Card.IsLinkSummonable(Card c[, Group\|Card\|nil must_use, Group\|Card\|nil  mg, int min=0, int max=0]) | Checks if "c" can be Link Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Link Summon.
 bool | Card.IsLinkSetCard(Card c, int setname) | Checks if "c" is part of the archetype "setname" as a Link Material.
 
-<!--EndFragment-->
-</body>
-</html>
