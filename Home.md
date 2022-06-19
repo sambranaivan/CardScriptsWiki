@@ -63,7 +63,7 @@ bool | aux.CheckUnionEquip(Card uc, Card tc) | A check if you can equip a Union 
 bool | aux.CheckUnionEquip(uc,tc) | See proc_union.lua.
 bool | aux.CheckValidExtra(card c, int player, group sg, group mg, lc, group emt, function filt) |  
 bool | aux.CheckZonesReleaseSummonCheck(group must, group oneof, function checkfunc) | Auxiliary function called by "Duel.SelectReleaseGroupSummon".
-bool | aux.CheckZonesReleaseSummonCheckSelection(group must, group oneof,function checkfunc) |  
+bool | aux.CheckZonesReleaseSummonCheckSelection(group must, group oneof, function checkfunc) |  
 bool | aux.ChkfMMZ(int sumcount)(Group sg, Effect e, int tp, Group mg) | "Check for Main Monster Zones". Used in rescon by default. 2nd parenthesis is not required as rescon/cancelcon in aux.SelectUnselectGroup. (Group sg) is the selected group when using aux.SelectUnselectGroup. Evaluates if a int sumcount number of Main Monsters zones are available and/or will be made available to summon the requiring card.
 int | aux.ComposeNumberDigitByDigit(int tp, int min, int max) | (int tp) declares a number by digit with a minimum of (int min) and maximum of (int max)
 function | aux.CostWithReplace(function base, int replacecode, function extracon, function alwaysexecute) |  
