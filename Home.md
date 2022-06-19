@@ -203,18 +203,83 @@ bool | aux.penlimit(Effect e, Effect se, int sp, int st) | SPSUMMON condition "M
 bool | aux.PersistentTargetFilter(Effect e, Card c) | Default filter for checking if it's targeted by the Persistent Trap.
 bool | aux.PlayFieldSpell(Card c,e,tp,eg,ep,ev,re,r,rp,target_p) | Activates a field spell Card "c". Already handles interactions with Field Spells that are already face up, rules for only 1 Field Spell at time, checks for costs and activated effects of the field spell and als the interaction with Ancient Pixie Dragon.
 bool | aux.ProcCancellable | Used with the Xyz Summon procedure and a fw Xyz monsters. Defined as false.
-Return type | Function |Description
--- | -- | --
-
 
 Return type | Function |Description
 -- | -- | --
-
+table | aux.PropertyTableFilter(function f, ...) |  
+void | aux.PuzzleOp(Effect e, int tp) | Used by aux.BeginPuzzle(), sets the first turn player's LP to 0
+bool | aux.qlifilter(Effect e, Effect te) | Default filter used with "Qli" monsters for: "Unaffected by activated monster effects whose original Rank/Level is lower than this card's Level"
+void | aux.RegisterClientHint(Card c, int property_code, int reg.player, int s, int o, str, int reset_code, int ct) | Auxiliary function to simplify registering EFFECT_FLAG_CLIENT_HINT to players. (Card c) is card that creates the hint message,  (int property_code) are additional properties like EFFECT_FLAG_OATH (PLAYER_TARGET and CLIENT_HINT are the flags registered by default). (int reg. player) is the player that is registering the hint, to himself (int s) and/or the opponent (int o), with a description called from a string defined in (str). Additional resets, other than the default RESET_PHASE+PHASE_END, can be passed in (int reset_code) and its reset count (int ct).
+bool | aux.ReincarnationCheckTarget(Effect e, Card c) | Auxiliary function for "Salamangreat" Reincarnation procedure. Returns if (card c) is either a Fusion, Ritual or a Link.
+function | aux.ReincarnationCheckValue(Effect e, Card c) | Auxiliary function for "Salamangreat" Reincarnation procedure. Registers CARD_SALAMANGREAT_SANCTUARY as flag  to (card c) if it is either a Link, Fusion or Ritual and has among its materials a card with the same ID as (card c).
+bool | aux.ReincarnationRitualFilter(Effect e, Card c) | Auxiliary filter for "Salamangreat" Reincarnation procedure to handle the rituals.
+bool | aux.RelCheckGoal(int player, group sg, group exg, group mustg, int count, int min, function specialchk, ...) |  
+bool | aux.RelCheckRecursive(card c, int player, group sg, group mg, group exg, group mustg, int count, int min, function specialchk, ...) |  
+bool | aux.ReleaseCheckMMZ(group sg, int player) |  
+bool | aux.ReleaseCheckSingleUse(group sg, int player, group exg) |  
+bool | aux.ReleaseCheckTarget(group sg, int player, group exg, group dg) |  
+bool | aux.ReleaseCostFilter(card c, function f,...) |  
+bool | aux.ReleaseNonSumCheck(card c, int player, effect e) | Auxiliary function called by "Duel.CheckReleaseGroupSummon" and Duel.SelectReleaseGroupSummon".
+bool\|void | aux.RemainFieldCost(Effect e, int tp, Group\|nil eg, int ep, int ev, Effect re, int r, int rp, int chk) | Costs that is used in cards that stay on the field if they finish resolving. (e.g. Kunai with Chain, Different Dimension Burial)
+void | aux.RemainFieldDisabled(Effect e, int tp, Group\|nil eg, int ep, int ev, Effect re, int r, int rp) |  
+void | aux.ResetEffects(Group g, int eff) | Resets all effects with code (int eff) in a group of cards defined (Group g).
+bool | aux.ritlimit(Effect e, Effect se, int sp, int st) | SPSUMMON condition "Must be Ritual Summoned"
+int/nil | aux.SelectEffect(int player, ..) | Makes player (int player) select 1 option among possible effects. The ellipsis (...) allows tables in the form {bool condition, int stringid}. The function then makes the player select an effect, displaying the strings whose conditons are true, returning the index of the choosen element or nil.
+bool\|Group | aux.SelectUnselectGroup(Group g, Effect e, int tp, int minc = 1, int maxc = 99, function\|nil rescon, int chk, int seltp, int hintmsg, function\|nil cancelcon, function\|nil breakcon, bool cancelable) | Recursion checking and selection. (Group g) is the group to check and choose from, with a minimum (int minc) that defaults to 1 if set to nil and maximum (int maxc) that defaults to 99 if set to nil. (function rescon) is the condition to check which is needed fulfill. (int chk) is set to 0 to check and 1 to select. (int seltp) is the selecting player. (int hintmsg) is the HINTMSG that will be displayed on selection. (function cancelcon) is the condition when fulfilled allows you to end selection. (function breakcon) when fulfilled ends the selection automatically.
+function | aux.seqmovcon(e,tp,eg,ep,ev,re,r,rp) | Condition for effects that make the monster change its current sequence/column.
+function | aux.seqmovop(e,tp,eg,ep,ev,re,r,rp) | Operation for effects that make the monster change its current sequence/column.
 
 Return type | Function |Description
 -- | -- | --
+effect | aux.SetSkillOp(coverNum,drawless,skillcon,skillop,countlimit,efftype) |  
+void | aux.SetUnionState(card c) | See proc_union.lua.
+bool | aux.SpElimFilter(Card c, bool mustbefaceup, bool includemzone) | Spirit Elimination check to (Card c). It checks if controller is affected by Spirit Elimination. If so, it will only filter in the Monster Zone, otherwise in Graveyard. (bool mustbefaceup) means the filter is not generic (e.g. Banish 1 Dragon-Type monster) opposed to banish 1 monster. (bool includemzone) when set to true will check LOCATION_MZONE by default as opposed to filtering LOCATION_MZONE and LOCATION_GRAVE depending on affected by Spirit Elimination.
+bool | aux.SpiritReturnCondition(e,tp,eg,ep,ev,re,r,rp) | Auxiliary condition. Not used directly by cards, only called by SpiritReturnReg
+void | aux.SpiritReturnOperation(e,tp,eg,ep,ev,re,r,rp) | Auxiliary operation. Not directed used by cards.
+void | aux.SpiritReturnReg(e,tp,eg,ep,ev,re,r,rp) | Auxiliary function registration. Not used directly by card, only called by aux.EnableSpiritReturn
+void | aux.SpiritReturnTarget(e,tp,eg,ep,ev,re,r,rp,chk) | Auxiliary target. Not directed used by cards.
+int | aux.Stringid(int code, int n) | Returns the description code using the database entry's code (int code) and from the nth position (int position) which can be 0-15 corresponding to the str in the database which are from str1 to str16
+bool | aux.sumlimit(int sumtype) | helper function called by the various auxiliary function used as special summon conditions
+void | aux.sumreg(Effect e, int tp, Group eg, int ep, int ev, Effect re, int r, int rp) | Used as SetOperation which registers a FlagEffect to cards in the event group with the same OriginalCode as itself
+bool | aux.synlimit(Effect e, Effect se, int sp, int st) | SPSUMMON condition "Must be Synchro Summoned"
+table | aux.tableAND(...) |  
+table | aux.tableOR(...) |  
+bool | aux.TargetBoolFunction(function f, ...) | Used in SetTarget filters (with parameters (e,c)) to check a function and its (...) parameters
+bool | aux.TargetEqualFunction(function f, int value, ...) | Used in SetTarget filters (with parameters (e,c)) to check a function and its (...) parameters is equal to the inputted (int value).
+bool | aux.TatsunecroFilter(Card c) | Returns is Card c has "3096468" as flag effect. Used in the Synchro summon procedure
+bool | aux.tgoval(Effect e, Effect re, int rp) | filter for EFFECT_CANNOT_BE_EFFECT_TARGET, "cannot be targeted by your opponent's card effects"
+void | aux.thoeSend(card c) | Sends (card c) to the grave. Function added to be used with aux.ToHandOrElse
+void | aux.ToHandOrElse(card c\|group tc, int player, [function check, function oper, str],...) | Makes (int player) either add (card c\|group tg) to hand or perform a secondary action. If the optional parameters are not provided, the default secondary action is to send the card or group to the GY. If  the provided (function check) is true (for all the cards in the group) , the secondary action, with string called from (str), will be the one defined in (function oper).
+bool | aux.TRUE() | Function that returns true. Can be used to return a whole group of cards in a certain location
+void | aux.ValuesReset() |  
+void | aux.WitchcrafterDiscardCost(f, int minc, int maxc) | Auxiliary function for the discard cost of "Witchcrafter" monsters. Performs the actual discard part, considering a minimum (minc) and maximum (maxc) amount of cards to discard. It also handles cards with EFFECT_WITCHCRAFTER_REPLACE, setting the reason for REASON_COST for those, or REASON_COST+REASON_DISCARD if a card is sent from hand instead.
+bool | aux.WitchcrafterDiscardFilter(c) | Auxiliary function for the discard cost of "Witchcrafter" monsters. Returns if (Card c) can be either sent to the GY as a cost or has EFFECT_WITCHCRAFT_REPLACE.
+bool | aux.WitchcrafterDiscardGroup(minc) | Auxiliary function for the discard cost of "Witchcrafter" monsters. Returns if there is a card with EFFECT_WITCHCRAFTER_REPLACE, that can be used as the whole cost, of if there is a (minc) number of cards to use as cost,  minc is the ammount the effect requires to discard.
+bool | aux.xyzlimit(Effect e, Effect se, int sp, int st) | SPSUMMON condition "Must be Xyz Summoned"
+int | aux.ZoneCheckFunc(card c, int player, int zone) | Auxiliary function called by "Duel.CheckReleaseGroupSummon" and Duel.SelectReleaseGroupSummon".
+bool | aux.zptcon(filter) | Used as condition for effects that check "if a [filter] monster is Special Summoned to a zone this card points to". Includes non-trivial handling of self-destructing Burning Abyss monsters. tp is passed to check control.
+bool | aux.zptfilter(filter) | Used as filter for effects that check "if [filter] monster is Special Summoned to a zone this card points to". Also includes non-trivial handling of self-destructing effects of "Burning Abyss" monsters.
+group | aux.zptgroup(group eg, function filter, card c, int tp) | Filter for "If a (function filter) monster is Special Summoned to a zone this card points to". Includes non-trivial handling of self-destructing Burning Abyss monsters
+bool | aux.zptgroupcon(group eg, function filter, card c, int tp) |  
+bool | aux.CheckSkillNegation(e,tp) | Function to check whether the Skill would be negated by Anti Skill
+bool | aux.NeosReturnCondition1(e,tp,eg,ep,ev,re,r,rp) | See cards_specific_functions.lua.
+bool | aux.NeosReturnCondition2(e,tp,eg,ep,ev,re,r,rp) | See cards_specific_functions.lua.
+void | aux.NeosReturnOperation(c,extraop) | See cards_specific_functions.lua.
+void | aux.NeosReturnTarget(c,extrainfo) | See cards_specific_functions.lua.
 
+### bit functions
+Return type | Function |Description
+-- | -- | --
+int | bit.band(int a, int b) | Does a bitwise AND operation between 2 integers. (Deprecated, advised to use (int a)&(int b) instead.)
+int | bit.bnot(int a) | Swaps the bits of an integer, 0 to 1 and 1 to 0. (Deprecated, advised to use ~(int a) instead.)
+int | bit.bor(int a, int b) | Does a bitwise OR operation between 2 integers. (Deprecated, advised to use (int a)\|(int b) instead.)
+int | bit.bxor(int a, int b) | Does a bitwise XOR operation between 2 integers. (Deprecated, advised to use (int a)~(int b) instead.)
+int | bit.extract(int a, int b[, int width=1]) | Returns the field of (int a) with a width
+int | bit.lshift(int a, int b) | Shifts all bits of an integer to the left by an amount (Deprecated, advised to use (int a)<<(int b) instead.)
+int | bit.replace(int a, int b, int c[, int width=1]) | Returns a copy of (int a) with the field with a width changed to value (int b)
+int | bit.rshift(int a, int b) | Shift all bits of an integer to the right by an amount (Deprecated, advised to use (int a)>>(int b) instead.)
 
+### Card functions
 Return type | Function |Description
 -- | -- | --
 
