@@ -650,12 +650,61 @@ void | Debug.ShowHint(string msg) | Display a message on screen, saying (string 
 ### Duel functions
 Return type | Function |Description
 -- | -- | --
+void | Duel.Activate(Effect e) | Activates an effect in a new chain link. If the effect is the activate effect of a spell/trap, that card is also activated.
+void | Duel.AddCustomActivityCounter(int counter_id, int activity_type, function f) | Register an activity with type int activity_type, with id int counter_id, that matches function f
+void | Duel.AdjustInstantly([Card c]) | Adjust the game state checking self destroy effects, continuous negation effects being applied, etc. If a card is passed, it also adjust immediately the properties of that card and cards related to it.
+int | Duel.AnnounceAttribute(int player, int count, int available) | Asks (int player) to announce (int count) number of Attributes, amongst those specified in (int available).
+int | Duel.AnnounceCard(int player[, ?]) | Makes the player declare a card name. With no extra parameters, the function allows declaring any monster, spell and trap card names. If a single int parameter is passed as second parameter, that parameter will be used to limit the types that are declarable (for example passing TYPE_MONSTER to only declare monster cards). If 3 or more parameters are passed, the function will use the OPCODE_ constants to build a filter based on the reverse polish notation to allow declaring cards with more specific restrictions (for example declaring cards of a specific archetype only). The opcode parameters can also be passed all in a table as the second parameter.
+int | Duel.AnnounceCoin(int player) | Asks (int player) to call heads or tails
+int\|nil,int\|nil | Duel.AnnounceLevel(int player[,int min = 1,int max=12, int exception=nil,...]) | Asks (int player) to announce a number between (int min) and (int max), except any (int exception)s. Returns the chosen number, and the index of that number amongst the choices.
+int,int | Duel.AnnounceNumber(int player, int number, ...) | Asks (int player) to announce a number found amongst (int number)s. Returns the chosen number and its index amongst the options
+int\|nil,int\|nil | Duel.AnnounceNumberRange(int player[,int min = 1,int max=12, int exception=nil,...]) | Asks (int player) to announce a number between (int min) and (int max), except any (int exception)s. Returns the chosen number, and the index of that number amongst the choices.
+int | Duel.AnnounceRace(int player, int count, int available) | Asks (int player) to announce (int count) number of Races, amongst those specified in (int available).
+int | Duel.AnnounceType(int player) | Makes int player declare a type
+void | Duel.AssumeReset() | Manually resets assume effects. Usually used in syncro summon. (eg: it resets the applied effect of "Influence Dragon (Anime)" on the other materials in the Synchro Summon.)
+void | Duel.AttackCostPaid([int paid=1]) | Register the status of payment of attack cost. A value of 2 means that the attack cost was not paid, 1 means the attack cost was paid.
+void | Duel.BreakEffect() | Separates an effect for the purposes of timing (Reflects the effects of the conjunctives "then" and "also after that")
+void | Duel.CalculateDamage(Card c1, Card c2\|nil) | Conduct damage calculation between (Card c1) as attacker and (Card c2) or opponent player (nil)
+bool | Duel.CanPlayerSetMonster(int player[, Card sumcard, int sumtype]) | Returns if player can set a monster, if sumcard and sumtype are passed, those parameterers are also passed to the EFFECT_CANNOT_MSET effects.
+bool | Duel.CanPlayerSetSpellTrap(int player[, Card setcard]) | Returns if player can set a spell/trap card, if setcard is passed, that parameterer is also passed to the EFFECT_CANNOT_SSET effects.
 
 Return type | Function |Description
 -- | -- | --
+void | Duel.ChainAttack([Card c]) | Makes the currently attacking card attacks able to declare a consecutive attack after the current one. If a card is passed, the next attack will have to be against that specific card.
+void | Duel.ChangeAttacker(Card c[, int ign = false]) | Changes the current monster attacking to another card (Card c), if ignore counts is set to true (int ign) it will ignore if the card can still attack.
+bool | Duel.ChangeAttackTarget(Card c\|nil) | Changes the current monster being attacker to another card (or makes the attack a direct attack in case of no card being passed)
+void | Duel.ChangeBattleDamage(int player, int value[, bool check=true]) | Changes the battle damage (int player) would take to (int value). If (bool check) == false, you are able change the battle damage that originally is 0.
+void | Duel.ChangeChainOperation(int chain_idx, function f) | Replaces the operation executed by the effect at the specific chain index with the passed function.
+int | Duel.ChangePosition(Card\|Group targets, int au[, int ad=au, int du=au, int dd=au, bool noflip=false]) | Changes the battle position of (Card\|Group targets). (int au), (int ad), int (du) and (int dd) are the positions cards in face-up attack, face-down attack, face-up defense, and face-down defense positions will be changed to, respectively. If (bool noflip) is true, FLIP effects will not be activated by this change. Returns the number of cards successfully affected.
+void | Duel.ChangeTargetCard(int chainc, Group g) | Change the target cards for the specific chain link (0 is the currently resolving one). This alters the value that that chain link set with Duel.SetTargetCards
+void | Duel.ChangeTargetParam(int chainc, int param) | Change the target parameter for the specific chain link (0 is the currently resolving one). This alters the value that that chain link set with Duel.SetTargetParam
+void | Duel.ChangeTargetPlayer(int chainc, int player) | Change the target player for the specific chain link (0 is the currently resolving one). This alters the value that that chain link set with Duel.SetTargetPlayer
+bool | Duel.CheckChainTarget(int chainc, Card c) | Checks if a card (Card c) can be a target for a chain's (int chainc) effect (via calling target(chkc) function of the effect)
+bool | Duel.CheckChainUniqueness() | Checks if there is no card with the same name in the current chain
+bool[, Group, int, int, Effect, int, int] | Duel.CheckEvent(int event[, bool get_info]) | Returns if, at the activation timing, the (int event) passed is available. If (bool get_info) is set to true, all the even info are returned as extra return values
+bool | Duel.CheckLocation(int player, int location, int seq) | Checks if there is an position (int seq) available for the player (int player) in the location (int location). (The sequence (int seq) is used to indicate the specific position of the location, for example in the location of monsters the sequence would go from 0 to 7., etc.)
+bool | Duel.CheckLPCost(int player, int cost) | Checks if a player (int player) can pay an amount (int cost) of LP
+bool | Duel.CheckPhaseActivity() | Checks if the an "activity" was not performed yet which means that the player is at "the start" of the current phase. Used for effects like Pot of Extravagance, Soundproofed and Mimir of the Nordic Ascendant.
+
 
 Return type | Function |Description
 -- | -- | --
+bool | Duel.CheckReleaseGroup(int player, function f, int count[, bool use_hand=false, int max=min, bool check_field=false, Card card_to_check=nil, int to_player=player, int zone=0xff, bool use_oppo=false], Group\|Card ex\|nil, ...) | Check if there is a monster that can be used as tribute from the int player, that satisfies function, having a min and a max of the count specified with the exception of some card/group if specified, ... are extra arguments. If use_hand is true, then cards in the hand are considered for the tribute. If use_oppo is true, opponent's cards are also considered for the tribute. If check_field is true and card_to_check is passed, the function will also take in account to check if there are free zones (int zone) left on to_player's field to summon that card after tributing the cards. Also effects of cards like "Lair of Darkness" are taken into account when performing those checks.
+bool | Duel.CheckReleaseGroupCost(int player, function f, int minc[, int maxc=minc], bool use_hand, function spcheck, Card\|Group\|nil ex,...) | Check if the player can tribute cards on the field, excluding "ex" to activate the effect of a monster while also checking for applied effects of cards like "Lair of Darkness" (behaviour now also implemented in the normal CheckReleaseGroup). If function f is passed, the cards returned by Duel.GetReleaseGroup are filtered based on that function. The function spcheck is a callback function that gets passed the current checked group (sg) as first parameter, the checking player (tp) as second parameter, a group containing opponent's cards affected by EFFECT_EXTRA_RELEASE_NONSUM or EFFECT_EXTRA_RELEASE (exg) and the extra parameters passed to the function (...). The spcheck function has to return 1 or 2 boolean values indicating if the passed group (sg) satisfy the requirements as first return value and as optional second parameter to indicate if no matter how many new cards are added to (sg), the condition will never return true.
+bool | Duel.CheckReleaseGroupEx(int player, function f, int count[, bool use_hand=true, int max=min, bool check_field=false, Card card_to_check=nil, int to_player=player, int zone=0xff, bool use_oppo=false], Group\|Card ex\|nil, ...) | Same as Duel.CheckReleaseGroup, except that the hand is included by default.
+bool | Duel.CheckReleaseGroupSummon(card c, int player, effect e, function fil, int min, int max, function last,...) |  
+bool | Duel.CheckRemoveOverlayCard(int player, int s, int o, int count, int reason[, Group ocard]) | Returns if (int player) can remove a total of (int count) cards attached, for reason (int reason) from your field (int s == 1) and/or opponent's (int o == 1). If group (ocard) is provided, only checks if cards can be detached from monsters that match said group.
+bool | Duel.CheckSummonedCount([Card c]) | Check if the current reason player can still normal summon other monsters or has used that turn's summons, or if a card is passed and that card is affected by an EFFECT_EXTRA_SUMMON_COUNT effect allowing it to be summoned.
+bool | Duel.CheckTiming(int timing) | Returns true if the current activation hint timing is one of the passed timings.
+bool | Duel.CheckTribute(Card c, int min[, int max=min, Group\|nil mg, int tp=c:GetControler(), int zone=0x1f]) | Check if there are valid tributes on the field to summon Card c to tp's field in the zones specified by zone using the rules of a normal tribute summon.
+void | Duel.ClearOperationInfo(int chainc) | Clear all the informations that were set by Duel.SetOperationInfo for the passed chain.
+void | Duel.ClearTargetCard() | Remove all the targeted cards corresponding to the current resolving/building chain.
+void | Duel.ConfirmCards(int player, Card\|Group targets) | Reveals the passed cards to the passed player if they are in a private knoweledge state.
+void | Duel.ConfirmDecktop(int player, int count) | Reveals a number (int count) of cards from the top of a player's (int player) Deck to both players
+void | Duel.ConfirmExtratop(int tp, int count) | Reveals a number (int count) of  facedown cards from the top of a player's (int player) Extra Deck to both players. (faceup pendulum monsters are ignored)
+Card | Duel.CreateToken(int player, int code) | Creates a new instance of a card owned by player (int player) with card code (int code).
+int | Duel.Damage(int player, int value, int reason[, bool is_step=false]) | Damages/Decreases player's (int player) Life Points by an amount (int value) for a reason (REASON_x). Setting is_step to true made the damage considered dealt at the call of Duel.RDComplete()
+int | Duel.Destroy(Card\|Group targets, int reason[ ,int dest = LOCATION_GRAVE]) | Destroys a card or group (Card\|Group targets) with (int reason) as reason, and sends the card in the location specified by (int dest). Returns the number of cards successfully destroyed.
 
 Return type | Function |Description
 -- | -- | --
