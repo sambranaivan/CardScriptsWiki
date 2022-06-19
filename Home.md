@@ -13,6 +13,7 @@ The functions passed to Effect.SetCondition, Effect.SetCost, Effect.SetTarget an
 - `re`: reason effect
 - `r`: reason
 - `rp`: reason player
+
 Additionally, costs (passed via Effect.SetCost) receive `chk` and targets (via Effect.SetTarget) receive `chk` and `chkc`:
 - chk: check (as in, "activation check"). The core runs the function with chk being 0 when it performs the activation check and with chk being 1 when the effect is activated.
 - chkc: needed in effects that target for effects that can redirect the targeting to another card (e.g. `Cairngorgon, Antiluminescent Knight`).
