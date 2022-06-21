@@ -1,6 +1,11 @@
 Welcome to the Project Ignis card scripts wiki! Hopefully one day there will be detailed documentation here.
 
 # Scripting Library
+As of Jun-2022, these are the functions available in Edopro's scripting library. It includes functions defined in the core but also auxiliary functions.
+
+Note 1: the ellipsis (`...`) represents a variable number of arguments, usually used to represent when extra parameters are supported.
+
+Note 2: parameters surrounded by square brackets `[ ]` are optional parameters.
 
 ## Functions
 
