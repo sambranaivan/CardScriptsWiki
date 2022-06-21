@@ -4,7 +4,7 @@ Welcome to the Project Ignis card scripts wiki! Hopefully one day there will be 
 As of Jun-2022, these are the functions available in Edopro's scripting library. It includes functions defined in the core but also auxiliary functions.
 
 Notes:
-- The ellipsis, `...`, represents a variable number of arguments, usually used to represent when extra parameters are supported.
+- The ellipsis, `...`, represents a variable number of arguments, usually used when extra parameters are supported.
 - Parameters surrounded by square brackets `[ ]` are optional parameters.
 - A vertical bar `|` represents different possible types (for variables, arguments or return values).
 - Commas in return values indicate that the function has more than 1 return value.
