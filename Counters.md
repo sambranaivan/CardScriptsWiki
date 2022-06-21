@@ -2,22 +2,24 @@ Counters are represented by unique hexadecimal value, starting with 0x1, the val
 - Global counter
 - Permission counters
 
-## Global Counters:
-Counters **above 0x1000** are considered global, meaning that any card can receive this type of counter. Example: Predator Counter (0x1041)
+## Global Counters
+Counters with a value **above** 0x1000 are considered global, meaning that any card can receive this type of counter. Example: Predator Counter (0x1041).
 
-## Permission-specific counters:
-Counters **below 0x1000** have to be first permitted on the card that is going to hold such counters before the can be added. If the card that has these counters permitted has its effects negated, it also loses the ability to hold such counter. Example: Spell Counter (0x1)
+## Permission-specific counters
+Counters with a value **below** 0x1000 have to be first permitted on the card that is going to hold such counters before the can be added. If the card that has these counters permitted has its effects negated, it also loses the ability to hold such counter. Example: Spell Counter (0x1)
 
-The following functions are related to counter permission and limits:
+## Functions related
+
+The following functions are related to counter permission and limits and must be used with the initial effect registration:
 ```c++
 void Card.EnableCounterPermit(Card c, int countertype[, int location])
 ```
-Makes the card (Card c) able to hold a type of counter (int countertype). If a the optional paramater (int location) is provided, the card will be able to hold the counter(s) only when in the specified location.
+Makes the card (Card c) able to hold a type of counter (int countertype). If a the optional parameter (int location) is provided, the card will be able to hold the counter(s) only when in the specified location.
 
 ```c++
 void Card.SetCounterLimit(card c, int counter_type, int count)
 ```
-Sets the limit (int count) of how many counter of a type (int countertype) can be held by a card (Card c).
+Sets the limit (int count) of how many counters of a type (int countertype) can be held by a card (Card c).
 
 ## List of counters
 As of 21-Jun-2022, the following counters are in use in Edopro:
