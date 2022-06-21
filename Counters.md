@@ -1,4 +1,4 @@
-Counters are represented by unique hexadecimal value, starting in 0x1, the value for Spell counters. Even if the English text of some cards lixe **BOXer** or **Kickfire** refer only to "Counter" (i.e. not giving it an specific name), those counters are considered to be different from each other. Counters are grouped in two categories.
+Counters are represented by unique hexadecimal value, starting with 0x1, the value for Spell counters. Even if the English text of some cards like **BOXer** or **Kickfire** refers only to "Counter" (i.e. not giving it an specific name), those counters are considered to be different from each other. Counters are grouped in two categories.
 - Global counter
 - Permission counters
 
@@ -12,7 +12,7 @@ The following functions are related to counter permission and limits:
 ```c++
 void Card.EnableCounterPermit(Card c, int countertype[, int location])
 ```
-Makes the card (Card c) able to hold a type of counter (int countertype). If a location is provided (int location), the card will be able to hold counter only when in the specified location.
+Makes the card (Card c) able to hold a type of counter (int countertype). If a the optional paramater (int location) is provided, the card will be able to hold the counter(s) only when in the specified location.
 
 ```c++
 void Card.SetCounterLimit(card c, int counter_type, int count)
@@ -20,7 +20,7 @@ void Card.SetCounterLimit(card c, int counter_type, int count)
 Sets the limit (int count) of how many counter of a type (int countertype) can be held by a card (Card c).
 
 ## List of counters
-As of 21 - Jun - 2022, the following counters are in use in Edopro:
+As of 21-Jun-2022, the following counters are in use in Edopro:
 
 ### Counters for official cards:
 
