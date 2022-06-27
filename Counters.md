@@ -6,7 +6,7 @@ Counters are represented by unique hexadecimal value, starting with 0x1, the val
 Counters with a value **above** 0x1000 are considered global, meaning that any card can receive this type of counter. Example: Predator Counter (0x1041).
 
 ## Permission-specific counters
-Counters with a value **below** 0x1000 have to be first permitted on the card that is going to hold such counters before the can be added. If the card that has these counters permitted has its effects negated, it also loses the ability to hold such counter. Example: Spell Counter (0x1)
+Counters with a value **below** 0x1000 have to be first permitted on the card that is going to hold such counters before they can be added. If the card that has these counters permitted has its effects negated, it also loses the ability to hold such counter. Example: Spell Counter (0x1)
 
 ## Functions related to counters
 
