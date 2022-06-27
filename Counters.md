@@ -8,7 +8,7 @@ Counters with a value **above** 0x1000 are considered global, meaning that any c
 ## Permission-specific counters
 Counters with a value **below** 0x1000 have to be first permitted on the card that is going to hold such counters before the can be added. If the card that has these counters permitted has its effects negated, it also loses the ability to hold such counter. Example: Spell Counter (0x1)
 
-## Functions related
+## Functions related to counters
 
 The following functions are related to counter permission and limits and must be used with the initial effect registration:
 ```c++
