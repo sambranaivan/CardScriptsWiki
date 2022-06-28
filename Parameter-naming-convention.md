@@ -105,7 +105,23 @@ function s.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	...
 	c:RegisterEffect(e1)
-end```
+end
+```
+
 In e1, you have:
 
-**WIP**
+- The category of the effect:
+```
+e1:SetCategory(CATEGORY_DRAW)
+```
+this tells the game what the effect includes and it is also used because there are cards that need to detect such categories like Ash Blossom & Joyous Spring (detecting CATEGORY_DRAW and CATEGORY_SEARCH).
+- The code of the effect's code:
+```
+e1:SetCode(EVENT_FREE_CHAIN)
+```
+this tells the game that the card can be activated in a open game state, when no chain is resolving (because Galactic Charity is a normal Spell). Other codes might include any event that the card needs to detect (for example EVENT_SUMMON_SUCCESS)
+- The ammount of times the effect can be used
+```
+e1:SetCountLimit(1,id,EFFECT_COUNT_CODE_OATH)
+```
+this tells the game that `e1` for the card that has `id` as passcode can be **activated** once per turn. If the EFFECT_COUNT_CODE_OATH flag was not there, then the player would be able to **use** the effect once per turn (in Yu-Gi-Oh, "use" counts any attempts to apply that effect, even the ones that were negated, while **activate** will only count the ones that didn't have their activation negated)
