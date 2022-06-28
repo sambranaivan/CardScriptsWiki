@@ -1,4 +1,4 @@
-# Welcome to the Project Ignis card scripts wiki! Hopefully one day there will be detailed documentation here.
+### Welcome to the Project Ignis card scripts wiki! Hopefully one day there will be detailed documentation here.
 
 As of Jun-2022, these are the functions available in Edopro's scripting library. It includes functions defined in the core but also auxiliary functions.
 
