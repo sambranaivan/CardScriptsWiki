@@ -3,9 +3,9 @@
 As of Jun-2022, these are the functions available in Edopro's scripting library. It includes functions defined in the core but also auxiliary functions.
 
 Notes:
-- The ellipsis, `...`, represents a variable number of arguments, usually used when extra parameters are supported.
+- The ellipsis, `...`, represents a variable number of arguments, usually used when extra parameters are supported by the function.
 - Parameters surrounded by square brackets `[ ]` are optional parameters.
-- A vertical bar `|` represents different possible types (for variables, arguments or return values).
+- A vertical bar `|` represents different possible types (for variables, arguments or return types).
 - Commas in return values indicate that the function has more than 1 return value.
 
 ## Functions
