@@ -12,6 +12,8 @@ Additionally, costs (passed via Effect.SetCost) receive `chk` and targets (via E
 - chk: check (as in, "activation check"). The core runs the function with chk being 0 when it performs the activation check and with chk being 1 when the effect is activated.
 - chkc: needed in effects that target for effects that can redirect the targeting to another card (e.g. `Cairngorgon, Antiluminescent Knight`).
 
+
+## Understanding a card script
 Here is an example in Galactic Charity's script:
 ```lua
 --銀河の施し
@@ -88,3 +90,22 @@ After that, the `s.target` function is executed. The same situation with `chk` h
 
 Finally, when the effect resolves, the `s.activate` function is called, executing the actual effect of the card.
 
+## Other insights
+After the coments, in the script shown above you have:
+- The definition of 2 local variables, `s` and `id`, that receive the return values from the `GetID` function
+```lua
+local s,id=GetID()
+```
+`s` will be a card object, and `id` will be an int containing that card's passcode.
+
+- The declaration of the initial effect, with only 1 effect in this card `e1`
+```lua
+function s.initial_effect(c)
+	--Activate
+	local e1=Effect.CreateEffect(c)
+	...
+	c:RegisterEffect(e1)
+end```
+In e1, you have:
+
+**WIP**
