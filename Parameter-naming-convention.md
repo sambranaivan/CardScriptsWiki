@@ -10,7 +10,7 @@ The functions passed to Effect.SetCondition, Effect.SetCost, Effect.SetTarget an
 
 Additionally, costs (passed via Effect.SetCost) receive `chk` and targets (via Effect.SetTarget) receive `chk` and `chkc`:
 - chk: check (as in, "activation check"). The core runs the function with chk being 0 when it performs the activation check and with chk being 1 when the effect is activated.
-- chkc: needed in effects that target for effects that can redirect the targeting to another card (e.g. `Cairngorgon, Antiluminescent Knight`).
+- chkc: used in effects that target card. This parameter is required so cards that are able to redirect target (e.g. `Cairngorgon, Antiluminescent Knight`) can indetify the effect and what would be a correct new target.
 
 
 ## Understanding a card script
