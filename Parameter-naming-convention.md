@@ -23,7 +23,7 @@ While Lua allows you to name your variables in almost any way you want, reading 
 Those are the usual meanings, but these variable names can be used in other contexts, and it's up to the user to use these names or not.
 
 ## Understanding a card script
-Here is an example in Galactic Charity's script:
+Here's an example in Galactic Charity's script:
 ```lua
 --銀河の施し
 --Galactic Charity
