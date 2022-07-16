@@ -100,6 +100,9 @@ int | aux.GetCover(card c, coverNum) | Used by the Skill procedure.
 table,group | aux.GetExtraMaterials(int player, group mustg, group sc, int summon_type) |  
 group | aux.GetMustBeMaterialGroup(int player, group eg, group sump, sc, group g, int r) |  
 Group | aux.GetMustBeMaterialGroup(int tp, nil\|Group eg, int sump, nil\|Card sc, nil\|Group g, int r) | Gets the group that must be used as material (Contacting "C"). (int tp) is the affected player, (nil\|Group eg) is all detected materials, (int sump) is the Summoning player, (nil\|Card sc) is the card to be Summoned, (nil\|Group) g is all the valid usable materials, (int r) is the reason e.g. REASON_SYNCHRO, REASON_XYZ
+int | aux.GetMMZonesPointedTo(player[,by_filter,player_location=LOCATION_MZONE,oppo_location=player_location,target_player=player,...]) | Returns the zone values (bitfield mask) of the Main Monster Zones on the field of "target_player"
+that are pointed to by any Link Cards, which match the "by_filter" function/filter, in the locations "player_location"
+and "oppo_location", from the perspective of "player".
 
 
 Return type | Function |Description
