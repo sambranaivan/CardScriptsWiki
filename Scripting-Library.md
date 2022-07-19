@@ -580,7 +580,7 @@ Return type | Function |Description
 bool | Card.IsType(Card c, int type[, Card scard\|nil, int sumtype = 0, int playerid = PLAYER_NONE]) | Checks if the card type of "c" is "type" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
 bool | Card.IsXyzLevel(Card c, Card xyzc, int lv) | Checks if "c" would be Level "lv" if it was to be used as Xyz Material for "xyzc".
 bool | Card.IsXyzSummonable(Card c[, Group\|Card\|nil must_use, Group\|Card\|nil  mg, int min=0, int max=0]) | Checks if "c" can be Xyz Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Xyz Summon
-void\|int | Card.Level(Card c[, int level]) | Changes (Card c)'s original level if (int level) is inputted, else returns the current card's original level
+void\|int | Card.Level(Card c[, int level]) | Changes (Card c)'s original level/rank/link rating if (int level) is inputted, else returns the current card's original level/rank/link rating
 void\|int | Card.LinkMarker(Card c[, int linkmarker]) | Changes (Card c)'s original Link Markers if (int linkmarker) is inputted, else returns the current card's original Link Markers.
 void\|int | Card.Lscale(Card c[, int scale]) | Changes (Card c)'s original right scale if (int scale) is inputted, else returns the current card's original right scale.
 bool | Card.MoveAdjacent(card c) | Executes a move operation for card c, to one of its available adjacent sequences (int the Monster Zone)
@@ -715,7 +715,18 @@ Card\|nil | Duel.GetAttackTarget() | Gets the attack target card (or nil if ther
 int | Duel.GetBattleDamage(int player) | Gets the battle damage (int player) would take
 int | Duel.GetBattledCount(int player) | Get the number of battles (int player) has been involved in this turn
 Card\|nil,Card\|nil | Duel.GetBattleMonster(int tp) | Returns as first value the monster that is currently battling from the perspective of tp (nil if tp has no currently battling monsters), as second value returns the battling monster from the perspective of 1-tp.
+int | Duel.GetCardAliasFromCode(int code) | Get a card's alias from its card id (the value returned is the same as the one returned with Card.Alias on a card object corresponding to a card with such id)
+int | Duel.GetCardAttackFromCode(int code) | Get a card's attack from its card id (the value returned is the same as the one returned with Card.Attack on a card object corresponding to a card with such id)
+int | Duel.GetCardAttributeFromCode(int code) | Get a card's attribute from its card id (the value returned is the same as the one returned with Card.Attribute on a card object corresponding to a card with such id)
+int | Duel.GetCardDefenseFromCode(int code) | Get a card's defense from its card id (the value returned is the same as the one returned with Card.Defense on a card object corresponding to a card with such id)
 Card | Duel.GetCardFromCardID(int cardid) | Returns the card whose internal id matches cardid, if no card matches, nil is returned.
+int | Duel.GetCardLevelFromCode(int code) | Get a card's level/rank/link rating from its card id (the value returned is the same as the one returned with Card.Level on a card object corresponding to a card with such id)
+int | Duel.GetCardLinkMarkerFromCode(int code) | Get a card's link marker from its card id (the value returned is the same as the one returned with Card.LinkMarker on a card object corresponding to a card with such id)
+int | Duel.GetCardLscaleFromCode(int code) | Get a card's left pendulum scale from its card id (the value returned is the same as the one returned with Card.Lscale on a card object corresponding to a card with such id)
+int | Duel.GetCardRaceFromCode(int code) | Get a card's race from its card id (the value returned is the same as the one returned with Card.Race on a card object corresponding to a card with such id)
+int | Duel.GetCardRscaleFromCode(int code) | Get a card's right pendulum scale from its card id (the value returned is the same as the one returned with Card.Rscale on a card object corresponding to a card with such id)
+int,int,... | Duel.GetCardSetcodeFromCode(int code) | Get a card's setcodes from its card id (the value returned is the same as the one returned with Card.Setcode on a card object corresponding to a card with such id)
+int | Duel.GetCardTypeFromCode(int code) | Get a card's type from its card id (the value returned is the same as the one returned with Card.Type on a card object corresponding to a card with such id)
 Group\|nil, int, int, Effect, int, int | Duel.GetChainEvent(int chain) | Returns the elements associated with the event that caused the current chain link to form, in order:The group containing the cards that were associated with that eventThe player associated with that eventThe value associated with that eventThe reason Effect associated with that eventThe reason associated with that eventThe reason player associated with that event
 ... | Duel.GetChainInfo(int chainc, ...) | Returns the chain link properties (aka, chain Info, described by constant group CHAININFO_) of the passed chain link (int chainc), or current chain if it's 0.
 Effect | Duel.GetChainMaterial(int player) | Gets the EFFECT_CHAIN_MATERIAL field effect that is applied to a player (int player). Would only get the first effect it founds.
