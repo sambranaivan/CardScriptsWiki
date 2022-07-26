@@ -14,11 +14,11 @@ As of Jun-2022, these are the functions available in Edopro's scripting library.
 
 ### [Card Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Card.-methods)
 
-## [Duel Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Duel.-methods)
+### [Duel Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Duel.-methods)
 
-## [Effect Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Effect.-methods)
+### [Effect Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Effect.-methods)
 
-## [Group Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Group.-methods)
+### [Group Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Group.-methods)
 
 ### Other functions
 
@@ -35,7 +35,7 @@ int | bit.lshift(int a, int b) | Shifts all bits of an integer to the left by an
 int | bit.replace(int a, int b, int c[, int width=1]) | Returns a copy of (int a) with the field with a width changed to value (int b)
 int | bit.rshift(int a, int b) | Shift all bits of an integer to the right by an amount (Deprecated, advised to use (int a)>>(int b) instead.)
 
-## Debug functions
+### Debug functions
 Return type | Function |Description
 -- | -- | --
 Card | Debug.AddCard(int code, int owner, int player, int location, int seq, int pos[, bool proc=false]) | Add a card of (int code), owned by (int owner) and under (int player)'s control, to (int seq) of (int location) in (int pos) position. If (bool proc) is true, it will be treated as properly summoned for the purposes of revive limits.
@@ -51,7 +51,7 @@ void | Debug.SetPlayerInfo(int playerid, int lp, int startcount, int drawcount) 
 void | Debug.ShowHint(string msg) | Display a message on screen, saying (string msg)
 
 
-## Fusion-related functions
+### Fusion-related functions
 Return type | Function |Description
 -- | -- | --
 void | Fusion.AddContactProc(Card c, function group, function op, function sumcon, function\|nil condition, int sumtype = 0, int\|nil desc) | Adds a Contact Fusion Procedure to a Fusion monster which is a Summoning Procedure without having to use "Polymerization". (function group) is a function with (int tp) parameter which returns a Group of usable materials. (function op) is the operation that will be applied to the selected materials. (function sumcon) adds a limitation on a Fusion monster which applies to EFFECT_SPSUMMON_CONDITION. (function condition) is an additional condition to check. (int sumtype) is the Summon Type of the Contact Fusion, which defaults to 0. (int desc) is the description of the Summoning Procedure when selecting it.
@@ -87,17 +87,17 @@ bool | Fusion.IsMonsterFilter(function f,...) | Used by the Fusion Summon proced
 bool | Fusion.OnFieldMat(filter,...) | Used by the Fusion Summon procedure.
 void | Fusion.ShuffleMaterial(e,tc,tp,group sg) | Sends (group sg) to the Deck with REASON_EFFECT+REASON_MATERIAL+REASON_FUSION. Then clears the group sg. Used by the Fusion Summon procedure.
 
-## Link-related functions
+### Link-related functions
 Return type | Function |Description
 -- | -- | --
 void | Link.AddProcedure(Card c, function\|nil f, int min, int max = c:GetLink(), function\|nil specialchk, int desc) | Adds a Link Procedure where (function f) is the required material with a minimum (int min) and maximum (int max) where (function specialchk) is an additional check after obtaining all materials (e.g. Akashic Magician) and (int desc) is the description to its Link Summoning Procedure
 
-## Pendulum-related functions
+### Pendulum-related functions
 Return type | Function |Description
 -- | -- | --
 void | Pendulum.AddProcedure(Card c[, bool reg=true, int\|nil desc]) | Applies all the effects necessary for a Pendulum card to be used as one to (Card c). Setting (bool reg) to false, will not register the activation effect, which is used in cards that cannot be activated since you don't have them in your hand (e.g. Xyz/Pendulums). (int desc) is an optional parameter adding a description to your Pendulum Activation.
 
-## Ritual-related functions
+### Ritual-related functions
 Return type | Function |Description
 -- | -- | --
 effect | Ritual.AddProc(card c,int _type, function filter, int lv, string desc, function extrafil, function extraop, function matfilter, function stage2, int location,group forcedselection, function customoperation,group specificmatfilter) |  
@@ -109,7 +109,7 @@ void | Ritual.AddProcGreaterCode(Card c, int lv, string desc,...) | Adds a Ritua
 effect | Ritual.AddWholeLevelTribute(card c, function cond) | The current total level to match for the monster being summoned, to be used with monsters that can be used as whole tribute
 effect | Ritual.CreateProc(card c,int _type, function filter, int lv, string desc, function extrafil, function extraop, function matfilter, function stage2,int location,group forcedselection, function customoperation, function specificmatfilter) |  
 
-## Synchro-related functions
+### Synchro-related functions
 Return type | Function |Description
 -- | -- | --
 void | Synchro.AddDarkSynchroProcedure(Card c, function f1, function f2, int plv, int nlv, function ...) | Adds a Synchro Procedure to (Card c) used by Dark Synchros where (function f1) is the first material, usually used by the non-Tuner and (function f2) as the Dark Tuner, whose Level to be subtracted from the first material. (int plv) is the target level when both materials are of positive value while (int nlv) is the target value if the first material is affected by Dark Wave. (int plv) defaults to the Synchro monster's level while (int nlv) defaults to the (int plv) if not supplied. (function ...) is the list of required materials during the Summon.
@@ -120,7 +120,7 @@ bool | Synchro.NonTunerCode(table params) | Used in the Synchro Summon procedure
 bool | Synchro.NonTunerEx(function f, int val) | A filter used in a Synchro procedure when a material is supposed to be non-Tuner. It also has to satisfy condition of (function f) which has to be Card.IsRace, Card.IsAttribute or Card.IsType, or a function that would use any of these 3. Also, (int val) is a parameter that is used in checking the (function f).
 int | Synchro.Send | a number representing how and where the Synchro Materials would be sent. 0 - (default) to grave, 1- to grave, returned from banished, 2 - banished face-up, 3 - banished face-down, 4 - sent to hand, 5, sent to Deck, 6 - destroyed.
 
-## Xyz-related functions
+### Xyz-related functions
 Return type | Function |Description
 -- | -- | --
 void | Xyz.AddProcedure(Card c, function\|nil f, int\|nil lv, int ct, f\|nil alterf, int desc, int maxct=ct, function op, bool mustbemat, function exchk) | Adds an Xyz Procedure where (function f) is the required Xyz Material, and (int lv) is the required level, but it can also be nil if there is no required Level. (int ct) is the required number of materials. (function alterf) is the alternate material, e.g. Number C39: Utopia Ray. (int desc) is the description shown when attempting to Xyz Summon using (function alterf). (int maxct) is the maximum number of materials, which defaults to (int ct). (function op) is used by some monsters do something else in addition to using an Xyz Material (e.g. Digital Bug Corebage (detach 2 materials) or Number 99: Utopic Dragon (discard 1 "Rank-Up-Magic")). (bool mustbemat) is used if you can only use the listed materials during the Xyz Summon, this disallows Anime effects such as Orichalcum Chain (minus 1 material) or Triangle Evolution (triple material). (function exchk) is an additional check at the end of selecting materials (e.g. Number F0: Utopic Future (checks if the materials have the same Rank)
