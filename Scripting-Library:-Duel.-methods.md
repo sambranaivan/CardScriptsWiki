@@ -196,6 +196,9 @@ bool | Duel.IsPlayerCanRemove(int player[, Card c]) | If c is not passed, only c
 bool | Duel.IsPlayerCanSendtoDeck(int player[, Card c]) | If c is not passed, only checks if the player can is not affected by EFFECT_CANNOT_TO_DECK, otherwise checks if the player can return the passed card to the deck.
 bool | Duel.IsPlayerCanSendtoGrave(int player[, Card c]) | If c is not passed, only checks if the player can is not affected by EFFECT_CANNOT_TO_GRAVE, otherwise checks if the player can send the passed card to the GY.
 bool | Duel.IsPlayerCanSendtoHand(int player[, Card c]) | If c is not passed, only checks if the player can is not affected by EFFECT_CANNOT_TO_HAND, otherwise checks if the player can send the passed card to the Hand.
+
+return type | function name | description
+-- | -- | --
 bool | Duel.IsPlayerCanSpecialSummon(int player[, int sumtype, int sumpos, int target_player, Card c]) | If only the player is passed as parameter, it checks if the player is affected by any effect that would prevent him to special summon a monster, otherwise checks if the player can Special Summon "c" as "sumtype", to "target_player"'s field in the passed position.
 bool | Duel.IsPlayerCanSpecialSummonCount(int player, int count) | Checks if the player can Special Summon "count" times.
 bool | Duel.IsPlayerCanSpecialSummonMonster(int player, int code[, int\|table setcode, int type, int atk, int def, int level, int race, int attribute, int pos=POS_FACEUP, int target_player=player, int sumtype=0]) | Checks if the player can special summon a monster as "sumtype", with the specified stats, in "pos" on "target_player"'s field.The stats are read as "code"'s default stats, if the stat parameters are not passed are passed as nil, they are not overwritten from the base stats, otherwise the new passed value will be used as stat for the card. "setcode" can be both an int with multiple setcodes encoded in a single value (by bitshifting them, but with a max of 4 setcodes) or as a table, with each entry representing a separate setcode.
@@ -213,6 +216,10 @@ void | Duel.MajesticCopy(Card c1, Card c2[, int reset_value, int reset_count=1) 
 void | Duel.MoveSequence(Card c, int seq) | Move a card (Card c) to a different sequence within its location (int seq)
 void | Duel.MoveToDeckBottom(int\|Card\|Group targets[, int player]) | Places the passed cards in the deck to the bottom of player's deck. If the argument is an integer then it moves the top n cards from player's deck.
 void | Duel.MoveToDeckTop(Card\|Group targets) | Places the passed cards to the top of the deck.
+
+
+return type | function name | description
+-- | -- | --
 bool | Duel.MoveToField(Card c, int move_player, int target_player, int dest, int pos, bool enabled[, int zone = 0xff]) | A player (int move_player) moves a card (Card c) to the target player's field. The destination must be either LOCATION_MZONE or LOCATION_SZONE (maybe LOCATION_ONFIELD too). It will be sent with the given position (int pos). Its effects will either be enabled or disabled according to the last parameter (bool enabled), if zone is specified, it can only place the card in these zones.
 void | Duel.MSet(int player, Card c, bool ignore_count, Effect e\|nil[, int min=0, int zone=0x1f]) | A player Sets a card (Card c) to the provided zone, using Normal Summon proc that the card has. if ignore_count is true, the Set would not count towards the standard limit of Normal Summon/Set. If an effect (Effect e) is provided, the Normal Set is counted as a Set by that effect. if min>0 then the Set proc must need that amount or more tributes. If zone is provided, the card will be settable only to the specific zones.
 bool | Duel.NegateActivation(int chainc) | Negates the activation of an effect in a chain corresponding to that specific chain link.
