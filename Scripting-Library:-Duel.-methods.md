@@ -180,6 +180,10 @@ bool | Duel.IsExistingMatchingCard(function f, int player, int s, int o, int cou
 bool | Duel.IsExistingTarget(function f, int player, int s, int o, int count, Group\|Card ex\|nil, ...) | This function's behaviour is equivalent of calling Duel.IsExistingMatchingCard with the same arguments and filtering cards with Card.IsCanBeEffectTarget with the current reason effect as parameter (internal to the core, but most of the time corresponds to the effect itself)
 bool | Duel.IsMainPhase() | Returns if the current phase is either Main Phase 1 or Main Phase 2.
 Effect\|nil | Duel.IsPlayerAffectedByEffect(int player, int code) | Return the first instance of an effect affecting the player corresponding to the passed code, nil if there's none. The return can be used as boolean check with an Effect being returned as true and nil being returned as fallse.
+
+
+return type | function name | description
+-- | -- | --
 bool | Duel.IsPlayerCanAdditionalSummon(int player) | Returns if the player can perform an additional normal summon via a EFFECT_EXTRA_SUMMON_COUNT (e.g. "Fire Formation - Tensu")
 bool | Duel.IsPlayerCanDiscardDeck(int player, int count) | Checks if a player (int player) can mill a number of cards (int count) from their Deck
 bool | Duel.IsPlayerCanDiscardDeckAsCost(int player, int count) | Checks if a player (int player) can mill a number of cards (int count) from their Deck as cost
@@ -226,6 +230,10 @@ void | Duel.RaiseSingleEvent(Card ec, int code, Effect re, int r, int rp, int ep
 void | Duel.RDComplete() | Complete Damage/Recover step (for simultaneous damage/recovery)
 void | Duel.Readjust() | Makes the game do the adjustments ( win, disable, control, self destroy, equip, position, trap monster). Calling this while adjusting (most likely, in EVENT_ADJUST) four times with the same card (calling this will raise EVENT_ADJUST at the end, so it is possible to loop) will make the card instantly destroyed.
 int | Duel.Recover(int player, int value, int reason[, bool is_step=false]) | Increases player's (int player) Life Points by an amount (int value) for a reason (REASON_x). Setting is_step to true made the recovery considered being done at the call of Duel.RDComplete()
+
+
+return type | function name | description
+-- | -- | --
 void | Duel.RegisterEffect(Effect e, int player) | Register an effect (Effect e) to a player (int player)
 Effect | Duel.RegisterFlagEffect(int player, int code, int reset_flag, int property, int reset_count[, int label = 0]) | Registers a flag effect to a player (int player) with (int code) as the effect code
 int | Duel.Release(Card\|Group targets, int reason) | Tribute a card(s) (Card\|Group targets) with listed reason (int reason). Returns the number of cards successfully Tributed.
@@ -237,7 +245,7 @@ bool | Duel.RemoveOverlayCard(int player, int s, int o, int min, int max, int re
 void | Duel.ResetFlagEffect(int player, int code) | Resets a flag with (int code) as the effect code from a player (int player)
 bool | Duel.ReturnToField(Card c[, int pos, int zone = 0xff]) | Return a card (Card c) to the field (only valid for cards that leaves the field with REASON_TEMPORARY, pos denotes the return position (if not specified, uses the card's previous position on field)
 int | Duel.RockPaperScissors([bool repeat=true]) | Has players play a game of Rock Paper Scissors. Return player (winner or PLAYER_NONE). If repeat == true, RPS continues until there is a winner, otherwise RPS is only played once.
-table[int,int],...\|int,... | Duel.SelectCardsFromCodes(int sel_player, int min, int max, bool cancelable, bool return_index, int code1, ...) | Make (int sel_player) select between (int min) and (int max) cards among the passed card codes. If cancelable is true and the selection is canceled nil will be returned. If return_index is true a number of tables equal to the number of selected cards will be returned, each table will have the selected code index (starting by 1) as the first element and the code itself as second element. Otherwise the selected codes will be returned as multiple return values.
+table[int ,int], ...\|int,... | Duel.SelectCardsFromCodes(int sel_player, int min, int max, bool cancelable, bool return_index, int code1, ...) | Make (int sel_player) select between (int min) and (int max) cards among the passed card codes. If cancelable is true and the selection is canceled nil will be returned. If return_index is true a number of tables equal to the number of selected cards will be returned, each table will have the selected code index (starting by 1) as the first element and the code itself as second element. Otherwise the selected codes will be returned as multiple return values.
 
 return type | function name | description
 -- | -- | --
