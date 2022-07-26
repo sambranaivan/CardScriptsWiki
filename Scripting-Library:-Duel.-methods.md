@@ -14,6 +14,10 @@ int | Duel.AnnounceType(int player) | Makes int player declare a type
 void | Duel.AssumeReset() | Manually resets assume effects. Usually used in syncro summon. (eg: it resets the applied effect of "Influence Dragon (Anime)" on the other materials in the Synchro Summon.)
 void | Duel.AttackCostPaid([int paid=1]) | Register the status of payment of attack cost. A value of 2 means that the attack cost was not paid, 1 means the attack cost was paid.
 void | Duel.BreakEffect() | Separates an effect for the purposes of timing (Reflects the effects of the conjunctives "then" and "also after that")
+
+
+return type | function name | description
+-- | -- | --
 void | Duel.CalculateDamage(Card c1, Card c2\|nil) | Conduct damage calculation between (Card c1) as attacker and (Card c2) or opponent player (nil)
 bool | Duel.CanPlayerSetMonster(int player[, Card sumcard, int sumtype]) | Returns if player can set a monster, if sumcard and sumtype are passed, those parameterers are also passed to the EFFECT_CANNOT_MSET effects.
 bool | Duel.CanPlayerSetSpellTrap(int player[, Card setcard]) | Returns if player can set a spell/trap card, if setcard is passed, that parameterer is also passed to the EFFECT_CANNOT_SSET effects.
@@ -28,7 +32,7 @@ void | Duel.ChangeTargetParam(int chainc, int param) | Change the target paramet
 void | Duel.ChangeTargetPlayer(int chainc, int player) | Change the target player for the specific chain link (0 is the currently resolving one). This alters the value that that chain link set with Duel.SetTargetPlayer
 bool | Duel.CheckChainTarget(int chainc, Card c) | Checks if a card (Card c) can be a target for a chain's (int chainc) effect (via calling target(chkc) function of the effect)
 bool | Duel.CheckChainUniqueness() | Checks if there is no card with the same name in the current chain
-bool[,Group,int,int,Effect,int,int] | Duel.CheckEvent(int event[, bool get_info]) | Returns if, at the activation timing, the (int event) passed is available. If (bool get_info) is set to true, all the even info are returned as extra return values
+bool[, Group, int, int, Effect, int, int] | Duel.CheckEvent(int event[, bool get_info]) | Returns if, at the activation timing, the (int event) passed is available. If (bool get_info) is set to true, all the even info are returned as extra return values
 bool | Duel.CheckLocation(int player, int location, int seq) | Checks if there is an position (int seq) available for the player (int player) in the location (int location). (The sequence (int seq) is used to indicate the specific position of the location, for example in the location of monsters the sequence would go from 0 to 7., etc.)
 bool | Duel.CheckLPCost(int player, int cost) | Checks if a player (int player) can pay an amount (int cost) of LP
 bool | Duel.CheckPhaseActivity() | Checks if the an "activity" was not performed yet which means that the player is at "the start" of the current phase. Used for effects like Pot of Extravagance, Soundproofed and Mimir of the Nordic Ascendant.
@@ -46,6 +50,9 @@ void | Duel.ConfirmCards(int player, Card\|Group targets) | Reveals the passed c
 void | Duel.ConfirmDecktop(int player, int count) | Reveals a number (int count) of cards from the top of a player's (int player) Deck to both players
 void | Duel.ConfirmExtratop(int tp, int count) | Reveals a number (int count) of  facedown cards from the top of a player's (int player) Extra Deck to both players. (faceup pendulum monsters are ignored)
 Card | Duel.CreateToken(int player, int code) | Creates a new instance of a card owned by player (int player) with card code (int code).
+
+return type | function name | description
+-- | -- | --
 int | Duel.Damage(int player, int value, int reason[, bool is_step=false]) | Damages/Decreases player's (int player) Life Points by an amount (int value) for a reason (REASON_x). Setting is_step to true made the damage considered dealt at the call of Duel.RDComplete()
 int | Duel.Destroy(Card\|Group targets, int reason[ ,int dest = LOCATION_GRAVE]) | Destroys a card or group (Card\|Group targets) with (int reason) as reason, and sends the card in the location specified by (int dest). Returns the number of cards successfully destroyed.
 void | Duel.DisableSelfDestroyCheck([disable=true]) | If disable is true, prevents the core from performing the checks for cards that self destroy themselves (like "Burning Abyss" monsters). This behaviour persists until it's manually enabled again by passing false.
