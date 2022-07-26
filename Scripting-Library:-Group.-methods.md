@@ -18,7 +18,9 @@ Group | Group.FilterSelect(Group g, int player, function f, int min, int max[, b
 void | Group.ForEach(Group g, function f, ...) | Executes a function for each card in a group (Group g), function f should accept one parameter (e.g. f(c, ...), with c as each member of the group and ... can be any number of parameters)
 Group | Group.FromCards(Card c[, ...]) | Create a new Group object and populate it with cards (Card c, ...)
 Group | Group.FromLuaRef(int ref) | Returns a Group object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Group object.
-{ int, int, ... } | Group.GetClass(Group g, function f, ...) | Returns a table containing all the different values returned by applying the function f to all the members of the Group g,
+int | Group.GetBitwiseAnd(Group g, function f, ...) | Gets the "bitwise and" (&) of f(c,...) result from all members of a group (Group g). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer. |
+int | Group.GetBitwiseOr(Group g, function f, ...) | Gets the "bitwise or" (\|) of f(c,...) result from all members of a group (Group g). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer.
+{ int, int, ... } | Group.GetClass(Group g, function f, ...) | Returns a table containing all the different values returned by applying the function f to all the members of the Group g.
 int | Group.GetClassCount(Group g, function f, ...) | Gets the count of different f(c,...) results from all members of a group (Group g). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer.
 int | Group.GetCount(Group g) | Returns the number of cards in a group (Group g)
 Card/nil | Group.GetFirst(Group g) | Gets the first member of Group g (also resets the internal enumerator). Returns nil if the group is empty.
