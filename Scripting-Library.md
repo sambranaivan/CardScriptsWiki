@@ -12,15 +12,8 @@ As of Jun-2022, these are the functions available in Edopro's scripting library.
 
 ***
 
-[Auxiliary functions](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Auxiliary-functions)
+Check these pages for the [Card Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Card.-methods), [Duel Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Duel.-methods), [Effect Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Effect.-methods) and [Group Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Group.-methods). Check this page for the [Auxiliary functions](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Auxiliary-functions).
 
-[Card Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Card.-methods)
-
-[Duel Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Duel.-methods)
-
-[Effect Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Effect.-methods)
-
-[Group Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Group.-methods)
 
 ### Other functions
 
