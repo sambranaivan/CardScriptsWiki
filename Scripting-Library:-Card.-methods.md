@@ -33,6 +33,10 @@ void | Card.EnableGeminiState(Card c) | Enables the Gemini effect of a card (Car
 void | Card.EnableReviveLimit(Card c) | Makes a card (Card c) unsummonable except with its own procedure, or after it's Summon procedure is complete
 void | Card.EnableUnsummonable(Card c) | Makes a card (Card c) unsummonable except with its own procedure
 Card | Card.FromLuaRef(int ref) | Returns a Card object from a given lua reference. The function errors out if the reference is invalid or does not refer to a Card object.
+
+
+return type | function name | description
+-- | -- | --
 Effect | Card.GetActivateEffect(Card c) | Gets a card (Card c)'s EFFECT_TYPE_ACTIVATE effect
 int | Card.GetAttack(Card c) | Returns the current ATK of "c".
 Group,bool | Card.GetAttackableTarget(Card c) | Gets a card's (Card c) valid attack targets
@@ -142,6 +146,9 @@ int | Card.GetTurnID(Card c) | Returns the turn that "c" was sent/placed to its 
 int | Card.GetType(Card c[, Card\|nil scard, int sumtype = 0, int playerid = PLAYER_NONE]) | Gets the current type of a Card (Card c) where (Card scard) if provided checks the monster that (Card c) would be used as material, (int sumtype) is for checking the summon type and (int playerid) is the player checking the type.
 int | Card.GetUnionCount(Card c) | Gets Amount of Union monsters equipped to a Card (Card c)
 bool | Card.HasLevel(Card c) | Returns if a Card (Card c) has a level. for Links: false; for Xyzs: false, except if affected by  "EFFECT_RANK_LEVEL..." or similar effects; for Dark Synchros: true, because they have a negative level; for level 0 monsters: true, because 0 is a value.
+
+return type | function name | description
+-- | -- | --
 bool | Card.IsAbleToChangeControler(Card c) | Checks if a card (Card c) is capable of having it's control changed. Checks only whether the card is affected by EFFECT_CANNOT_CHANGE_CONTROL.
 bool | Card.IsAbleToDeck(Card c) | Return if the card c can be returned to the Deck (return true or false)
 bool | Card.IsAbleToDeckAsCost(Card c) | Checks if a card (Card c) is able to go to the Deck as a cost
@@ -207,6 +214,10 @@ bool | Card.IsInMainMZone(Card c, int tp) | Return if (Card c) is in a Main Mons
 bool | Card.IsLevel(Card c, int lv) | Checks if "c" has a Level equal to "lv".
 bool | Card.IsLevelAbove(Card c, int level) | Checks if a card (Card c) has level equal or above the specified number (int level), will return false if the card has no level.
 bool | Card.IsLevelBelow(Card c, int level) | Checks if a card (Card c) has level equal or below the specified number (int level), will return false if the card has no level.
+
+
+return type | function name | description
+-- | -- | --
 bool | Card.IsLink(Card c, int lk) | Checks if "c" has a Link Rating equal to "lk".
 bool | Card.IsLinkAbove (Card c, int link_rating) | Checks if (Card c) has a Link Rating (link_rating) equal or greater than the given number
 bool | Card.IsLinkBelow (Card c, int link_rating) | Checks if (Card c) has a Link Rating (link_rating) equal or lower than the given number
@@ -241,6 +252,9 @@ bool | Card.IsRace(Card c, int race[, Card scard\|nil, int sumtype = 0, int play
 bool | Card.IsRank(Card c, int rk) | Checks if "c" has a Rank equal to "rk".
 bool | Card.IsRankAbove(Card c, int rank) | Checks if a card (Card c) has rank equal or above the specified number (int rank), will return false if the card has no rank
 bool | Card.IsRankBelow(Card c, int rank) | Checks if a card (Card c) has rank equal or below the specified number (int rank), will return false if the card has no rank
+
+return type | function name | description
+-- | -- | --
 bool | Card.IsReason(Card c, int reason) | Checks if the reason for an event that happened to "c" is "reason" (REASON_x).
 bool | Card.IsReincarnationSummoned(Card c) | Interacts with the functions for "Salamangreat" Reincarnation procedure. Returns if card c has CARD_SALAMANGREAT_SANCTUARY as FlagEffect
 bool | Card.IsRelateToBattle(Card c) | Checks whether a card (Card c) is related to battle (either as attacker or as an attack target)
@@ -266,7 +280,7 @@ bool | Card.IsSynchroSummonable(Card c[, Group\|Card\|nil must_use, Group\|Card\
 bool | Card.IsType(Card c, int type[, Card scard\|nil, int sumtype = 0, int playerid = PLAYER_NONE]) | Checks if the card type of "c" is "type" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
 bool | Card.IsXyzLevel(Card c, Card xyzc, int lv) | Checks if "c" would be Level "lv" if it was to be used as Xyz Material for "xyzc".
 bool | Card.IsXyzSummonable(Card c[, Group\|Card\|nil must_use, Group\|Card\|nil  mg, int min=0, int max=0]) | Checks if "c" can be Xyz Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Xyz Summon
-void\|int | Card.Level(Card c[, int level]) | Changes (Card c)'s original level if (int level) is inputted, else returns the current card's original level
+void\|int | Card.Level(Card c[, int level]) | Changes (Card c)'s original level/rank/link rating if (int level) is inputted, else returns the current card's original level/rank/link rating
 void\|int | Card.LinkMarker(Card c[, int linkmarker]) | Changes (Card c)'s original Link Markers if (int linkmarker) is inputted, else returns the current card's original Link Markers.
 void\|int | Card.Lscale(Card c[, int scale]) | Changes (Card c)'s original right scale if (int scale) is inputted, else returns the current card's original right scale.
 bool | Card.MoveAdjacent(card c) | Executes a move operation for card c, to one of its available adjacent sequences (int the Monster Zone)
@@ -276,6 +290,9 @@ int | Card.RegisterEffect(Card c, Effect e[, bool forced=false, ...]) | Register
 Effect | Card.RegisterFlagEffect(Card c, int code, int reset_flag, int property, int reset_count[, int label, int desc]) | Registers a flag effect to a card (Card c) with (int code) that resets with (int reset_flag), as the effect code. (int reset_flag).
 void | Card.ReleaseEffectRelation(Card c,Effect e) | Releases any relation between a card (Card c) and an effect (Effect e)
 void | Card.ReleaseRelation(Card c1, Card c2) | Releases the relation between the first card (Card c1) and the second card (Card c2). Does not release relation from the second card that is resulting from _c2:CreateRelation(c1)_
+
+return type | function name | description
+-- | -- | --
 void | Card.RemoveCounter(Card c, int player, int countertype, int count, int reason) | Remove a number (int count) of the specified counter (int countertype) from a card (Card c), with reason described by (int reason)
 bool | Card.RemoveOverlayCard(Card c, int player, int min, int max, int reason) | Makes player (int Player) remove overlay cards from a Card (Card c), with minimum of (int min) and maximum of (int max) with (int reason) as reason
 int | Card.ReplaceEffect(Card c, int code, int reset_flag[, int reset_count]) | Temporarily replace all effects of a card (Card c) with the effect of card with the specified card code (int code) that resets according to the ascribed reset flag (int reset_flag)
