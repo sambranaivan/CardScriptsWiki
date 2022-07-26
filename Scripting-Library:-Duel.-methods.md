@@ -109,6 +109,9 @@ Group | Duel.GetFieldGroup(int player, int s, int o) | Gets a group containing c
 int | Duel.GetFieldGroupCount(int player, int s, int o) | Counts the number of cards from a specified location of a player (int player), s denotes the player's side of the field, o denotes opposing player's side of the field
 int | Duel.GetFieldGroupCountRush(int player, int s, int o) | Same as Duel.GetFieldGroupCount but exclude the left and right pieces of a summoned maximum monster
 Card | Duel.GetFirstMatchingCard(function f, int player, int s, int o, Group\|Card ex\|nil, ...) | Get the first card in locations (int s) (on (int player)'s side of the field) and (int o) (on their opponent's) for which (function f) returns true, except (Card ex)
+
+return type | function name | description
+-- | -- | --
 Card, ... | Duel.GetFirstTarget() | Returns all the cards that got targeted in the current chain link as separate return values, Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS) is an equivalent alternative that directly returns a group. Duel.GetTargetCards() is a better alternative that returns a group and of target cards that are filtered depending on their relation to the effect.
 int | Duel.GetFlagEffect(int player, int code) | Gets the flag effect with (int code) as the effect code that is registered to a player (int player), returns 0 if no effect, a positive integer otherwise
 void | Duel.GetFlagEffectLabel(int player, int code) | Gets the integer labels to the flag effect registered to the player (int player) with (int code) as the effect code, returns nil if there is no integer label.
@@ -118,6 +121,10 @@ Group | Duel.GetLinkedGroup(int player, int location1, int location2) | Returns 
 int | Duel.GetLinkedGroupCount(int player, int location1, int location2) | Returns the number of cards that would be returned by Duel.GetLinkedGroup
 int | Duel.GetLinkedZone(int player) | Gets all the zones that (int player) has that Link Monsters points to
 int, int flag | Duel.GetLocationCount(int player, int location[, int use_player = reason player, int reason = LOCATION_REASON_TOFIELD, int zone = 0xff]) | Returns 2 values. First the number of zones that a player (target_player) has available in a location of the field (int location)[, that can be used by the player (use_player), with intention of (reason), among certain zones (zone)]. Second return is a flag with the available zones.
+
+
+return type | function name | description
+-- | -- | --
 int, int flag | Duel.GetLocationCountFromEx(int player, [int rplayer = reason_player, Group\|Card sg=nil, Card\|int lc=nil, int zone=0xff]) | Gets the number of available zones that (int player) has to perform a Special Summon from the Extra Deck. Optional Parameters: int rplayer is the player performing the summon , by default comes from the player that activates the effect itself; sg are material(s) or tribute(s) for the special summon, it's included when the effect requires the cost of one or more cards; lc is the card that will be special summoned, it's included when it's a specific card which will be special summon). If lc is group, it cannot be passed directly. Instead, pass the type of the monsters in that group (e.g. TYPE_FUSION, see "Construct Element"), which is limited to a single type and will not work properly if the group has different types. The zone parameter is used to limit the check to only some specific zones of the field. The second return is a flag with the available zones.
 int | Duel.GetLP(int player) | Gets a specified player's (int player) current Life Point
 Group | Duel.GetMatchingGroup(function f, int player, int s, int o, Group\|Card ex\|nil, ...) | Gets all cards in locations (int s) (on (int player)'s side of the field) and (int o) (on their opponent's) for which (function f) returns true, except (Card ex)
