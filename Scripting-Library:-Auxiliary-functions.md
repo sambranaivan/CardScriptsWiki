@@ -5,6 +5,10 @@ void | aux.AddEquipProcedure(Card c, int\|nil p, function\|nil f, function\|nil 
 void | aux.AddEREquipLimit(Card c, function\|nil con, function\|nil equipval, function equipop, Effect linkedeff, int\|nil prop, int\|nil resetflag, int\|nil resetcount) | Registers effects that need to be checked for the effect of "Millennium-Eyes Illusionist". (function con) is any conditions that need to be fulfilled in order to apply its "equipping" effect. (function equipval) is the filter of valid monsters you can equip to it. (function equipop) is the equipping by its effect. (Effect linkedeff) is the effect that equips. (int prop) is the list of additional properties for SetProperty to register effects. (int resetflag) and (int resetcount) is used if the effect would reset such as, until only the End Phase.
 effect | aux.AddFieldSkillProcedure(card c, coverNum, drawless) | Procedure for Field skills--c: the skill (card)--coverNum: the cover corresponding to the back (int)--drawless: if the skill make you draw 1 less card at the start of the duel (bool)
 effect, effect | aux.AddKaijuProcedure(card c) | Adds Kaiju's stardand procedure to the monster (which also includes the uniqueness on field condition). Calls the following auxilary function: KaijuCondition
+
+
+return type | function name | description
+-- | -- | --
 effect | aux.AddLavaProcedure(card c, int required, int position, funtion filter, int value, int description) | Adds Lava Golem-like procedure (monster that tribute to Special Summon on opponent's field), int required is the amount of monster to tribute, position is which position is it summoned and filter specify the monster it must tribute, value sets the type of Special summon and description adds a description for it. Calls the following auxiliary functions: LavaCondition, LavaCheck, LavaTarget and LavOperation, defined in cards_specific_functions.lua.
 function | aux.AddMaleficSummonProcedure(c,code,loc,excond) | Procedure for "Malefic" monsters' Special Summon (also includes handling of "Malefic Paradox Gear"'s effect)
 effect | aux.AddNormalSetProcedure(card c, bool ns, bool opt, int min, int max, int sum_type_val, string desc, function f, function sumop) |  
@@ -76,18 +80,19 @@ bool | aux.FilterBoolFunctionEx2(function f, ...) |  
 bool | aux.FilterEqualFunction(function f, int value, ...) | Used in filters (with parameter (Card c)) to check a function and its (...) parameters is equal to the inputted (int value).
 function | aux.FilterFaceupFunction(function f, ...) | Filter to check face-up cards that match (function f) where (...) are extra parameters to f. Can be used as the function parameter in SelectMatchingCard/Target and IsExistingMatchingCard/Target.
 bool | aux.FilterSummonCode(...) | used for Material Types Filter Bool (works for IsRace, IsAttribute, IsType)
-function | aux.FunctionWithNamedArgs(function f, ...) |  
+function | aux.FunctionWithNamedArgs(function f, ...) |  description
 bool | aux.fuslimit(Effect e, Effect se, int sp, int st) | SPSUMMON condition "Must be Fusion Summoned"
 bool | aux.gbspcon(Effect e, int tp, Group eg\|nil, int ep, int ev, Effect re, int r, int rp) | Default SetCondition for "Summoned by a "Gladiator Beast" monster"
 bool | aux.GeminiNormalCondition(Effect e) | Checks if a monster is face-up and is not a Gemini monster or has not been Normal Summoned on the field.
-table | aux.GetAttributeStrings(int number) |  
+table | aux.GetAttributeStrings(int number) |  -
 int | aux.GetCover(card c, coverNum) | Used by the Skill procedure.
-table,group | aux.GetExtraMaterials(int player, group mustg, group sc, int summon_type) |  
-group | aux.GetMustBeMaterialGroup(int player, group eg, group sump, sc, group g, int r) |  
+table,group | aux.GetExtraMaterials(int player, group mustg, group sc, int summon_type) |  -
+int | aux.GetMMZonesPointedTo(player[,by_filter,player_location=LOCATION_MZONE,oppo_location=player_location,target_player=player,...]) | Returns the zone values (bitfield mask) of the Main Monster Zones on the field of "target_player" that are pointed to by any Link Cards, which match the "by_filter" function/filter, in the locations "player_location" and "oppo_location", from the perspective of "player".
+group | aux.GetMustBeMaterialGroup(int player, group eg, group sump, sc, group g, int r) |  -
 Group | aux.GetMustBeMaterialGroup(int tp, nil\|Group eg, int sump, nil\|Card sc, nil\|Group g, int r) | Gets the group that must be used as material (Contacting "C"). (int tp) is the affected player, (nil\|Group eg) is all detected materials, (int sump) is the Summoning player, (nil\|Card sc) is the card to be Summoned, (nil\|Group) g is all the valid usable materials, (int r) is the reason e.g. REASON_SYNCHRO, REASON_XYZ
-table | aux.GetRaceStrings(int number) |  
+table | aux.GetRaceStrings(int number) |  -
 void | aux.GlobalCheck(s, function func) | Enables a global check to be used with function "func"
-bool | aux.HarmonizingMagFilter(c,e,f) |  
+bool | aux.HarmonizingMagFilter(c,e,f) |  -
 bool | aux.HasCounterListed(card c, int counter_type) | Checks whether card c has an effect that mentions int counter_type counter. This includes adding, removing, gaining ATK/DEF per counter, etc. Corresponding table: "s.counter_list" ("s.counter_place_list" is already handled)
 bool | aux.HasListedSetCode(Card c, int ...) | Retrurn if (Card c) lists any of the setcodes passed in (int ...), by iterating over Card c's listed_series.
 bool | aux.imval1(Effect e, Card c) | default filter for EFFECT_CANNOT_BE_BATTLE_TARGET where (Card c) is checked to ensure it's not immune to (Effect e)
@@ -140,6 +145,10 @@ void | aux.RegisterClientHint(Card c, int property_code, int reg.player, int s, 
 bool | aux.ReincarnationCheckTarget(Effect e, Card c) | Auxiliary function for "Salamangreat" Reincarnation procedure. Returns if (card c) is either a Fusion, Ritual or a Link.
 function | aux.ReincarnationCheckValue(Effect e, Card c) | Auxiliary function for "Salamangreat" Reincarnation procedure. Registers CARD_SALAMANGREAT_SANCTUARY as flag  to (card c) if it is either a Link, Fusion or Ritual and has among its materials a card with the same ID as (card c).
 bool | aux.ReincarnationRitualFilter(Effect e, Card c) | Auxiliary filter for "Salamangreat" Reincarnation procedure to handle the rituals.
+
+
+return type | function name | description
+-- | -- | --
 bool | aux.RelCheckGoal(int player, group sg, group exg, group mustg, int count, int min, function specialchk, ...) |  
 bool | aux.RelCheckRecursive(card c, int player, group sg, group mg, group exg, group mustg, int count, int min, function specialchk, ...) |  
 bool | aux.ReleaseCheckMMZ(group sg, int player) |  
@@ -172,6 +181,9 @@ bool | aux.TargetBoolFunction(function f, ...) | Used in SetTarget filters (with
 bool | aux.TargetEqualFunction(function f, int value, ...) | Used in SetTarget filters (with parameters (e,c)) to check a function and its (...) parameters is equal to the inputted (int value).
 bool | aux.TatsunecroFilter(Card c) | Returns is Card c has "3096468" as flag effect. Used in the Synchro summon procedure
 bool | aux.tgoval(Effect e, Effect re, int rp) | filter for EFFECT_CANNOT_BE_EFFECT_TARGET, "cannot be targeted by your opponent's card effects"
+
+return type | function name | description
+-- | -- | --
 void | aux.thoeSend(card c) | Sends (card c) to the grave. Function added to be used with aux.ToHandOrElse
 void | aux.ToHandOrElse(card c\|group tc, int player, [function check, function oper, str],...) | Makes (int player) either add (card c\|group tg) to hand or perform a secondary action. If the optional parameters are not provided, the default secondary action is to send the card or group to the GY. If  the provided (function check) is true (for all the cards in the group) , the secondary action, with string called from (str), will be the one defined in (function oper).
 bool | aux.TRUE() | Function that returns true. Can be used to return a whole group of cards in a certain location
