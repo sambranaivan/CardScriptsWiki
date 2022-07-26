@@ -68,7 +68,7 @@ void | Duel.ForceAttack(Card c1, Card c2) | Last Turn's specific effect: after t
 
 return type | function name | description
 -- | -- | --
-int,... | Duel.GetActivityCount(int player, int activity_type, ...) | Get the number of times (int player) has performed activities of (int activity_type). (See ACTIVITY_XXX constants,)
+int, ... | Duel.GetActivityCount(int player, int activity_type, ...) | Get the number of times (int player) has performed activities of (int activity_type). (See ACTIVITY_XXX constants,)
 Card | Duel.GetAttacker() | Get the attacking card (or nil if there is no attacker)
 Card\|nil | Duel.GetAttackTarget() | Gets the attack target card (or nil if there's no attack target/the attack is a direct attack)
 int | Duel.GetBattleDamage(int player) | Gets the battle damage (int player) would take
@@ -95,6 +95,10 @@ int | Duel.GetCounter(int player, int s, int o, int countertype) | Gets the numb
 int | Duel.GetCurrentChain([bool real_chain=false]) | Returns the number of the current chain link. If real chain is true, then it will return the number of ACTUAL chains that have already formed, so in a target or cost function, it will not include the current chain in this count, while with that parameter as false the current chain will be included as well. Set this when you need to check for the current chain in an effect condition.
 int | Duel.GetCurrentPhase() | Gets the current Phase of the game (corresponds to PHASE_x in constants.lua)
 int | Duel.GetCustomActivityCount(int counter_id, int player, int activity_type) | Same behaviour as Duel.GetActivityCount with the difference that returns the count of the activities that were registered with the specific counter_id as Duel.AddCustomActivityCounter.
+
+
+return type | function name | description
+-- | -- | --
 Group | Duel.GetDecktopGroup(int player, int count) | Gets a group of a player's (int player) top n (int count) cards of their Deck
 int, int, int, int, int | Duel.GetDiceResult() | Returns 5 values corresponding to the results of the last dice rolls.
 int | Duel.GetDrawCount(int player) | Gets the draw count for normal draw for a player (int player)
@@ -124,6 +128,10 @@ int, int flag | Duel.GetMZoneCount(int target_player[, card\|group ex = nil, int
 Group | Duel.GetOperatedGroup() | Gets the last group of operated cards (from last call of some functions, ex. calling this after Duel.Draw would return a group of the drawn cards)
 int | Duel.GetOperationCount(int chainc) | Get the amount of operation info set by previous calls to Duel.SetOperationInfo for the corresponding chain.
 bool, Card\|Group, int, int, int | Duel.GetOperationInfo(int chainc, int category) | Returns the corresponding values that were set by a previous call to Duel.SetOperationInfo for the corresponding category. If the first return value is true that means that operation info was set and then there will be 4 extra return values corresponding to the parameters of SetOperationInfo, otherwise only a single false value is returned.
+
+
+return type | function name | description
+-- | -- | --
 int | Duel.GetOverlayCount(int player, int s, int o) | Return the number of cards that would be returned by Duel.GetOverlayGroup
 Group | Duel.GetOverlayGroup(int player, int s, int o) | Return the Group composed of cards that are currently Overlaid in the passed player's fields ("s" or "o" =1 means to include that side of the field, 0 means to ignore)
 Effect, ... | Duel.GetPlayerEffect (int player[, int effect_type]) | Returns all the effect with that code (int effect_type) applied on the player. With no effect_type or effect_type=0 it will return all the effects applied on the player. [effect_type refer to "EFFECT_" constants, eg: EFFECT_REVERSE_DAMAGE, EFFECT_CANNOT_MSET]
@@ -149,7 +157,7 @@ void | Duel.HintSelection(Card\|Group selection[, bool log_as_selection=false]) 
 void | Duel.IncreaseSummonedCount([Card c]) | Increases the number of normal summons/sets performed by the turn player. If a card is passed and that card has an EFFECT_EXTRA_SUMMON_COUNT applied to it, that effect is used instead of increasing teh count of the turn player.
 bool | Duel.IsAbleToEnterBP() | Checks if the player can enter BP this turn.
 int | Duel.IsAttackCostPaid() | Return the status of payment of attack cost for a card (e.g. Mist Valley Falcon). A return value of 0 means that the attack cost hasn't been paid yet, so it can be canceled by the current effect, 1 means the attack cost has been paid by at least 1 previous card, so it HAS TO be paid and cannot be canceled, 2 means that the attack cost has been canceled by a previous effect and thus HAS TO NOT be paid nor canceled, just ignored.
-bool | Duel.IsBattlePhase() | Returns if the current phase is the Battle Phase (between PHASE_BATTLE_START  and PHASE_BATTLE)
+bool | Duel.IsBattlePhase() | Returns if the current phase is the Battle Phase (between PHASE_BATTLE_START and PHASE_BATTLE)
 
 
 return type | function name | description
