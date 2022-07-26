@@ -18,10 +18,13 @@ void | Card.CancelCardTarget(Card c1, Card c2) | Removes the second card (Card c
 void | Card.CancelToGrave(Card c[, bool cancel=true]) | if cancel is true, cancels the to-grave rule and movement of a card (Card c). If false, enforce the rule that it must go from the field to Graveyard instead.
 bool | Card.CanChainAttack(Card c[, int ac = 2, bool monsteronly = false]) | Checks if a card (Card c) can make a follow-up attack. Specifying the integer ac checks whether it can attack that number of times. Setting monsteronly to true checks only the possibility of follow-up attack to monster
 bool | Card.CanSummonOrSet(...) | Returns if the card passed can be normal summoned or normal set.
-Effect[,Group,int,int,Effect,int,int] | Card.CheckActivateEffect(Card c, bool neglect_con, bool neglect_cost, bool copy_info) | Checks a card (Card c)'s EFFECT_TYPE_ACTIVATE effect while checking for whether it can be activated. Returns _nil_ if effect condition is not met. Set _neglect_con_ to _true_ to ignore condition checking. Set _neglect_cost_ to _true_ to ignore cost payable checking. Set _copy_info_ to true to return the activate effect's supposed info, for other than EVENT_FREE_CHAIN usually (eg,ep,ev,r,re,rp)
+Effect[, Group, int, int, Effect, int, int] | Card.CheckActivateEffect(Card c, bool neglect_con, bool neglect_cost, bool copy_info) | Checks a card (Card c)'s EFFECT_TYPE_ACTIVATE effect while checking for whether it can be activated. Returns _nil_ if effect condition is not met. Set _neglect_con_ to _true_ to ignore condition checking. Set _neglect_cost_ to _true_ to ignore cost payable checking. Set _copy_info_ to true to return the activate effect's supposed info, for other than EVENT_FREE_CHAIN usually (eg,ep,ev,r,re,rp)
 bool | Card.CheckAdjacent(card c) | Returns if either of the sequences next to the card c's sequence is available. Already handles the Extra monster zone (sequence > 4). Limited to Monster Zones.
 bool | Card.CheckEquipTarget(Card c1, Card c2) | Checks if a Card (Card c1) has another Card (Card c2) as equip target
 bool | Card.CheckFusionMaterial(Card c[, Group g, Card gc\|nil, int chkf=PLAYER_NONE]) | Check if g contains a set of fusion material that c needs [must contain gc]## Check the Condition function for the effect of EFFECT_FUSION_MATERIAL according to the type of c
+
+return type | function name | description
+-- | -- | --
 bool | Card.CheckFusionSubstitute(Card c, Card fc) | Checks if a card (Card c) can be treated as a substitute for one of a Fusion Monster's (Card fc) Fusion Material.
 bool | Card.CheckRemoveOverlayCard(Card c, int player, int count, int reason) | Checks if the player (int player) can remove a number (int count) of Xyz materials from a Card c for a specific reason (int reason)
 bool | Card.CheckUniqueOnField(Card c,int check_player) | Checks if a card's (Card c) going to a player's (int player) field would violate the "Can only control 1" clause
