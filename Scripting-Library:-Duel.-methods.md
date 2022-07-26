@@ -64,26 +64,41 @@ void | Duel.EnableGlobalFlag(int global_flag) | Enables the specified global fla
 bool | Duel.Equip(int player, Card c1, Card c2[, bool up=true, bool is_step=false]) | A Player (int player) equips a Card (Card c1) to another Card (Card c2). When up==false, the equip card will not have its position changed face-up. Is_step is for using with Duel.EquipComplete. Returns true if the equip is successful.
 void | Duel.EquipComplete() | Concludes a series of Equips (Always used with 'is_step = true' in Duel.Equip())
 void | Duel.ForceAttack(Card c1, Card c2) | Last Turn's specific effect: after the chain resolves, switches to a standalone Battle Phase and makes card (card c1) attack (card c2). After that, returns to the previous phase.
+
+
+return type | function name | description
+-- | -- | --
 int,... | Duel.GetActivityCount(int player, int activity_type, ...) | Get the number of times (int player) has performed activities of (int activity_type). (See ACTIVITY_XXX constants,)
 Card | Duel.GetAttacker() | Get the attacking card (or nil if there is no attacker)
 Card\|nil | Duel.GetAttackTarget() | Gets the attack target card (or nil if there's no attack target/the attack is a direct attack)
 int | Duel.GetBattleDamage(int player) | Gets the battle damage (int player) would take
 int | Duel.GetBattledCount(int player) | Get the number of battles (int player) has been involved in this turn
-Card\|nil,Card\|nil | Duel.GetBattleMonster(int tp) | Returns as first value the monster that is currently battling from the perspective of tp (nil if tp has no currently battling monsters), as second value returns the battling monster from the perspective of 1-tp.
+Card\|nil, Card\|nil | Duel.GetBattleMonster(int tp) | Returns as first value the monster that is currently battling from the perspective of tp (nil if tp has no currently battling monsters), as second value returns the battling monster from the perspective of 1-tp.
+int | Duel.GetCardAliasFromCode(int code) | Get a card's alias from its card id (the value returned is the same as the one returned with Card.Alias on a card object corresponding to a card with such id)
+int | Duel.GetCardAttackFromCode(int code) | Get a card's attack from its card id (the value returned is the same as the one returned with Card.Attack on a card object corresponding to a card with such id)
+int | Duel.GetCardAttributeFromCode(int code) | Get a card's attribute from its card id (the value returned is the same as the one returned with Card.Attribute on a card object corresponding to a card with such id)
+int | Duel.GetCardDefenseFromCode(int code) | Get a card's defense from its card id (the value returned is the same as the one returned with Card.Defense on a card object corresponding to a card with such id)
 Card | Duel.GetCardFromCardID(int cardid) | Returns the card whose internal id matches cardid, if no card matches, nil is returned.
-Group\|nil,int,int,Effect,int,int | Duel.GetChainEvent(int chain) | Returns the elements associated with the event that caused the current chain link to form, in order:The group containing the cards that were associated with that eventThe player associated with that eventThe value associated with that eventThe reason Effect associated with that eventThe reason associated with that eventThe reason player associated with that event
+Group\|nil, int, int, Effect, int, int | Duel.GetChainEvent(int chain) | Returns the elements associated with the event that caused the current chain link to form, in order:The group containing the cards that were associated with that eventThe player associated with that eventThe value associated with that eventThe reason Effect associated with that eventThe reason associated with that eventThe reason player associated with that event.
+int | Duel.GetCardLevelFromCode(int code) | Get a card's level/rank/link rating from its card id (the value returned is the same as the one returned with Card.Level on a card object corresponding to a card with such id)
+int | Duel.GetCardLinkMarkerFromCode(int code) | Get a card's link marker from its card id (the value returned is the same as the one returned with Card.LinkMarker on a card object corresponding to a card with such id)
+int | Duel.GetCardLscaleFromCode(int code) | Get a card's left pendulum scale from its card id (the value returned is the same as the one returned with Card.Lscale on a card object corresponding to a card with such id)
+int | Duel.GetCardRaceFromCode(int code) | Get a card's race from its card id (the value returned is the same as the one returned with Card.Race on a card object corresponding to a card with such id)
+int | Duel.GetCardRscaleFromCode(int code) | Get a card's right pendulum scale from its card id (the value returned is the same as the one returned with Card.Rscale on a card object corresponding to a card with such id)
+int, int, ... | Duel.GetCardSetcodeFromCode(int code) | Get a card's setcodes from its card id (the value returned is the same as the one returned with Card.Setcode on a card object corresponding to a card with such id)
+int | Duel.GetCardTypeFromCode(int code) | Get a card's type from its card id (the value returned is the same as the one returned with Card.Type on a card object corresponding to a card with such id)
 ... | Duel.GetChainInfo(int chainc, ...) | Returns the chain link properties (aka, chain Info, described by constant group CHAININFO_) of the passed chain link (int chainc), or current chain if it's 0.
 Effect | Duel.GetChainMaterial(int player) | Gets the EFFECT_CHAIN_MATERIAL field effect that is applied to a player (int player). Would only get the first effect it founds.
-int,int,int,int,int | Duel.GetCoinResult() | Returns 5 values corresponding to the results of the last coins tosses.
+int, int, int, int, int | Duel.GetCoinResult() | Returns 5 values corresponding to the results of the last coins tosses.
 bool | Duel.GetControl(Card\|Group targets, int player[, int reset_phase=0, int reset_count=0, int zone = 0xff, int chose_player = reason_player]) | Give control of a card/group (Card\|Group targets) to a player (int player). If reset_phase and reset_count is specified, will behave like other effects with those resets (and so, the control will be returned when the effect has expired). Works only for monsters in Monster Zone, if zone is specified, if moves monster to that zones only or destroy if they are full. If chose_player is provided, the player selecting the zone is the passed value, if PLAYER_NONE is passed, the player performing the selection is player (int player), otherwise the selecting player will be the current reason player.
 int | Duel.GetCounter(int player, int s, int o, int countertype) | Gets the number of counter (int countertype) on the field, from a player's (int player) perspective. The variables int s and int o are the player's and the opponent's field, respectively, 0 to exclude and 1 (or higher) to include.
 int | Duel.GetCurrentChain([bool real_chain=false]) | Returns the number of the current chain link. If real chain is true, then it will return the number of ACTUAL chains that have already formed, so in a target or cost function, it will not include the current chain in this count, while with that parameter as false the current chain will be included as well. Set this when you need to check for the current chain in an effect condition.
 int | Duel.GetCurrentPhase() | Gets the current Phase of the game (corresponds to PHASE_x in constants.lua)
 int | Duel.GetCustomActivityCount(int counter_id, int player, int activity_type) | Same behaviour as Duel.GetActivityCount with the difference that returns the count of the activities that were registered with the specific counter_id as Duel.AddCustomActivityCounter.
 Group | Duel.GetDecktopGroup(int player, int count) | Gets a group of a player's (int player) top n (int count) cards of their Deck
-int,int,int,int,int | Duel.GetDiceResult() | Returns 5 values corresponding to the results of the last dice rolls.
+int, int, int, int, int | Duel.GetDiceResult() | Returns 5 values corresponding to the results of the last dice rolls.
 int | Duel.GetDrawCount(int player) | Gets the draw count for normal draw for a player (int player)
-int,int | Duel.GetEnvironment() | Gets the environment code for the applied field card (the same as the Field Spell's code, usually). Returns the code, then the controlling player. Prioritizes the first player. **deprecated and should be avoided**
+int, int | Duel.GetEnvironment() | Gets the environment code for the applied field card (the same as the Field Spell's code, usually). Returns the code, then the controlling player. Prioritizes the first player. **deprecated and should be avoided**
 Group | Duel.GetExtraTopGroup(int player, int count) | Gets a group of a player's (int player) top n (int count) facedown cards of their Extra Deck
 Card | Duel.GetFieldCard(int player, int location, int seq) | Gets a card in certain location at a certain sequence
 Group | Duel.GetFieldGroup(int player, int s, int o) | Gets a group containing cards from a specified location of a player (int player), s denotes the player's side of the field, o denotes opposing player's side of the field
@@ -135,6 +150,10 @@ void | Duel.IncreaseSummonedCount([Card c]) | Increases the number of normal sum
 bool | Duel.IsAbleToEnterBP() | Checks if the player can enter BP this turn.
 int | Duel.IsAttackCostPaid() | Return the status of payment of attack cost for a card (e.g. Mist Valley Falcon). A return value of 0 means that the attack cost hasn't been paid yet, so it can be canceled by the current effect, 1 means the attack cost has been paid by at least 1 previous card, so it HAS TO be paid and cannot be canceled, 2 means that the attack cost has been canceled by a previous effect and thus HAS TO NOT be paid nor canceled, just ignored.
 bool | Duel.IsBattlePhase() | Returns if the current phase is the Battle Phase (between PHASE_BATTLE_START  and PHASE_BATTLE)
+
+
+return type | function name | description
+-- | -- | --
 bool | Duel.IsCanAddCounter(int player[, int countertype, int count, Card c]) | If only platyer is passed, it only checks if that player is not affected by "EFFECT_CANNOT_PLACE_COUNTER" that doesn't have a specific target (and thus no extra checks). If all the other 3 parameters are provided, it checks the applied "EFFECT_CANNOT_PLACE_COUNTER" effects with those parameters as arguments.
 bool | Duel.IsCanRemoveCounter(int player, int s, int o, int countertype, int count, int reason) | Checks if a player (int player) can remove counter(s) (int countertype) (int count) from the field with a reason (int reason). The variables int s and int o are the player's and the opponent's field, respectively, 0 to exclude and nonzero to include.
 bool | Duel.IsChainDisablable(int chainc) | Check if a chain's (int chainc) effect can be disabled (Negate Effect)
@@ -164,6 +183,10 @@ bool | Duel.IsPlayerCanSpecialSummonMonster(int player, int code[, int\|table se
 bool | Duel.IsPlayerCanSummon(int player[, int sumtype, Card c]) | If only the palyer is passed, checks if the player is not affected by EFFECT_CANNOT_SUMMON, otherwise checks if the player can Normal Summon the passed card as the passed summon type.
 bool | Duel.IsSummonCancelable() | Returns if the current summon procedure is cancelable, as in it's a summon done outside a chain in an open game state and it's not being performed during a chain or as a part of a separate effect.
 bool | Duel.IsTurnPlayer(int player) | Checks if the current turn is (int player)'s turn.
+
+
+return type | function name | description
+-- | -- | --
 void | Duel.LinkSummon(int player, Card c[, Group\|Card\|nil must_use, Group\|Card\|nil mg, int minc=0, int maxc=0]) | A player (int player) Link Summons a card (Card c) using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Summon.
 void | Duel.LoadCardScript(string\|int code) | Loads into the current enviroment (duel/puzzle) the script from card which id is int code. If a string is used, it must be "c'code'.lua"
 bool,object/nil | Duel.LoadScript (string file_name[, bool forced=false]) | Loads into the current enviroment (duel/puzzle) (file_name)'s script, and return true or false depending on the script loading success. If "forced" is false, the file name is loaded only if it hasn't been loaded before. If "forced" is true, other than loading the script regardless if it has been loaded previously, the 2nd returned value will be whatever was set as the global variable "edopro_export" from the loaded script.
@@ -200,6 +223,9 @@ void | Duel.ResetFlagEffect(int player, int code) | Resets a flag with (int code
 bool | Duel.ReturnToField(Card c[, int pos, int zone = 0xff]) | Return a card (Card c) to the field (only valid for cards that leaves the field with REASON_TEMPORARY, pos denotes the return position (if not specified, uses the card's previous position on field)
 int | Duel.RockPaperScissors([bool repeat=true]) | Has players play a game of Rock Paper Scissors. Return player (winner or PLAYER_NONE). If repeat == true, RPS continues until there is a winner, otherwise RPS is only played once.
 table[int,int],...\|int,... | Duel.SelectCardsFromCodes(int sel_player, int min, int max, bool cancelable, bool return_index, int code1, ...) | Make (int sel_player) select between (int min) and (int max) cards among the passed card codes. If cancelable is true and the selection is canceled nil will be returned. If return_index is true a number of tables equal to the number of selected cards will be returned, each table will have the selected code index (starting by 1) as the first element and the code itself as second element. Otherwise the selected codes will be returned as multiple return values.
+
+return type | function name | description
+-- | -- | --
 int | Duel.SelectDisableField(int player, int count, int location_player, int location_oppo[, int filter=0xe0e0e0e0, bool all_field=false]) | Asks (int player) to select zones to be disabled, a number of zones up to (int count), in locations (location_player) for the player and (location_oppo) for their opponent, that are bitmasked by (int filter) <in another word, zones that are not filter>. If all_field is true the player can select any zones, including Pendulum and Extra Monster Zone which are normally not allowed.
 bool | Duel.SelectEffectYesNo(int player, Card c[, int description=3]) | Asks (int player) Yes or No, with the question being specified by (int desc) highlighting the passed card (Card c). The default string ask the player if they want to use the effect of "card x"
 int | Duel.SelectFieldZone(int player, int count, int s, int o[, int filter=0xe0e0e0e0]) | Asks (int player) to choose a number of Zones up to (int count), in locations (int s) for the player and (int o) for their opponent, that are bitmasked by (int filter) <in another word, zones that are not filter>. This function allows the player to select ANY field zone, even those that are currently occupied by other cards.
