@@ -5,11 +5,19 @@ void | Card.AddMonsterAttribute(Card c, int extra_type, [int attribute, int race
 void | Card.AddMonsterAttributeComplete(Card c) | Used in conjunction with Card.AddMonsterAttribute, completes a card's (Card c) transformation to a monster. It is best to call this after the card has arrived in Monster Zone (i.e. after Duel.SpecialSummonStep). Does nothing with cards without EFFECT_PRE_MONSTER (added automatically by Card.AddMonsterAttribute).
 table | Card.AddSetCodeRules(card c, ...) |  
 void\|int | Card.Alias(Card c[, int code]) | Changes (Card c)'s alias if (int code) is inputted, else returns the current card's alias.
+
+
+return type | function name | description
+-- | -- | --
 int | Card.AnnounceAnotherAttribute(Card c, int player) | Makes (int player) announce an attribute different from the one(s) (Card c) currently has
 int | Card.AnnounceAnotherRace(Card c, int player) | Makes (int player) announce a monster type (Race) different from the one(s) (Card c) currently has
 void | Card.AssumeProperty(Card c,int assume_type, int assume_value) | Assume a property for a card (Card c), the card will be considered as having an assumed specific property (int assume_type) as the inputted value (int assume_value) (only as long as the function is still processing)
 void\|int | Card.Attack(Card c[, int val]) | Changes (Card c)'s original ATK if (int val) is inputted, else returns the current card's original ATK.
 void\|int | Card.Attribute(Card c[, int att]) | Changes (Card c)'s original attribute(s) if (int att) is inputed, else returns the current card's original attribute(s).
+
+
+return type | function name | description
+-- | -- | --
 void | Card.CancelCardTarget(Card c1, Card c2) | Removes the second card (Card c2) from the list of the first card (Card c1)'s target
 void | Card.CancelToGrave(Card c[, bool cancel=true]) | if cancel is true, cancels the to-grave rule and movement of a card (Card c). If false, enforce the rule that it must go from the field to Graveyard instead.
 bool | Card.CanChainAttack(Card c[, int ac = 2, bool monsteronly = false]) | Checks if a card (Card c) can make a follow-up attack. Specifying the integer ac checks whether it can attack that number of times. Setting monsteronly to true checks only the possibility of follow-up attack to monster
