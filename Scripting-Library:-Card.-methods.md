@@ -3,12 +3,8 @@ return type | function name | description
 bool | Card.AddCounter(Card c, int countertype, int count[, int singly=false]) | Adds a number (int count) of the specified counter (int countertype) to a card (Card c). If singly is set to a number, then it will be added by that number each time. When the number of added counter would exceed the limit for that card, it is not added.
 void | Card.AddMonsterAttribute(Card c, int extra_type, [int attribute, int race, int level, int atk, int def]) | Transforms a card (Card c) to a monster. The card type will become TYPE_MONSTER + extra_type. Uses the values if provided, otherwise uses the card's own values in Database. Be aware that the values added using this (except for Card type) will be reset when the card is flipped face-down.
 void | Card.AddMonsterAttributeComplete(Card c) | Used in conjunction with Card.AddMonsterAttribute, completes a card's (Card c) transformation to a monster. It is best to call this after the card has arrived in Monster Zone (i.e. after Duel.SpecialSummonStep). Does nothing with cards without EFFECT_PRE_MONSTER (added automatically by Card.AddMonsterAttribute).
-table | Card.AddSetCodeRules(card c, ...) |  
+table | Card.AddSetCodeRules(card c, ...) |  -
 void\|int | Card.Alias(Card c[, int code]) | Changes (Card c)'s alias if (int code) is inputted, else returns the current card's alias.
-
-
-return type | function name | description
--- | -- | --
 int | Card.AnnounceAnotherAttribute(Card c, int player) | Makes (int player) announce an attribute different from the one(s) (Card c) currently has
 int | Card.AnnounceAnotherRace(Card c, int player) | Makes (int player) announce a monster type (Race) different from the one(s) (Card c) currently has
 void | Card.AssumeProperty(Card c,int assume_type, int assume_value) | Assume a property for a card (Card c), the card will be considered as having an assumed specific property (int assume_type) as the inputted value (int assume_value) (only as long as the function is still processing)
