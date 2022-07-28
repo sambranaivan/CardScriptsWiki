@@ -63,6 +63,10 @@ bool | aux.dogcon(Effect e, int tp, Group eg\|nil, int ep, int ev, Effect re, in
 void | aux.DoubleSnareValidity(card c, int range, int property) | Registers that card c has an effect that can negate/destroy trap cards, while it is in the location defined in int range. Used by Double Snare to identify which cards it can destroy. Int property are additional properties other than the default EFFECT_FLAG_CANNOT_DISABLE\|EFFECT_FLAG_SINGLE_RANGE.
 bool | aux.dpcheck(function f) | Checks for cards with different properties (the property defined in function f, for example, Card.GetLevel, GetAttribute, GetRace, GetCode, etc). Usually used with aux.SelectUnselectGroup.
 function | aux.dxmcostgen(int min, int max, [function op]) | "Detach Xyz Material Cost Generator". Generates a function to be used by Effect.SetCost in order to detach a number of Xyz Materials from the Effect's handler. (int min) is the minimum number of materials to check for detachment. (int max) is the maximum number of materials to detach or a function that gets called as if by doing max(e,tp) in order to get the value of max detachments. (function op) is an optional function that gets called by passing the effect and the operated group of just detached materials in order to do some additional handling with them.
+
+
+return type | function name | description
+-- | -- | --
 void | aux.EnableCheckReincarnation(Card c) | Auxiliary function for "Salamangreat" Reincarnation procedure. Enables reincarnation links.
 void | aux.EnableExtraRules(c, card, init, ...) | Functions to automate consistent start-of-duel activations for Duel Modes like Speed Duel, Sealed Duel, etc
 void | aux.EnableExtraRulesOperation(card, init, ...) |  -
@@ -174,7 +178,7 @@ return type | function name | description
 bool\|Group | aux.SelectUnselectGroup(Group g, Effect e, int tp, int minc = 1, int maxc = 99, function\|nil rescon, int chk, int seltp, int hintmsg, function\|nil cancelcon, function\|nil breakcon, bool cancelable) | Recursion checking and selection. (Group g) is the group to check and choose from, with a minimum (int minc) that defaults to 1 if set to nil and maximum (int maxc) that defaults to 99 if set to nil. (function rescon) is the condition to check which is needed fulfill. (int chk) is set to 0 to check and 1 to select. (int seltp) is the selecting player. (int hintmsg) is the HINTMSG that will be displayed on selection. (function cancelcon) is the condition when fulfilled allows you to end selection. (function breakcon) when fulfilled ends the selection automatically.
 function | aux.seqmovcon(e, tp, eg, ep, ev, re, r, rp) | Condition for effects that make the monster change its current sequence/column.
 function | aux.seqmovop(e, tp, eg, ep, ev, re, r, rp) | Operation for effects that make the monster change its current sequence/column.
-effect | aux.SetSkillOp(coverNum,drawless,skillcon,skillop,countlimit,efftype) |  -
+effect | aux.SetSkillOp(coverNum, drawless, skillcon, skillop, countlimit, efftype) |  -
 void | aux.SetUnionState(card c) | See proc_union.lua.
 bool | aux.SpElimFilter(Card c, bool mustbefaceup, bool includemzone) | Spirit Elimination check to (Card c). It checks if controller is affected by Spirit Elimination. If so, it will only filter in the Monster Zone, otherwise in Graveyard. (bool mustbefaceup) means the filter is not generic (e.g. Banish 1 Dragon-Type monster) opposed to banish 1 monster. (bool includemzone) when set to true will check LOCATION_MZONE by default as opposed to filtering LOCATION_MZONE and LOCATION_GRAVE depending on affected by Spirit Elimination.
 bool | aux.SpiritReturnCondition(e, tp, eg, ep, ev, re, r, rp) | Auxiliary condition. Not used directly by cards, only called by SpiritReturnReg
