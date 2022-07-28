@@ -8,7 +8,7 @@ end
 This returns `true` if the card `c` is a Level 4 monster.
 
 ## Using filters
-Filters are mostly used with certain `Duel` and `Group` functions that collect or check for cards that fulfill the filter (in other words, cards that make the filter return `true`). Some of the most common functions that use a filter are [listed below](#). These functions will call the filter passed to them for every card they are concerned with.
+Filters are mostly used with certain `Duel` and `Group` functions that collect or check for cards that fulfill the filter (in other words, cards that make the filter return `true`). Some of the most common functions that use a filter are [listed below](#appendix-a-some-common-functions-that-use-filters). These functions will call the filter passed to them for every card they are concerned with.
 
 For example, we can use the `s.lvfilter` we have earlier to check if there are cards that fulfill it in certain locations. The following statement will be `true` if there is at least 1 Level 4 monster in either player's GY:
 ```lua
@@ -48,7 +48,8 @@ Here, `Duel.IsExistingMatchingCard` is used with the following arguments:
 
 This means the entire line can be read as: *the activation of this card is legal if there is at least 1 card in the activating player's deck that is a monster and can be sent to the GY*
 
-> You can read [Understanding a card script](https://github.com/ProjectIgnis/CardScripts/wiki/Parameter-naming-convention#understanding-a-card-script) to learn more about the different parts of a script (such as the `if chk==0 then` block). This page will only focus on the usage of filter functions.
+> **NOTE:**
+You can read [Understanding a card script](https://github.com/ProjectIgnis/CardScripts/wiki/Parameter-naming-convention#understanding-a-card-script) to learn more about the different parts of a script (such as the `if chk==0 then` block). This page will only focus on the usage of filter functions.
 
 Now that the script knows when it's legal to activate the card, let's look at what happens when the card is actually activated and the effect resolves. This is in the effect's operation function (`s.operation`):
 ```lua
@@ -85,7 +86,7 @@ end
 ```
 Now, for the filter to know what `minatk` is, **it needs to be passed to it**. This part is important. Otherwise, `minatk` would just be `nil`.
 
-[Functions that use filters](#) can take additional arguments. These functions will pass the additional arguments they receive (after the "exception" argument) to the filter they're using, and they become additional arguments of that filter.
+[Functions that use filters](#appendix-a-some-common-functions-that-use-filters) can take additional arguments. These functions will pass the additional arguments they receive (after the "exception" argument) to the filter they're using, and they become additional arguments of that filter.
 
 To illustrate, say we have an effect with an activation condition that says `If you control a face-up monster with ATK higher than your LP:`. For this, we can use the `s.atkfilter` earlier like so:
 ```lua
