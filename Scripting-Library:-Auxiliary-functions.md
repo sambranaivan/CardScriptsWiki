@@ -172,15 +172,15 @@ int\|nil | aux.SelectEffect(int player, ..) | Makes player (int player) select 1
 return type | function name | description
 -- | -- | --
 bool\|Group | aux.SelectUnselectGroup(Group g, Effect e, int tp, int minc = 1, int maxc = 99, function\|nil rescon, int chk, int seltp, int hintmsg, function\|nil cancelcon, function\|nil breakcon, bool cancelable) | Recursion checking and selection. (Group g) is the group to check and choose from, with a minimum (int minc) that defaults to 1 if set to nil and maximum (int maxc) that defaults to 99 if set to nil. (function rescon) is the condition to check which is needed fulfill. (int chk) is set to 0 to check and 1 to select. (int seltp) is the selecting player. (int hintmsg) is the HINTMSG that will be displayed on selection. (function cancelcon) is the condition when fulfilled allows you to end selection. (function breakcon) when fulfilled ends the selection automatically.
-function | aux.seqmovcon(e,tp,eg,ep,ev,re,r,rp) | Condition for effects that make the monster change its current sequence/column.
-function | aux.seqmovop(e,tp,eg,ep,ev,re,r,rp) | Operation for effects that make the monster change its current sequence/column.
+function | aux.seqmovcon(e, tp, eg, ep, ev, re, r, rp) | Condition for effects that make the monster change its current sequence/column.
+function | aux.seqmovop(e, tp, eg, ep, ev, re, r, rp) | Operation for effects that make the monster change its current sequence/column.
 effect | aux.SetSkillOp(coverNum,drawless,skillcon,skillop,countlimit,efftype) |  -
 void | aux.SetUnionState(card c) | See proc_union.lua.
 bool | aux.SpElimFilter(Card c, bool mustbefaceup, bool includemzone) | Spirit Elimination check to (Card c). It checks if controller is affected by Spirit Elimination. If so, it will only filter in the Monster Zone, otherwise in Graveyard. (bool mustbefaceup) means the filter is not generic (e.g. Banish 1 Dragon-Type monster) opposed to banish 1 monster. (bool includemzone) when set to true will check LOCATION_MZONE by default as opposed to filtering LOCATION_MZONE and LOCATION_GRAVE depending on affected by Spirit Elimination.
-bool | aux.SpiritReturnCondition(e,tp,eg,ep,ev,re,r,rp) | Auxiliary condition. Not used directly by cards, only called by SpiritReturnReg
-void | aux.SpiritReturnOperation(e,tp,eg,ep,ev,re,r,rp) | Auxiliary operation. Not directed used by cards.
-void | aux.SpiritReturnReg(e,tp,eg,ep,ev,re,r,rp) | Auxiliary function registration. Not used directly by card, only called by aux.EnableSpiritReturn
-void | aux.SpiritReturnTarget(e,tp,eg,ep,ev,re,r,rp,chk) | Auxiliary target. Not directed used by cards.
+bool | aux.SpiritReturnCondition(e, tp, eg, ep, ev, re, r, rp) | Auxiliary condition. Not used directly by cards, only called by SpiritReturnReg
+void | aux.SpiritReturnOperation(e, tp, eg, ep, ev, re, r, rp) | Auxiliary operation. Not directed used by cards.
+void | aux.SpiritReturnReg(e, tp, eg, ep, ev, re, r, rp) | Auxiliary function registration. Not used directly by card, only called by aux.EnableSpiritReturn
+void | aux.SpiritReturnTarget(e, tp, eg, ep, ev, re, r, rp, chk) | Auxiliary target. Not directed used by cards.
 int | aux.Stringid(int code, int n) | Returns the description code using the database entry's code (int code) and from the nth position (int position) which can be 0-15 corresponding to the str in the database which are from str1 to str16
 bool | aux.sumlimit(int sumtype) | helper function called by the various auxiliary function used as special summon conditions
 void | aux.sumreg(Effect e, int tp, Group eg, int ep, int ev, Effect re, int r, int rp) | Used as SetOperation which registers a FlagEffect to cards in the event group with the same OriginalCode as itself
