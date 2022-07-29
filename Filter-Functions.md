@@ -23,7 +23,7 @@ local g=Duel.SelectMatchingCard(tp,s.lvfilter,LOCATION_HAND,0,1,1,nil)
 You can check the [scripting library](wiki/Scripting-Library) for more functions that use filters, and to learn what their other parameters do. By tweaking the other parameters, you can check cards in a different location, make the player select more than 1 card, etc.
 
 ### Studying Foolish Burial
-Let's look at an official script, **[Foolish Burial](https://github.com/ProjectIgnis/CardScripts/blob/master/official/c81439173.lua)**, and see how it uses a filter function.
+Let's look at an official script, [<u>Foolish Burial</u>](https://github.com/ProjectIgnis/CardScripts/blob/master/official/c81439173.lua), and see how it uses a filter function.
 The card text is simple:
 > Send 1 monster from your Deck to the GY.
 
@@ -34,7 +34,7 @@ function s.tgfilter(c)
 end
 ```
 
-To activate **Foolish Burial**, a player must be able to send a monster from their Deck to the GY. So before activation, the script must check if a valid card exists in the player's deck. This is its "activation legality check" and is done inside the `if chk==0 then` block in the target function (`s.target`):
+To activate <u>Foolish Burial</u>, a player must be able to send a monster from their Deck to the GY. So before activation, the script must check if a valid card exists in the player's deck. This is its "activation legality check" and is done inside the `if chk==0 then` block in the target function (`s.target`):
 ```lua
 	if chk==0 then return Duel.IsExistingMatchingCard(s.tgfilter,tp,LOCATION_DECK,0,1,nil) end
 ```
@@ -66,14 +66,14 @@ First, it gives the player a "hint" that the selection is for cards that will be
 - `s.tgfilter` is the filter that the card choices must fulfill
 - the next `tp` is the player who activated the card
 - `LOCATION_DECK` is the location in `tp`'s side of the board where `tp` will select
-- `0` is the location in `tp`'s opponent's side of the board (`0` denotes that the `tp` will not be selecting opponent cards)
+- `0` is the location in `tp`'s opponent's side of the board (`0` denotes that `tp` will not be selecting opponent cards)
 - the first `1` is the minimum number of cards to select
-- the second `1` is maximum number of cards to select (since it's equal to the minimum, the player will select exactly 1 card)
+- the second `1` is the maximum number of cards to select (since it's equal to the minimum, the player will select exactly 1 card)
 - `nil` is the card(s) to be exempted (`nil` denotes that there are no exceptions)
 
 This means `Duel.SelectMatchingCard(tp,s.tgfilter,tp,LOCATION_DECK,0,1,1,nil)` can be read as: *make the player who activated this card select exactly 1 card in their deck that is a monster and can be sent to the GY*.
 
-The selected card is stored in a group that is assigned to a local variable named `g`. If the group is not empty (`#g>0`), it is sent to the GY and **Foolish Burial**'s effect finishes resolving.
+The selected card is stored in a group that is assigned to a local variable named `g`. If the group is not empty (`#g>0`), it is sent to the GY and <u>Foolish Burial</u>'s effect finishes resolving.
 
 ## Additional Filter Parameters
 Sometimes, filters need additional details other than the card they're checking. For example, we may need to write a filter for a face-up monster with ATK higher than the activating player's LP - a value that changes throughout the duel. This is where having additional filter parameters comes in.
@@ -100,7 +100,68 @@ Here, we first obtained `tp`'s LP and assigned it to the variable named `lp`. Th
 Internally, `Duel.IsExistingMatchingCard` will call `s.atkfilter` using `lp` as an extra argument. This will correspond to the `minatk` parameter of the filter. In other words, the first extra argument passed to `Duel.IsExistingMatchingCard` (called `lp`) becomes the first argument passed to `s.atkfilter` (called `minatk`).
 
 ### Studying Deep Sea Diva
-TBA
+When Special Summoning monsters through a card effect, we need filters to check for cards that can be Special Summoned. Those filters will need to call `Card.IsCanBeSpecialSummoned` inside them, which in turn needs to know what effect and player is attempting the Special Summon. The filter wouldn't know what those are, so we need to pass them as additional arguments. Hence, Special Summon filters typically look like this:
+```lua
+function s.spfilter(c,e,tp)
+    return c:IsCanBeSpecialSummoned(e,0,tp,false,false) --and other checks we want to perform
+end
+```
+This filter is fulfilled by cards that can be Special Summoned by the player `tp` through the effect `e`.
+
+> **NOTE:** You'll notice that we're actually calling `Card.IsCanBeSpecialSummoned` with more arguments (there's a `0` and two `false`s). However, those are just plain values that we don't need to pass to the filter. For the purposes of this guide, we'll only focus on how `e` and `tp` are being passed, but you can read more about `Card.IsCanBeSpecialSummoned`'s other parameters in the [scripting library](wiki/Scripting-Library).
+
+Let's look at [the script for <u>Deep Sea Diva</u>](https://github.com/ProjectIgnis/CardScripts/blob/master/official/c81439173.lua) to see a Special Summon filter in action. <u>Deep Sea Diva</u> has this effect:
+> When this card is Normal Summoned: You can Special Summon 1 Level 3 or lower Sea Serpent monster from your Deck.
+
+For this, it uses the following filter, which returns `true` for Level 3 or lower Sea Serpent monsters that can be Special Summoned by player `tp` using effect `e`:
+```lua
+function s.spfilter(c,e,tp)
+	return c:IsLevelBelow(3) and c:IsRace(RACE_SEASERPENT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+end
+```
+
+For the effect to be activated legally, the player must have a valid monster in their deck that they can Special Summon (meaning, they must have a monster in their deck that fulfills `s.spfilter`). The player must also have a free Main Monster Zone that they can Special Summon to. These two things are checked by the script inside the `if chk==0 then` block of the target function (`s.sptg`).
+```lua
+function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 end
+	--etc.
+end
+```
+Here, the script calls `Duel.IsExistingMatchingCard` with two extra arguments, `e` and `tp`. Again, they come after the "exception" which is `nil`.
+`e` is this effect of <u>Deep Sea Diva</u> that is being checked for activation legality, and `tp` is the activating player. Both values are automatically supplied through `s.sptg`'s own parameters (`e,tp,eg,ep,ev,re,r,rp,chk`).
+
+Since `e` will also be the effect that would perform the Special Summon, 
+the script passes it to `Duel.IsExistingMatchingCard` as an extra argument. Similarly, the activating player will also be the player that would perform the Special Summon, so it is also passed. **The order matters when passing additional arguments**. The first extra argument will become the filter's first extra argument, the second extra argument becomes the filter's second extra argument, and so on.
+
+In this particular script, it so happens that the extra parameters of `s.spfilter` are also called `e` and `tp`, but the names don't really need to match. The extra arguments just have to be in the proper order that the filter expects them to be. The following usage is perfectly valid:
+```lua
+function s.spfilter(c,the_effect_that_would_summon,the_player_that_would_summon)
+	return c:IsLevelBelow(3) and c:IsRace(RACE_SEASERPENT)
+		and c:IsCanBeSpecialSummoned(the_effect_that_would_summon,0,the_player_that_would_summon,false,false)
+end
+function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+	local this_effect_of_diva=e
+	local the_activating_player=tp
+	if chk==0 then return Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_DECK,0,1,nil,this_effect_of_diva,the_activating_player)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 end
+	--etc.
+end
+```
+This illustrates that once passed to `Duel.IsExistingMatchingCard` (which passes it to `s.spfilter`), `this_effect_of_diva` becomes `the_effect_that_would_summon` because it's the first extra argument, while `the_activating_player` becomes `the_player_that_would_summon` because it's the second extra argument.
+
+Now let's move to the effect resolution:
+```lua
+function s.spop(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local g=Duel.SelectMatchingCard(tp,s.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+	if #g>0 then
+		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+	end
+end
+```
+First, it checks if `tp` has a free Main Monster Zone. If not, the effect stops resolving by having an early `return`. Then, it gives a "hint" to `tp` that the following card selection is for a Special Summon. Much like in `s.sptg`, the effect and player are already supplied (`e` and `tp`). This time, they are passed as extra arguments to `Duel.SelectMatchingCard` which passes them to `s.spfilter`. This allows `tp` to select a Level 3 or lower Sea Serpent monster that they can Special Summon from their deck. The selection is stored in a group called `g`, and `g` is finally Special Summoned if it's not empty (`#g>0`).
 
 ## Nesting Filters
 TBA
