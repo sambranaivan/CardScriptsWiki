@@ -14,11 +14,11 @@ Since the `.lua` files are just text files any text editor works, but it's a goo
 - Notepad++ (Windows)
 - VSCode
 - Atom
-- Kate Editor, gedit (Linux)
+- Kate Editor (Linux)
 - Sublime Text
 
 ### To create/edit database:
-Any SQL editor works for that, but some softwares that can some options are:
+Any SQL editor works for that, but some softwares that can be used are:
 - [DataEditorX](https://github.com/247321453/DataEditorX/blob/master/README.md)
 - DB Browser for Sqlite
 
