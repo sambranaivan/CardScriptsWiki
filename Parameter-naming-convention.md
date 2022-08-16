@@ -19,7 +19,9 @@ While Lua allows you to name your variables in almost any way you want, reading 
 - `tc`: target card, `tg`: target group
 - `ct`: count, ammount, number of
 - `ft`: (the number of) free zones
-- `rc`: reason card (usually defined as `rc=re:GetHandler()`
+- `rc`: reason card (usually defined as `rc=re:GetHandler()`.
+
+
 Those are the usual meanings, but these variable names can be used in other contexts, and it's up to the user to use these names or not. It might also be worth checking the [table with commonly used variable/parameter names](https://github.com/ProjectIgnis/CardScripts/wiki/Parameter-naming-convention#commonly-used-variable-names-table)
 
 ## Understanding a card script
