@@ -136,7 +136,7 @@ Examples: a count limit defined as `e1:SetCountLimit(1)`, which translates to "O
 - The operation function, that executes all the steps that are done when the card or effect **resolves** (defined via Effect.SetOperation): `e1:SetOperation(s.activate)`
 
 ## WIP
-### Commonly used variable names
+### Commonly used variable names table
 This is a non-exhaustive list of variables names and what they might represent.
 
 type | variable name| description
