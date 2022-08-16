@@ -54,6 +54,7 @@ return type | function name | description
 int | aux.ComposeNumberDigitByDigit(int tp, int min, int max) | (int tp) declares a number by digit with a minimum of (int min) and maximum of (int max)
 function | aux.CostWithReplace(function base, int replacecode, function extracon, function alwaysexecute) |  
 bool | aux.damcon1(Effect e, int tp, Group eg\|nil, int ep, int ev, Effect re, int r, int rp) | Default condition for "If you would take effect damage"
+void | aux.DefaultFieldReturnOp(Group rg, Effect e, int tp) | An operation function to be used with `aux.RemoveUntil`. Return the banished cards to the monster zone. Makes the player select cards to return if there are less available zones than returnable cards.
 void | aux.DeleteExtraMaterialGroups(group emt) |  -
 bool | aux.disfilter1(Card c) | Checks if (Card c) can be negated (for monsters)
 bool | aux.disfilter2(Card c) | Checks if (Card c) can be negated (for Spell/Trap)
@@ -168,6 +169,7 @@ bool | aux.ReleaseCostFilter(card c, function f,...) |  -
 bool | aux.ReleaseNonSumCheck(card c, int player, effect e) | Auxiliary function called by "Duel.CheckReleaseGroupSummon" and Duel.SelectReleaseGroupSummon".
 bool\|void | aux.RemainFieldCost(Effect e, int tp, Group\|nil eg, int ep, int ev, Effect re, int r, int rp, int chk) | Costs that is used in cards that stay on the field if they finish resolving. (e.g. Kunai with Chain, Different Dimension Burial)
 void | aux.RemainFieldDisabled(Effect e, int tp, Group\|nil eg, int ep, int ev, Effect re, int r, int rp) |  -
+effect | aux.RemoveUntil(Card\|Group cg, int\|nil pos, int reason, int phase,effect e,int player, function oper, function\|nil cond) | Banishes card(s) and applies an operation to them in a given phase (usually return them to their current location). (Card\|Group cg) are the cards to banish, (int\|nil pos) is the cards' position when banished (passing `nil` will use their current position),  (int reason) is the reason for banishing (for example, REASON_COST, REASON_EFFECT) and (int phase) is the phase when (function oper) will be applied to the banished cards. (effect e) is the effect performing the banishment, while (int tp) is the player performing the banishment, and that will later execute (function oper), a function with the signature (rg, e, tp, eg, ep, ev, re, r, rp), where `rg` is the group of cards that can be returned. (function\|nil con) is an additional condition function with the signature (rg, e, tp, eg, ep, ev, re, r, rp). By default, `rg` is automatically checked if it's not empty.
 void | aux.ResetEffects(Group g, int eff) | Resets all effects with code (int eff) in a group of cards defined (Group g).
 bool | aux.ritlimit(Effect e, Effect se, int sp, int st) | SPSUMMON condition "Must be Ritual Summoned"
 int\|nil | aux.SelectEffect(int player, ..) | Makes player (int player) select 1 option among possible effects. The ellipsis (...) allows tables in the form {bool condition, int stringid}. The function then makes the player select an effect, displaying the strings whose conditons are true, returning the index of the choosen element or nil.
