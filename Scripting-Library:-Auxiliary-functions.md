@@ -98,6 +98,10 @@ bool | aux.GeminiNormalCondition(Effect e) | Checks if a monster is face-up and 
 table | aux.GetAttributeStrings(int number) |  -
 int | aux.GetCover(card c, coverNum) | Used by the Skill procedure.
 table,group | aux.GetExtraMaterials(int player, group mustg, group sc, int summon_type) |  -
+
+
+return type | function name | description
+-- | -- | --
 int | aux.GetMMZonesPointedTo(player[,by_filter, player_location=LOCATION_MZONE, oppo_location=player_location, target_player=player, ...]) | Returns the zone values (bitfield mask) of the Main Monster Zones on the field of "target_player" that are pointed to by any Link Cards, which match the "by_filter" function\|filter, in the locations "player_location" and "oppo_location", from the perspective of "player".
 group | aux.GetMustBeMaterialGroup(int player, group eg, group sump, sc, group g, int r) |  -
 Group | aux.GetMustBeMaterialGroup(int tp, nil\|Group eg, int sump, nil\|Card sc, nil\|Group g, int r) | Gets the group that must be used as material (Contacting "C"). (int tp) is the affected player, (nil\|Group eg) is all detected materials, (int sump) is the Summoning player, (nil\|Card sc) is the card to be Summoned, (nil\|Group) g is all the valid usable materials, (int r) is the reason e.g. REASON_SYNCHRO, REASON_XYZ
@@ -119,6 +123,9 @@ bool | aux.IsMaterialListSetCard(Card c, int ...) | Checks if 1 of the setcodes 
 bool | aux.IsNotGeminiState(Effect e) | returns not aux.IsGeminiState(Effect e)
 bool | aux.IsUnionState(Effect effect) | Used as a default condition to check if the handler of the effect is a Union monster equipped to another monster.
 bool | aux.IsZone(card c, int zone, int tp) | Returns if (card c) is in the (int zone), (int tp) is the reference player.
+
+return type | function name | description
+-- | -- | --
 bool | aux.KaijuCondition(e,c) | See cards_specific_functions.lua
 bool | aux.LavaCheck(sg,e,tp,mg) | See cards_specific_functions.lua
 bool | aux.LavaCondition(required, filter) | See cards_specific_functions.lua
@@ -147,6 +154,10 @@ bool | aux.OR(...)(...) | First (...) is a list of functions which will be used 
 table element | aux.ParamsFromTable(table t, key, ...) |  
 bool | aux.penlimit(Effect e, Effect se, int sp, int st) | SPSUMMON condition "Must be Pendulum Summoned"
 bool | aux.PersistentTargetFilter(Effect e, Card c) | Default filter for checking if it's targeted by the Persistent Trap.
+
+
+return type | function name | description
+-- | -- | --
 bool | aux.PlayFieldSpell(Card c,e,tp,eg,ep,ev,re,r,rp,target_p) | Activates a field spell Card "c". Already handles interactions with Field Spells that are already face up, rules for only 1 Field Spell at time, checks for costs and activated effects of the field spell and als the interaction with Ancient Pixie Dragon.
 bool | aux.ProcCancellable | Used with the Xyz Summon procedure and a fw Xyz monsters. Defined as false.
 table | aux.PropertyTableFilter(function f, ...) |  
