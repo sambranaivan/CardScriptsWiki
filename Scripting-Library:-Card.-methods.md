@@ -20,7 +20,7 @@ bool | Card.CanChainAttack(Card c[, int ac = 2, bool monsteronly = false]) | Che
 bool | Card.CanSummonOrSet(...) | Returns if the card passed can be normal summoned or normal set.
 Effect[, Group, int, int, Effect, int, int] | Card.CheckActivateEffect(Card c, bool neglect_con, bool neglect_cost, bool copy_info) | Checks a card (Card c)'s EFFECT_TYPE_ACTIVATE effect while checking for whether it can be activated. Returns _nil_ if effect condition is not met. Set _neglect_con_ to _true_ to ignore condition checking. Set _neglect_cost_ to _true_ to ignore cost payable checking. Set _copy_info_ to true to return the activate effect's supposed info, for other than EVENT_FREE_CHAIN usually (eg,ep,ev,r,re,rp)
 bool | Card.CheckAdjacent(card c) | Returns if either of the sequences next to the card c's sequence is available. Already handles the Extra monster zone (sequence > 4). Limited to Monster Zones.
-bool | Card.CheckEquipTarget(Card c1, Card c2) | Checks if a Card (Card c1) has another Card (Card c2) as equip target
+bool | Card.CheckEquipTarget(Card c1, Card c2) | Checks if Card c1 is a card that can be equipped to Card c2 (checks if c1 is an appropriate equip target to c2)
 bool | Card.CheckFusionMaterial(Card c[, Group g, Card gc\|nil, int chkf=PLAYER_NONE]) | Check if g contains a set of fusion material that c needs [must contain gc]## Check the Condition function for the effect of EFFECT_FUSION_MATERIAL according to the type of c
 
 return type | function name | description
@@ -275,6 +275,8 @@ bool | Card.IsRitualSpell(Card c) | Returns if (Card c) is a Ritual Spell.
 bool | Card.IsSequence(c, ...) | Returns if a Card (Card c) is located at any of the sequences passed as arguments
 bool | Card.IsSetCard(Card c, int setname[, Card scard\|nil, int sumtype = 0, int playerid = PLAYER_NONE]) | Checks if "c" is part of the archetype "setname" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
 bool | Card.IsSpecialSummonable(Card c) | Checks if a card (Card c) is summonable by it's summon procedure
+bool | Card.IsSpell(Card c) | Returns if (Card c) is a Spell card
+bool | Card.IsSpellTrap(Card c) | Returns if (Card c) is a Spell or Trap card
 bool | Card.IsSSetable(Card c[, bool ignore_field=false]) | Checks whether a card (Card c) can be Set in S/T zone. Setting ignore_field to true makes it not check for free space in the S/T Zone.
 bool | Card.IsStatus(Card c, int status) | Checks if "c" has the given status (STATUS_x)
 bool | Card.IsSummonable(Card c, bool ignore_count, Effect e\|nil[, int min=0]) | Checks whether a card (Card c) can be Normal Summoned. Setting ignore_count to true makes it ignore the standard once per turn summon limit. If an effect (Effect e) is given, checks whether it can be Normal Summoned by that effect. The last value denotes the minimum tribute amount.
@@ -284,6 +286,7 @@ bool | Card.IsSummonLocation(Card c, int loc) | Checks if (Card c) is summoned f
 bool | Card.IsSummonPlayer(Card c, int tp) | Checks if (Card c) is summoned by player (int tp)
 bool | Card.IsSummonType(Card c, int ...) | Checks if "c" is Summoned by one of the summon types in the "..." list.
 bool | Card.IsSynchroSummonable(Card c[, Group\|Card\|nil must_use, Group\|Card\|nil  mg, int min=0, int max=0]) | Checks if "c" can be Synchro Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Synchro Summon. How this works is that the script would check for all EFFECT_SPSUMMON_PROC that has SUMMON_TYPE_SYNCHRO as it's Value, then checks the effects' Condition with the provided arguments. Check out "aux.SynCondition" in "proc_synchro.lua" for how this is handled.
+bool | Card.IsTrap(Card c) | Returns if (Card c) is a Trap card
 bool | Card.IsType(Card c, int type[, Card scard\|nil, int sumtype = 0, int playerid = PLAYER_NONE]) | Checks if the card type of "c" is "type" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
 bool | Card.IsXyzLevel(Card c, Card xyzc, int lv) | Checks if "c" would be Level "lv" if it was to be used as Xyz Material for "xyzc".
 bool | Card.IsXyzSummonable(Card c[, Group\|Card\|nil must_use, Group\|Card\|nil  mg, int min=0, int max=0]) | Checks if "c" can be Xyz Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Xyz Summon
