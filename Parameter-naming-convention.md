@@ -174,6 +174,9 @@ Card | sc | The effects target card
 Card | smat | A single synchro material card (ignored if there is a mg, which is then used as synchro material)
 Card | tuner | Tuner card
 Card | xyzc | An Xyz monster card
+
+type | variable name| description
+-- | -- | --
 Card\|Group | targets | A card or group which will be affected by the effect
 Card\|Group\|Effect | labelobject | Object to embed in the effect, accepts Card, Group, or Effect (In case of group from outside the effect, don't forget to keep the group alive)
 Effect | e | Any effect
@@ -187,6 +190,10 @@ function\|int\|bool | val | A boolean or integer value or a function with these 
 Group | g | Any amount of cards
 Group | mg | A matching group of cards which are targets for the effect
 Group | ocard | Group of cards to overlay to the card
+
+
+type | variable name| description
+-- | -- | --
 int | ac | The attack chain number to check
 int | activity_type | Type of activity to check (for example: ACTIVITY_SUMMON)
 int | ad | Facedown attack position monsters are changed to this position
@@ -198,7 +205,7 @@ int | attribute | Attribute (for example: ATTRIBUTE_WATER)
 int | au | Faceup attack position monsters are changed to this position
 int | available | Options for player to choose between (E.G. in AnnounceRace, the sum of all races to choose from).
 int | cate | Category of effect (CATEGORY_x)
-int | chainc |  
+int | chainc |  -
 int | check_player | The player that checks
 int | chkf | Checking function
 int | code | Either a card's ID (for example: 1855932) or an Effect (for example: EFFECT_UPDATE_ATTACK), depending on usage
@@ -234,6 +241,10 @@ int | markers | The Link Markers to check if the card has
 int | min | Minimum amount
 int | move_player | Sets the player that moves the card
 int | number | An integer number
+
+
+type | variable name| description
+-- | -- | --
 int | o | Opponent's player's Field Bitflags
 int | o_range | Opposing player's locations affected by the effect (for example: LOCATION_SZONE+LOCATION_DECK)
 int | o_time | Timing of effect in opposing player's turn (TIMING_x)
@@ -255,7 +266,10 @@ int | reset_code | Code for Effect Resetting. May be various things depending on
 int | reset_count | How many times after hitting phase reset will the effect or relation be finally truly reset. A value of 0 or 1 means the effect resets immediately after meeting the reset condition
 int | reset_flag | Flag for conditions of resetting the effect or relation (for example: RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE)
 int | reset_phase | The phase the effect will reset.
-int | reset_type |  
+int | reset_type |  -
+
+type | variable name| description
+-- | -- | --
 int | rp | reason player, the player that triggered the event
 int | s | Selected player's Field Bitflags
 int | s_range | Selected player's Field Bitflags
