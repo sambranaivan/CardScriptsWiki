@@ -43,7 +43,7 @@ int | aux.ChangeBattleDamage(int player, int value) | Changes the battle damage 
 bool | aux.CheckPendulumZones(int player) | Returns if (int player) has at least one Pendulum zone free, using Duel.CheckLocation.
 bool | aux.CheckUnionEquip(Card uc, Card tc) | A check if you can equip a Union monster (Card uc) to (Card tc).
 bool | aux.CheckUnionEquip(uc,tc) | See proc_union.lua.
-bool | aux.CheckValidExtra(card c, int player, group sg, group mg, lc, group emt, function filt) |  
+bool | aux.CheckValidExtra(card c, int player, group sg, group mg, lc, group emt, function filt) |  -
 bool | aux.CheckZonesReleaseSummonCheck(group must, group oneof, function checkfunc) | Auxiliary function called by "Duel.SelectReleaseGroupSummon".
 bool | aux.CheckZonesReleaseSummonCheckSelection(group must, group oneof,function checkfunc) |  
 bool | aux.ChkfMMZ(int sumcount)(Group sg, Effect e, int tp, Group mg) | "Check for Main Monster Zones". Used in rescon by default. 2nd parenthesis is not required as rescon/cancelcon in aux.SelectUnselectGroup. (Group sg) is the selected group when using aux.SelectUnselectGroup. Evaluates if a int sumcount number of Main Monsters zones are available and/or will be made available to summon the requiring card.
@@ -74,7 +74,7 @@ void | aux.EnableExtraRulesOperation(card, init, ...) |  -
 void | aux.EnableGeminiAttribute(Card c) | Applies all the effects necessary for a Gemini monster to be used as one to (Card c).
 void | aux.EnableNeosReturn(Card c[, int extracat, function extrainfo, function extraop]) | Adds the effect to shuffle the card into the Extra Deck at the End Phase (most commonly used by "Neos" Fusion Monsters). If provided, "extracat", "extrainfo" and "extraop" will add additional effect categories, operation info and operations respectively to the effect. The Condition, Target and Operation functions of this effect, named NeosReturnCondition1/2, NeosReturnTarget and NeosReturnOperation, are detailed in cards_specific_functions.lua.
 void | aux.EnableSpiritReturn(Card c, int event1, int ...) | Sets up EVENT triggers to (Card c) so it returns to the hand during that End Phase, requires a minimum of 1 (int event1)
-bool | aux.EquipByEffectAndLimitRegister(Card c, Effect e) |  
+bool | aux.EquipByEffectAndLimitRegister(Card c, Effect e) |  -
 bool | aux.EquipByEffectLimit(Card c, Effect e, int tp, Card tc, int\|nil code, bool mustbefaceup) | Equips (Card tc) to (Card c). Adding a (int code) will register that code as flag effect to the equipped card  (bool mustbefaceup) defines if the card to be equipped is required to be face-up.
 void | aux.EquipEquip(Effect e, int tp, Group eg, int ep, int ev, Effect re, int r, int rp) | Used to equip the Equip Card to the targeted monster. This would be used if you cannot use the Equip Procedure for your Equip Card activation.
 int | aux.EvilHeroLimit(e,se,sp,st) | Default SetValue for "Evil HERO" monsters's effect EFFECT_SPSUMMON_CONDITION. Must be used due to the existance of "Supreme King Castle"
@@ -151,16 +151,16 @@ bool | aux.nvfilter(Card c) | Filter check "not affected by Necrovalley"
 bool | aux.nzatk(Card c) | Filter checking if (Card c) is face-up and has more than 0 ATK
 bool | aux.nzdef(Card c) | Filter checking if (Card c) is face-up and has more than 0 DEF
 bool | aux.OR(...)(...) | First (...) is a list of functions which will be used to check the parameters in the second set of (...), separated with "or". The second set of (...) is applied automatically when used as a filter.
-table element | aux.ParamsFromTable(table t, key, ...) |  
+table element | aux.ParamsFromTable(table t, key, ...) |  -
 bool | aux.penlimit(Effect e, Effect se, int sp, int st) | SPSUMMON condition "Must be Pendulum Summoned"
 bool | aux.PersistentTargetFilter(Effect e, Card c) | Default filter for checking if it's targeted by the Persistent Trap.
 
 
 return type | function name | description
 -- | -- | --
-bool | aux.PlayFieldSpell(Card c,e,tp,eg,ep,ev,re,r,rp,target_p) | Activates a field spell Card "c". Already handles interactions with Field Spells that are already face up, rules for only 1 Field Spell at time, checks for costs and activated effects of the field spell and als the interaction with Ancient Pixie Dragon.
-bool | aux.ProcCancellable | Used with the Xyz Summon procedure and a fw Xyz monsters. Defined as false.
-table | aux.PropertyTableFilter(function f, ...) |  
+bool | aux.PlayFieldSpell(Card c,e,tp,eg,ep,ev,re,r,rp,target_p) | Activates a field spell Card "c". Already handles interactions with Field Spells that are already face up, rules for only 1 Field Spell at time, checks for costs and activated effects of the field spell and also the interaction with Ancient Pixie Dragon.
+bool | aux.ProcCancellable | Used with the Xyz Summon procedure and a few Xyz monsters. Defined as false.
+table | aux.PropertyTableFilter(function f, ...) |  -
 void | aux.PuzzleOp(Effect e, int tp) | Used by aux.BeginPuzzle(), sets the first turn player's LP to 0
 bool | aux.qlifilter(Effect e, Effect te) | Default filter used with "Qli" monsters for: "Unaffected by activated monster effects whose original Rank/Level is lower than this card's Level"
 void | aux.RegisterClientHint(Card c, int property_code, int reg.player, int s, int o, str, int reset_code, int ct) | Auxiliary function to simplify registering EFFECT_FLAG_CLIENT_HINT to players. (Card c) is card that creates the hint message,  (int property_code) are additional properties like EFFECT_FLAG_OATH (PLAYER_TARGET and CLIENT_HINT are the flags registered by default). (int reg. player) is the player that is registering the hint, to himself (int s) and/or the opponent (int o), with a description called from a string defined in (str). Additional resets, other than the default RESET_PHASE+PHASE_END, can be passed in (int reset_code) and its reset count (int ct).
