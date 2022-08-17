@@ -21,8 +21,7 @@ While Lua allows you to name your variables in almost any way you want, reading 
 - `ft`: (the number of) free zones
 - `rc`: reason card (usually defined as `rc=re:GetHandler()`.
 
-
-Those are the usual meanings, but these variable names can be used in other contexts, and it's up to the user to use these names or not. It might also be worth checking the [table with commonly used variable/parameter names](https://github.com/ProjectIgnis/CardScripts/wiki/Parameter-naming-convention#commonly-used-variable-names-table)
+Those are the usual meanings, but these variable names can be used in other contexts, and it's up to the user to use these names or not.
 
 ## Understanding a card script
 Here's an example in Galactic Charity's script:
@@ -102,12 +101,16 @@ After that, the `s.target` function is executed. The same situation with `chk` h
 Finally, when the effect resolves, the `s.activate` function is called, executing the actual effect of the card.
 
 ## Other insights
-After the coments, in the script shown above you have:
-- The definition of 2 local variables, `s` and `id`, that receive the return values from the `GetID` function: `local s,id=GetID()`
 
+After the comments, in the script shown above you have:
+
+The definition of 2 local variables, `s` and `id`, that receive the return values from the `GetID` function:
+```lua
+local s,id=GetID()
+```
 `s` will be a card object, and `id` will be an int containing that card's passcode.
 
-- The declaration of the initial effect, with only 1 effect in this card `e1`
+The declaration of the initial effect, with only 1 effect in this card `e1`:
 ```lua
 function s.initial_effect(c)
 	--Activate
@@ -117,186 +120,49 @@ function s.initial_effect(c)
 end
 ```
 
-In e1, you have:
+The first (and only) effect this card has is defined in `e1`. Here we have:
 
-- The category of the effect (defined via Effect.SetCategory): `e1:SetCategory(CATEGORY_DRAW)`
+The category of the effect (defined via Effect.SetCategory):
+
+```lua
+e1:SetCategory(CATEGORY_DRAW)
+```
 
 This tells the game what the effect includes and it is also used because there are cards that need to detect such categories like Ash Blossom & Joyous Spring (detecting CATEGORY_DRAW and CATEGORY_SEARCH).
 
-- The code of the effect (defined via Effect.SetCode): `e1:SetCode(EVENT_FREE_CHAIN)`
-
+The code of the effect (defined via Effect.SetCode):
+```lua
+e1:SetCode(EVENT_FREE_CHAIN)
+```
 This tells the game that the card can be activated in a open game state, when no chain is resolving (because Galactic Charity is a normal Spell). Other codes might include any event that the card needs to detect (for example EVENT_SUMMON_SUCCESS)
-- The ammount of times the effect can be used (defined via Effect.SetCountLimit): `e1:SetCountLimit(1,id,EFFECT_COUNT_CODE_OATH)
-`
+
+
+The amount of times the effect can be used (defined via Effect.SetCountLimit):
+```lua
+e1:SetCountLimit(1,id,EFFECT_COUNT_CODE_OATH)
+```
 
 This tells the game that `e1` can be **activated** once per turn, for the card that has `id` as passcode. If the EFFECT_COUNT_CODE_OATH flag was not there, then the player would be able to **use** the effect once per turn (in Yu-Gi-Oh, "use" counts any attempts to apply that effect, even the ones that were negated, while **activate** will only count the ones that didn't have their activation negated).
-Examples: a count limit defined as `e1:SetCountLimit(1)`, which translates to "Once per turn" (per copy of the card);  `e1:SetCountLimit(1,id)` would be "You can only use this effect of CARD_NAME once per turn". `e1:SetCountLimit(1,id,EFFECT_COUNT_CODE_DUEL)` would be "You can only use this effect of CARD_NAME once per duel". 
 
-- The condition to be able to activate the card or effect (defined via Effect.SetCondition): `e1:SetCondition(s.condition)`
-- The cost function, that checks if the cost can be paid and also executes such cost (defined via Effect.SetCost): `e1:SetCost(s.cost)`
-- The target function, that performs the activation legality check and also does the actions that must be done during the activation (defined via Effect.SetTarget): `e1:SetTarget(s.target)`
-- The operation function, that executes all the steps that are done when the card or effect **resolves** (defined via Effect.SetOperation): `e1:SetOperation(s.activate)`
+Examples:
+* `e1:SetCountLimit(1)`: used for effects that say "Once per turn" (per copy of the card); 
+* `e1:SetCountLimit(1,id)`: used for effects that say "You can only use this effect of CARD_NAME once per turn";
+* `e1:SetCountLimit(1,id,EFFECT_COUNT_CODE_DUEL)`: used for effects that say "You can only use this effect of CARD_NAME once per duel". 
 
-## WIP
-### Commonly used variable names table
-This is a non-exhaustive list of variables names and what they might represent.
+The condition to be able to activate the card or effect (defined via Effect.SetCondition):
+```lua
+e1:SetCondition(s.condition)
+```
 
-type | variable name| description
--- | -- | --
-string | any msg | An arbitrary string (can also include variables: 'Debug.Message("string1"..var1.."string2")')
-bool | cancel | Determines if it's cancelled or not
-bool | check | Checks if the battle damage is 0 and cancels the effect if it is
-bool | copy_info | Copys the effects information if the effect is duplicated
-bool | enable | Applys the status to the card
-bool | enabled | Enables field effects
-bool | ex | Excludes mg from the effect targets
-bool | forced | The effects registration will be forced
-bool | get_info | Gets the event's information
-bool | ignore_count | Ignores the amount of cards
-bool | ignore_field | Ignores if there is a free space on the field
-bool | ignore_mon | Ignores fusion material monsters
-bool | is_step | Equips multiple cards (in one step, which is concluded with 'Duel.EquipComplete()')
-bool | monsteronly | Can only attack monsters
-bool | neglect_con | Ignores if it meets the effects condition(s) or not
-bool | neglect_cost | Ignores the effects costs
-bool | nocheck | Ignoring summoning conditions
-bool | noflip | Flip effects are not activated at this time
-bool | nolimit | Ignoring the revive limit
-bool | proc | The card is treated as if it was summoned by its proper summoning procedure (used in puzzles)
-bool | setavailable | Raises a "set" event (cards/effects that activate if one of the targets is set are triggered)
-bool | up | Set to true if the card itself is equipped, to false if it gets equipped
-bool | use_hand | Includes player's hand
-Card | equip_card | The card which is equipped to the target
-Card | ex | Excluded cards which will not be affected
-Card | c | Any single card (The interpreter will complain if you use a Card which is still treated as a Group. Use Group.GetFirst(Group g) to convert it)
-Card | fc | A fusion card (fusion monster)
-Card | gc | -
-Card | rc | A ritual card (ritual monster)
-Card | sc | The effects target card
-Card | smat | A single synchro material card (ignored if there is a mg, which is then used as synchro material)
-Card | tuner | Tuner card
-Card | xyzc | An Xyz monster card
-
-type | variable name| description
--- | -- | --
-Card\|Group | targets | A card or group which will be affected by the effect
-Card\|Group\|Effect | labelobject | Object to embed in the effect, accepts Card, Group, or Effect (In case of group from outside the effect, don't forget to keep the group alive)
-Effect | e | Any effect
-Effect | re | The reason effect which caused a certain event
-function | f | Any function which returns a boolean value(s)
-function | op_func | An operation function (with these parameters:)
-function | targ_func | A target function (with these parameters:)
-function | con_func | A condition function (with these parameters depending on the effect's code:)
-function | cost_func | A cost function (with these parameters:)
-function\|int\|bool | val | A boolean or integer value or a function with these parameters:
-Group | g | Any amount of cards
-Group | mg | A matching group of cards which are targets for the effect
-Group | ocard | Group of cards to overlay to the card
-
-
-type | variable name| description
--- | -- | --
-int | ac | The attack chain number to check
-int | activity_type | Type of activity to check (for example: ACTIVITY_SUMMON)
-int | ad | Facedown attack position monsters are changed to this position
-int | assume_type | Type of assuming to be done by the card (ASSUME_x)
-int | assume_value | value of assuming (for example: if assume_type is ASSUME_LEVEL, assume_value would be the assumed level)
-int | atk | Value of Attack Points
-int | attack | Value of Attack Points
-int | attribute | Attribute (for example: ATTRIBUTE_WATER)
-int | au | Faceup attack position monsters are changed to this position
-int | available | Options for player to choose between (E.G. in AnnounceRace, the sum of all races to choose from).
-int | cate | Category of effect (CATEGORY_x)
-int | chainc |  -
-int | check_player | The player that checks
-int | chkf | Checking function
-int | code | Either a card's ID (for example: 1855932) or an Effect (for example: EFFECT_UPDATE_ATTACK), depending on usage
-int | controler | The player that will get control
-int | cost | Cost function
-int | count | Amount
-int | counter | The value of the turn counter to be set
-int | counter_id | ID of Activity Counter (for example: ACTIVITY_SUMMON)
-int | countertype | Type of counter (0x3001=Spell Counter, etc. Look at strings.conf for official available counters)
-int | cp | The owner of zones that will be returned
-int | dd | Facedown Defense Position monsters are changed to this position
-int | def | Value of Defense Points
-int | defense | Value of Defense Points
-int | desc | Description (commonly represented by 'aux.Stringid(code, id)' which pulls the description text from the cdb) (It will show "???" if your ID is outside the allowed range: See ".constant GetDesc()")
-int | dest | Destination (a location, for example: LOCATION_MZONE)
-int | drawcount | Sets Player's Draw count to the number
-int | du | Faceup defense position monsters are changed to this position
-int | ep | Sets the Event Player for the raised event
-int | ev | Event value
-int | event | Event
-int | extra_type | Additional Card Types for Trap Monster
-int | filter | A bitflag denoting disabled field positions (for example: '0b00101' = '0x7' means Position 0 and 2 is disabled)
-int | flag | Reload files with these Flags
-int | global_flag | Global flag(s) to enable (for example: GLOBALFLAG_DECK_REVERSE_CHECK+GLOBALFLAG_SCRAP_CHIMERA)
-int | hint_type | Type of Hint
-int | label | A value
-int | level | Level
-int | location | Location (for example: LOCATION_DECK)
-int | lp | Amount of Lifepoints
-int | lv | Level
-int | max | Maximum amount
-int | markers | The Link Markers to check if the card has
-int | min | Minimum amount
-int | move_player | Sets the player that moves the card
-int | number | An integer number
-
-
-type | variable name| description
--- | -- | --
-int | o | Opponent's player's Field Bitflags
-int | o_range | Opposing player's locations affected by the effect (for example: LOCATION_SZONE+LOCATION_DECK)
-int | o_time | Timing of effect in opposing player's turn (TIMING_x)
-int | owner | Owner of the added card
-int | param | The chain's new parameter
-int | player | Any player
-int | playerid | Player whose info would be set
-int | pos | Position (for example: POS_FACEUP)
-int | prop | Property for effect (for example: EFFECT_FLAG_x)
-int | property | Property for the flag effect (for example: EFFECT_FLAG_x)
-int | r | reason, the cause of the event
-int | race | Race (for example: RACE_FISH)
-int | range | Location of handler card where the effect can be applied or activated
-int | rank | Rank
-int | reason | Reason
-int | res | New result of coin/dice
-int | reset | Timing of NegateRelatedChain to reset (RESET_x)
-int | reset_code | Code for Effect Resetting. May be various things depending on reset_type
-int | reset_count | How many times after hitting phase reset will the effect or relation be finally truly reset. A value of 0 or 1 means the effect resets immediately after meeting the reset condition
-int | reset_flag | Flag for conditions of resetting the effect or relation (for example: RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE)
-int | reset_phase | The phase the effect will reset.
-int | reset_type |  -
-
-type | variable name| description
--- | -- | --
-int | rp | reason player, the player that triggered the event
-int | s | Selected player's Field Bitflags
-int | s_range | Selected player's Field Bitflags
-int | s_time | Bitflag denoting timing for selected player's turn
-int | seq | Sequence in Deck, or sequence on the field
-int | setcode | Card's SetCode (Archetype)
-int | setname | Card's SetCode (Archetype)
-int | singly | How many counters to place at once, or if to place them group-by-group at all
-int | sort_player | The player sorting the Decktop
-int | spsummon_code | The code of the card that can only be Special Summoned once per turn
-int | startcount | Player's starting hand count
-int | status | A status (e.g. STATUS_DISABLED)
-int | sum | The target value for the sum of function returns in a group (see functions named WithSumEqual)
-int | sumplayer | The player conducting a summon
-int | sumpos | The position in which a monster will be summoned
-int | sumtype | The type of summon with which a monster will be summoend
-int | target_player | The player to whose side of the field a monster will be summoned
-int | timing | When things happen (for example: TIMING_DRAW)
-int | type | The effect's type (for example: EFFECT_TYPE_SINGLE/FIELD/TRIGGER_F)
-int | unique_code | Card code to be unique
-int | unique_location | The location where the card should be unique
-int | use_player | The Player that will use the location
-int | value | An integer value
-int | win_reason | Reason of winning
-nil | nil | Empty/Undefined/Nothing
-string | msg | Any message
-string | name | Any String
-
+The cost function, that checks if the cost can be paid and also executes such cost (defined via Effect.SetCost): 
+```lua
+e1:SetCost(s.cost)
+```
+The target function, that performs the activation legality check and also does the actions that must be done during the activation (defined via Effect.SetTarget):
+```lua
+e1:SetTarget(s.target)
+```
+The operation function, that executes all the steps that are done when the card or effect **resolves** (defined via Effect.SetOperation):
+```lua
+e1:SetOperation(s.activate)
+```
