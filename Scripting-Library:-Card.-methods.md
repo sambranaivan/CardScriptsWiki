@@ -166,7 +166,7 @@ bool | Card.IsAbleToGrave(Card c) | Checks if a card (Card c) is able to go to t
 bool | Card.IsAbleToGraveAsCost(Card c) | Checks if a card (Card c) is able to go to the Graveyard as a cost
 bool | Card.IsAbleToHand(Card c) | Return if the card c can be returned to the hand (return true or false)
 bool | Card.IsAbleToHandAsCost(Card c) | Checks if a card (Card c) is able to go to the Hand as a cost
-bool | Card.IsAbleToRemove(Card c[, int player]) | Checks if a card (Card c) is able to be banished
+bool | Card.IsAbleToRemove(Card c, [int player=reason player, int pos=POS_FACEUP, int reason=REASON_EFFECT]) | Checks if a card (Card c) can be banished. The optional parameters are the player that would banish the card (int player), the position the card must go (int pos) and the reason for the banishing (int reason).
 bool | Card.IsAbleToRemoveAsCost(Card c) | Checks if a card (Card c) is able to be banished as a cost
 bool | Card.IsAllColumn(Card c) | Checks if all the zones of the column that "c" is on are occupied.
 bool | Card.IsAttack(Card c, int value) | Returns if a card (Card c) has an ATK equal to int value
