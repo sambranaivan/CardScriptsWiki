@@ -200,7 +200,7 @@ bool | Card.IsDefensePos(Card c) | Checks if a card (Card c) is in Defense posit
 bool | Card.IsDeleted(Card c) | Returns if the Card object got internally deleted and remained as dangling reference inside the lua state.
 bool | Card.IsDestructable(Card c[, Effect e]) | Checks whether a card (Card c) can be destroyed; if an effect (effect e) is given, checks whether the card can be destroyed by that effect
 bool | Card.IsDifferentAttribute(Card c, int att) | Returns if (Card c) does not have attribute (int att)
-bool | Card.IsDifferentAttribute(Card c, int race) | Returns if (Card c) does not have Race (int race)
+bool | Card.IsDifferentRace(Card c, int race) | Returns if (Card c) does not have Race (int race)
 bool | Card.IsDirectAttacked(Card c) | Checks if a Card (Card c) has successfully attacked directly
 bool | Card.IsDisabled(Card c) | Checks whether a card (Card c) is disabled, equivalent with c:IsStatus(STATUS_DISABLED)
 bool | Card.IsDiscardable(Card[, int reason=REASON_COST]) | Checks if a card (Card c) can be discarded for (int reason).
