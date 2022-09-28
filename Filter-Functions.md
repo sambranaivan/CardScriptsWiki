@@ -182,6 +182,9 @@ if chk==0 then return Duel.IsExistingMatchingCard(s.rmfilter,tp,LOCATION_HAND,0,
 ```
 Essentially, we're using a function that uses a filter that uses a function that uses a filter. Hence, "nested". In theory, there's no limit to how deep such nesting could go (ignoring technical stuff like memory, performance, and stack size), but in practice, most cards that require nesting filters will only need single nesting.  For a card that uses nesting filters two levels deep, you can check out [<u>Small World</u>](https://github.com/ProjectIgnis/CardScripts/blob/master/official/c89558743.lua).
 
+### Studying Draconnection
+TBA
+
 ## Auxiliary Filters and Helpers
 TBA
 
