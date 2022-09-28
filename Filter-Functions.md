@@ -84,9 +84,7 @@ function s.atkfilter(c,minatk)
 	return c:IsFaceup() and c:IsAttackAbove(minatk)
 end
 ```
-Now, for the filter to know what `minatk` is, **it needs to be passed to it**. This part is important. Otherwise, `minatk` would just be `nil`.
-
-[Functions that use filters](#appendix-a-some-common-functions-that-use-filters) can take additional arguments. These functions will pass the additional arguments they receive (after the "exception" argument) to the filter they're using, and they become additional arguments of that filter.
+Now, for the filter to know what `minatk` is, **it needs to be passed to it**. This part is important. Otherwise, `minatk` would just be `nil`. [Functions that use filters](#appendix-a-some-common-functions-that-use-filters) can take additional arguments. These functions will pass the additional arguments they receive (after the "exception" argument) to the filter they're using, and they become additional arguments of that filter.
 
 To illustrate, say we have an effect with an activation condition that says `If you control a face-up monster with ATK higher than your LP:`. For this, we can use the `s.atkfilter` earlier like so:
 ```lua
@@ -164,7 +162,25 @@ end
 First, it checks if `tp` has a free Main Monster Zone. If not, the effect stops resolving by having an early `return`. Then, it gives a "hint" to `tp` that the following card selection is for a Special Summon. Much like in `s.sptg`, the effect and player are already supplied (`e` and `tp`). This time, they are passed as extra arguments to `Duel.SelectMatchingCard` which passes them to `s.spfilter`. This allows `tp` to select a Level 3 or lower Sea Serpent monster that they can Special Summon from their deck. The selection is stored in a group called `g`, and `g` is finally Special Summoned if it's not empty (`#g>0`).
 
 ## Nesting Filters
-TBA
+There are also cases where a filter needs additional information that depends on another card that fulfills a separate filter. A simple example is an effect that needs to banish 1 monster from a player's hand, and send another monster from that player's Deck to the GY with the same level as the first monster. This means that the second monster's level will depend on the first monster's level. Naturally, we would need two filters for this, but more importantly, the first monster's filter will need to call `Duel.IsExistingMatchingCard` inside it using the second monster's filter.
+```lua
+--filter for the first monster (the card to be banished)
+function s.rmfilter(c,tp)
+	return c:IsMonster() and c:HasLevel() and c:IsAbleToRemove()
+		and Duel.IsExistingMatchingCard(s.tgfilter,tp,LOCATION_DECK,0,1,nil,c:GetLevel())
+end
+--filter for the second monster (the card to be sent to the GY)
+function s.tgfilter(c,lv)
+	return c:IsMonster() and c:IsAbleToGrave() and c:IsLevel(lv)
+end
+```
+Here, `s.rmfilter` is fulfilled if `c` is a monster that has a level and can be banished, and that there exists a monster in `tp`'s Deck which satisfies `s.tgfilter`. It passes `c:GetLevel()` (the monster's level) as an additional argument to the `Duel.IsExistingMatchingCard` call, which will in turn pass it to `s.tgfilter` as its additional argument called `lv`.
+
+`s.tgfilter` will then be fulfilled by monsters that can be sent to the GY and has a level equal to the passed `lv`. The following legality check can be used to see if we have a valid monster to banish (such that we'll also have a valid monster to send to the GY):
+```lua
+if chk==0 then return Duel.IsExistingMatchingCard(s.rmfilter,tp,LOCATION_HAND,0,1,nil,tp) end
+```
+Essentially, we're using a function that uses a filter that uses a function that uses a filter. Hence, "nested". In theory, there's no limit to how deep such nesting could go (ignoring technical stuff like memory, performance, and stack size), but in practice, most cards that require nesting filters will only need single nesting.  For a card that uses nesting filters two levels deep, you can check out [<u>Small World</u>](https://github.com/ProjectIgnis/CardScripts/blob/master/official/c89558743.lua).
 
 ## Auxiliary Filters and Helpers
 TBA
