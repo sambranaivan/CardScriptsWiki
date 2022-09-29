@@ -183,7 +183,52 @@ if chk==0 then return Duel.IsExistingMatchingCard(s.rmfilter,tp,LOCATION_HAND,0,
 Essentially, we're using a function that uses a filter that uses a function that uses a filter. Hence, "nested". In theory, there's no limit to how deep such nesting could go (ignoring technical stuff like memory, performance, and stack size), but in practice, most cards that require nesting filters will only need single nesting.  For a card that uses nesting filters two levels deep, you can check out [<u>Small World</u>](https://github.com/ProjectIgnis/CardScripts/blob/master/official/c89558743.lua).
 
 ### Studying Draconnection
-TBA
+> Reveal 1 Dragon-Type monster in your hand, add 1 Dragon-Type monster with the same Level from your Deck to your hand, then shuffle the revealed monster into the Deck.
+
+[<u>Draconnection's script</u>](https://github.com/ProjectIgnis/CardScripts/blob/master/official/c90887783.lua) uses nested filters to make sure that a Dragon monster in their hand can only be revealed if and only if the player also has a Dragon monster in their Deck with a matching level. It uses the following filter for the card to reveal:
+```lua
+function s.revfilter(c,tp)
+	return c:IsRace(RACE_DRAGON) and c:IsAbleToDeck() and not c:IsPublic()
+		and Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK,0,1,nil,c:GetLevel())
+end
+```
+This returns `true` for Dragon monsters that can be sent to the Deck and are not currently public information (so they can be revealed), and such that there exists at least one card in the Deck that satisfies `s.thfilter` given `c:GetLevel()` as additional argument. `s.thfilter` is defined as follows:
+```lua
+function s.thfilter(c,lv)
+	return c:IsRace(RACE_DRAGON) and c:IsLevel(lv) and c:IsAbleToHand()
+end
+```
+This checks for Dragon monsters that can be added to the hand whose level is exactly the `lv` passed to it.
+
+For the activation to be legal, there needs to be at least one card in `tp`'s hand that fulfills `s.revfilter`, so the script checks for that using `Duel.IsExistingMatchingCard` in the activation legality block:
+```lua
+	if chk==0 then return Duel.IsExistingMatchingCard(s.revfilter,tp,LOCATION_HAND,0,1,nil,tp) end
+```
+It passes `tp` because `s.revfilter` will need it to call `Duel.IsExistingMatchingCard` inside when checking if there's a corresponding Dragon monster in the Deck that can be added to the hand.
+
+Now let's go through what happens during resolution (`s.operation`):
+```lua
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+	local g1=Duel.SelectMatchingCard(tp,s.revfilter,tp,LOCATION_HAND,0,1,1,nil,tp)
+	if #g1==0 then return end
+```
+First, the script makes the player select 1 card in their hand to reveal. It must satisfy `s.revfilter`. This selection is stored in a group called `g1`. If the group is empty (no selection can be made), the effect stops resolving here. Next, we have the following:
+```lua
+	Duel.ConfirmCards(1-tp,g1)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+	local g2=Duel.SelectMatchingCard(tp,s.thfilter,tp,LOCATION_DECK,0,1,1,nil,g1:GetFirst():GetLevel())
+	if #g2==0 then return end
+```
+Here, the script reveals `g1` to the opponent (`1-tp`) using `Duel.ConfirmCards`. Next, it makes the player select a card in their Deck that satisfies `s.thfilter`. At this point, there's no longer a need for nested filters since we already have access to the level that `s.thfilter` needs to compare to. The script simply passes `g1:GetFirst():GetLevel()` as the additional argument, which is essentially the level of the revealed monster. This selection is stored in a group called `g2`, and just like before, the script stops resolving the effect if `g2` is empty. Finally, we have:
+```lua
+	Duel.BreakEffect()
+	if Duel.SendtoHand(g2,nil,REASON_EFFECT)>0 and g2:GetFirst():IsLocation(LOCATION_HAND) then
+		Duel.ConfirmCards(1-tp,g2)
+		Duel.BreakEffect()
+		Duel.SendtoDeck(g1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+	end
+```
+`Duel.BreakEffect` is used to separate parts of an effect so they're not treated as if they happened at the same time (the difference between the "then" and "and if you do" conjunctions). After calling that function, the script attempts to send `g2` to the hand using `Duel.SendtoHand`. It also makes sure that the search was successful by checking if `Duel.SendtoHand` returns a number greater than 0, and that the card in `g2` is now located in `LOCATION_HAND`. If it's successful, `g2` is confirmed to the opponent and `Duel.BreakEffect` is called again, before finally shuffling `g1` to the Deck.
 
 ## Auxiliary Filters and Helpers
 TBA
