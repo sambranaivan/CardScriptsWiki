@@ -287,6 +287,14 @@ bool | Card.IsSummonPlayer(Card c, int tp) | Checks if (Card c) is summoned by p
 bool | Card.IsSummonType(Card c, int ...) | Checks if "c" is Summoned by one of the summon types in the "..." list.
 bool | Card.IsSynchroSummonable(Card c[, Group\|Card\|nil must_use, Group\|Card\|nil  mg, int min=0, int max=0]) | Checks if "c" can be Synchro Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Synchro Summon. How this works is that the script would check for all EFFECT_SPSUMMON_PROC that has SUMMON_TYPE_SYNCHRO as it's Value, then checks the effects' Condition with the provided arguments. Check out "aux.SynCondition" in "proc_synchro.lua" for how this is handled.
 bool | Card.IsTrap(Card c) | Returns if (Card c) is a Trap card
+bool | Card.IsNormalSpell(Card c) | Returns if (Card c) is a Normal Spell
+bool | Card.IsQuickPlaySpell(Card c) | Returns if (Card c) is a Quick-Play Spell
+bool | Card.IsContinuousSpell(Card c) | Returns if (Card c) is a Continuous Spell
+bool | Card.IsEquipSpell(Card c) | Returns if (Card c) is an Equip Spell
+bool | Card.IsFieldSpell(Card c) | Returns if (Card c) is a Field Spell
+bool | Card.IsNormalTrap(Card c) | Returns if (Card c) is a Normal Trap
+bool | Card.IsContinuousTrap(Card c) | Returns if (Card c) is a Continuous Trap
+bool | Card.IsCounterTrap(Card c) | Returns if (Card c) is a Counter Trap
 bool | Card.IsType(Card c, int type[, Card scard\|nil, int sumtype = 0, int playerid = PLAYER_NONE]) | Checks if the card type of "c" is "type" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
 bool | Card.IsXyzLevel(Card c, Card xyzc, int lv) | Checks if "c" would be Level "lv" if it was to be used as Xyz Material for "xyzc".
 bool | Card.IsXyzSummonable(Card c[, Group\|Card\|nil must_use, Group\|Card\|nil  mg, int min=0, int max=0]) | Checks if "c" can be Xyz Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Xyz Summon
