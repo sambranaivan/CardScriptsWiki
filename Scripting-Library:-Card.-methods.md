@@ -191,8 +191,11 @@ bool | Card.IsCanRemoveCounter(Card c, int player, int countertype, int count, i
 bool | Card.IsCanTurnSet(Card c) | Checks if a card (Card c) can be made to face-down position (Set)
 bool | Card.IsCode(Card c, int ...) | Checks if "c" has at least 1 code/ID among the "..." list.
 bool | Card.IsColumn(Card c, int seq, int tp, int loc) | Checks (Card c) its column using the data of another card which allows checking even if the other card has already left the field using its Sequence (int seq), controller (int tp) and location (int loc)
+bool | Card.IsContinuousSpell(Card c) | Returns if (Card c) is a Continuous Spell
+bool | Card.IsContinuousTrap(Card c) | Returns if (Card c) is a Continuous Trap
 bool | Card.IsControler(Card c, int controler) | Checks if a card (Card c) has player (int p) as it's controller
 bool | Card.IsControlerCanBeChanged(Card c[, bool ign = false, int zone = 0xff]) | Checks if a card (Card c) can change control. Checks whether the card is in Monster Zone and whether the opposing player has enough space, in addition of checking for EFFECT_CANNOT_CHANGE_CONTROL. if a zone is provided, it uses only these zones as references. (also ign is supposed to be ignore monster zone checking)
+bool | Card.IsCounterTrap(Card c) | Returns if (Card c) is a Counter Trap
 bool | Card.IsDefense(Card c, int value) | Returns if a card (Card c) has an DEF equal to int value
 bool | Card.IsDefenseAbove(Card c, int def) | Checks if a card (Card c) has DEF equal or above the specified number (int defense), will return false if the card has ? DEF and is not face-up on the field.
 bool | Card.IsDefenseBelow(Card c, int def) | Checks if a card (Card c) has DEF equal or below the specified number (int defense), will return false if the card has ? DEF and is not face-up on the field.
@@ -204,10 +207,12 @@ bool | Card.IsDifferentRace(Card c, int race) | Returns if (Card c) does not hav
 bool | Card.IsDirectAttacked(Card c) | Checks if a Card (Card c) has successfully attacked directly
 bool | Card.IsDisabled(Card c) | Checks whether a card (Card c) is disabled, equivalent with c:IsStatus(STATUS_DISABLED)
 bool | Card.IsDiscardable(Card[, int reason=REASON_COST]) | Checks if a card (Card c) can be discarded for (int reason).
+bool | Card.IsEquipSpell(Card c) | Returns if (Card c) is an Equip Spell
 bool | Card.IsEvenScale(Card c) | Returns if a pendulum card (Card c) is a card with an even value for the scale, using Card.GetScale to get the value.
 bool | Card.IsExtraLinked(Card c) | Checks if a card is Extra Linked, uses aux.ExtraLinked which obtains 2 Extra Monster Zone monsters of each player and checks if (Card c) is included in the chain of co-linked cards.
 bool | Card.IsFacedown(Card c) | Checks if a card (Card c) is face-down
 bool | Card.IsFaceup(Card c) | Checks if a card (Card c) is face-up
+bool | Card.IsFieldSpell(Card c) | Returns if (Card c) is a Field Spell
 bool | Card.IsForbidden(Card c) | Checks if a card (Card c) is forbidden to be used (equal to calling c:IsStatus(STATUS_FORBIDDEN))
 bool | Card.IsFusionCode(Card c, int ...) | Checks if "c" has a specific code from the "..." list as a Fusion Material.
 bool | Card.IsFusionSetCard(Card c, int setname) | Checks if "c" is part of the archetype "setname" if it is to be used as a Fusion Material.
@@ -239,6 +244,8 @@ bool | Card.IsLocation(Card c, int location) | Checks if a card (Card c) is loca
 bool | Card.IsMonster(Card c) | Returns if (Card c) is a monster type card
 bool | Card.IsMSetable(Card, bool ignore_count, Effect e\|nil[, int min=0]) | Checks whether a card (Card c) can be Normal Set as a monster. Setting ignore_count to true makes it ignore the standard once per turn summon limit. If an effect (Effect e) is given, checks whether it can be Normal Summoned by that effect. The last value denotes the minimum tribute amount.
 bool | Card.IsNonEffectMonster(Card c) | Returns if (Card c) is a Monster and does not have TYPE_EFFECT
+bool | Card.IsNormalSpell(Card c) | Returns if (Card c) is a Normal Spell
+bool | Card.IsNormalTrap(Card c) | Returns if (Card c) is a Normal Trap
 bool | Card.IsNotTuner(Card c) | Checks if "c" is a non-Tuner monster.
 bool | Card.IsOddScale(Card c) | Returns if a pendulum card (Card c) is a card with an odd value for the scale, using Card.GetScale to get the value.
 bool | Card.IsOnField(Card c) | Checks if a card (Card c) is located on the field
@@ -255,6 +262,7 @@ bool | Card.IsPreviousPosition(Card c, int pos) | Checks if a card (Card c) is p
 bool | Card.IsPreviousSetCard(Card c, int setname) | Checks if "c" was previously part of the archetype "setname".
 bool | Card.IsProcedureSummonable(Card c, int cardtype, int sumtype[, Group\|Card\|nil must_use, Group\|Card\|nil  mg, int min=0, int max=0]) | Checks if "c" or type "cardtype" can be Summoned according to the "sumtype" procedure using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Xyz Summon
 bool | Card.IsPublic(Card c) | Checks if a card's (Card c) information is known to both players. In practice, about the same as c:IsPosition(POS_FACEUP)
+bool | Card.IsQuickPlaySpell(Card c) | Returns if (Card c) is a Quick-Play Spell
 bool | Card.IsRace(Card c, int race[, Card scard\|nil, int sumtype = 0, int playerid = PLAYER_NONE]) | Checks if the Monster Type of "c" is "race" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
 bool | Card.IsRank(Card c, int rk) | Checks if "c" has a Rank equal to "rk".
 bool | Card.IsRankAbove(Card c, int rank) | Checks if a card (Card c) has rank equal or above the specified number (int rank), will return false if the card has no rank
@@ -287,14 +295,6 @@ bool | Card.IsSummonPlayer(Card c, int tp) | Checks if (Card c) is summoned by p
 bool | Card.IsSummonType(Card c, int ...) | Checks if "c" is Summoned by one of the summon types in the "..." list.
 bool | Card.IsSynchroSummonable(Card c[, Group\|Card\|nil must_use, Group\|Card\|nil  mg, int min=0, int max=0]) | Checks if "c" can be Synchro Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Synchro Summon. How this works is that the script would check for all EFFECT_SPSUMMON_PROC that has SUMMON_TYPE_SYNCHRO as it's Value, then checks the effects' Condition with the provided arguments. Check out "aux.SynCondition" in "proc_synchro.lua" for how this is handled.
 bool | Card.IsTrap(Card c) | Returns if (Card c) is a Trap card
-bool | Card.IsNormalSpell(Card c) | Returns if (Card c) is a Normal Spell
-bool | Card.IsQuickPlaySpell(Card c) | Returns if (Card c) is a Quick-Play Spell
-bool | Card.IsContinuousSpell(Card c) | Returns if (Card c) is a Continuous Spell
-bool | Card.IsEquipSpell(Card c) | Returns if (Card c) is an Equip Spell
-bool | Card.IsFieldSpell(Card c) | Returns if (Card c) is a Field Spell
-bool | Card.IsNormalTrap(Card c) | Returns if (Card c) is a Normal Trap
-bool | Card.IsContinuousTrap(Card c) | Returns if (Card c) is a Continuous Trap
-bool | Card.IsCounterTrap(Card c) | Returns if (Card c) is a Counter Trap
 bool | Card.IsType(Card c, int type[, Card scard\|nil, int sumtype = 0, int playerid = PLAYER_NONE]) | Checks if the card type of "c" is "type" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
 bool | Card.IsXyzLevel(Card c, Card xyzc, int lv) | Checks if "c" would be Level "lv" if it was to be used as Xyz Material for "xyzc".
 bool | Card.IsXyzSummonable(Card c[, Group\|Card\|nil must_use, Group\|Card\|nil  mg, int min=0, int max=0]) | Checks if "c" can be Xyz Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Xyz Summon
