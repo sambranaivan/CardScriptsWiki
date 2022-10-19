@@ -35,6 +35,10 @@ bool | Effect.IsDeleted(Effect e) | Returns if the Effect object got internally 
 bool | Effect.IsHasCategory(Effect e, int cate) | Returns true if the effect (Effect e) has any category listed in (int cate), otherwise returns false
 bool | Effect.IsHasProperty(Effect e, int prop1[, int prop2]) | Returns true if the effect (Effect e) has any property listed in (int prop1) or (int prop2), otherwise returns false
 bool | Effect.IsHasType(Effect e, int type) | Returns true if the effect (Effect e) has any type listed in (int type), otherwise returns false
+bool | Effect.IsMonsterEffect(Effect e) | Returns true if the effect (Effect e) is active type monster, otherwise returns false
+bool | Effect.IsSpellEffect(Effect e) | Returns true if the effect (Effect e) is active type Spell, otherwise returns false
+bool | Effect.IsSpellTrapEffect(Effect e) | Returns true if the effect (Effect e) is active type Spell or Trap, otherwise returns false
+bool | Effect.IsTrapEffect(Effect e) | Returns true if the effect (Effect e) is active type Trap, otherwise returns false
 void | Effect.Reset(Effect e) | Reset an effect (Effect e) and makes it collectible by the garbage collector. Even if the effect seems to be usable it **SHOULD NOT** be used in other places after calling this function.
 void | Effect.SetAbsoluteRange(Effect e, int playerid, int s_range, int o_range) | Sets an effect's (Effect e) target range in perspective of the supplied player (int playerid), s_range denotes the supplied player's range and o_range denotes the opponent's.
 void | Effect.SetCategory(Effect e, int cate) | Sets an effect's (Effect e) category. Refer to constant.lua for valid categories.
