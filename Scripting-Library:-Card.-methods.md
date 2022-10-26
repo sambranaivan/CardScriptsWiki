@@ -209,6 +209,7 @@ bool | Card.IsDisabled(Card c) | Checks whether a card (Card c) is disabled, equ
 bool | Card.IsDiscardable(Card[, int reason=REASON_COST]) | Checks if a card (Card c) can be discarded for (int reason).
 bool | Card.IsEquipSpell(Card c) | Returns if (Card c) is an Equip Spell
 bool | Card.IsEvenScale(Card c) | Returns if a pendulum card (Card c) is a card with an even value for the scale, using Card.GetScale to get the value.
+bool | Card.IsExactType(Card c, int type[, Card scard\|nil, int sumtype = 0, int playerid = PLAYER_NONE]) | Checks if the card type of "c" is exactly "type" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
 bool | Card.IsExtraLinked(Card c) | Checks if a card is Extra Linked, uses aux.ExtraLinked which obtains 2 Extra Monster Zone monsters of each player and checks if (Card c) is included in the chain of co-linked cards.
 bool | Card.IsFacedown(Card c) | Checks if a card (Card c) is face-down
 bool | Card.IsFaceup(Card c) | Checks if a card (Card c) is face-up
@@ -295,7 +296,7 @@ bool | Card.IsSummonPlayer(Card c, int tp) | Checks if (Card c) is summoned by p
 bool | Card.IsSummonType(Card c, int ...) | Checks if "c" is Summoned by one of the summon types in the "..." list.
 bool | Card.IsSynchroSummonable(Card c[, Group\|Card\|nil must_use, Group\|Card\|nil  mg, int min=0, int max=0]) | Checks if "c" can be Synchro Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Synchro Summon. How this works is that the script would check for all EFFECT_SPSUMMON_PROC that has SUMMON_TYPE_SYNCHRO as it's Value, then checks the effects' Condition with the provided arguments. Check out "aux.SynCondition" in "proc_synchro.lua" for how this is handled.
 bool | Card.IsTrap(Card c) | Returns if (Card c) is a Trap card
-bool | Card.IsType(Card c, int type[, Card scard\|nil, int sumtype = 0, int playerid = PLAYER_NONE]) | Checks if the card type of "c" is "type" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid").
+bool | Card.IsType(Card c, int type[, Card scard\|nil, int sumtype = 0, int playerid = PLAYER_NONE]) | Checks if the card type of "c" is "type" (if it is to be used as material for "scard" with Summon type "sumtype" by player "playerid"). This function performs a bitwise and comparision and returns true if the result of such is nonzero, use Card.IsExactType if you want the card to be exactly (or a part of) the passed type.
 bool | Card.IsXyzLevel(Card c, Card xyzc, int lv) | Checks if "c" would be Level "lv" if it was to be used as Xyz Material for "xyzc".
 bool | Card.IsXyzSummonable(Card c[, Group\|Card\|nil must_use, Group\|Card\|nil  mg, int min=0, int max=0]) | Checks if "c" can be Xyz Summoned using "must_use" as part of its materials, choosing among "mg", with "min" and "max" materials to be used for the Xyz Summon
 void\|int | Card.Level(Card c[, int level]) | Changes (Card c)'s original level/rank/link rating if (int level) is inputted, else returns the current card's original level/rank/link rating
