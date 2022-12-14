@@ -62,12 +62,5 @@ If any the mentioned folders don't exist and you can create them.
 
 **WIP**
 
-If you preffer, as alternatives to (1), (2) and (3), you have the option to connect your own github repository to your client. You can see how to structurate your [repository here](https://github.com/NaimSantos/Customs)
+You have the option to connect your own github repository to your client, so it can obtain updates from that repository automatically. You can see how to structurate your own repository for custom cards [here](https://github.com/NaimSantos/Customs)
 
-
-### Instructions for DataEditorX users
-**WIP, probably to be removed**
-Edopro changed the "Categories" - the filters used to search in "Effect" - in deck edit.This file <https://github.com/NaimSantos/DataEditorX/blob/master/DataEditorX/data/cardinfo_english.txt> has the new changes and also up to date OTs - the scopes like TCG/OCG/Anime/Manga/custom, etc - used for cards and hexadecimal values for archetypes.
-
-### Understanding the DEX interface
-**WIP, probably to be removed**
