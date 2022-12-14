@@ -4,4 +4,6 @@
 
 - For a basic guide on how to read a script and commonly used names for parameters, read our [Parameter naming convention](https://github.com/ProjectIgnis/CardScripts/wiki/Parameter-naming-convention) page.
 
+- [This page](https://github.com/ProjectIgnis/CardScripts/wiki/How-archetypes-and-their-values-work) explains how archetypes work in the game.
+
 - [This page](https://github.com/ProjectIgnis/CardScripts/wiki/Counters) explains how counters work in the game.
