@@ -25,7 +25,7 @@ Any SQL editor works for that, but some softwares that can be used are:
 For Windows users, DataEditorX is the most beginner-friendly program to edit databases and it was designed to work with cdb files.
 The page linked above also has intruction to change the language (it defaults to chinese). After you extract it and run the program, it might ask for the download of extra components.
 
-If you are going to use DataEditorX you should be aware that Edopro uses a different of "Categories" (the filters used to search in "Effect", in deck edit). [This file](https://github.com/NaimSantos/DataEditorX/blob/master/DataEditorX/data/cardinfo_english.txt)  has the new changes and also up to date (as much as possible) OTs - the scopes like TCG/OCG/Anime/Manga/custom, etc - used for cards and hexadecimal values for archetypes.
+If you are going to use DataEditorX you should be aware that Edopro uses a different set of "Categories" (the filters used to search in "Effect", in deck edit). [This file](https://github.com/NaimSantos/DataEditorX/blob/master/DataEditorX/data/cardinfo_english.txt)  has the new changes and also up to date (as much as possible) OTs - the scopes like TCG/OCG/Anime/Manga/custom, etc - used for cards and hexadecimal values for archetypes.
 
 ### For pictures:
 
