@@ -2,7 +2,7 @@
 
 
 To have a custom card in your game you will need:
-- A card database (`.cdb` file) containing the stats, text, properties of the card, with its unique passcode/ID.
+- A card database (`.cdb` file) containing the stats, text and all properties of the card, with its unique passcode/ID.
 - A card script (`.lua` file), written using Lua as scripting language. It is the script that contains the instructions on how the effect is executed when it is used. All cards need scripts, except non-Pendulum Normal Monsters.
 - Pictures are optional and don't have any effects on how the cards work.
 
@@ -44,7 +44,7 @@ Cards are identified in the database by an unique passcode (or ID). It's recomme
 
 Scripts are identified by the card's passcode. The file name should be `cXXXYYYZZZ.lua` (XXXYYYZZZ being the passcode/ID for that card)
 
-Pictures are also identified by the card's passcode. `JPG` an `PNG` formats are supported, so an example of valid picture file is `XXXYYYZZZ.jpg`
+Pictures are also identified by the card's passcode. Both `JPG` and `PNG` formats are supported, so an example of valid picture file is `XXXYYYZZZ.jpg`
 
 ### Keeping your files locally
 
