@@ -14,6 +14,8 @@ Credits to senpaizuri3#9082 on Discord.
 However, something additional to note is that Card.IsSetCard performs a binary AND operation for the sub-archetype digit, instead of an equal comparison. Therefore, `c:IsSetCard(0x3184)` will return **true** for a `0x7184` card, BUT `c:IsSetCard(0x7184)` will return **false** for a `0x3184` card. (Whether an intentional outcome or not is up to you.) This is done with Saber, X-Saber, and XX-Saber (`0xd`, `0x100d`, and `0x300d`, respectively) to give you an official example.
 
 
-#WIP (maybe remove this part):
+#**WIP** (maybe remove this part):
+
+
 If you don't understand what this means and you just want the possible values that don't potentially create false positives, here is a spreadsheet with all of those combinations:
 https://docs.google.com/spreadsheets/d/1rWQd16QdNQjMZ-aSAfK6d6JiZYVxQo-F_eU9ZptOYmQ/preview?usp=sharing#gid=0
