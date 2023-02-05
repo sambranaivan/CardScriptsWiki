@@ -36,7 +36,7 @@ bool | Group.IsContains(Group g, Card c) | Checks if a group (Group g) contains 
 bool | Group.IsDeleted(Group g) | Returns if the Group object got internally deleted and remained as dangling reference inside the lua state.
 bool | Group.IsExists(Group g, function f, int count, Group\|Card ex\|nil, ...) | Checks if at least a number (int count) of members of a group (Group g) meet the function (function f). Excludes a card (Card ex) if not nil. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the card will be included if f(c,...) returns true.
 iterator | Group.Iter(Group g) | Iterates over the cards in (Group g) for use with for loops
-void | Group.KeepAlive(Group g) | Make a group (Group g) not be collected upon exiting the function
+Group | Group.KeepAlive(Group g) | Make a group (Group g) not be collected upon exiting the function. Returns the group itself.
 Group | Group.Match(Group g, function f, Group\|Card ex\|nil, ...) | It has the same behaviour as Group.Filter but the changes are done to the Group g and no new group is created.
 Group | Group.Merge(Group g1, Card\|Group other) | Add a card or group (Card\|Group other) to a group (Group g). Returns the group itself.
 Group | Group.RandomSelect(Group g, int player, int count) | Make a player (int player) randomly select (int amount) members of a group (Group g).
