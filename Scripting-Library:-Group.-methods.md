@@ -7,7 +7,7 @@ bool | Group.CheckDifferentPropertyBinary(Group g, function f, ...) | Function t
 bool | Group.CheckSameProperty(g, f, ...) | Returns if the members of (Group  g) share a same property, provided in (Function f)
 bool, bool | Group.CheckWithSumEqual(Group g, function f, int sum, int min, int max, ...) | Checks if there is a combination of cards, with a minimum and maximum, that has the sum of f(c,...) result equal to (int sum) in a group (Group g). Function f accepts at least one parameter (f(c,...). with c as each member of the group), and the return value should be integer. The second returned value indicates wheter the check failed because of overtributing (in which case it will be true), or beause of undertributing.
 bool, bool | Group.CheckWithSumGreater(Group g, function f, int sum, ...) | Checks if there is a combination of cards, with a minimum and maximum, that has the sum of f(c,...) result greater than or equal to (int sum) in a group (Group g). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer. The second returned value indicates wheter the check failed because of overtributing (in which case it will be true), or beause of undertributing.
-void | Group.Clear(Group g) | Removes all the elements from a group (Group g)
+Group | Group.Clear(Group g) | Removes all the elements from a group (Group g). Returns the group itself.
 Group | Group.Clone(Group g) | Create a copy of a group (Group g) with the same members
 Group | Group.CreateGroup() | Create a new Group object
 void | Group.DeleteGroup(Group g) | Makes a group that was kept alive be collectable (Group g)
