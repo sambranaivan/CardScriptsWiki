@@ -53,7 +53,7 @@ The `expansions` folder can be used to keep all your files for custom cards. Ref
 - pictures: should be kept in `expansions/pics`. Artworks for field spells can be kept in `expansions/pics/field`.
 - databases: should be kept in `expansions`.
 - scripts: should be kept in `expansions/script`.
-If needed, custom strings (for example, for counter and archetype names) can be kept in a `string.conf` file, in `expansions`.
+If needed, custom strings (for example, for counter and archetype names) can be kept in a `strings.conf` file, in `expansions`.
 
 If any the mentioned folders don't exist you can create them.
 
