@@ -55,7 +55,7 @@ The `expansions` folder can be used to keep all your files for custom cards. Ref
 - scripts: should be kept in `expansions/script`.
 If needed, custom strings (for example, for counter and archetype names) can be kept in a `string.conf` file, in `expansions`.
 
-If any the mentioned folders don't exist and you can create them.
+If any the mentioned folders don't exist you can create them.
 
 
 ### Keeping your files in a repository
