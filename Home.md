@@ -8,4 +8,4 @@
 
 - [This page](https://github.com/ProjectIgnis/CardScripts/wiki/Counters) explains how counters work in the game.
 
--[This page](https://github.com/ProjectIgnis/CardScripts/wiki/Filter-Functions) explains what filter functions are and how to use them in your scripts
+- [This page](https://github.com/ProjectIgnis/CardScripts/wiki/Filter-Functions) explains what filter functions are and how to use them in your scripts
