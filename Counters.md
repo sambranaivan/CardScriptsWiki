@@ -1,12 +1,14 @@
-Counters are represented by unique hexadecimal value, starting with 0x1, the value for Spell counters. Even if the English text of some cards like **BOXer** or **Kickfire** refers only to "Counter" (i.e. not giving it an specific name), those counters are considered to be different from each other. Counters are grouped in two categories.
-- Global counter
+Counters are represented by unique hexadecimal values, starting with 0x1, the value for Spell counters. Even if the English text of some cards like **BOXer** or **Kickfire** refers only to "Counter" (i.e. not giving it an specific name), those counters are considered to be different from each other. This means that you cannot, for example, use the counter placed by Magic Reflector on Cauldron of the Old Man when you evaluate how much damage to inflict/how much LP to recover; the counters are different.
+
+Counters are grouped in two categories.
+- Global counters
 - Permission counters
 
 ## Global Counters
-Counters with a value **above** 0x1000 are considered global, meaning that any card can receive this type of counter. Example: Predator Counter (0x1041).
+Counters with a value **above** 0x1000 are considered global which means that that any card can receive this type of counter. Example: Predator Counters (0x1041) can be placed on any monsters.
 
 ## Permission-specific counters
-Counters with a value **below** 0x1000 have to be first permitted on the card that is going to hold such counters before they can be added. If the card that has these counters permitted has its effects negated, it also loses the ability to hold such counter. Example: Spell Counter (0x1)
+Counters with a value **below** 0x1000 have to be first permitted on the card that is going to hold such counters before they can be added. If the card that has these counters permitted has its effects negated, it also loses the ability to hold such counter. Example: Spell Counters (0x1) can only be placed on cards that can hold such counters (cards that have the counter permission enabled for it)
 
 ## Functions related to counters
 
