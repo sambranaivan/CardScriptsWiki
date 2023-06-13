@@ -1,6 +1,5 @@
-| Column1 | Column2 | Column3 |
+| return type| function| description|
 | --- | --- | --- |
-| value | name | desc |
 | void | aux.AddAmazementQuickEquipEffect(Card c,  int id) | Adds the following effect to a card: "(Quick Effect): You can target 1 of your "Attraction" Traps that is equipped to a monster; equip it to 1 "Amazement" monster you control or 1 face-up monster your opponent controls." Parameters: (Card c) the card to add the effect to; (int id) the ID of the card to be used with HOPT effects. |
 | void | aux.AddAttractionEquipProc(Card c) | Adds the following common equip effect shared by "Attraction" Traps: "Target 1 "Amazement" monster you control or 1 face-up monster your opponent controls; equip this card to it." Parameters: (Card c) the card to add the effect to |
 | effect | aux.AddContinuousSkillProcedure(c,  coverNum,  drawless,  flip) | Procedure for continuous Spell/Trap Skill -- c: the card (card) -- coverNum: the Number of the cover (int) -- drawless: if the player draw 1 less card at the start of the duel (bool) -- flip: if the continuous card get flipped at the start of the duel (bool) |
@@ -20,6 +19,10 @@
 | void | aux.AddValuesReset(function resetfunc) | Executes, at EVENT_TURN_END, the reset function(s) passed as argument (function resetfunc) |
 | effect | aux.AddVrainsSkillProcedure(c, skillcon, skillop, efftype) | Procedure for Vrains Skills --flip con: condition to activate the skill (function) --flipOp: operation related to the skill activation (function) --efftype: Event to trigger the Skill, default to EVENT_FREE_CHAIN. Additionally accept EFFECT_NEGATE_SKILL for Anti Skill (int) |
 | void | aux.AddZWEquipLimit(c, con, equipval, equipop, linkedeff, prop, resetflag, resetcount) | Equip Limit Proc for cards that equip themselves to another card: con = condition for when the card can equip to another 'f(e)'; equipval = filter for the equip target; equipop = what happens when the card is equipped to the target; tc = equip target; c = equip card; linkedeffect = usually the effect of Card c that equips, this ensures Phantom of Chaos handling; prop = extra effect properties; resetflag/resetcount = resets values |
+
+
+| return type| function| description|
+| --- | --- | --- |
 | bool | aux.AND(...)(...) | First (...) is a list of functions which will be used to check the parameters in the second set of (...), separated with "and". The second set of (...) is applied automatically when used as a filter. |
 | int | aux.AnnounceAnotherAttribute(Card c,  int player) | Function deprecated since version 40.0.0. Use "Card.AnnounceAnotherAttribute" instead |
 | int | aux.AnnounceAnotherRace(Card c,  int player) | Function deprecated since version 40.0.0. Use "Card.AnnounceAnotherRace" instead |
@@ -68,6 +71,10 @@
 | function | aux.drawlessop(...) | Auxiliary function for skills that have "You draw 1 less card at the beginning of the duel". |
 | bool | aux.dpcheck(function f) | Checks for cards with different properties (the property defined in function f,  for example,  Card.GetLevel,  GetAttribute,  GetRace,  GetCode,  etc). Usually used with aux.SelectUnselectGroup. |
 | function | aux.dxmcostgen(int min,  int max,  [function op]) | "Detach Xyz Material Cost Generator". Generates a function to be used by Effect.SetCost in order to detach a number of Xyz Materials from the Effect's handler. (int min) is the minimum number of materials to check for detachment. (int max) is the maximum number of materials to detach or a function that gets called as if by doing max(e, tp) in order to get the value of max detachments. (function op) is an optional function that gets called by passing the effect and the operated group of just detached materials in order to do some additional handling with them. |
+
+
+| return type| function| description|
+| --- | --- | --- |
 | void | aux.EnableCheckReincarnation(Card c) | Auxiliary function for "Salamangreat" Reincarnation procedure. Enables reincarnation links. |
 | void | aux.EnableExtraRules(c, card, init, ...) | Functions to automate consistent start-of-duel activations for Duel Modes like Speed Duel, Sealed Duel, etc |
 | void | aux.EnableExtraRulesOperation(card, init, ...) |
@@ -100,6 +107,10 @@
 | function | aux.FunctionWithNamedArgs(function f,  ...) |
 | function | aux.FusionProcedure() |
 | bool | aux.fuslimit(Effect e,  Effect se,  int sp,  int st) | SPSUMMON condition "Must be Fusion Summoned" |
+
+
+| return type| function| description|
+| --- | --- | --- |
 | bool | aux.gbspcon(Effect e,  int tp,  Group eg\|nil,  int ep,  int ev,  Effect re,  int r,  int rp) | Default SetCondition for "Summoned by a "Gladiator Beast" monster" |
 | bool | aux.GeminiNormalCondition(Effect e) | Function deprecated since version 40.0.0. Use Gemini.NormalStatusCondition instead |
 | table | aux.GetAttributeStrings() |
@@ -133,6 +144,10 @@
 | bool | aux.IsNotGeminiState(Card c) |
 | bool | aux.IsUnionState(Effect effect) | Used as a default condition to check if the handler of the effect is a Union monster equipped to another monster. |
 | bool | aux.IsZone(card c,  int zone,  int tp) | Returns if (card c) is in the (int zone), (int tp) is the reference player. |
+
+
+| return type| function| description|
+| --- | --- | --- |
 | bool | aux.KaijuCondition(e, c) | See cards_specific_functions.lua |
 | bool | aux.LavaCheck(sg, e, tp, mg) | See cards_specific_functions.lua |
 | bool | aux.LavaCondition(required, filter) | See cards_specific_functions.lua |
@@ -170,6 +185,10 @@
 | bool | aux.nvfilter(Card c) | Filter check "not affected by Necrovalley" |
 | bool | aux.nzatk(Card c) | Function deprecated since version 40.0.0. Use "Card.HasNonZeroAttack" instead |
 | bool | aux.nzdef(Card c) | Function deprecated since version 40.0.0. Use "Card.HasNonZeroDefense" instead |
+
+
+| return type| function| description|
+| --- | --- | --- |
 | bool | aux.OR(...)(...) | First (...) is a list of functions which will be used to check the parameters in the second set of (...), separated with "or". The second set of (...) is applied automatically when used as a filter. |
 | table element | aux.ParamsFromTable(table t,  key,  ...) |
 | function | aux.PendulumProcedure(c) |
@@ -202,6 +221,9 @@
 | function | aux.SecurityForceCost() |
 | function | aux.SecurityTarget() |
 | bool | aux.ritlimit(Effect e,  Effect se,  int sp,  int st) | SPSUMMON condition "Must be Ritual Summoned" |
+
+| return type| function| description|
+| --- | --- | --- |
 | int/nil | aux.SelectEffect(int player,  ..) | Function deprecated since version 40.0.0. Use "Duel.SelectEffect" instead |
 | bool\|Group | aux.SelectUnselectGroup(Group g,  Effect e,  int tp,  int minc = 1,  int maxc = 99,  function\|nil rescon,  int chk,  int seltp,  int hintmsg,  function\|nil cancelcon,  function\|nil breakcon,  bool cancelable) | Recursion checking and selection. (Group g) is the group to check and choose from, with a minimum (int minc) that defaults to 1 if set to nil and maximum (int maxc) that defaults to 99 if set to nil. (function rescon) is the condition to check which is needed fulfill. (int chk) is set to 0 to check and 1 to select. (int seltp) is the selecting player. (int hintmsg) is the HINTMSG that will be displayed on selection. (function cancelcon) is the condition when fulfilled allows you to end selection. (function breakcon) when fulfilled ends the selection automatically. |
 | bool\|Group | aux.SelectUnselecLoop(...) |
@@ -225,6 +247,9 @@
 | bool | aux.summonproc(...) |
 | void | aux.sumreg(Effect e,  int tp,  Group eg,  int ep,  int ev,  Effect re,  int r,  int rp) | Used as SetOperation which registers a FlagEffect to cards in the event group with the same OriginalCode as itself |
 | bool | aux.synlimit(Effect e,  Effect se,  int sp,  int st) | SPSUMMON condition "Must be Synchro Summoned" |
+
+| return type| function| description|
+| --- | --- | --- |
 | table | aux.tableAND(...) |
 | table | aux.tableOR(...) |
 | bool | aux.TargetBoolFunction(function f,  ...) | Used in SetTarget filters (with parameters (e,  c)) to check a function and its (...) parameters |
