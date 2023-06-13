@@ -1,5 +1,6 @@
 return type | function | description
 -- | -- | --
+| Group | Group.AddCard(Group g,  Card\|Group other) | Adds a card or group (Card\|Group other) to a group (Group g). Returns the group itself. Equivalent to Group.Merge |
 | Group | Group.AddMaximumCheck(Group g) | Returns a group containing all the maximum parts of cards that are in maximum mode in the group g, |
 | bool,void | Group.CheckDifferentProperty(Group g,  function f,  ...) | Function to check if every card in a group has at least a different property from the others with a function that stores the properties in multiple return forms |
 | bool | Group.CheckDifferentPropertyBinary(Group g,  function f,  ...) | Function to check if every card in a group has at least a different property from the others with a function that stores the properties in binary form. |
