@@ -43,6 +43,7 @@
 | 0xc | POS_DEFENSE | Defense position, face-up + face-down  (decimal value= 12) |
 | 0x10000 | NO_FLIP_EFFECT | Applies position change without triggering FLIP effects |
 
+
 ### Card types, attributes and monster type
 | Value | Name | Description |
 | --- | --- | --- |
@@ -651,6 +652,7 @@
 | 73941492+TYPE_SYNCHRO | EFFECT_SYNCHRO_MAT_RESTRICTION | 73941492+TYPE_SYNCHRO. Used by the Synchro Summon procedure as an implementation of Harmonizing Magician's effect |
 | 73941492+TYPE_XYZ | EFFECT_XYZ_MAT_RESTRICTION | 73941492+TYPE_XYZ. Used by the XyzSummon procedure as an implementation of Harmonizing Magician's effect |
 
+
 ### Events
 | Value | Name | Description |
 | --- | --- | --- |
@@ -815,3 +817,245 @@ See the definition of opcode [here](https://en.m.wikipedia.org/wiki/Opcode).
 | 0x40000107 | OPCODE_GETTYPE | Operation of the function Card.GetType, to be used in an AnnounceCard filter. |
 | 0x40000108 | OPCODE_GETRACE | Operation of the function Card.GetRace, to be used in an AnnounceCard filter. |
 | 0x40000109 | OPCODE_GETATTRIBUTE | Operation of the function Card.GetAttribute, to be used in an AnnounceCard filter. |
+
+
+### Hint messages
+| Value | Name | Description |
+| --- | --- | --- |
+| 500 | HINTMSG_RELEASE | Shows the following hint message: "Select the card(s) to tribute" |
+| 501 | HINTMSG_DISCARD | Shows the following hint message: "Select the card(s) to discard" |
+| 502 | HINTMSG_DESTROY | Shows the following hint message: "Select the card(s) to destroy" |
+| 503 | HINTMSG_REMOVE | Shows the following hint message: "Select the card(s) to banish" |
+| 504 | HINTMSG_TOGRAVE | Shows the following hint message: "Select the card(s) to send to Graveyard" |
+| 505 | HINTMSG_RTOHAND | Shows the following hint message: "Select the card(s) to return to hand" |
+| 506 | HINTMSG_ATOHAND | Shows the following hint message: "Select the card(s) to add to your hand" |
+| 507 | HINTMSG_TODECK | Shows the following hint message: "Select the card(s) to return to Deck" |
+| 508 | HINTMSG_SUMMON | Shows the following hint message: "Select the card(s) to Normal Summon" |
+| 509 | HINTMSG_SPSUMMON | Shows the following hint message: "Select the card(s) to Special Summon" |
+| 510 | HINTMSG_SET | Shows the following hint message: "Select the card(s) to Set to the field" |
+| 511 | HINTMSG_FMATERIAL | Shows the following hint message: "Select the card(s) to use as Fusion Material" |
+| 512 | HINTMSG_SMATERIAL | Shows the following hint message: "Select the card(s) to use as Synchro Material" |
+| 513 | HINTMSG_XMATERIAL | Shows the following hint message: "Select the card(s) to use as Xyz Material" |
+| 514 | HINTMSG_FACEUP | Shows the following hint message: "Select a face-up card(s)" |
+| 515 | HINTMSG_FACEDOWN | Shows the following hint message: "Select a face-down card(s)" |
+| 516 | HINTMSG_ATTACK | Shows the following hint message: "Select a monster(s) in Attack Position" |
+| 517 | HINTMSG_DEFENSE | Shows the following hint message: "Select a monster(s) in Defense Position" |
+| 518 | HINTMSG_EQUIP | Shows the following hint message: "Select a card(s) to equip" |
+| 519 | HINTMSG_REMOVEXYZ | Shows the following hint message: "Select the Xyz Material(s) to detach" |
+| 520 | HINTMSG_CONTROL | Shows the following hint message: "Select the monster(s) to change control" |
+| 521 | HINTMSG_DESREPLACE | Shows the following hint message: "Select the card(s) to replace" |
+| 522 | HINTMSG_FACEUPATTACK | Shows the following hint message: "Select a face-up Attack Position monster(s)" |
+| 523 | HINTMSG_FACEUPDEFENSE | Shows the following hint message: "Select a face-up Defense Position monster(s)" |
+| 524 | HINTMSG_FACEDOWNATTACK | Shows the following hint message: "Select a face-down Attack Position monster(s)" |
+| 525 | HINTMSG_FACEDOWNDEFENSE | Shows the following hint message: "Select a face-down Defense Position monster(s)" |
+| 526 | HINTMSG_CONFIRM | Shows the following hint message: "Select the card(s) to reveal" |
+| 527 | HINTMSG_TOFIELD | Shows the following hint message: "Select the card(s) to place on the field" |
+| 528 | HINTMSG_POSCHANGE | Shows the following hint message: "Select a monster to change its battle position" |
+| 529 | HINTMSG_SELF | Shows the following hint message: "Select your card" |
+| 530 | HINTMSG_OPPO | Shows the following hint message: "Select an opponent's card" |
+| 531 | HINTMSG_TRIBUTE | Shows the following hint message: "Select monsters for Tribute Summon" |
+| 532 | HINTMSG_DEATTACHFROM | Shows the following hint message: "Select the monster(s) to detach Xyz Material(s) from" |
+| 533 | HINTMSG_LMATERIAL | Shows the following hint message: "Select the card(s) to use as Link Material" |
+| 549 | HINTMSG_ATTACKTARGET | Shows the following hint message: "Select an attack target" |
+| 550 | HINTMSG_EFFECT | Shows the following hint message: "Select the effect you want to activate" |
+| 551 | HINTMSG_TARGET | Shows the following hint message: "Select the target(s) of the effect" |
+| 552 | HINTMSG_COIN | Shows the following hint message: "Select heads or tails" |
+| 553 | HINTMSG_DICE | Shows the following hint message: "Select dice results" |
+| 554 | HINTMSG_CARDTYPE | Shows the following hint message: "Declare 1 card type" |
+| 555 | HINTMSG_OPTION | Shows the following hint message: "Select an option" |
+| 556 | HINTMSG_RESOLVEEFFECT | Shows the following hint message: "Select effect to apply/resolve" |
+| 560 | HINTMSG_SELECT | Shows the following hint message: "Select" |
+| 561 | HINTMSG_POSITION | Shows the following hint message: "Select the battle position" |
+| 562 | HINTMSG_ATTRIBUTE | Shows the following hint message: "Declare an Attribute" |
+| 563 | HINTMSG_RACE | Shows the following hint message: "Declare a Type" |
+| 564 | HINTMSG_CODE | Shows the following hint message: "Declare a card name" |
+| 565 | HINTMSG_NUMBER | Shows the following hint message: "Declare a number" |
+| 566 | HINTMSG_EFFACTIVATE | Shows the following hint message: "Select the effect to activate" |
+| 567 | HINTMSG_LVRANK | Shows the following hint message: "Declare a Level/Rank" |
+| 568 | HINTMSG_RESOLVECARD | Shows the following hint message: "Select a card to resolve" |
+| 569 | HINTMSG_ZONE | Shows the following hint message: "Select the zone to place "card name"" |
+| 570 | HINTMSG_DISABLEZONE | Shows the following hint message: "Select the zone(s) to become unusable" |
+| 571 | HINTMSG_TOZONE | Shows the following hint message: "Select the zone to move the card to" |
+| 572 | HINTMSG_COUNTER | Shows the following hint message: "Select the card(s) to place a counter on" |
+| 575 | HINTMSG_NEGATE | Shows the following hint message: "Select the card(s) to negate its effects" |
+| 576 | HINTMSG_ATKDEF  | Shows the following hint message: "Select the card(s) to change its ATK/DEF" |
+| 577 | HINTMSG_APPLYTO | Shows the following hint message: "Select the card(s) to apply the effect to" |
+| 578 | HINTMSG_ATTACH | Shows the following hint message: "Select the card(s) to attach as material" |
+
+### Effect timings
+| Value | Name | Description |
+| --- | --- | --- |
+| 0x1 | TIMING_DRAW_PHASE | During the Draw Phase |
+| 0x2 | TIMING_STANDBY_PHASE | During the Standby Phase |
+| 0x4 | TIMING_MAIN_END | When the Main Phase is about to end, while moving to the Battle/End phase |
+| 0x8 | TIMING_BATTLE_START | When the Battle Phase has just started |
+| 0x10 | TIMING_BATTLE_END | When the Battle Phase is about to end, while moving to the Main Phase 2/End Phase |
+| 0x20 | TIMING_END_PHASE | During the End Phase of a turn |
+| 0x40 | TIMING_SUMMON | When a monster is Summoned |
+| 0x80 | TIMING_SPSUMMON | When a monster is Special Summoned |
+| 0x100 | TIMING_FLIPSUMMON | When a monster is Flip Summoned |
+| 0x200 | TIMING_MSET | When a monster is Set |
+| 0x400 | TIMING_SSET | When a Spell/Trap is Set |
+| 0x800 | TIMING_POS_CHANGE | When a position changes |
+| 0x1000 | TIMING_ATTACK | When an attack is declared |
+| 0x2000 | TIMING_DAMAGE_STEP | During the Damage Step |
+| 0x4000 | TIMING_DAMAGE_CAL | When performing Damage Calculation |
+| 0x8000 | TIMING_CHAIN_END | When a chain ends |
+| 0x10000 | TIMING_DRAW | When someplayer draws (not only in the Draw Phase) |
+| 0x20000 | TIMING_DAMAGE | When a player takes damage |
+| 0x40000 | TIMING_RECOVER | When a player gains LP |
+| 0x80000 | TIMING_DESTROY | When something is destroyed |
+| 0x100000 | TIMING_REMOVE | This event is raised when a card is removed |
+| 0x200000 | TIMING_TOHAND | When you add a hand (retrieve, recycle, etc.) |
+| 0x400000 | TIMING_TODECK | This event is raised when a card is sent to the deck |
+| 0x800000 | TIMING_TOGRAVE | This event is raised when a card is sent to the graveyard |
+| 0x1000000 | TIMING_BATTLE_PHASE | During the Battle Phase |
+| 0x2000000 | TIMING_EQUIP | This event is raised when a card is equipped to another |
+| 0x4000000 | TIMING_BATTLE_STEP_END | When the steps in a battle have finished |
+| 0x8000000 | TIMING_BATTLED |
+| 0x1c0 | TIMINGS_CHECK_MONSTER | When a monster is placed on te field |
+| 0x1e0 | TIMINGS_CHECK_MONSTER_E | When a monster is placed on the field and also during the End Phase |
+
+
+### Global flgas
+| Value | Name | Description |
+| --- | --- | --- |
+ 0x1 | GLOBALFLAG_DECK_REVERSE_CHECK | This flags is required to use EFFECT_REVERSE_DECK |
+| 0x2 | GLOBALFLAG_BRAINWASHING_CHECK | This flags is used with Removing Brainshwashing |
+| 0x8 | GLOBALFLAG_DELAYED_QUICKEFFECT | N/A |
+| 0x10 | GLOBALFLAG_DETACH_EVENT | This flag is required when using EVENT_DETACH_MATERIAL |
+| 0x40 | GLOBALFLAG_SPSUMMON_COUNT | A flag related with a limit a player can attempt Special Summons. Used with El Shaddoll Winda |
+| 0x80 | GLOBALFLAG_XMAT_COUNT_LIMIT | Allows EFFECT_TYPE_XMATERIAL to take SetCountLimit into account |
+| 0x100 | GLOBALFLAG_SELF_TOGRAVE | Allows checking the Graveyard in the middle of a resolving chain. Flag required to use EFFECT_SELF_TOGRAVE |
+| 0x200 | GLOBALFLAG_SPSUMMON_ONCE | Cards that can only be special Summoned once per turn. This flga is related to Card.SetSPSummonOnce () |
+
+
+### SetCountLimit codes
+| Value | Name | Description |
+| --- | --- | --- |
+| 0x1 | EFFECT_COUNT_CODE_OATH | A flag to be used with SetCountLimit. An effect that receives this can only be ACTIVATED a given number of times (activations that are negated do not count) |
+| 0x2 | EFFECT_COUNT_CODE_DUEL | A flag to be used with SetCountLimit. The effect that receives this flag can only be used a given amount of times per duel. |
+| 0x4 | EFFECT_COUNT_CODE_SINGLE | A flag to be used with SetCountLimit. Usually used with multiple effects of the same card, the value set is the maximum count among all those effects. Example: "Once per turn: You can activate 1 of these effects." |
+| 0x8 | EFFECT_COUNT_CODE_CHAIN | A flag to be used with SetCountLimit. Can be used when the effect should only be activatable once per chain (per copy of the card) |
+
+
+#### Duel mode flags
+| Value | Name | Description |
+| --- | --- | --- |
+ 0x1 | DUEL_TEST_MODE | A flag for duel modes. You can control the AI/Opponent |
+| 0x2 | DUEL_ATTACK_FIRST_TURN | A flag for duel modes. You can attack on the first turn |
+| 0x4 | DUEL_USE_TRAPS_IN_NEW_CHAIN | A flag for duel modes. Deprecated flag in Edopro's 8.0 core |
+| 0x8 | DUEL_OBSOLETE_RULING | A flag for duel modes. Applies First turn draw and ignition priority |
+| 0x10 | DUEL_PSEUDO_SHUFFLE | A flag for duel modes. The deck is not shuffled |
+| 0x20 | DUEL_TRIGGER_WHEN_PRIVATE_KNOWLEDGE | - |
+| 0x40 | DUEL_SIMPLE_AI | A flag for duel modes. The AI/Opponent will activate effects whenever prompted |
+| 0x80 | DUEL_RELAY |
+| 0x100 | DUEL_OBSOLETE_IGNITION |
+| 0x200 | DUEL_1ST_TURN_DRAW |
+| 0x400 | DUEL_1_FIELD | Use this constant name in the scripts (internally called DUEL_1_FACEUP_FIELD) |
+| 0x800 | DUEL_PZONE |
+| 0x1000 | DUEL_SEPARATE_PZONE |
+| 0x2000 | DUEL_EMZONE |
+| 0x4000 | DUEL_FSX_MMZONE |
+| 0x8000 | DUEL_TRAP_MONSTERS_NOT_USE_ZONE |
+| 0x10000 | DUEL_RETURN_TO_DECK_TRIGGERS |
+| 0x20000 | DUEL_TRIGGER_ONLY_IN_LOCATION |
+| 0x40000 | DUEL_SPSUMMON_ONCE_OLD_NEGATE |
+| 0x80000 | DUEL_CANNOT_SUMMON_OATH_OLD |
+| 0x100000 | DUEL_NO_STANDBY_PHASE |
+| 0x200000 | DUEL_NO_MAIN_PHASE_2 |
+| 0x400000 | DUEL_3_COLUMNS_FIELD |
+| 0x800000 | DUEL_DRAW_UNTIL_5 |
+| 0x1000000 | DUEL_NO_HAND_LIMIT |
+| 0x2000000 | DUEL_UNLIMITED_SUMMONS |
+| 0x4000000 | DUEL_INVERTED_QUICK_PRIORITY |
+| 0x8000000 | DUEL_EQUIP_NOT_SENT_IF_MISSING_TARGET |
+| 0x10000000 | DUEL_0_ATK_DESTROYED |
+| 0x20000000 | DUEL_STORE_ATTACK_REPLAYS |
+| 0x40000000 | DUEL_SINGLE_CHAIN_IN_DAMAGE_SUBSTEP |
+| 0x80000000 | DUEL_CAN_REPOS_IF_NON_SUMPLAYER |
+| 0x100000000 | DUEL_TCG_SEGOC_NONPUBLIC |
+| 0x200000000 | DUEL_TCG_SEGOC_FIRSTTRIGGER |
+| 0 | DUEL_MODE_SPEED | A composite flag for duel modes. (DUEL_3_COLUMNS_FIELD+DUEL_NO_MAIN_PHASE_2+DUEL_TRIGGER_ONLY_IN_LOCATION) |
+| 0 | DUEL_MODE_RUSH | A composite flag for duel modes. (DUEL_3_COLUMNS_FIELD+DUEL_NO_MAIN_PHASE_2+DUEL_NO_STANDBY_PHASE+DUEL_1ST_TURN_DRAW+DUEL_INVERTED_QUICK_PRIORITY+DUEL_DRAW_UNTIL_5+DUEL_NO_HAND_LIMIT+DUEL_UNLIMITED_SUMMONS+DUEL_TRIGGER_ONLY_IN_LOCATION) |
+| 0 | DUEL_MODE_GOAT | A composite flag for duel modes.  (DUEL_MODE_MR1 | DUEL_USE_TRAPS_IN_NEW_CHAIN | DUEL_6_STEP_BATLLE_STEP | DUEL_TRIGGER_WHEN_PRIVATE_KNOWLEDGE | DUEL_EQUIP_NOT_SENT_IF_MISSING_TARGET | DUEL_0_ATK_DESTROYED | DUEL_STORE_ATTACK_REPLAYS | DUEL_SINGLE_CHAIN_IN_DAMAGE_SUBSTEP | DUEL_CAN_REPOS_IF_NON_SUMPLAYER | DUEL_TCG_SEGOC_NONPUBLIC | DUEL_TCG_SEGOC_FIRSTTRIGGER) |
+| 1 | DUEL_MODE_MR1 | A composite flag for duel modes. (DUEL_OBSOLETE_IGNITION+DUEL_1ST_TURN_DRAW+DUEL_1_FIELD+DUEL_SPSUMMON_ONCE_OLD_NEGATE+DUEL_RETURN_TO_DECK_TRIGGERS+DUEL_CANNOT_SUMMON_OATH_OLD) |
+| 2 | DUEL_MODE_MR2 | A composite flag for duel modes. (DUEL_1ST_TURN_DRAW+DUEL_1_FIELD+DUEL_SPSUMMON_ONCE_OLD_NEGATE+DUEL_RETURN_TO_DECK_TRIGGERS+DUEL_CANNOT_SUMMON_OATH_OLD) |
+| 3 | DUEL_MODE_MR3 | A composite flag for duel modes. (DUEL_PZONE+DUEL_SEPARATE_PZONE+DUEL_SPSUMMON_ONCE_OLD_NEGATE+DUEL_RETURN_TO_DECK_TRIGGERS+DUEL_CANNOT_SUMMON_OATH_OLD) |
+| 4 | DUEL_MODE_MR4 | A composite flag for duel modes. (DUEL_PZONE+DUEL_EMZONE+DUEL_SPSUMMON_ONCE_OLD_NEGATE+DUEL_RETURN_TO_DECK_TRIGGERS+DUEL_CANNOT_SUMMON_OATH_OLD) |
+| 5 | DUEL_MODE_MR5 | A composite flag for duel modes. (DUEL_PZONE+DUEL_EMZONE+DUEL_FSX_MMZONE+DUEL_TRAP_MONSTERS_NOT_USE_ZONE+DUEL_TRIGGER_ONLY_IN_LOCATION) |
+
+
+
+#### Activities
+| Value | Name | Description |
+| --- | --- | --- |
+| 1 | ACTIVITY_SUMMON | Refers to the action of attempting to perform Summons of any kind |
+| 2 | ACTIVITY_NORMALSUMMON | Refers to the action of performing a Normal Summon |
+| 3 | ACTIVITY_SPSUMMON | Refers to the action of performing Special Summons |
+| 4 | ACTIVITY_FLIPSUMMON | Refers to the action of performing Flip Summons |
+| 5 | ACTIVITY_ATTACK | Refers to the action of declarion attacks |
+| 6 | ACTIVITY_BATTLE_PHASE | Refers to the act of conducting a battle phase. This activity is not available with custom counter |
+| 7 | ACTIVITY_CHAIN | An activity only available with custom counter |
+
+
+#### Win reasons
+| Value | Name | Description |
+| --- | --- | --- |
+| 0x10 | WIN_REASON_EXODIA | The hexadecimal value for a duel win caused by "Exodia, the Forbidden One" |
+| 0x11 | WIN_REASON_FINAL_COUNTDOWN | The hexadecimal value for a duel win caused by "Countdown" |
+| 0x12 | WIN_REASON_VENNOMINAGA | The hexadecimal value for a duel win caused by "Vennominage, Deity of the Poisonous Snakes" |
+| 0x13 | WIN_REASON_CREATORGOD | The hexadecimal value for a duel win caused by "Holactie the Creator of Light" |
+| 0x14 | WIN_REASON_EXODIUS | The hexadecimal value for a duel win caused by "Exodius the Ultimate Forbidden Lord" |
+| 0x15 | WIN_REASON_DESTINY_BOARD | The hexadecimal value for a duel win caused by "Destiny Board" |
+| 0x16 | WIN_REASON_LAST_TURN | The hexadecimal value for a duel win caused by "Last Turn" |
+| 0x17 | WIN_REASON_PUPPET_LEO | The hexadecimal value for a duel win caused by "Number 88: Gimmick Puppet of Leo" |
+| 0x18 | WIN_REASON_DISASTER_LEO | The hexadecimal value for a duel win caused by "Number C88: Gimmick Puppet Disaster Leo" |
+| 0x19 | WIN_REASON_JACKPOT7 | The hexadecimal value for a duel win caused by "Jackpot 7" |
+| 0x1a | WIN_REASON_RELAY_SOUL | The hexadecimal value for a duel win caused by "Relay Soul" |
+| 0x1b | WIN_REASON_GHOSTRICK_MISCHIEF | The hexadecimal value for a duel win caused by "Ghostrick Angel of Mischief" |
+| 0x1c | WIN_REASON_PHANTASM_SPIRAL | The hexadecimal value for a duel win caused by "Phantasm Spiral Assault" |
+| 0x1d | WIN_REASON_FA_WINNERS | The hexadecimal value for a duel win caused by "F.A. Winners" |
+| 0x1e | WIN_REASON_FLYING_ELEPHANT | The hexadecimal value for a duel win caused by "Flying Elephant" |
+| 0x1f | WIN_REASON_EXODIA_DEFENDER | The hexadecimal value for a duel win caused by "Exodia, the Legendary Defender" |
+| 0x20 | WIN_REASON_MATCH_WINNER | Not used by cards. |
+| 0x21 | WIN_REASON_TRUE_EXODIA | The hexadecimal value for a duel win caused by "True Exodia" |
+| 0x22 | WIN_REASON_FINAL_DRAW | The hexadecimal value for a duel win caused by "Final Draw" |
+| 0x30 | WIN_REASON_CREATOR_MIRACLE | The hexadecimal value for a duel win caused by "Creator of Miracles" |
+| 0x51 | WIN_REASON_EVIL_1 | Not used by cards. |
+| 0x52 | WIN_REASON_NUMBER_Ci1000 | The hexadecimal value for a duel win caused by "Number iC1000: Numeronius Numeronia" |
+| 0x53 | WIN_REASON_ZERO_GATE | The hexadecimal value for a duel win caused by "Zero Gate of the Void" |
+| 0x54 | WIN_REASON_DEUCE | The hexadecimal value for a duel win caused by "Number iC1000: Numeronius Numeronia" |
+| 0x56 | WIN_REASON_DECK_MASTER | The hexadecimal value for a duel win caused by the rules of Deck Masters |
+| 0x57 | WIN_REASON_DRAW_OF_FATE | The hexadecimal value for a duel win caused by "Draw of Fate" |
+| 0x58 | WIN_REASON_MUSICAL_SUMO | The hexadecimal value for a duel win caused by "Musical Sumo Dice Games" |
+
+
+#### Other constants
+| Value | Name | Description |
+| --- | --- | --- |
+ 0x7 | ANNOUNCE_CARD | Declaration card |
+| 0x8 | ANNOUNCE_CARD_FILTER | Declaration card with filters |
+| 1 | REGISTER_FLAG_DETACH_XMAT | Effect that activates with cost of detaching own Xyz material, for Tachyon Unit (Card.RegisterEffect) |
+| 2 | REGISTER_FLAG_CARDIAN | Cardian's effects to Special Summon a Cardian, for anime Cardians (Card.RegisterEffect) |
+| 4 | REGISTER_FLAG_THUNDRA | Thunders Dragon monster's effects that activates by discarding themselves, for Thunder Dragon Thunderstormech (Card.RegisterEffect) |
+| 8 | REGISTER_FLAG_ALLURE_LVUP | Allure Queen's effect to Special Summon the next level, for Allure Palace (Card.RegisterEffect) |
+| 16 | REGISTER_FLAG_TELLAR | An effect registered with this flag will be available to be applied by Tellarknight Constellar Caduceus |
+| 0x100 | FUSPROC_NOTFUSION | Flag used for the various filters in the fusion procedure. |
+| 0x200 | FUSPROC_CONTACTFUS | Flag used for the various filters in the fusion procedure. |
+| 0x400 | FUSPROC_LISTEDMATS | Flag used for the various filters in the fusion procedure. |
+| 0x800 | FUSPROC_NOLIMIT |
+| 0x1000 | FUSPROC_CANCELABLE | Flag used in the fusion procedure. Allows the selection of fusion materials to be canceled |
+| 0x1 | RITPROC_EQUAL | Flag used for the type of Ritual Summon procedure |
+| 0x2 | RITPROC_GREATER | Flag used for the type of Ritual Summon procedure |
+| 0x1<<32 | MATERIAL_FUSION | Value= 0x1<<32 |
+| 0x2<<32 | MATERIAL_SYNCHRO | Value= 0x2<<32 |
+| 0x4<<32 | MATERIAL_XYZ | Value= 0x4<<32 |
+| 0x8<<32 | MATERIAL_LINK | Value= 0x8<<32 |
+| 0 | EFFECT_CLIENT_MODE_NORMAL |
+| 1 | EFFECT_CLIENT_MODE_RESOLVE |
+| 2 | EFFECT_CLIENT_MODE_RESET |
+| 0x80000000 | DOUBLE_DAMAGE | Double piercing damage, used as the value of EFFECT_PIERCE |
+| 0x80000001 | HALF_DAMAGE | Half piercing damage, used as the value of EFFECT_PIERCE |
+| 60 | SELECT_HEADS | Display "Heads". Used as description when an effect required the player to select heads/tails |
+| 61 | SELECT_TAILS | Display "Tails". Used as description when an effect required the player to select heads/tails |
