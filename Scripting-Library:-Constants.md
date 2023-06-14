@@ -376,19 +376,16 @@
 | 18 | EFFECT_MONSTER_SSET | The affected monster can be placed in the Spell/Trap zone. SetValue should hold the type the card is set as (for example, TYPE_SPELL). See Artifact monsters |
 | 19 | EFFECT_QP_ACT_IN_SET_TURN | Allows Quick-Play Spells to be activated the turn they are set. This effect is skipped if any of the following 3 tests is false: the card is TYPE_SPELL, the card is TYPE_QUICKPLAY or has EFFECT_BECOME_QUICK, the card has STATUS_SET_TURN. Usually used as EFFECT_TYPE_SINGLE if a field version is used SetTarget receives e and c as parameters. It is suggested that SetDescription is also applied with this effect, for the scenarios where multiple similar effects are available, to allow the player to choose which one to apply. |
 | 20 | EFFECT_CANNOT_SUMMON | The affected player cannot Normal Summon. A field effect that requires EFFECT_FLAG_PLAYER_TARGET to be set and the players to be defined in SetTargetRange. SetTarget receives the following parameters: e: this effect itself c: the card that would be summoned sump: the player that would Summon sumtyp: the summon type sumpos: the summon position (fixed as POS_FACEUP in the core) tp: the target player (the player that would get the monster) |
-| 21 | EFFECT_CANNOT_FLIP_SUMMON | The affected player cannot Flip Summon.The target function of this effect receives the following parameters: |
-| e = this effect (EFFECT_CANNOT_FLIP_SUMMON) |
-| c = the card that would be affected by it (the ones that cannot be Special Summoned) |
-| playerid = the player that would do the summon |
-| 22 | EFFECT_CANNOT_SPECIAL_SUMMON | The affected player cannot Special Summon. Requires the property EFFECT_FLAG_PLAYER_TARGET and the players defined via SetRange. The target function of this effect receives the following parameters: e = this effect (EFFECT_CANNOT_SPECIAL_SUMMON) c = the card that would be affected by it (the ones that cannot be Special Summoned) playerid = the player that would do the summon sumtype = the type of the summon sumpos = the position in which the monster would be summoned in toplayer = the player that would receive the monster sumeff = the effect that would summon |
-| 23 | EFFECT_CANNOT_MSET | Affected player cannot Set monsters. This effect's SetTarget takes the following parameters: -e: this effect itself -c: the cards affected by it -playerid: the player that would Set -sumtype: the summon type -toplayer: the player that would receive the monster -sumpos: the position in which the monsters would be summoned (fixed as POS_FACEDOWN by the core) |
-| 24 | EFFECT_CANNOT_SSET | The affected player (set via SetTargetRange, with EFFECT_FLAG_PLAYER_TARGET as property) cannot set Spell/Trap cards. If a target function is used, the following parameters are passed to it: -e: this effect itself -c: the card(s) that cannot be set -tp: the player that cannot set  (to be confirmed, might be player whose field cannot have cards set) |
+| 21 | EFFECT_CANNOT_FLIP_SUMMON | The affected player cannot Flip Summon.The target function of this effect receives the following parameters: <br /> e = this effect (EFFECT_CANNOT_FLIP_SUMMON) <br /> c = the card that would be affected by it (the ones that cannot be Special Summoned) <br /> playerid = the player that would do the summon |
+| 22 | EFFECT_CANNOT_SPECIAL_SUMMON | The affected player cannot Special Summon. Requires the property EFFECT_FLAG_PLAYER_TARGET and the players defined via SetRange. The target function of this effect receives the following parameters:<br />e = this effect (EFFECT_CANNOT_SPECIAL_SUMMON)<br />c = the card that would be affected by it (the ones that cannot be Special Summoned)<br />playerid = the player that would do the summon<br />sumtype = the type of the summon sumpos = the position in which the monster would be summoned in toplayer = the player that would receive the monster <br /> sumeff = the effect that would summon |
+| 23 | EFFECT_CANNOT_MSET | Affected player cannot Set monsters. This effect's SetTarget takes the following parameters:<br />e: this effect itself<br />c: the cards affected by it<br />playerid: the player that would Set<br />sumtype: the summon type<br />toplayer: the player that would receive the monster<br />sumpos: the position in which the monsters would be summoned (fixed as POS_FACEDOWN by the core) |
+| 24 | EFFECT_CANNOT_SSET | The affected player (set via SetTargetRange, with EFFECT_FLAG_PLAYER_TARGET as property) cannot set Spell/Trap cards. If a target function is used, the following parameters are passed to it:<br />e: this effect itself <br />c: the card(s) that cannot be set <br />tp: the player that cannot set  (to be confirmed, might be player whose field cannot have cards set) |
 | 25 | EFFECT_CANNOT_DRAW | The affected player cannot draw cards |
 | 26 | EFFECT_CANNOT_DISABLE_SUMMON | The affected monster cannot have its Normal Summon negated |
 | 27 | EFFECT_CANNOT_DISABLE_SPSUMMON | The affected monster cannot have its Special Summon negated |
 | 28 | EFFECT_SET_SUMMON_COUNT_LIMIT | Limit the number of monsters placed per turn |
 | 29 | EFFECT_EXTRA_SUMMON_COUNT | Increases the number of Normal Summons the player can make. The value should be set in SetValue. |
-| 30 | EFFECT_SPSUMMON_CONDITION | The affected monster has an Special Summon condition that must be fulfilled. Cards/effects that return true for the SetValue are allowed to Special Summmon the monster. SetValue for this function takes the following parameters: -effect: this effect itself -sum_effect: the effect that would summon -sum_player: the player that would summon -sum_type: the summon type what would be used for the summon -sum_pos: the position in which the monster would be summoned -toplayer: the player that would receive the monster |
+| 30 | EFFECT_SPSUMMON_CONDITION | The affected monster has an Special Summon condition that must be fulfilled. Cards/effects that return true for the SetValue are allowed to Special Summmon the monster. SetValue for this function takes the following parameters: <br />effect: this effect itself <br />sum_effect: the effect that would summon <br />sum_player: the player that would summon <br />sum_type: the summon type what would be used for the summon <br />sum_pos: the position in which the monster would be summoned <br />toplayer: the player that would receive the monster |
 | 31 | EFFECT_REVIVE_LIMIT | The affected card must be Special Summoned properly before being Special Summoned from public locations |
 | 32 | EFFECT_SUMMON_PROC | Specifies a special method through which the affected card can be Normal Summoned |
 | 33 | EFFECT_LIMIT_SUMMON_PROC | Specifies a special method through which the affected card must be Normal Summoned |
@@ -399,25 +396,14 @@
 | 38 | EFFECT_LIGHT_OF_INTERVENTION | Monsters can be Normal Summoned in face-up Defense Position (Light of Intervention). |
 | 39 | EFFECT_CANNOT_DISABLE_FLIP_SUMMON | The Flip Summon of the affected monster cannot be negated (Spell Wall) |
 | 40 | EFFECT_INDESTRUCTABLE | Affected card cannot be destroyed. SetValue receives the following parameters: <br />e: this effect itself <br />re: reason effect, the effect that would cause the destruction <br />r: reason, always considered as REASON_EFFECT by the core rp: reason player |
-| 41 | EFFECT_INDESTRUCTABLE_EFFECT | Affected card cannot be destroyed by card effect. SetValue receives the following parameters: |
-| e: this effect itself |
-| re: reason effect, the effect that would cause the destruction |
-| rp: reason player, the player that would cause the destruction |
-| c: this card (to be confirmed) |
+| 41 | EFFECT_INDESTRUCTABLE_EFFECT | Affected card cannot be destroyed by card effect. SetValue receives the following parameters: <br />e: this effect itself <br />re: reason effect, the effect that would cause the destruction <br />rp: reason player, the player that would cause the destruction <br />c: this card (to be confirmed) |
 | 42 | EFFECT_INDESTRUCTABLE_BATTLE | Affected card cannot be destroyed by battle |
 | 43 | EFFECT_UNRELEASABLE_SUM | Affected card cannot be tributed for a Tribute Summon. SetValue in this effect receives only `e` and `c` as parameters. |
 | 44 | EFFECT_UNRELEASABLE_NONSUM | Affected card cannot be tributed for effects. SetValue in this effect receives only `e` and `c` as parameters. |
-| 45 | EFFECT_DESTROY_SUBSTITUTE | Required alternative to destruction (this card is destroyed with other cards instead). SetValue receives the following parameters: |
-| e: this effect itself |
-| re: reason effect (confirm in the core, might default to current.reason_effect) r: reason  (confirm in the core, might default to current.reasont) |
-| rp: reason player (confirm in the core, might default to current.reason_player) |
+| 45 | EFFECT_DESTROY_SUBSTITUTE | Required alternative to destruction (this card is destroyed with other cards instead). SetValue receives the following parameters: <br />e: this effect itself <br />re: reason effect (confirm in the core, might default to current.reason_effect) r: reason  (confirm in the core, might default to current.reasont) <br />rp: reason player (confirm in the core, might default to current.reason_player) |
 | 46 | EFFECT_CANNOT_RELEASE | Affected player cannot tribute monsters. Requires the players to be set via SetTargetRange (and the EFFECT_FLAG_PLAYER_TARGET flag). Cards that return true for the SetTarget in this effect cannot be tributed by that player. SetTarget takes the following parameters: -e: this effect itself -c: the card(s) that would be tributed (to be confirmed) -tp: the player that would tribute |
 | 47 | EFFECT_INDESTRUCTABLE_COUNT | Affected card cannot be destroyed up to a given number of times. SetValue receives the following parameters: e: this effect itself re: reason effect, the effect that would cause the destruction rp: reason player, the player that would cause the destruction c: this card (to be confirmed) |
-| 48 | EFFECT_UNRELEASABLE_EFFECT | Affected card cannot be Tributed by card effects.  SetValue receives the following parameters: |
-| e: this effect itself |
-| re: reason effect, the effect that would tribute the card |
-| rp: reason player, the player that would tribute the card |
-| c: this card (to be confirmed) |
+| 48 | EFFECT_UNRELEASABLE_EFFECT | Affected card cannot be Tributed by card effects.  SetValue receives the following parameters: <br />e: this effect itself <br />re: reason effect, the effect that would tribute the card <br />rp: reason player, the player that would tribute the card <br />c: this card (to be confirmed) |
 | 50 | EFFECT_DESTROY_REPLACE | If the affected card would be destroyed, perform a given operation instead |
 | 51 | EFFECT_RELEASE_REPLACE | If the affected card would be Tributed, perform a given operation instead |
 | 52 | EFFECT_SEND_REPLACE | Card is sent to some location instead of another (Madolche Chateau) |
@@ -445,10 +431,7 @@
 | 76 | EFFECT_EQUIP_LIMIT | Equipment object restrictions |
 | 77 | EFFECT_DUAL_SUMMONABLE | Affected card can be Normal Summon on the field as a Gemini Monster |
 | 80 | EFFECT_REVERSE_DAMAGE | If the affected player would take damage, they gain that much LP instead. SetValue in this effect receives the following parameters: e: this effect itself re: reason effect r: reason rp: reason player rc: reason card |
-| 81 | EFFECT_REVERSE_RECOVER | If the affected player would gain LP, they take that much damage instead. SetValue in this effect receives the following parameters: |
-| e: this effect itself |
-| r: reason |
-| rp: reason player |
+| 81 | EFFECT_REVERSE_RECOVER | If the affected player would gain LP, they take that much damage instead. SetValue in this effect receives the following parameters: <br />e: this effect itself <br /> r: reason<br />rp: reason player |
 | 82 | EFFECT_CHANGE_DAMAGE | Modify the amount of damage the affected player would take |
 | 83 | EFFECT_REFLECT_DAMAGE | If the affected player would take damage, their opponent takes damage instead. SetValue in this effect receives the following parameters: e: this effect itself amount: the amount of damage re: reason effect r: reason rp: reason player rc: reason card |
 | 85 | EFFECT_CANNOT_ATTACK | Affected card cannot attack |
@@ -459,14 +442,8 @@
 | 92 | EFFECT_SPSUMMON_COST | The affected player must pay a cost to Special Summon. The parameters this effect's target receives are: e = this effect itself c = this card tp = the player that would summon sumtype = the type of the summon |
 | 93 | EFFECT_FLIPSUMMON_COST | Affected player must pay a cost to Flip Summon. The parameters this effect's target receives are: e = this effect itself c = this card tp = the player that would summon |
 | 94 | EFFECT_MSET_COST | The affected player must pay a cost to Set monsters. The parameters this effect's target receives are: e = this effect itself c = this card tp = the player that would set the monsters |
-| 95 | EFFECT_SSET_COST | The affected player must pay a cost to Set Spell/Traps. The parameters this effect's target receives are: |
-| e = this effect itself |
-| c = this card |
-| tp = the player that would Set the cards |
-| 96 | EFFECT_ATTACK_COST | The affected player must pay a cost to attack. The parameters this effect's target receives are: |
-| e = this effect itself |
-| c = this card |
-| tp = the player that would attack |
+| 95 | EFFECT_SSET_COST | The affected player must pay a cost to Set Spell/Traps. The parameters this effect's target receives are: |<br />e = this effect itself <br />c = this card <br />tp = the player that would Set the cards |
+| 96 | EFFECT_ATTACK_COST | The affected player must pay a cost to attack. The parameters this effect's target receives are: <br /> e = this effect itself <br /> c = this card <br /> tp = the player that would attack |
 | 100 | EFFECT_UPDATE_ATTACK | Changes the ATK of a monster by a value (taken from the return in Effect.SetValue()) |
 | 101 | EFFECT_SET_ATTACK | Sets the current ATK of a monster to a value evaluated in Effect.SetValue() |
 | 102 | EFFECT_SET_ATTACK_FINAL | Set the attack of a monster, overriding other changes  (taken from the return in Effect.SetValue()) |
@@ -648,7 +625,6 @@
 | 73941492+TYPE_FUSION | EFFECT_FUSION_MAT_RESTRICTION | 73941492+TYPE_FUSION. Used by the Fusion Summon procedure as an implementation of Harmonizing Magician's effect |
 | 73941492+TYPE_SYNCHRO | EFFECT_SYNCHRO_MAT_RESTRICTION | 73941492+TYPE_SYNCHRO. Used by the Synchro Summon procedure as an implementation of Harmonizing Magician's effect |
 | 73941492+TYPE_XYZ | EFFECT_XYZ_MAT_RESTRICTION | 73941492+TYPE_XYZ. Used by the XyzSummon procedure as an implementation of Harmonizing Magician's effect |
-
 
 ### Events
 | Value | Name | Description |
