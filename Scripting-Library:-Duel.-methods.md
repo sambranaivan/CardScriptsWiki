@@ -67,6 +67,9 @@
 | int | Duel.CountHeads(results, ...) |
 | int | Duel.CountTails(results, ...) |
 | Card | Duel.CreateToken(int player,  int code) | Creates a new instance of a card owned by player (int player) with card code (int code). |
+
+| return type | function | description |
+| --- | --- | --- |
 | int | Duel.Damage(int player,  int value,  int reason[,  bool is_step=false,  in rp=reason_player]) | Damages/Decreases player's (int player) Life Points by an amount (int value) for a reason (int reason). The damage is considered to be dealt by (int rp). Setting (bool is_step) to true will make so the damage is considered dealt at the call of Duel.RDComplete(). |
 | int | Duel.Destroy(Card\|Group targets,  int reason[ , int dest = LOCATION_GRAVE,  int rp = reason_player]) | Destroys a card or group (Card\|Group targets) with (int reason) as reason, and sends the card in the location specified by (int dest). If (int rp) is passed, sets the reason player to be that player. Returns the number of cards successfully destroyed. |
 | void | Duel.DisableSelfDestroyCheck([disable=true]) | If disable is true, prevents the core from performing the checks for cards that self destroy themselves (like "Burning Abyss" monsters). This behaviour persists until it's manually enabled again by passing false. |
@@ -157,6 +160,10 @@
 | int | Duel.GetZoneWithLinkedCount(int count,  int tp) | Returns a zone flag including the tp's zones that are pointed by at least "count" Link Monsters. |
 | void | Duel.GoatConfirm(int tp,  int loc) | Used for goat versions of cards, handle the "fail to find" scenario. It confirms tp's LOCATION_DECK or LOCATION_HAND (passed in loc), the hand is revealed to the opposing player, the deck is revealed to tp. |
 | Group | Duel.GrabSelectedCard () | Returns the group of cards that was set by a previous Duel.SetSelectedCard call. The group of selected cards is cleared in the core. |
+
+
+| return type | function | description |
+| --- | --- | --- |
 | bool | Duel.HasFlagEffect(int tp,  int id[,  int ct]) | Returns if (int tp) has a flag with id equal to (int id) register to it. If (int ct) is provided checks if it the flags was registered at least that many times. |
 | void | Duel.Hint(int hint_type,  int player,  int desc) | Creates a message for the "player" which has "type" as key and "desc" as value. It is entirely up to the client to interpret say data, the most common case is setting the selection message with, "type" being "HINT_SELECTMSG" and "desc" being a stringId. It is also used to implement Skill Cards visually. Check the "HINT_XXX" constants for their behaviour. |
 | void | Duel.HintSelection(Card\|Group selection[,  bool log_as_selection=false]) | If log_as_selection is true, that selection will be logged by the client as "card(s) selected" rather than "card(s) targeted" |
@@ -232,6 +239,9 @@
 | bool | Duel.ReturnToField(Card c[,  int pos,  int zone = 0xff]) | Return a card (Card c) to the field (only valid for cards that leaves the field with REASON_TEMPORARY, pos denotes the return position (if not specified,  uses the card's previous position on field) |
 | int | Duel.RockPaperScissors([bool repeat=true]) | Has players play a game of Rock Paper Scissors. Return player (winner or PLAYER_NONE). If repeat == true, RPS continues until there is a winner, otherwise RPS is only played once. |
 | table[int,int],...\|int,... | Duel.SelectCardsFromCodes(int sel_player,  int min,  int max,  bool cancelable,  bool return_index,  int code1,  ...) | Make (int sel_player) select between (int min) and (int max) cards among the passed card codes. If cancelable is true and the selection is canceled nil will be returned. If return_index is true a number of tables equal to the number of selected cards will be returned, each table will have the selected code index (starting by 1) as the first element and the code itself as second element. Otherwise the selected codes will be returned as multiple return values. |
+
+| return type | function | description |
+| --- | --- | --- |
 | int | Duel.SelectDisableField(int player,  int count,  int location_player,  int location_oppo[,  int filter=0xe0e0e0e0,  bool all_field=false]) | Asks (int player) to select zones to be disabled, a number of zones up to (int count), in locations (location_player) for the player and (location_oppo) for their opponent, that are bitmasked by (int filter) <in another word, zones that are not filter>. If all_field is true the player can select any zones, including Pendulum and Extra Monster Zone which are normally not allowed. |
 | int/nil | Duel.SelectEffect(int player,  ..) | Makes player (int player) select 1 option among possible effects. The ellipsis (...) allows tables in the form {bool condition, int stringid}. The function then makes the player select an effect, displaying the strings whose conditions are true, returning the index of the chosen element or nil. |
 | bool | Duel.SelectEffectYesNo(int player,  Card c[,  int description=3]) | Asks (int player) Yes or No, with the question being specified by (int desc) highlighting the passed card (Card c). The default string ask the player if they want to use the effect of "card x" |
