@@ -5,15 +5,14 @@
 - This is the [main constant](https://github.com/ProjectIgnis/CardScripts/blob/master/constant.lua) file
 
 
-### Locations, positions, sequences, card types, attributes and monster type
+### Locations, positions, sequences
 | Value | Name | Description |
 | --- | --- | --- |
-| val | name | desc |
 | 0x1 | LOCATION_DECK | The Deck. If it is used as Location Redirect, the card is placed on the top. (decimal value= 1) |
 | 0x2 | LOCATION_HAND | The hand  (decimal value= 2) |
 | 0x4 | LOCATION_MZONE | The Monster Zone  (decimal value= 4) |
-| 0x8 | LOCATION_SZONE | The Spell/Trap Zones. It includes the Field Spell Zone and the Pendulum Zones (<=MR3). (decimal value= 8) |
-| 0x10 | LOCATION_GRAVE | The graveyard/GY (decimal value= 16) |
+| 0x8 | LOCATION_SZONE | The Spell\|Trap Zones. It includes the Field Spell Zone and the Pendulum Zones (<=MR3). (decimal value= 8) |
+| 0x10 | LOCATION_GRAVE | The graveyard\|GY (decimal value= 16) |
 | 0x20 | LOCATION_REMOVED | The area where banished card go (decimal value= 32) |
 | 0x40 | LOCATION_EXTRA | The Extra Deck (decimal value= 64) |
 | 0x80 | LOCATION_OVERLAY | The location for cards attached as Xyz Material. Also the location used for "stacked" cards  (for anime-only cards) (decimal value= 128) |
@@ -24,7 +23,7 @@
 | 0x20001 | LOCATION_DECKSHF | Location for cards that are place in Deck and then the Deck is shuffled. Used only in Location Redirect |
 | 0x100 | LOCATION_FZONE | The Field Spell zone |
 | 0x200 | LOCATION_PZONE | The Pendulum Zone |
-| 0x400 | LOCATION_STZONE | The Spell/Trap Zone (without the Field Zone). Symbolic location. Can be used in functions expecting a location and also in SetRange (except with trigger effects) |
+| 0x400 | LOCATION_STZONE | The Spell\|Trap Zone (without the Field Zone). Symbolic location. Can be used in functions expecting a location and also in SetRange (except with trigger effects) |
 | 0x800 | LOCATION_MMZONE | The Main Monster Zones. Symbolic location. Can be used in functions expecting a location and also in SetRange (except with trigger effects) |
 | 0x1000 | LOCATION_EMZONE | The Extra Monster Zones. Symbolic location. Can be used in functions expecting a location and also in SetRange (except with trigger effects) |
 | 0x1f | ZONES_MMZ | Constant to be used as mask to filter for main monster zones |
@@ -43,6 +42,10 @@
 | 0x3 | POS_ATTACK | Attack position, face-up + face-down (decimal value= 3) |
 | 0xc | POS_DEFENSE | Defense position, face-up + face-down  (decimal value= 12) |
 | 0x10000 | NO_FLIP_EFFECT | Applies position change without triggering FLIP effects |
+
+### Card types, attributes and monster type
+| Value | Name | Description |
+| --- | --- | --- |
 | 0x1 | TYPE_MONSTER | A Monster card  (decimal value= 1) |
 | 0x2 | TYPE_SPELL | A Spell card  (decimal value= 2) |
 | 0x4 | TYPE_TRAP | A Trap card (decimal value= 4) |
@@ -50,7 +53,7 @@
 | 0x20 | TYPE_EFFECT | A card with effect (decimal value= 32) |
 | 0x40 | TYPE_FUSION | A Fusion (monster) (decimal value= 64) |
 | 0x80 | TYPE_RITUAL | A Ritual card (decimal value= 128) |
-| 0x100 | TYPE_TRAPMONSTER | A Trap monster, e.g. Embodiment of Apophis. NOTE: This is not used in adding to the default card types.  (decimal value= 256) |
+| 0x100 | TYPE_TRAPMONSTER | A Trap monster, e.g. Embodiment of Apophis. NOTE: This is not used in addition to the default card types.  (decimal value= 256) |
 | 0x200 | TYPE_SPIRIT | Spirit monster (decimal value= 512) |
 | 0x400 | TYPE_UNION | Union monster (decimal value= 1024) |
 | 0x800 | TYPE_GEMINI | A Gemini monster (decimal value= 2048) |
@@ -67,12 +70,12 @@
 | 0x400000 | TYPE_TOON | Toon (decimal value= 4194304) |
 | 0x800000 | TYPE_XYZ | An Xyz (decimal value= 8388608) |
 | 0x1000000 | TYPE_PENDULUM | Pendulum (decimal value= 16777216) |
-| 0x2000000 | TYPE_SPSUMMON | An Special Summon-only monster. Used for Nomi/Semi-Nomi Main Deck monsters (decimal value= 33554432) |
+| 0x2000000 | TYPE_SPSUMMON | An Special Summon-only monster. Used for Nomi\|Semi-Nomi Main Deck monsters (decimal value= 33554432) |
 | 0x4000000 | TYPE_LINK | A Link (decimal value= 67108864) |
 | 0x8000000 | TYPE_SKILL | A Skill Card. (decimal value= 134217728) |
 | 0x10000000 | TYPE_ACTION | An Action card. (decimal value= 268435456) |
 | 0x4011 | TYPES_TOKEN | Constant used to simplify cards that summon tokens. Sum of the following values: Monster + Normal + Token (decimal value= 16401) |
-| 0x4802040 | TYPE_EXTRA | Extra Deck cards: TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK. The sum of (0x40+0x2000+0x4000000+0x800000) (decimal value= 75505728) |
+| 0x4802040 | TYPE_EXTRA | And extra deck monster card that. This is the summon of TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK (decimal value= 75505728) |
 | 0x20000000 | TYPE_PLUS | Plus Type, only usable if 419 is called |
 | 0x40000000 | TYPE_MINUS | Minus Type, only usable if 419 is called |
 | 0x80000000 | TYPE_ARMOR | Armor Type, only usable if 419 is called |
@@ -296,7 +299,7 @@
 | 0x17a0000 | RESETS_STANDARD_EXC_GRAVE | Complex reset. The sum of  RESETS_STANDARD-RESET_TOGRAVE-RESET_LEAVE, mainly used for card that negate effect of card they destroy by battle. |
 
 
-### effect types and effect flags
+### Effect types and effect flags
 | Value | Name | Description |
 | --- | --- | --- |
 | 0x1 | EFFECT_TYPE_SINGLE | An effect that applies only to itself. When used with trigger effects, this makes the card look for the event only when it happens to itself. |
@@ -350,4 +353,465 @@
 | 0x40000000 | EFFECT_FLAG2_FORCE_ACTIVATE_LOCATION |
 | 0x80000000 | EFFECT_FLAG2_MAJESTIC_MUST_COPY | If flag is used, effect will be copied in MajesticCopy wherein normally only trigger effects will be copied. |
 
+### Effect codes
+| Value | Name | Description |
+| --- | --- | --- |
+| 1 | EFFECT_IMMUNE_EFFECT | Affected card is unaffected by card effects. The SetValue of this effect takes the following parameters: e: this effect itself re: the effect that would affect the card. c: the card that would be affected (uncertain, to be confirmed) |
+| 2 | EFFECT_DISABLE | Ineffective (skills extraction) |
+| 3 | EFFECT_CANNOT_DISABLE | The affected card cannot have its effects negated |
+| 4 | EFFECT_SET_CONTROL | The affected card's control is set to a given player. The player should be defined in SetValue (SetValue receives e and c) |
+| 5 | EFFECT_CANNOT_CHANGE_CONTROL | Control of the affected card cannot change. Does not take a SetTarget or Setvalue. |
+| 6 | EFFECT_CANNOT_ACTIVATE | The affected player(s) cannot activate the effects that match this effect's SetValue. SetValue takes the following parameters: e = this effect re = the effect would be activated tp = the player that would activate the effect |
+| 7 | EFFECT_CANNOT_TRIGGER | The affected card cannot activate its effects. Usually used as EFFECT_TYPE_SINGLE. If a field version is used, cards that return true for the SetTarget are the ones that cannot activate their effects. In this card, SetTarget receives e and c as parameters. |
+| 8 | EFFECT_DISABLE_EFFECT | The affected card has its effects negated |
+| 9 | EFFECT_DISABLE_CHAIN | Affected card has its activation negated |
+| 10 | EFFECT_DISABLE_TRAPMONSTER | Negates Trap monsters |
+| 12 | EFFECT_CANNOT_INACTIVATE | Affected cards (single range or via set target range) cannot have the activation of their effect(s) negated. If SetValue is used, it receives the following parameters: e: this effect itself chaincount: |
+| 13 | EFFECT_CANNOT_DISEFFECT | Affected cards cannot have the resolution of their effects negated. If SetValue is used, it receives the following parameters: e: this effect itself chaincount: the chain associated with the effect. Can be used in Duel.GetChainInfo |
+| 14 | EFFECT_CANNOT_CHANGE_POSITION | Affected card cannot change its battle position. Usually used as a single effect but if a field version is used, SetTarget receives e and c as parameters. |
+| 15 | EFFECT_TRAP_ACT_IN_HAND | The affected Trap Card can be activated from the hand. If the card is not TYPE_TRAP, this effect is skipped. Usually used as EFFECT_TYPE_SINGLE if a field version is used SetTarget receives e and c as parameters. It is suggested that SetDescription is also applied with this effect, for the scenarios where multiple similar effects are available, to allow the player to choose which one to apply. |
+| 16 | EFFECT_TRAP_ACT_IN_SET_TURN | Affected Trap Card can be activated the turn it was set. If the card is not TYPE_TRAP and/or does not have STATUS_SET_TURN, this effect is skipped. The property EFFECT_FLAG_SET_AVAILABLE should be set. Usually used as EFFECT_TYPE_SINGLE if a field version is used SetTarget receives e and c as parameters. It is suggested that SetDescription is also applied with this effect, for the scenarios where multiple similar effects are available, to allow the player to choose which one to apply. |
+| 17 | EFFECT_REMAIN_FIELD | Affected card remains on the field (e.g. Swords of Revealing Light) |
+| 18 | EFFECT_MONSTER_SSET | The affected monster can be placed in the Spell/Trap zone. SetValue should hold the type the card is set as (for example, TYPE_SPELL). See Artifact monsters |
+| 19 | EFFECT_QP_ACT_IN_SET_TURN | Allows Quick-Play Spells to be activated the turn they are set. This effect is skipped if any of the following 3 tests is false: the card is TYPE_SPELL, the card is TYPE_QUICKPLAY or has EFFECT_BECOME_QUICK, the card has STATUS_SET_TURN. Usually used as EFFECT_TYPE_SINGLE if a field version is used SetTarget receives e and c as parameters. It is suggested that SetDescription is also applied with this effect, for the scenarios where multiple similar effects are available, to allow the player to choose which one to apply. |
+| 20 | EFFECT_CANNOT_SUMMON | The affected player cannot Normal Summon. A field effect that requires EFFECT_FLAG_PLAYER_TARGET to be set and the players to be defined in SetTargetRange. SetTarget receives the following parameters: e: this effect itself c: the card that would be summoned sump: the player that would Summon sumtyp: the summon type sumpos: the summon position (fixed as POS_FACEUP in the core) tp: the target player (the player that would get the monster) |
+| 21 | EFFECT_CANNOT_FLIP_SUMMON | The affected player cannot Flip Summon.The target function of this effect receives the following parameters: |
+| e = this effect (EFFECT_CANNOT_FLIP_SUMMON) |
+| c = the card that would be affected by it (the ones that cannot be Special Summoned) |
+| playerid = the player that would do the summon |
+| 22 | EFFECT_CANNOT_SPECIAL_SUMMON | The affected player cannot Special Summon. Requires the property EFFECT_FLAG_PLAYER_TARGET and the players defined via SetRange. The target function of this effect receives the following parameters: e = this effect (EFFECT_CANNOT_SPECIAL_SUMMON) c = the card that would be affected by it (the ones that cannot be Special Summoned) playerid = the player that would do the summon sumtype = the type of the summon sumpos = the position in which the monster would be summoned in toplayer = the player that would receive the monster sumeff = the effect that would summon |
+| 23 | EFFECT_CANNOT_MSET | Affected player cannot Set monsters. This effect's SetTarget takes the following parameters: -e: this effect itself -c: the cards affected by it -playerid: the player that would Set -sumtype: the summon type -toplayer: the player that would receive the monster -sumpos: the position in which the monsters would be summoned (fixed as POS_FACEDOWN by the core) |
+| 24 | EFFECT_CANNOT_SSET | The affected player (set via SetTargetRange, with EFFECT_FLAG_PLAYER_TARGET as property) cannot set Spell/Trap cards. If a target function is used, the following parameters are passed to it: -e: this effect itself -c: the card(s) that cannot be set -tp: the player that cannot set  (to be confirmed, might be player whose field cannot have cards set) |
+| 25 | EFFECT_CANNOT_DRAW | The affected player cannot draw cards |
+| 26 | EFFECT_CANNOT_DISABLE_SUMMON | The affected monster cannot have its Normal Summon negated |
+| 27 | EFFECT_CANNOT_DISABLE_SPSUMMON | The affected monster cannot have its Special Summon negated |
+| 28 | EFFECT_SET_SUMMON_COUNT_LIMIT | Limit the number of monsters placed per turn |
+| 29 | EFFECT_EXTRA_SUMMON_COUNT | Increases the number of Normal Summons the player can make. The value should be set in SetValue. |
+| 30 | EFFECT_SPSUMMON_CONDITION | The affected monster has an Special Summon condition that must be fulfilled. Cards/effects that return true for the SetValue are allowed to Special Summmon the monster. SetValue for this function takes the following parameters: -effect: this effect itself -sum_effect: the effect that would summon -sum_player: the player that would summon -sum_type: the summon type what would be used for the summon -sum_pos: the position in which the monster would be summoned -toplayer: the player that would receive the monster |
+| 31 | EFFECT_REVIVE_LIMIT | The affected card must be Special Summoned properly before being Special Summoned from public locations |
+| 32 | EFFECT_SUMMON_PROC | Specifies a special method through which the affected card can be Normal Summoned |
+| 33 | EFFECT_LIMIT_SUMMON_PROC | Specifies a special method through which the affected card must be Normal Summoned |
+| 34 | EFFECT_SPSUMMON_PROC | Specifies a special method through which the affected card can be Special Summoned |
+| 35 | EFFECT_EXTRA_SET_COUNT | Increase the number of monsters the player can set (usually 1 Normal Summon/Set per turn) |
+| 36 | EFFECT_SET_PROC | Specifies a special method through which the affected card can be Normal Set |
+| 37 | EFFECT_LIMIT_SET_PROC | Specifies a special method through which the affected card must be Normal Set |
+| 38 | EFFECT_LIGHT_OF_INTERVENTION | Monsters can be Normal Summoned in face-up Defense Position (Light of Intervention). |
+| 39 | EFFECT_CANNOT_DISABLE_FLIP_SUMMON | The Flip Summon of the affected monster cannot be negated (Spell Wall) |
+| 40 | EFFECT_INDESTRUCTABLE | Affected card cannot be destroyed. SetValue receives the following parameters: |
+| e: this effect itself |
+| re: reason effect, the effect that would cause the destruction |
+| r: reason, always considered as REASON_EFFECT by the core rp: reason player |
+| 41 | EFFECT_INDESTRUCTABLE_EFFECT | Affected card cannot be destroyed by card effect. SetValue receives the following parameters: |
+| e: this effect itself |
+| re: reason effect, the effect that would cause the destruction |
+| rp: reason player, the player that would cause the destruction |
+| c: this card (to be confirmed) |
+| 42 | EFFECT_INDESTRUCTABLE_BATTLE | Affected card cannot be destroyed by battle |
+| 43 | EFFECT_UNRELEASABLE_SUM | Affected card cannot be tributed for a Tribute Summon. SetValue in this effect receives only `e` and `c` as parameters. |
+| 44 | EFFECT_UNRELEASABLE_NONSUM | Affected card cannot be tributed for effects. SetValue in this effect receives only `e` and `c` as parameters. |
+| 45 | EFFECT_DESTROY_SUBSTITUTE | Required alternative to destruction (this card is destroyed with other cards instead). SetValue receives the following parameters: |
+| e: this effect itself |
+| re: reason effect (confirm in the core, might default to current.reason_effect) r: reason  (confirm in the core, might default to current.reasont) |
+| rp: reason player (confirm in the core, might default to current.reason_player) |
+| 46 | EFFECT_CANNOT_RELEASE | Affected player cannot tribute monsters. Requires the players to be set via SetTargetRange (and the EFFECT_FLAG_PLAYER_TARGET flag). Cards that return true for the SetTarget in this effect cannot be tributed by that player. SetTarget takes the following parameters: -e: this effect itself -c: the card(s) that would be tributed (to be confirmed) -tp: the player that would tribute |
+| 47 | EFFECT_INDESTRUCTABLE_COUNT | Affected card cannot be destroyed up to a given number of times. SetValue receives the following parameters: e: this effect itself re: reason effect, the effect that would cause the destruction rp: reason player, the player that would cause the destruction c: this card (to be confirmed) |
+| 48 | EFFECT_UNRELEASABLE_EFFECT | Affected card cannot be Tributed by card effects.  SetValue receives the following parameters: |
+| e: this effect itself |
+| re: reason effect, the effect that would tribute the card |
+| rp: reason player, the player that would tribute the card |
+| c: this card (to be confirmed) |
+| 50 | EFFECT_DESTROY_REPLACE | If the affected card would be destroyed, perform a given operation instead |
+| 51 | EFFECT_RELEASE_REPLACE | If the affected card would be Tributed, perform a given operation instead |
+| 52 | EFFECT_SEND_REPLACE | Card is sent to some location instead of another (Madolche Chateau) |
+| 55 | EFFECT_CANNOT_DISCARD_HAND | Affected player cannot send cards from their hand to the graveyard. SetTarget receives the following parameters: -e: this effect itself -c: the card that would be discarded -re: the effect that would discard the cards -r: the reason for the discard |
+| 56 | EFFECT_CANNOT_DISCARD_DECK | Affected player cannot send cards from their deck to the graveyard. SetTarget is not used in this effect |
+| 57 | EFFECT_CANNOT_USE_AS_COST | The affected card cannot be used as Cost. Usually used as a single effect. Does not use SetTarget |
+| 58 | EFFECT_CANNOT_PLACE_COUNTER | The affected player cannot place counters (See Gate Blocker). The SetTarget in this effect takes the following parameters: -e: this effect itself -c: the cards that cannot receive the counters (to be confirmed) -tp: the player that cannot place the counters -ctype: the type of the counter that cannot be placed -count: the ammount of counters that cannot be placed |
+| 59 | EFFECT_CANNOT_TO_GRAVE_AS_COST | The affected card cannot be sent to the GY. |
+| 60 | EFFECT_LEAVE_FIELD_REDIRECT | If the affected card would leave the field, sends it to another given location instead. The location must be set in SetValue |
+| 61 | EFFECT_TO_HAND_REDIRECT | If the affected card would go to the hand, sends it to another given location instead. The location must be set in SetValue |
+| 62 | EFFECT_TO_DECK_REDIRECT | If the affected card would go to the deck, sends it to another given location instead.  The location must be set in SetValue |
+| 63 | EFFECT_TO_GRAVE_REDIRECT | If the affected card would go to the graveyard, sends it to another given location instead. The location must be set in SetValue |
+| 64 | EFFECT_REMOVE_REDIRECT | If the affected card would be removed, sends it to another given location instead. The location must be set in SetValue. |
+| 65 | EFFECT_CANNOT_TO_HAND | Affected card cannot be send to the hand. If it is used as a field effect, cards that return true for the SetTarget cannot be sent to the hand. SetTarget receives the following parameters: e: this effect itself c: the card that would be sent to the hand tp: the player that would send the card re: reason effect (defaults to core.reason_effect, to be confirmed) |
+| 66 | EFFECT_CANNOT_TO_DECK | Affected card cannot be sent to the deck. If it is used as a field effect, cards that return true for the SetTarget cannot be sent to the hand. SetTarget receives the following parameters: e: this effect itself c: the card that would be sent to the Deck tp: the player that would send the card |
+| 67 | EFFECT_CANNOT_REMOVE | Affected card cannot be banished. If it is used as a field effect, cards that return true for the SetTarget cannot be banished. SetTarget receives the following parameters: e: this effect itself c: the card that would be banished tp: the player that would banish re:the reason that would be applied to the banishing re: reason effect (defaults to core.reason_effect, to be confirmed) |
+| 68 | EFFECT_CANNOT_TO_GRAVE | The affected card(s) cannot be sent to the Graveyard. If used as a field effect, only e and c are passed to SetTarget |
+| 69 | EFFECT_CANNOT_TURN_SET | The affected card cannot be turned face-down ("Set"). If used as a field effect, only e and c are passed to SetTarget |
+| 70 | EFFECT_CANNOT_BE_BATTLE_TARGET | The affected card cannot be targeted for an attack |
+| 71 | EFFECT_CANNOT_BE_EFFECT_TARGET | Affected card cannot be targeted by card effects. When used as a single effect, SetTarget takes: e, re, rp |
+| 72 | EFFECT_IGNORE_BATTLE_TARGET | Affected card cannot be targeted for an attack, but it doesn't prevent direct attack. |
+| 73 | EFFECT_CANNOT_DIRECT_ATTACK | Affected card cannot attack directly |
+| 74 | EFFECT_DIRECT_ATTACK | Affected card can make a direct attack. |
+| 75 | EFFECT_DUAL_STATUS | Affected card is a Gemini Monster that has its effect |
+| 76 | EFFECT_EQUIP_LIMIT | Equipment object restrictions |
+| 77 | EFFECT_DUAL_SUMMONABLE | Affected card can be Normal Summon on the field as a Gemini Monster |
+| 80 | EFFECT_REVERSE_DAMAGE | If the affected player would take damage, they gain that much LP instead. SetValue in this effect receives the following parameters: e: this effect itself re: reason effect r: reason rp: reason player rc: reason card |
+| 81 | EFFECT_REVERSE_RECOVER | If the affected player would gain LP, they take that much damage instead. SetValue in this effect receives the following parameters: |
+| e: this effect itself |
+| r: reason |
+| rp: reason player |
+| 82 | EFFECT_CHANGE_DAMAGE | Modify the amount of damage the affected player would take |
+| 83 | EFFECT_REFLECT_DAMAGE | If the affected player would take damage, their opponent takes damage instead. SetValue in this effect receives the following parameters: e: this effect itself amount: the amount of damage re: reason effect r: reason rp: reason player rc: reason card |
+| 85 | EFFECT_CANNOT_ATTACK | Affected card cannot attack |
+| 86 | EFFECT_CANNOT_ATTACK_ANNOUNCE | Affected card cannot declare attacks (but can finish conducting an attack responded to with this effect, Threatening Roar) |
+| 87 | EFFECT_CANNOT_CHANGE_POS_E | Affected card's battle position cannot be changed by card effects (Raging Cloudian) |
+| 90 | EFFECT_ACTIVATE_COST | Affected player must pay a cost to activate effects |
+| 91 | EFFECT_SUMMON_COST | The affected player must pay a cost to Normal Summon. The parameters this effect's target receives are: e = this effect itself c = this card tp = the player that would summon |
+| 92 | EFFECT_SPSUMMON_COST | The affected player must pay a cost to Special Summon. The parameters this effect's target receives are: e = this effect itself c = this card tp = the player that would summon sumtype = the type of the summon |
+| 93 | EFFECT_FLIPSUMMON_COST | Affected player must pay a cost to Flip Summon. The parameters this effect's target receives are: e = this effect itself c = this card tp = the player that would summon |
+| 94 | EFFECT_MSET_COST | The affected player must pay a cost to Set monsters. The parameters this effect's target receives are: e = this effect itself c = this card tp = the player that would set the monsters |
+| 95 | EFFECT_SSET_COST | The affected player must pay a cost to Set Spell/Traps. The parameters this effect's target receives are: |
+| e = this effect itself |
+| c = this card |
+| tp = the player that would Set the cards |
+| 96 | EFFECT_ATTACK_COST | The affected player must pay a cost to attack. The parameters this effect's target receives are: |
+| e = this effect itself |
+| c = this card |
+| tp = the player that would attack |
+| 100 | EFFECT_UPDATE_ATTACK | Changes the ATK of a monster by a value (taken from the return in Effect.SetValue()) |
+| 101 | EFFECT_SET_ATTACK | Sets the current ATK of a monster to a value evaluated in Effect.SetValue() |
+| 102 | EFFECT_SET_ATTACK_FINAL | Set the attack of a monster, overriding other changes  (taken from the return in Effect.SetValue()) |
+| 103 | EFFECT_SET_BASE_ATTACK | Set the original attack of a monster |
+| 104 | EFFECT_UPDATE_DEFENSE | Change the defense of a monster by a value (written into Effect.SetValue()) |
+| 105 | EFFECT_SET_DEFENSE | Set the defense of a monster |
+| 106 | EFFECT_SET_DEFENSE_FINAL | Set the defense of a monster, overriding other changes (written into Effect.SetValue()) |
+| 107 | EFFECT_SET_BASE_DEFENSE | Set the original defense of a monster |
+| 108 | EFFECT_REVERSE_UPDATE | Any change to ATK and DEF is reversed (For the effects of 'Reverse Trap') |
+| 109 | EFFECT_SWAP_AD | Swap the affected card's ATK and DEF |
+| 110 | EFFECT_SWAP_BASE_AD | Swap the affected card's original ATK and DEF |
+| 111 | EFFECT_SWAP_ATTACK_FINAL | Set the final attack (used to exchange offensive and defensive) |
+| 112 | EFFECT_SWAP_DEFENSE_FINAL | Set the final defense (for exchange of offensive and defensive) |
+| 113 | EFFECT_ADD_CODE | Treats a Card(s) as another Card by adding one additional Code (ID) to it (written into Effect.SetValue()) |
+| 114 | EFFECT_CHANGE_CODE | Treats a Card(s) as one different Card by overwriting its Code(s) (ID(s)) it currently has (written into Effect.SetValue()) |
+| 115 | EFFECT_ADD_TYPE | Treats a Card(s) as a additional type(s) (written into Effect.SetValue()) |
+| 116 | EFFECT_REMOVE_TYPE | Treats a Card(s) as not a type(s) (written into Effect.SetValue()) |
+| 117 | EFFECT_CHANGE_TYPE | Treats a Card(s) as another type overwriting its type (written into Effect.SetValue()) |
+| 118 | EFFECT_REMOVE_CODE |
+| 120 | EFFECT_ADD_RACE | Treats a Card(s) as a additional race(s) (written into Effect.SetValue()) |
+| 121 | EFFECT_REMOVE_RACE | Treats a Card(s) as not a race(s) (written into Effect.SetValue()) |
+| 122 | EFFECT_CHANGE_RACE | Treats a Card(s) as another type overwriting its type (written into Effect.SetValue()) |
+| 125 | EFFECT_ADD_ATTRIBUTE | Treats a Card(s) as a additional element(s) (written into Effect.SetValue()) |
+| 126 | EFFECT_REMOVE_ATTRIBUTE | Treats a Card(s) as not a element(s) (written into Effect.SetValue()) |
+| 127 | EFFECT_CHANGE_ATTRIBUTE | Treats a Card(s) as another element overwriting its element (written into Effect.SetValue()) |
+| 130 | EFFECT_UPDATE_LEVEL | Increase/decrease affected card's level by a value (written into Effect.SetValue()) |
+| 131 | EFFECT_CHANGE_LEVEL | Set affected card's level to a value (written into Effect.SetValue()) |
+| 132 | EFFECT_UPDATE_RANK | Increase/decrease affected card's rank by a value (written into Effect.SetValue()) |
+| 133 | EFFECT_CHANGE_RANK | Set affected card's rank to a value (written into Effect.SetValue()) |
+| 134 | EFFECT_UPDATE_LSCALE | Increase/decrease affected card's left pendulum scale (blue scale) by a value (written into Effect.SetValue()) |
+| 135 | EFFECT_CHANGE_LSCALE | Set affected card's left pendulum scale (blue scale) to a value (written into Effect.SetValue()) |
+| 136 | EFFECT_UPDATE_RSCALE | Increase/decrease affected card's right pendulum scale (red scale) by a value (written into Effect.SetValue()) |
+| 137 | EFFECT_CHANGE_RSCALE | Set affected card's right pendulum scale (red scale) to a value (written into Effect.SetValue()) |
+| 140 | EFFECT_SET_POSITION | Set affected card's battle position to a given value |
+| 141 | EFFECT_SELF_DESTROY | Affected card destroys itself |
+| 142 | EFFECT_SELF_TOGRAVE | Affected card sends itself to the graveyard, requires enabling GLOBALFLAG_SELF_TOGRAVE |
+| 150 | EFFECT_DOUBLE_TRIBUTE | Treats a card as 2 tributes for a tribute summon |
+| 151 | EFFECT_DECREASE_TRIBUTE | Decreases the ammount of tributes to perform a Tribute Summon |
+| 152 | EFFECT_DECREASE_TRIBUTE_SET | Decreases the ammount of tributes to perform a Tribute Set |
+| 153 | EFFECT_EXTRA_RELEASE | The affected card must be used when performing a tribute (Soul Exchange) |
+| 154 | EFFECT_TRIBUTE_LIMIT | The affected card has restriction for the tribute summon |
+| 155 | EFFECT_EXTRA_RELEASE_SUM | Allows, optionally, to tributed the affected card (Monarch's Stormforth, Vampire Sucker) |
+| 156 | EFFECT_TRIPLE_TRIBUTE | Treats a card as 2 and 3 tributes for a tribute summon |
+| 157 | EFFECT_ADD_EXTRA_TRIBUTE | The affected card can use as tribute other cards (than the default ones). Requires SetTargetRange and SetTarget |
+| 158 | EFFECT_EXTRA_RELEASE_NONSUM | The affected card can be tributed (by a cost ?) even if it is controled by the opponent. SetValue in this effect receives the following parameters: e: this effect itself re: reason effect (to be confirmed: defaults to core.reason_effect) rp: reason player(to be confirmed: defaults to core.reason_player) |
+| 160 | EFFECT_PUBLIC | Affected card becomes public knowledge |
+| 0x10000 | EFFECT_COUNTER_PERMIT | Allow placement of counter type |
+| 0x20000 | EFFECT_COUNTER_LIMIT | Allowed to place the number of counters |
+| 0x30000 | EFFECT_RCOUNTER_REPLACE | Instead of removing the counter |
+| 170 | EFFECT_LPCOST_CHANGE | Modify the amount of LP a given player must pay for a cost |
+| 171 | EFFECT_LPCOST_REPLACE | If the affected player would pay LP for a cost, perform a given operation instead |
+| 180 | EFFECT_SKIP_DP | Skip affected player's draw phase (used with SetTargetRange(tp value,1-tp value), 0 for not affected, 1 for affect) |
+| 181 | EFFECT_SKIP_SP | Skip affected player's standby phase (used with SetTargetRange(tp value,1-tp value), 0 for not affected, 1 for affect) |
+| 182 | EFFECT_SKIP_M1 | Skip affected player's main phase 1 (used with SetTargetRange(tp value,1-tp value), 0 for not affected, 1 for affect) |
+| 183 | EFFECT_SKIP_BP | Skip affected player's battle phase (used with SetTargetRange(tp value,1-tp value), 0 for not affected, 1 for affect) |
+| 184 | EFFECT_SKIP_M2 | Skip affected player's main phase 2 (used with SetTargetRange(tp value,1-tp value), 0 for not affected, 1 for affect) |
+| 185 | EFFECT_CANNOT_BP | The affected player cannot enter the Battle Phase |
+| 186 | EFFECT_CANNOT_M2 | The affected player cannot enter the Main Phase 2 |
+| 187 | EFFECT_CANNOT_EP | The affected player cannot enter the End Phase |
+| 188 | EFFECT_SKIP_TURN | The affected player's whole next turn is skipped |
+| 189 | EFFECT_SKIP_EP | The affected player's End Phase is skipped |
+| 190 | EFFECT_DEFENSE_ATTACK | Affected card can attack while in defense position. The stats it uses depends on Effect.Setvalue (if any), where it applies DEF if effect value is 1 and atk if it is 0 or doesn't exist. |
+| 191 | EFFECT_MUST_ATTACK | Affected card must attack if able |
+| 192 | EFFECT_FIRST_ATTACK | Affected card must attack before its controller's other monsters |
+| 193 | EFFECT_ATTACK_ALL | Affected card can attack all valid attack targets once each. SetValue receives the following parameters: e: this effect itself c: the cards that can be attack target |
+| 194 | EFFECT_EXTRA_ATTACK | Affected card can make a given number of additional attacks |
+| 196 | EFFECT_ONLY_BE_ATTACKED | Only the affected card can be attacked |
+| 197 | EFFECT_ATTACK_DISABLED | The affected card's attack has been negated (shows application of Duel.NegateAttack() ) |
+| 198 | EFFECT_CHANGE_BATTLE_STAT | Changes the values used to calculate damage, during damage calculation only. Doesnt actually change the values, only what is calculated |
+| 200 | EFFECT_NO_BATTLE_DAMAGE | No battle damage is dealt when the affected card battles |
+| 201 | EFFECT_AVOID_BATTLE_DAMAGE | The controller of the affected card does not take battle damage when it battles |
+| 202 | EFFECT_REFLECT_BATTLE_DAMAGE | If the controller of the affected card would take battle damage from a battle involving that card, the opponent takes the damage |
+| 203 | EFFECT_PIERCE | The affected monster deals piercing battle damage |
+| 204 | EFFECT_BATTLE_DESTROY_REDIRECT | If the affected card is destroyed by battle, send it to a given location |
+| 205 | EFFECT_BATTLE_DAMAGE_TO_EFFECT | The affected card deals effect damage when it battles (Gravekeeper's Vassal) |
+| 206 | EFFECT_BOTH_BATTLE_DAMAGE | Both players take the battle damage. See Double-Edged Sword |
+| 207 | EFFECT_ALSO_BATTLE_DAMAGE | The opponent also takes the battle damage. See Lyrilusc - Recital Starling |
+| 208 | EFFECT_CHANGE_BATTLE_DAMAGE |
+| 220 | EFFECT_TOSS_COIN_REPLACE | If an effect requires a coin toss, replace it with a given result instead |
+| 221 | EFFECT_TOSS_DICE_REPLACE | If an effect requires a dice roll, replace it with a given result instead |
+| 222 | EFFECT_TOSS_COIN_CHOOSE |
+| 223 | EFFECT_TOSS_DICE_CHOOSE |
+| 230 | EFFECT_FUSION_MATERIAL | Can be used as Fusion material |
+| 231 | EFFECT_CHAIN_MATERIAL | When Fusion Summoning, the affected player can banish materials from the hand, field, deck or graveyard instead (Chain Material) |
+| 232 | EFFECT_SYNCHRO_MATERIAL | Can be used as Synchro material |
+| 233 | EFFECT_XYZ_MATERIAL | Can be used as Xyz material |
+| 234 | EFFECT_FUSION_SUBSTITUTE | When Fusion Summoning, the affected card can be used to substitute for any specifically named material |
+| 235 | EFFECT_CANNOT_BE_FUSION_MATERIAL | Affected card cannot be used as Fusion material |
+| 236 | EFFECT_CANNOT_BE_SYNCHRO_MATERIAL | Affected card cannot be used as Synchro material. SetValue takes the following parameters: |
+| e: this effect |
+| c: the card(s) for which this card cannot be used as material |
+| 237 | EFFECT_SYNCHRO_MATERIAL_CUSTOM | Coexistence of material constraints |
+| 238 | EFFECT_CANNOT_BE_XYZ_MATERIAL | Affected card cannot be used as Xyz material. SetValue takes the following parameters: e: this effect c: the card(s) for which this card cannot be used as material |
+| 239 | EFFECT_CANNOT_BE_LINK_MATERIAL | Cannot be used as Link Material. SetValue takes the following parameters: e: this effect c: the card(s) for which this card cannot be used as material |
+| 240 | EFFECT_SYNCHRO_LEVEL | Affected card can be treated as a given level if used for a Synchro Summon |
+| 241 | EFFECT_RITUAL_LEVEL | Affected card can be treated as a given level if used for a Ritual Summon |
+| 242 | EFFECT_XYZ_LEVEL | Affected card can be treated as a given level if used for an Xyz Summon |
+| 243 | EFFECT_EXTRA_RITUAL_MATERIAL | Affected card can be used for a Ritual Summon in addition to what the Ritual Spell states (e.g. Sphere Kuriboh). If used as EFFECT_FLAG_SINGLE_RANGE, use SetValue , which takes the following parameters: e: this effect rc: the monster that would be summoned using this card. If used as EFFECT_TYPE_FIELD, SetValue is not considered. SetTarget should be used instead, which takes the following parameters: e: this effect c: the card(s) that can be used as extra ritual materials (the cards affected by this effect) |
+| 244 | EFFECT_NONTUNER | Affected card can be treated as a non-Tuner despite being a Tuner (Phantom King Hydride). When used as a single effect, SetValue receives the following parameters: e: this effect sc: the monster that would use this card as material |
+| 245 | EFFECT_OVERLAY_REMOVE_REPLACE | Replaces detaching Xyz materials from monsters by some other operation. SetCondition must be used to match the exact effects that can be replaced. SetOperation must return something. |
+| 248 | EFFECT_CANNOT_BE_MATERIAL | The card cannot be used as material. Requires the summon type for which the material can't be used to be defined via SetValue. SetValue takes the following parameters: -sum_type -playerid |
+| 250 | EFFECT_PRE_MONSTER | Can access the monster's value (Card.AddMonsterAttribute () only) |
+| 251 | EFFECT_MATERIAL_CHECK | Applies a check to the materials used. The SetValue in this effect takes as parameter e and c |
+| 260 | EFFECT_DISABLE_FIELD | Given card zones cannot be used. The zones affected must be defined via SetOperation |
+| 261 | EFFECT_USE_EXTRA_MZONE | Card uses an additional Monster zone |
+| 262 | EFFECT_USE_EXTRA_SZONE | Card uses an additional Spell/Trap zone |
+| 263 | EFFECT_MAX_MZONE | The maximum number of monsters |
+| 264 | EFFECT_MAX_SZONE | Maximum number of Spell/Trap zone |
+| 265 | EFFECT_FORCE_MZONE | Forces a zone to be used (see Dai Dance).The target function of this effect receives the following parameters: e = this effect (EFFECT_FORCE_MZONE) c = the card that would be affected by it (the ones that cannot be Special Summoned) playerid = the player that would do the summon sumtype = the type of the summon toplayer = the player that would receive the monster sumef = the effect that would summon |
+| 266 | EFFECT_BECOME_LINKED_ZONE | Makes a zone linked |
+| 270 | EFFECT_HAND_LIMIT | Change the maximum number of cards the affected player can have in their hand during the End Phase. The new value should be provided via SetValue. |
+| 271 | EFFECT_DRAW_COUNT | Change the number of cards the affected player draws for their Draw Phase |
+| 280 | EFFECT_SPIRIT_DONOT_RETURN | Affected card does not return to the hand in the End Phase even if a Spirit Monster |
+| 281 | EFFECT_SPIRIT_MAYNOT_RETURN | Affected card optionally may not return to the hand in the End Phase even if a Spirit Monster |
+| 290 | EFFECT_CHANGE_ENVIRONMENT | The active Field Spell is treated as a given card if none exists (Maiden of the Aqua, Gravekeeper's Priestess) |
+| 291 | EFFECT_NECRO_VALLEY | Cannot affect cards in the Graveyard (Necrovalley) |
+| 292 | EFFECT_FORBIDDEN | Card cannot be used (Prohibition, Psi-Blocker) |
+| 293 | EFFECT_NECRO_VALLEY_IM | Affected card is unaffected by the effects of Necrovalley |
+| 294 | EFFECT_REVERSE_DECK | Flip affected player's deck upside-down, used with GLOBALFLAG_DECK_REVERSE_CHECK, set the player afected with SetTargetRange(,) |
+| 295 | EFFECT_REMOVE_BRAINWASHING | Control of all monsters is returned to their owner |
+| 296 | EFFECT_BP_TWICE | The affected player can conduct two Battle Phases (e.g. Weather Report) |
+| 297 | EFFECT_UNIQUE_CHECK | There can only be one on the field (Card.SetUniqueOnField () only) |
+| 300 | EFFECT_MATCH_KILL | When the affected card reduces its controller's opponent's LP to 0 by a direct attack, its controller wins the match. |
+| 310 | EFFECT_SYNCHRO_CHECK | Genomix Fighter |
+| 311 | EFFECT_QP_ACT_IN_NTPHAND | A Quick Play Spell affected can be activated from the hand during the turn of the opponent's turn |
+| 312 | EFFECT_MUST_BE_SMATERIAL | Deprecated. Use EFFECT_MUST_BE_MATERIAL with REASON_SYNCHRO in the SetValue |
+| 313 | EFFECT_TO_GRAVE_REDIRECT_CB | If the affected card would be sent to the graveyard, executes another operation instead (Crystal Beast monsters) |
+| 314 | EFFECT_CHANGE_LEVEL_FINAL | Set affected card's level to a value, overriding other changes |
+| 315 | EFFECT_CHANGE_RANK_FINAL | Set affected card's rank to a value, overriding other changes |
+| 316 | EFFECT_MUST_BE_FMATERIAL | Deprecated. Use EFFECT_MUST_BE_MATERIAL with REASON_FUSION in the SetValue |
+| 317 | EFFECT_MUST_BE_XMATERIAL | Deprecated. Use EFFECT_MUST_BE_MATERIAL with REASON_XYZ in the SetValue |
+| 318 | EFFECT_MUST_BE_LMATERIAL | Deprecated. Use EFFECT_MUST_BE_MATERIAL with REASON_LINK in the SetValue |
+| 320 | EFFECT_SPSUMMON_PROC_G | Pendulum Summon rules (e.g. Harmonic Oscilation) |
+| 330 | EFFECT_SPSUMMON_COUNT_LIMIT | Limit for the number of Special Summons |
+| 331 | EFFECT_LEFT_SPSUMMON_COUNT | The remaining number of Summoning (e.g Summon Breaker) |
+| 332 | EFFECT_CANNOT_SELECT_BATTLE_TARGET | The affected cards cannot be chosen to be an attack target |
+| 333 | EFFECT_CANNOT_SELECT_EFFECT_TARGET | The affected cards cannot activate their effects that target. SetValue takes the following parameters: e: this effect re: the effect that would be activated c: the cards that cannot activate the effect |
+| 334 | EFFECT_ADD_SETCODE | Adds a setcode (archetype) to the affected card |
+| 335 | EFFECT_NO_EFFECT_DAMAGE | The affected player does not take damage from card effects |
+| 336 | EFFECT_UNSUMMONABLE_CARD | The affected card cannot be Normal Summoned |
+| 337 | EFFECT_DISABLE_CHAIN_FIELD | Deprecated and removed effect. See core's "effect.h" |
+| 338 | EFFECT_DISCARD_COST_CHANGE | Counter trap cards cost change (Guilding Ariadne) |
+| 339 | EFFECT_HAND_SYNCHRO | Can Synchro Summon using monsters in the hand (e.g. Tatsunoko) |
+| 343 | EFFECT_ONLY_ATTACK_MONSTER | Affected card can only attack monster. |
+| 344 | EFFECT_MUST_ATTACK_MONSTER | Affected card must attack a monster, if abble. |
+| 345 | EFFECT_PATRICIAN_OF_DARKNESS | The affected player chooses the targets of their opponent's attacks |
+| 346 | EFFECT_EXTRA_ATTACK_MONSTER | Affected card can make a given number of additional attacks on monsters |
+| 347 | EFFECT_UNION_STATUS |
+| 348 | EFFECT_OLDUNION_STATUS |
+| 349 | EFFECT_REMOVE_SETCODE |
+| 350 | EFFECT_CHANGE_SETCODE  | The affected card's setcode is changed to the new value, replacing the SetCode(s) it currently has |
+| 351 | EFFECT_ALWAYS_ATTACK | Deprecated and removed effect. See core's "effect.h" |
+| 352 | EFFECT_EXTRA_FUSION_MATERIAL | Allows using affected cards as Fusion Materials |
+| 354 | EFFECT_ADD_LINK_CODE | Deprecated and removed effect. See core's "effect.h". Add a code (ID/name) for the affected monster to have if used for a Link Summon |
+| 355 | EFFECT_ADD_LINK_SETCODE | Deprecated and removed effect. See core's "effect.h". Add a setcode (archetype) for the affected monster to have if used for a Link Summon |
+| 358 | EFFECT_EXTRA_MATERIAL | Deprecated and removed effect. See core's "effect.h". Allows the use of an extra material in a group of materials to summon a monster (e.g. "Micro Coder). This effect is not defined in the core. See the utility for its implementation |
+| 361 | EFFECT_IRON_WALL |
+| 400 | EFFECT_CANNOT_LOSE_DECK | Prevent losing via Deckout |
+| 401 | EFFECT_CANNOT_LOSE_LP | Prevent losing while LP is 0 |
+| 402 | EFFECT_CANNOT_LOSE_EFFECT | Prevent losing via card effects |
+| 403 | EFFECT_BP_FIRST_TURN | Allows entering Battle Phase during the first turn |
+| 404 | EFFECT_UNSTOPPABLE_ATTACK | Prevents the affected monster's attack from being negated |
+| 405 | EFFECT_ALLOW_NEGATIVE | Allows the affected card to have negative levels |
+| 406 | EFFECT_SELF_ATTACK | Allows players to attack themselves using monsters they control |
+| 407 | EFFECT_BECOME_QUICK | The affected Spell cards can be played like Quick-Play spells |
+| 408 | EFFECT_LEVEL_RANK | Gives Rank to an affected monster with a Level |
+| 409 | EFFECT_RANK_LEVEL | Gives Level to an affected monster with a Rank |
+| 410 | EFFECT_LEVEL_RANK_S | Gives Rank to an affected monster with a Level, Level and Rank are always synced. |
+| 411 | EFFECT_RANK_LEVEL_S | Gives Level to an affected monster with a Rank, Level and Rank are always synced. |
+| 420 | EFFECT_UPDATE_LINK | Increase/decrease affected card's Link Value by a value (written into Effect.SetValue()) |
+| 421 | EFFECT_CHANGE_LINK | Set affected card's Link Value by a value (written into Effect.SetValue()) |
+| 422 | EFFECT_CHANGE_LINK_FINAL | Set affected card's Link Value to a value, overriding other changes |
+| 423 | EFFECT_ADD_LINKMARKER | Add Link Markers to the affected card |
+| 424 | EFFECT_REMOVE_LINKMARKER | Remove Link Markers from the affected card |
+| 425 | EFFECT_CHANGE_LINKMARKER | Set's the affected card's Link Markers to the value provided |
+| 426 | EFFECT_FORCE_NORMAL_SUMMON_POSITION |
+| 427 | EFFECT_FORCE_SPSUMMON_POSITION | This effect's SetTarget takes the following parameters: eff, pcard, playerid, sumtype, sumpos, toplayer, peffect |
+| 428 | EFFECT_DARKNESS_HIDE | The affect players cannot see/confirm their face-down cards |
+| 73941492+TYPE_FUSION | EFFECT_FUSION_MAT_RESTRICTION | 73941492+TYPE_FUSION. Used by the Fusion Summon procedure as an implementation of Harmonizing Magician's effect |
+| 73941492+TYPE_SYNCHRO | EFFECT_SYNCHRO_MAT_RESTRICTION | 73941492+TYPE_SYNCHRO. Used by the Synchro Summon procedure as an implementation of Harmonizing Magician's effect |
+| 73941492+TYPE_XYZ | EFFECT_XYZ_MAT_RESTRICTION | 73941492+TYPE_XYZ. Used by the XyzSummon procedure as an implementation of Harmonizing Magician's effect |
 
+### Events
+| Value | Name | Description |
+| --- | --- | --- |
+| 1000 | EVENT_STARTUP | This event is raised once, at the start of the duel |
+| 1001 | EVENT_FLIP | This event is raised when a card is flipped face-up |
+| 1002 | EVENT_FREE_CHAIN | An event that describes a timing at any valid response window or open game state |
+| 1010 | EVENT_DESTROY | This event is raised when a card is destroyed |
+| 1011 | EVENT_REMOVE | This event is raised when a card is banished |
+| 1012 | EVENT_TO_HAND | This event is raised when a card is sent to the hand (includes draw, search and return) |
+| 1013 | EVENT_TO_DECK | This event is raised when a card is sent to the deck |
+| 1014 | EVENT_TO_GRAVE | This event is raised whenn a card is sent to the graveyard |
+| 1015 | EVENT_LEAVE_FIELD | This event is raised when a card leaves the field |
+| 1016 | EVENT_CHANGE_POS | This event is raised when a card changes battle position |
+| 1017 | EVENT_RELEASE | This event is raised when a card is Tributed (includes tributing for a tribute summon, tributing by an effect and tributing by costs) |
+| 1018 | EVENT_DISCARD | This event is raised when a card is discarded |
+| 1019 | EVENT_LEAVE_FIELD_P | This event is raised when a card would leave the field (but before it actually leaves, so it still contains info on the field). Example of usage: in "Predaplanet", it is used to check if the card has Predacounters imediatelly before it leaves the field. |
+| 1020 | EVENT_CHAIN_SOLVING | This event is raised when a Chain Link is resolving |
+| 1021 | EVENT_CHAIN_ACTIVATING | This event is raised when a Chain Link is activating |
+| 1022 | EVENT_CHAIN_SOLVED | This event is raised after a Chain Link resolves |
+| 1024 | EVENT_CHAIN_NEGATED | This event is raised when a chain link has its activation negated (after EVENT_CHAIN_ACTIVATING) |
+| 1025 | EVENT_CHAIN_DISABLED | This event is raised when the effect of a Chain Link is negated |
+| 1026 | EVENT_CHAIN_END | This event is raised when a Chain has fully resolved |
+| 1027 | EVENT_CHAINING | This event is raised when a chain is being built |
+| 1028 | EVENT_BECOME_TARGET | This event is raised when a card is targeted for an effect |
+| 1029 | EVENT_DESTROYED | This event is raised after a card is destroyed |
+| 1030 | EVENT_MOVE | This event is raised when a card moves from one location or sequence to another |
+| 1040 | EVENT_ADJUST | This event is raised when the game state changes (effectively working as some sort of EVENT_ANYCHANGE) |
+| 1100 | EVENT_SUMMON_SUCCESS | This event is raised when a monster is successfully Normal Summoned (which is timing for cards like Trap Hole) |
+| 1101 | EVENT_FLIP_SUMMON_SUCCESS | This event is raised when a monster is successfully Flip Summoned (which is timing for cards like Trap Hole) |
+| 1102 | EVENT_SPSUMMON_SUCCESS | This event is raised when a monster is successfully Special Summoned  (which is timing for cards like Torrential Tribute) |
+| 1103 | EVENT_SUMMON | This event is raised when a monster is being Normal Summoned (this is an attempt to perform a Normal Summon, aka "when a monster would be Summoned", for example, Bending Destiny's timing) |
+| 1104 | EVENT_FLIP_SUMMON | This event is raised when a monster is being Flip Summoned (this is an attempt to perform a Flip Summon, for example, Solemn Warning's timing) |
+| 1105 | EVENT_SPSUMMON | This event is raised when a monster is being Special Summoned (this is an attempt to perform a Special Summon, aka "when a monster would be Special Summoned", for example, Solemn Strike's timing) |
+| 1106 | EVENT_MSET | This event is raised when a monster is Set |
+| 1107 | EVENT_SSET | This event is raised when a Spell/Trap is set |
+| 1108 | EVENT_BE_MATERIAL | This event is raised when a card is used as material (e.g. for a Synchro Summon) |
+| 1109 | EVENT_BE_PRE_MATERIAL | Will be used as a fusion / ceremony of the same tune / excessive material |
+| 1110 | EVENT_DRAW | This event is raised when a card is drawn |
+| 1111 | EVENT_DAMAGE | This event is raised when a player takes damage, either by battle or by a card effect. |
+| 1112 | EVENT_RECOVER | When LP is gained |
+| 1113 | EVENT_PREDRAW | At the start of the Draw Phase |
+| 1114 | EVENT_SUMMON_NEGATED | This event is raised when a Summon is negated, to be detected by Witch's Strike. |
+| 1115 | EVENT_FLIP_SUMMON_NEGATED | This event is raised when a Flip Summon is negated |
+| 1116 | EVENT_SPSUMMON_NEGATED | This event is raised when a Special Summon is negated |
+| 1120 | EVENT_CONTROL_CHANGED | When control of a card changes |
+| 1121 | EVENT_EQUIP | This event is raised when a card is equipped |
+| 1130 | EVENT_ATTACK_ANNOUNCE | This event is raised when an attack is declared |
+| 1131 | EVENT_BE_BATTLE_TARGET | This event is raised when a monster is targeted for an attack |
+| 1132 | EVENT_BATTLE_START | The start of the damage step |
+| 1133 | EVENT_BATTLE_CONFIRM | This event is raised when a monster battles another monster |
+| 1134 | EVENT_PRE_DAMAGE_CALCULATE | Before the damage calculation |
+| 1136 | EVENT_PRE_BATTLE_DAMAGE | Before battle damage applies |
+| 1138 | EVENT_BATTLED | After battle |
+| 1139 | EVENT_BATTLE_DESTROYING | This event is raised when a monster is destroyed by battle |
+| 1140 | EVENT_BATTLE_DESTROYED | This event is raised after a monster is destroyed by battle |
+| 1141 | EVENT_DAMAGE_STEP_END | At the end of the Damage Step |
+| 1142 | EVENT_ATTACK_DISABLED | This event is raised when an attack is negated |
+| 1143 | EVENT_BATTLE_DAMAGE | This event is raised when battle damage is taken |
+| 1150 | EVENT_TOSS_DICE | This event is raised when dice are rolled |
+| 1151 | EVENT_TOSS_COIN | This event is raised when coins are flipped |
+| 1152 | EVENT_TOSS_COIN_NEGATE | This event is raised when coin tosses happen again, replacing previous result |
+| 1153 | EVENT_TOSS_DICE_NEGATE | This event is raised when dice are re-rolled |
+| 1200 | EVENT_LEVEL_UP | This event is raised when the level of monster increases (might also be raised for general level changes, but only for single effect. check the core's implementation for details) |
+| 1201 | EVENT_PAY_LPCOST | This event is raised when LP is paid as a cost |
+| 1202 | EVENT_DETACH_MATERIAL | This event is raised when Xyz materials are detached (only the card that detaches the materials is availble in the event group, not the detached cards) |
+| 1203 | EVENT_RETURN_TO_GRAVE | Deprecated and removed event. See core's "effect.h". Card is being returned to the Graveyard |
+| 1210 | EVENT_TURN_END | This event is raised when the turn ends |
+| 0x1000 | EVENT_PHASE | This event is raised when a certain phase is reached (the required Phase value must be added to it, for example EVENT_PHASE+PHASE_END) |
+| 0x2000 | EVENT_PHASE_START | This event is raised at the start of a certain phase (the required Phase value must be added to it) |
+| 0x10000 | EVENT_ADD_COUNTER | This event is raised when a counter is placed on cards |
+| 0x20000 | EVENT_REMOVE_COUNTER | This event is raised when a counter is removed from cards |
+| 0xx10000000 | EVENT_CUSTOM | For custom events (Eg. Activate an effect of a card indicating EVENT_CUSTOM + <code of the card> in Duel.RaiseEvent) |
+
+### Categories, hints and card hints
+| Value | Name | Description |
+| --- | --- | --- |
+| 0x1 | CATEGORY_DESTROY | Describes that an effect destroys cards |
+| 0x2 | CATEGORY_RELEASE | Describes that an effect tributes |
+| 0x4 | CATEGORY_REMOVE | Describes that an effect banishes |
+| 0x8 | CATEGORY_TOHAND | Describes that an effect adds a card to the hand (from any location) |
+| 0x10 | CATEGORY_TODECK | Describes that an effect adds a card to the Deck (from any location) |
+| 0x20 | CATEGORY_TOGRAVE | Describes that an effect sends a card to the Graveyard (from any location) |
+| 0x40 | CATEGORY_DECKDES | Describes that an effect removes a card(s) from the Deck (to move them to the Graveyard or to banish them) |
+| 0x80 | CATEGORY_HANDES | Describes that an effect removes a card(s) from the hand (to move them to the Graveyard or to banish them) |
+| 0x100 | CATEGORY_SUMMON | Describes that an effect Normal Summons a monster(s) |
+| 0x200 | CATEGORY_SPECIAL_SUMMON | Describes that an effect Special Summons a monster(s) |
+| 0x400 | CATEGORY_TOKEN | Describes that an effect Special Summons a token(s) |
+| 0x800 | CATEGORY_FLIP | Describes a FLIP effect |
+| 0x1000 | CATEGORY_POSITION | Describes an effect that changes a card's battle position |
+| 0x2000 | CATEGORY_CONTROL | Describes that an effect takes or switches control |
+| 0x4000 | CATEGORY_DISABLE | Describes an effect that negates a card effect (not an effect's activation) |
+| 0x8000 | CATEGORY_DISABLE_SUMMON | Describes an effect that negates the summon of a monster |
+| 0x10000 | CATEGORY_DRAW | Describes that a card draws |
+| 0x20000 | CATEGORY_SEARCH | Describes that a card searches |
+| 0x40000 | CATEGORY_EQUIP | Describes that a card equips |
+| 0x80000 | CATEGORY_DAMAGE | Describes that a card deals damage |
+| 0x100000 | CATEGORY_RECOVER | Describes that a card recovers life points |
+| 0x200000 | CATEGORY_ATKCHANGE | Describes that a card changes ATK |
+| 0x400000 | CATEGORY_DEFCHANGE | Describes that a card changes DEF |
+| 0x800000 | CATEGORY_COUNTER | Describes an effect that places Counters |
+| 0x1000000 | CATEGORY_COIN | Describes that a card uses a coin |
+| 0x2000000 | CATEGORY_DICE | Describes that a card uses a dice |
+| 0x4000000 | CATEGORY_LEAVE_GRAVE | Describes an effect that causes a card to leave the Graveyard |
+| 0x8000000 | CATEGORY_LVCHANGE | Describes an effect that changes a card's level |
+| 0x10000000 | CATEGORY_NEGATE | Describes an effect that negates the activation of an effect |
+| 0x20000000 | CATEGORY_ANNOUNCE | Describes an effect that requires declaring a card name |
+| 0x40000000 | CATEGORY_FUSION_SUMMON | Describes an effect that Fusion Summons |
+| 0x80000000 | CATEGORY_TOEXTRA | Describes an effect that sends/return a card to the Extra Deck |
+| 1 | HINT_EVENT | used by the core |
+| 2 | HINT_MESSAGE |
+| 3 | HINT_SELECTMSG | The message that appears when the given player next selects a card |
+| 4 | HINT_OPSELECTED | The message that appears on screen to tell a player which option their opponent selected |
+| 5 | HINT_EFFECT |
+| 6 | HINT_RACE | Called when selecting/declaring a monster type |
+| 7 | HINT_ATTRIB | Called when selecting/declaring an attribute |
+| 8 | HINT_CODE | Used with "Booster Draft Duel" |
+| 9 | HINT_NUMBER | Called when a player has to pick/declare a number |
+| 10 | HINT_CARD | Called when you need to display the picture of the card (Trickstar Lycoris) |
+| 11 | HINT_ZONE | To be used when the player selects a zone (e.g. Dai Dance). |
+| 200 | HINT_SKILL | Sets the code of a skill card. If it is called first, the skill is created face-up. |
+| 201 | HINT_SKILL_COVER | Sets the cover and id for a skill card. Cover is  value & 0xffffffff, code is (value>>32) & 0xffffffff. If  it iscalled first, the skill is created face-down. |
+| 202 | HINT_SKILL_FLIP | Changes the position of the skill face-down/face-up, updating the code as well. The code is value&0xffffffff. 0x100000000 is face-up and 0x200000000 is face-down. |
+| 203 | HINT_SKILL_REMOVE |
+| 1 | CHINT_TURN |
+| 2 | CHINT_CARD |
+| 3 | CHINT_RACE |
+| 4 | CHINT_ATTRIBUTE |
+| 5 | CHINT_NUMBER |
+| 6 | CHINT_DESC_ADD |
+| 7 | CHINT_DESC_REMOVE |
+| 6 | PHINT_DESC_ADD |
+| 7 | PHINT_DESC_REMOVE |
+
+
+### OPCodes
+See the definition of opcode [here](https://en.m.wikipedia.org/wiki/Opcode).
+| Value | Name | Description |
+| --- | --- | --- |
+| 0x40000000 | OPCODE_ADD | Operation of addition, to be used in an AnnounceCard filter. |
+| 0x40000001 | OPCODE_SUB | Operation of subtraction, to be used in an AnnounceCard filter. |
+| 0x40000002 | OPCODE_MUL | Operation of multiplication, to be used in an AnnounceCard filter. |
+| 0x40000003 | OPCODE_DIV | Operation of division, to be used in an AnnounceCard filter. |
+| 0x40000004 | OPCODE_AND | Operation of logical AND, to be used in an AnnounceCard filter. |
+| 0x40000005 | OPCODE_OR | Operation of logical OR, to be used in an AnnounceCard filter. |
+| 0x40000006 | OPCODE_NEG | Operation of bitwise negation, to be used in an AnnounceCard filter. |
+| 0x40000007 | OPCODE_NOT | Operation of changing sign (+/-), to be used in an AnnounceCard filter. |
+| 0x40000008 | OPCODE_BAND |
+| 0x40000009 | OPCODE_BOR |
+| 0x40000010 | OPCODE_BNOT |
+| 0x40000011 | OPCODE_BXOR |
+| 0x40000012 | OPCODE_LSHIFT |
+| 0x40000013 | OPCODE_RSHIFT |
+| 0x40000014 | OPCODE_ALLOW_ALIASES |
+| 0x40000015 | OPCODE_ALLOW_TOKENS |
+| 0x40000100 | OPCODE_ISCODE | Operation of the function Card.IsCode, to be used in an AnnounceCard filter. |
+| 0x40000101 | OPCODE_ISSETCARD | Operation of the function Card.IsSetCard, to be used in an AnnounceCard filter. |
+| 0x40000102 | OPCODE_ISTYPE | Operation of the function Card.IsType, to be used in an AnnounceCard filter. |
+| 0x40000103 | OPCODE_ISRACE | Operation of the function Card.IsRace, to be used in an AnnounceCard filter. |
+| 0x40000104 | OPCODE_ISATTRIBUTE | Operation of the function Card.IsAttribute, to be used in an AnnounceCard filter. |
+| 0x40000105 | OPCODE_GETCODE | Operation of the function Card.GetCode, to be used in an AnnounceCard filter. |
+| 0x40000106 | OPCODE_GETSETCARD | Operation of the function Card.GetSetCard, to be used in an AnnounceCard filter. |
+| 0x40000107 | OPCODE_GETTYPE | Operation of the function Card.GetType, to be used in an AnnounceCard filter. |
+| 0x40000108 | OPCODE_GETRACE | Operation of the function Card.GetRace, to be used in an AnnounceCard filter. |
+| 0x40000109 | OPCODE_GETATTRIBUTE | Operation of the function Card.GetAttribute, to be used in an AnnounceCard filter. |
