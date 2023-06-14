@@ -398,10 +398,7 @@
 | 37 | EFFECT_LIMIT_SET_PROC | Specifies a special method through which the affected card must be Normal Set |
 | 38 | EFFECT_LIGHT_OF_INTERVENTION | Monsters can be Normal Summoned in face-up Defense Position (Light of Intervention). |
 | 39 | EFFECT_CANNOT_DISABLE_FLIP_SUMMON | The Flip Summon of the affected monster cannot be negated (Spell Wall) |
-| 40 | EFFECT_INDESTRUCTABLE | Affected card cannot be destroyed. SetValue receives the following parameters: |
-| e: this effect itself |
-| re: reason effect, the effect that would cause the destruction |
-| r: reason, always considered as REASON_EFFECT by the core rp: reason player |
+| 40 | EFFECT_INDESTRUCTABLE | Affected card cannot be destroyed. SetValue receives the following parameters: <br />e: this effect itself <br />re: reason effect, the effect that would cause the destruction <br />r: reason, always considered as REASON_EFFECT by the core rp: reason player |
 | 41 | EFFECT_INDESTRUCTABLE_EFFECT | Affected card cannot be destroyed by card effect. SetValue receives the following parameters: |
 | e: this effect itself |
 | re: reason effect, the effect that would cause the destruction |
