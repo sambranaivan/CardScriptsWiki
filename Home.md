@@ -2,7 +2,9 @@
 
 - For a list of functions that are used to script cards in Edopro, see our [Scripting library](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library) page.
 
-- For a basic guide on how to read a script and commonly used names for the parameters you see in the functions, read our [Parameter naming convention](https://github.com/ProjectIgnis/CardScripts/wiki/Parameter-naming-convention) page.
+- For a basic guide on how to read a script read our [understanding a card script](https://github.com/ProjectIgnis/CardScripts/wiki/Understanding-a-card-script) page.
+
+- For commonly used names for the parameters you see in the functions, read our [Parameter naming convention](https://github.com/ProjectIgnis/CardScripts/wiki/Parameter-naming-convention) page.
 
 - [This page](https://github.com/ProjectIgnis/CardScripts/wiki/How-archetypes-and-their-values-work) explains how archetypes work in the game.
 
