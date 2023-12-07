@@ -33,7 +33,7 @@ An example of site that allows you to create the pictures for your cards is the 
 
 ## Setup
 
-Cards are identified in the database by an unique passcode (or ID). It's recommended that you choose a 9-digits range (XXXYYYZZZ) for your custom cards and keep them only in that range. The following non-extensive list contains the ranges that are currently in use Edopro and should not be used by your custom cards to avoid conflicts:
+Cards are identified in the database by an unique passcode (or ID). The internal card structure holds the passcode in a `uint32_t` type, which allows a maximum ID of 2^32-1 (4294967295) to be stored, but it is recommended that you choose a 9-digits range (XXXYYYZZZ) for your custom cards and keep them only in that range. The following non-extensive list contains the ranges that are currently in use Edopro and should not be used by your custom cards to avoid conflicts:
 - Passcodes with up to 8 digits are reserved for official cards.
 - Passcodes with 9 digits in the 10ZXXXYYY range are reserved for pre-release TCG/OCG cards
 - Passcodes with 9 digits in the 100XXXYYY range are reserved for Video Game cards.
