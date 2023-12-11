@@ -20,7 +20,7 @@ Since the `.lua` files are just text files any text editor works, but it's a goo
 ### To create/edit database:
 Any SQL editor works for that, but some softwares that can be used are:
 
-- [Dataconrn](https://github.com/ProjectIgnis/Datacorn#how-to-download)
+- [Datacorn](https://github.com/ProjectIgnis/Datacorn#how-to-download)
 - [DataEditorX](https://github.com/247321453/DataEditorX/blob/master/README.md)
 - DB Browser for Sqlite
 
