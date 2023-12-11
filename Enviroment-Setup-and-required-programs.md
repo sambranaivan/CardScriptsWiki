@@ -19,11 +19,15 @@ Since the `.lua` files are just text files any text editor works, but it's a goo
 
 ### To create/edit database:
 Any SQL editor works for that, but some softwares that can be used are:
+
+- [Dataconrn](https://github.com/ProjectIgnis/Datacorn#how-to-download)
 - [DataEditorX](https://github.com/247321453/DataEditorX/blob/master/README.md)
 - DB Browser for Sqlite
 
 For Windows users, DataEditorX is the most beginner-friendly program to edit databases and it was designed to work with cdb files.
 The page linked above also has intruction to change the language (it defaults to chinese). After you extract it and run the program, it might ask for the download of extra components.
+
+Datacorn is an editor maintained by edopro's team with the goal to replace DEX. And while it is in earlier developement stage, it is a functional editor designed to work with cdbs.
 
 If you are going to use DataEditorX you should be aware that Edopro uses a different set of "Categories" (the filters used to search in "Effect", in deck edit). [This file](https://github.com/NaimSantos/DataEditorX/blob/master/DataEditorX/data/cardinfo_english.txt)  has the new changes and also up to date (as much as possible) OTs - the scopes like TCG/OCG/Anime/Manga/custom, etc - used for cards and hexadecimal values for archetypes.
 
