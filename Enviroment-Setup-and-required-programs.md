@@ -1,5 +1,6 @@
-**This is a work in progress**
+**This is a work in progress (last revision: 18 Dec 2023)**
 
+## What you will need:
 
 To have a custom card in your game you will need:
 - A card database (`.cdb` file) containing the stats, text and all properties of the card, with its unique passcode/ID.
@@ -31,11 +32,11 @@ Datacorn is an editor maintained by edopro's team with the goal to replace DEX. 
 
 If you are going to use DataEditorX you should be aware that Edopro uses a different set of "Categories" (the filters used to search in "Effect", in deck edit). [This file](https://github.com/NaimSantos/DataEditorX/blob/master/DataEditorX/data/cardinfo_english.txt)  has the new changes and also up to date (as much as possible) OTs - the scopes like TCG/OCG/Anime/Manga/custom, etc - used for cards and hexadecimal values for archetypes.
 
-### For pictures:
+### To create pictures:
 
-An example of site that allows you to create the pictures for your cards is the [Neo New card maker](https://yemachu.github.io/cardmaker/)
+Pictures don't have any effect in the game; if you can play without them, the scripts will still be fully functional, but an example of site that allows you to create the pictures for your cards is the [Neo New card maker](https://yemachu.github.io/cardmaker/)
 
-## Setup
+### Selecting your card ID:
 
 Cards are identified in the database by an unique passcode (or ID). The internal card structure holds the passcode in a `uint32_t` type, which allows a maximum ID of 2^32-1 (4294967295) to be stored, but it is recommended that you choose a 9-digits range (XXXYYYZZZ) for your custom cards and keep them only in that range. The following non-extensive list contains the ranges that are currently in use Edopro and should not be used by your custom cards to avoid conflicts:
 - Passcodes with up to 8 digits are reserved for official cards.
@@ -48,11 +49,13 @@ Cards are identified in the database by an unique passcode (or ID). The internal
 
 Scripts are identified by the card's passcode. The file name should be `cXXXYYYZZZ.lua` (XXXYYYZZZ being the passcode/ID for that card)
 
-Pictures are also identified by the card's passcode. Both `JPG` and `PNG` formats are supported, so an example of valid picture file is `XXXYYYZZZ.jpg`
+Pictures are also identified by the card's passcode. Both `JPG` and `PNG` formats are supported, so an example of valid picture file is `XXXYYYZZZ.jpg` for a card that has XXXYYYZZZ as its ID.
 
-### Keeping your files locally
+## Setup
 
-The `expansions` folder can be used to keep all your files for custom cards. Reffrain from adding your cards directly to the cdbs files already there, adding them to their own cdbs so they are easier to manage
+### Keeping your files locally:
+
+The `expansions` folder can be used to keep all your files for custom cards. Reffrain from adding your cards directly to the cdbs files already there; add them them to their own cdbs will make they are easier to manage.
 
 - pictures: should be kept in `expansions/pics`. Artworks for field spells can be kept in `expansions/pics/field`.
 - databases: should be kept in `expansions`.
@@ -61,10 +64,37 @@ If needed, custom strings (for example, for counter and archetype names) can be 
 
 If any the mentioned folders don't exist you can create them.
 
+### Keeping your files in a repository:
 
-### Keeping your files in a repository
+You have the option to connect your own github repository to your client, so it can obtain updates from that repository automatically.
 
-**WIP**
+The structure of the repository should be the following:
+```c++
+/script
+/pics
+database_file.cdb
+strings.conf
+```
+- `script` is a folder where the script files will be read from.
+- `pics` is where the pictures for the cards should be kept. If a field spell needs a picture to be used as background on the field when that card is played, a file with the same name as the picture used for the card should be added to `/pics/field`.
+- any number of database files are supported, but they must all be placed in the root of that repository
+- strings.conf is optional and should be used when you need to call custom strings that are not in your card's database. It is also used to display the names of custom archetypes in the Card Info area and also to show custom counter names.
 
-You have the option to connect your own github repository to your client, so it can obtain updates from that repository automatically. You can see how to structurate your own repository for custom cards [here](https://github.com/NaimSantos/Customs)
+To connect the game to your repository, create a file named `user_configs.json` and place it in edopro's `config` folder. The file should be structured like this:
+
+```json
+{
+	"repos": [
+		{
+			"url": "github_link_here,
+			"repo_name": "name_that_will_be_used_in_edopro's_repository_list",
+			"repo_path": "path_where_the_contents_will_be_saved",
+			"should_update": true,
+			"should_read": true
+		}
+	]
+}```
+
+
+You can see an example [here](https://github.com/NaimSantos/Customs)
 
