@@ -86,14 +86,15 @@ To connect the game to your repository, create a file named `user_configs.json` 
 {
 	"repos": [
 		{
-			"url": "github_link_here,
+			"url": "github_link_here",
 			"repo_name": "name_that_will_be_used_in_edopro's_repository_list",
 			"repo_path": "path_where_the_contents_will_be_saved",
 			"should_update": true,
 			"should_read": true
 		}
 	]
-}```
+}
+```
 
 
 You can see an example [here](https://github.com/NaimSantos/Customs)
