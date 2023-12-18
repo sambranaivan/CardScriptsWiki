@@ -55,7 +55,7 @@ Pictures are also identified by the card's passcode. Both `JPG` and `PNG` format
 
 ### Keeping your files locally:
 
-The `expansions` folder can be used to keep all your files for custom cards. Reffrain from adding your cards directly to the cdbs files already there; add them them to their own cdbs will make they are easier to manage.
+The `expansions` folder can be used to keep all your files for custom cards. Reffrain from adding your cards directly to the cdbs files already there; adding them to their own cdbs will make them easier to manage.
 
 - pictures: should be kept in `expansions/pics`. Artworks for field spells can be kept in `expansions/pics/field`.
 - databases: should be kept in `expansions`.
@@ -95,7 +95,5 @@ To connect the game to your repository, create a file named `user_configs.json` 
 	]
 }
 ```
-
-
 You can see an example [here](https://github.com/NaimSantos/Customs)
 
