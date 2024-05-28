@@ -58,16 +58,17 @@ end
 
 ```
 To verify if the card can be activated, the game first checks the condition, the function called in `e1:SetCondition(s.condition)`.
-`s.condition` is said to pass (meaning it returns `true`) if the following line return true:
-```luareturn Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_MZONE,0,1,nil)```
+`s.condition` is said to pass if the following line returns `true`:
+```lua
+return Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_MZONE,0,1,nil)
+```
+This line checks if there is at least 1 card in player `tp`'s monster zone that matches the function `s.cfilter`.
 
-there is at least 1 card in player `tp`'s monster zone that matches the function `s.cfilter`.
-
-Next the game checks for the cost. For that, the function called in `e1:SetCost(s.cost)` is executed. First `chk` is passed as `0` and the line
+Next, the game checks for the cost. Cost must be paid when a card is activated and if the cost cannot be paid, the activation is not possible. For that, the function called in `e1:SetCost(s.cost)` is executed. First the `chk` variable is passed as `0` when the game tests the cost and the line
 ```lua
 if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,e:GetHandler()) end
 ```
-is executed. In this test, if there is at least 1 card in player `tp`'s hand that can be discarded (except Galactic Charity itself, `e:GetHandler()`) the test is true and the game knows that the cost can be paid.
+is executed. In this test, if there is at least 1 card in player `tp`'s hand that can be discarded (except Galactic Charity itself, that was obtained with `e:GetHandler()`) the test is true and the game knows that the cost can be paid.
 
 The following step is to verify the activation legality ("can the player resolve this effect?"). For this, the function defined in `e1:SetTarget(s.target)` is executed. For the activation legality the `chk` parameter here is passed as `0` again and the line
 ```lua
@@ -75,7 +76,7 @@ if chk==0 then return Duel.IsPlayerCanDraw(tp,2) end
 ```
 is executed. Here, if player `tp` can draw 2 cards the test returns true and the game decides that the activation is legal.
 
-After those steps, since condition, cost and activation legality are all true, the player can activate the card. When they do, the cost function is executed once again. Now the `chk` parameter is no longer `0`, so the first line in that function is not executed (because `if chk==0` is false) and instead the game runs the function that will make the player pay the cost (via `Duel.DiscardHand`).
+After those steps, since condition, cost and activation legality are all true, the player can activate the card. When they do, the cost function is executed once again. Now the `chk` parameter is no longer `0` (it is passed as 1), so the first line in that function is not executed (because `if chk==0` is false) and instead the game runs the function that will make the player pay the cost (via `Duel.DiscardHand`).
 
 After that, the `s.target` function is executed. The same situation with `chk` happens here: it is passed as `1` so the first line is no longer executed and the game instead only calls the functions Duel.SetTargetPlayer, Duel.SetTargetParam and Duel.SetOperationInfo.
 
