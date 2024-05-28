@@ -58,7 +58,10 @@ end
 
 ```
 To verify if the card can be activated, the game first checks the condition, the function called in `e1:SetCondition(s.condition)`.
-`s.condition` is said to pass (meaning it returns `true`) if there is at least 1 card in player `tp`'s monster zone that matches the function `s.cfilter`.
+`s.condition` is said to pass (meaning it returns `true`) if the following line return true:
+```luareturn Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_MZONE,0,1,nil)```
+
+there is at least 1 card in player `tp`'s monster zone that matches the function `s.cfilter`.
 
 Next the game checks for the cost. For that, the function called in `e1:SetCost(s.cost)` is executed. First `chk` is passed as `0` and the line
 ```lua
