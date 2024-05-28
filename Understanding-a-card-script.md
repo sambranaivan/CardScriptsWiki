@@ -1,4 +1,8 @@
-Here's an example in Galactic Charity's script:
+Let's start looking at Galaxy Charity, that has this effect:
+```
+If you control a "Galaxy" Xyz Monster: Discard 1 card; draw 2 cards, also if you activated this card, any damage your opponent takes for the rest of this turn is halved. You can only activate 1 "Galactic Charity" per turn.
+````
+Its script has the following code:
 ```lua
 --銀河の施し
 --Galactic Charity
