@@ -4,7 +4,7 @@ Here you will find the functions available in the scripting library used in Edop
 
 The last update to this documentation was in: **13-Jun-2023**
 
-#### Notes:
+### Notes
 - "Method" and "function" are used as as synonymous in all pages.
 - The ellipsis, `...`, represents a variable number of arguments, usually used when extra parameters are supported by the function.
 - Parameters surrounded by square brackets `[ ]` are optional parameters.
