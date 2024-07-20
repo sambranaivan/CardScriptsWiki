@@ -4,7 +4,7 @@ Here you will find the functions available in the scripting library used in Edop
 
 The last update to this documentation was in: **13-Jun-2023**
 
-### Notes:
+#### Notes:
 - "Method" and "function" are used as as synonymous in all pages.
 - The ellipsis, `...`, represents a variable number of arguments, usually used when extra parameters are supported by the function.
 - Parameters surrounded by square brackets `[ ]` are optional parameters.
@@ -12,7 +12,7 @@ The last update to this documentation was in: **13-Jun-2023**
 - Commas in return types indicate that the function has more than 1 return value.
 
 
-### Function categories
+#### Function categories
 - [Card Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Card.-methods)
 - [Duel Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Duel.-methods)
 - [Effect Methods](https://github.com/ProjectIgnis/CardScripts/wiki/Scripting-Library:-Effect.-methods)
