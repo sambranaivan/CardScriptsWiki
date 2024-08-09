@@ -1,13 +1,5 @@
 | return type | function | description |
 | --- | --- | --- |
-| int | bit.band(int a,  int b) | Does a bitwise AND operation between 2 integers. (Deprecated,  advised to use (int a)&(int b) instead.) |
-| int | bit.bnot(int a) | Swaps the bits of an integer, 0 to 1 and 1 to 0. (Deprecated,  advised to use ~(int a) instead.) |
-| int | bit.bor(int a,  int b) | Does a bitwise OR operation between 2 integers. (Deprecated,  advised to use (int a)\|(int b) instead.) |
-| int | bit.bxor(int a,  int b) | Does a bitwise XOR operation between 2 integers. (Deprecated,  advised to use (int a)~(int b) instead.) |
-| int | bit.extract(int a,  int b[,  int width=1]) | Returns the field of (int a) with a width |
-| int | bit.lshift(int a,  int b) | Shifts all bits of an integer to the left by an amount (Deprecated,  advised to use (int a)<<(int b) instead.) |
-| int | bit.replace(int a,  int b,  int c[,  int width=1]) | Returns a copy of (int a) with the field with a width changed to value (int b) |
-| int | bit.rshift(int a,  int b) | Shift all bits of an integer to the right by an amount (Deprecated,  advised to use (int a)>>(int b) instead.) |
 | void | Card.AddAdditionalAttack(c,  atknum,  reset,  rc,  condition,  properties) | Rush related function |
 | void | Card.AddAdditionalAttackOnMonster(c,  atknum,  reset,  rc,  condition,  properties) | Rush related function |
 | void | Card.AddAdditionalAttackOnMonsterAll(c,  reset,  rc,  value,  condition,  properties) | Rush related function |
