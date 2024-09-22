@@ -1,4 +1,4 @@
-**This is a work in progress (last revision: 18 Dec 2023)**
+**This is a work in progress (last revision: 22 Sep 2024)**
 
 ## What you will need:
 
@@ -44,12 +44,9 @@ Cards are identified in the database by an unique passcode (or ID). The internal
 - Passcodes with 9 digits in the 100XXXYYY range are reserved for Video Game cards.
 - Passcodes with 9 digits in the 160XXXYYY range are reserved for Rush cards.
 - Passcodes with 9 digits in the 300XXXYYY range are reserved for skill cards.
-- Passcodes with 9 digits in the 5ZZXXXYYY and 200XXXYYY ranges are reserved for anime/manga cards.
+- Passcodes with 9 digits in the 5ZZXXXYYY, 200XXXYYY, 800XXXYYY, 810XXXYYY ranges are reserved for anime/manga cards. The passcode 777777777 is also not available.
 
-
-Scripts are identified by the card's passcode. The file name should be `cXXXYYYZZZ.lua` (XXXYYYZZZ being the passcode/ID for that card)
-
-Pictures are also identified by the card's passcode. Both `JPG` and `PNG` formats are supported, so an example of valid picture file is `XXXYYYZZZ.jpg` for a card that has XXXYYYZZZ as its ID.
+Scripts are identified by the card's passcode. The file name for a script should be `cXXXYYYZZZ.lua` (XXXYYYZZZ being the passcode/ID for that card) Pictures are also identified by the card's passcode. Both `JPG` and `PNG` formats are supported, so an example of valid picture file is `XXXYYYZZZ.jpg` for a card that has XXXYYYZZZ as its ID.
 
 ## Setup
 
@@ -69,8 +66,8 @@ If any the mentioned folders don't exist you can create them.
 You have the option to connect your own github repository to your client, so it can obtain updates from that repository automatically.
 
 The structure of the repository should be the following:
-```c++
-/script
+```lua
+/script 
 /pics
 database_file.cdb
 strings.conf
