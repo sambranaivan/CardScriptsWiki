@@ -38,15 +38,15 @@ Pictures don't have any effect in the game; if you can play without them, the sc
 
 ### Selecting your card ID:
 
-Cards are identified in the database by an unique passcode (or ID). The internal card structure holds the passcode in a `uint32_t` type, which allows a maximum ID of 2^32-1 (4294967295) to be stored, but it is recommended that you choose a 9-digits range (XXXYYYZZZ) for your custom cards and keep them only in that range. The following non-extensive list contains the ranges that are currently in use Edopro and should not be used by your custom cards to avoid conflicts:
+Cards are identified in the database by an unique passcode (or ID). The internal card structure holds the passcode in a `uint32_t` type, which allows a maximum ID of 2^32-1 (4294967295) to be stored, but it is recommended that you choose a 9-digits range for your custom cards and keep them only in that range. The following non-extensive list contains the ranges that are currently in use Edopro and should not be used by your custom cards to avoid conflicts:
 - Passcodes with up to 8 digits are reserved for official cards.
-- Passcodes with 9 digits in the 10ZXXXYYY range are reserved for pre-release TCG/OCG cards
-- Passcodes with 9 digits in the 100XXXYYY range are reserved for Video Game cards.
-- Passcodes with 9 digits in the 160XXXYYY range are reserved for Rush cards.
-- Passcodes with 9 digits in the 300XXXYYY range are reserved for skill cards.
-- Passcodes with 9 digits in the 5ZZXXXYYY, 200XXXYYY, 800XXXYYY, 810XXXYYY ranges are reserved for anime/manga cards. The passcode 777777777 is also not available.
+- Passcodes with 9 digits in the 10ZXXXXXX range are reserved for pre-release TCG/OCG cards
+- Passcodes with 9 digits in the 100XXXXXX range are reserved for Video Game cards.
+- Passcodes with 9 digits in the 160XXXXXX range are reserved for Rush cards.
+- Passcodes with 9 digits in the 300XXXXXX range are reserved for skill cards.
+- Passcodes with 9 digits in the 5XXXXXXXX, 200XXXXXX, 800XXXXXX, 810XXXXXX ranges are reserved for anime/manga cards. The passcode 777777777 is also not available.
 
-Scripts are identified by the card's passcode. The file name for a script should be `cXXXYYYZZZ.lua` (XXXYYYZZZ being the passcode/ID for that card) Pictures are also identified by the card's passcode. Both `JPG` and `PNG` formats are supported, so an example of valid picture file is `XXXYYYZZZ.jpg` for a card that has XXXYYYZZZ as its ID.
+Scripts are identified by the card's passcode. The file name for a script should be `cXXXXXXXXX.lua` (XXXXXXXXXbeing the passcode/ID for that card) Pictures are also identified by the card's passcode. Both `JPG` and `PNG` formats are supported, so an example of valid picture file is `XXXXXXXXX.jpg` for a card that has XXXXXXXXX as its ID.
 
 ## Setup
 
